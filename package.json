@@ -1,0 +1,15 @@
+{
+  "name": "webbci",
+  "version": "0.1.0",
+  "description": "A JavaScript based EEG processing tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "fft.js": "^4.0.3",
+    "mathjs": "^3.16.3"
+  }
+}
