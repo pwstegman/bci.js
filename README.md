@@ -7,11 +7,12 @@ JavaScript based EEG signal processing
  - None
 
 **Current methods (testing):**
- - get\[bandName\](fftFreqBins, fftSize, sampleRate)
-   - \[bandName\] can be 'Delta', 'Theta', 'Alpha', 'Mu', 'SMR', 'LowBeta', 'Beta', 'HighBeta', 'Gamma'
-   - Computes the average power across the frequency band given the frequency bins computed using FFT
-   - Examples: getAlpha(); getBeta();
-   - Note: possibly cleaner implementation could be getBandPower(bandName, fftFreqBins, fftSize, sampleRate) instead of having separate functions for each band
+ - getPSD(fftSize, signal)
+   - Given a time series signal, return the power in each frequency band computed using an FFT
+ - getBandPower(fftSize, psd, sampleRate, band)
+   - band can be an array [frequencyStart, frequencyStop] or a string 'delta', 'theta', 'alpha', 'mu', 'smr', 'lowbeta', 'beta', 'highbeta', 'gamma'
+   - Computes the average power across the frequency band in the given power spectral density (psd) array
+   - Examples: getBandPower(1024, psd, 512, 'alpha')(); getBandPower(1024, psd, 512, [7.5, 12.5]);
 
 **Future method ideas:**
  - Return raw EEG
