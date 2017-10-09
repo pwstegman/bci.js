@@ -1,6 +1,6 @@
 var fft = require('fft.js');
 
-var fftCache = {}
+var fftCache = {};
 
 exports.getPSD = function(size, signal){
   /* Cache fft object. In quick tests, the time to create a new FFT object
@@ -53,7 +53,7 @@ exports.getBandPower = function(size, psd, sampleRate, band){
   var endIndex = Math.floor(band[1] / sampleRate * size);
   var power = 0;
   for(var i = startIndex; i < endIndex + 1; i++){
-    power += freqs[i];
+    power += psd[i];
   }
   return power / (endIndex - startIndex + 1);
 }
