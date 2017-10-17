@@ -1,3 +1,4 @@
+var math = require('mathjs');
 var fft = require('fft.js');
 
 var fftCache = {};
@@ -67,4 +68,45 @@ exports.displayComplex = function(complexArray, precision){
   for(var i = 0; i < complexArray.length; i += 2){
     console.log(Math.round(complexArray[i]*p)/p + '+' + Math.round(complexArray[i+1]*p)/p + 'i');
   }
+}
+
+function EEGWindow(size, numChannels, callback){
+  this.size = size;
+  this.length = 0;
+  this.callback = callback;
+  this.channels = [];
+  for(var i = 0; i<numChannels; i++){
+    this.channels.push([]);
+  }
+}
+
+EEGWindow.prototype.addData = function(data){
+  for(var i=0; i<data.length; i++){
+    this.channels[i].push(data[i]);
+  }
+  this.length += 1;
+  if(this.length >= this.size){
+    this.callback(this.channels);
+    this.clear();
+  }
+}
+
+EEGWindow.prototype.clear = function(){
+  this.length = 0;
+  for(var i = 0; i<this.channels.length; i++){
+    this.channels[i] = [];
+  }
+}
+
+exports.EEGWindow = EEGWindow;
+
+exports.generateSignal = function (amplitudes, frequencies, sampleRate, duration) {
+    var x = math.range(0, duration, 1 / sampleRate);
+
+    var signal = math.zeros(x.size()[0]);
+    for (var i = 0; i < amplitudes.length; i++) {
+        signal = math.add(signal, math.multiply(amplitudes[i], math.sin(math.multiply(2 * math.pi * frequencies[i], x))));
+    }
+
+    return signal.toArray();
 }
