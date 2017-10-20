@@ -17,7 +17,7 @@ signalProcessing.js
    - add data to an eeg data window using eegw.addData(dataSample). When number of dataSamples = size, callback is called with array of dataSamples and the window is reset
    - can reset / clear data in window early by calling eegw.clear()
  - generateSignal(amplitudes, frequencies, sampleRate, duration)
-   - return summation of amplitude*sin(2*pi*frequency*t) for the given amplitudes and frequencies over a duration (in seconds) given a sample rate (in Hz)
+   - return summation of `amplitude*sin(2*pi*frequency*t)` for the given amplitudes and frequencies over a duration (in seconds) given a sample rate (in Hz)
 
 networking.js
 
