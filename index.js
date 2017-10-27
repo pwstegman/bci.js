@@ -95,12 +95,12 @@ function onEEG(data){
 }
 
 function onWindowFull(channels){
-
+  // Compute average alpha and beta powers over all channels
   var alpha = 0;
   var beta = 0;
 
   for(var i = 0; i<channels.length; i++){
-    var powers = sp.getPSD(size, channels[1]);
+    var powers = sp.getPSD(size, channels[i]);
     alpha += sp.getBandPower(size, powers, 256, 'alpha');
     beta += sp.getBandPower(size, powers, 256, 'beta');
   }
