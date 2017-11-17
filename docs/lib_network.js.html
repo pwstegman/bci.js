@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib/network.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-webbci_signal-EEGWindow.html">EEGWindow</a><ul class='methods'><li data-type='method'><a href="module-webbci_signal-EEGWindow.html#addData">addData</a></li><li data-type='method'><a href="module-webbci_signal-EEGWindow.html#clear">clear</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-webbci.html">webbci</a></li><li><a href="module-webbci_network.html">webbci/network</a><ul class='methods'><li data-type='method'><a href="module-webbci_network.html#.addEEGListener">addEEGListener</a></li></ul></li><li><a href="module-webbci_signal.html">webbci/signal</a><ul class='methods'><li data-type='method'><a href="module-webbci_signal.html#.generate">generate</a></li><li data-type='method'><a href="module-webbci_signal.html#.getBandPower">getBandPower</a></li><li data-type='method'><a href="module-webbci_signal.html#.getPSD">getPSD</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">lib/network.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * A module for reading EEG data over the network.
+ * @module webbci/network
+ */
+
+var osc = require('node-osc');
+
+/**
+ * Calls callback when EEG data is received over the network.
+ * @param {string} oscAddress - The address of the OSC server. For example: 127.0.0.1.
+ * @param {number} oscPort - The port of the OSC server.
+ * @param {string} eegAddress - The OSC header for the EEG data. For example: Person0/eeg.
+ * @param {requestCallback} callback - Called when EEG data is received. 
+ */
+exports.addEEGListener = function(oscAddress, oscPort, eegAddress, callback){
+  var oscServer = new osc.Server(oscPort, oscAddress);
+
+  oscServer.on("message", function (msg, rinfo) {
+        if(msg[0] == eegAddress){
+          callback(msg.slice(1));
+        }
+  });
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated on Fri Nov 17 2017 13:20:55 GMT-0600 (Central Standard Time)
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

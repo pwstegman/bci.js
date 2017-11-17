@@ -1,4 +1,44 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib/signal.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-webbci_signal-EEGWindow.html">EEGWindow</a><ul class='methods'><li data-type='method'><a href="module-webbci_signal-EEGWindow.html#addData">addData</a></li><li data-type='method'><a href="module-webbci_signal-EEGWindow.html#clear">clear</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-webbci.html">webbci</a></li><li><a href="module-webbci_network.html">webbci/network</a><ul class='methods'><li data-type='method'><a href="module-webbci_network.html#.addEEGListener">addEEGListener</a></li></ul></li><li><a href="module-webbci_signal.html">webbci/signal</a><ul class='methods'><li data-type='method'><a href="module-webbci_signal.html#.generate">generate</a></li><li data-type='method'><a href="module-webbci_signal.html#.getBandPower">getBandPower</a></li><li data-type='method'><a href="module-webbci_signal.html#.getPSD">getPSD</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">lib/signal.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * A module for EEG signal processing.
  * @module webbci/signal
  */
@@ -36,7 +76,7 @@ exports.getPSD = function (size, signal) {
  */
 function getPowers(size, complexArray) {
 	var magnitudes = [];
-	for (var i = 0; i < size; i += 2) {
+	for (var i = 0; i &lt; size; i += 2) {
 		magnitudes.push(Math.sqrt(complexArray[i] * complexArray[i] + complexArray[i + 1] * complexArray[i + 1]));
 	}
 	return magnitudes;
@@ -76,7 +116,7 @@ exports.getBandPower = function (size, psd, sampleRate, band) {
 	var startIndex = Math.ceil(band[0] / sampleRate * size);
 	var endIndex = Math.floor(band[1] / sampleRate * size);
 	var power = 0;
-	for (var i = startIndex; i < endIndex + 1; i++) {
+	for (var i = startIndex; i &lt; endIndex + 1; i++) {
 		power += psd[i];
 	}
 	return power / (endIndex - startIndex + 1);
@@ -94,7 +134,7 @@ function displayComplex(complexArray, precision) {
 	}
 	var p = Math.pow(10, precision);
 
-	for (var i = 0; i < complexArray.length; i += 2) {
+	for (var i = 0; i &lt; complexArray.length; i += 2) {
 		console.log(Math.round(complexArray[i] * p) / p + '+' + Math.round(complexArray[i + 1] * p) / p + 'i');
 	}
 }
@@ -112,7 +152,7 @@ function EEGWindow(size, numChannels, callback) {
 	this.length = 0;
 	this.callback = callback;
 	this.channels = [];
-	for (var i = 0; i < numChannels; i++) {
+	for (var i = 0; i &lt; numChannels; i++) {
 		this.channels.push([]);
 	}
 }
@@ -122,7 +162,7 @@ function EEGWindow(size, numChannels, callback) {
  * @param {number[]} - The data sample to be added. Should be of length 'channels'
  */
 EEGWindow.prototype.addData = function (data) {
-	for (var i = 0; i < data.length; i++) {
+	for (var i = 0; i &lt; data.length; i++) {
 		this.channels[i].push(data[i]);
 	}
 	this.length += 1;
@@ -137,7 +177,7 @@ EEGWindow.prototype.addData = function (data) {
  */
 EEGWindow.prototype.clear = function () {
 	this.length = 0;
-	for (var i = 0; i < this.channels.length; i++) {
+	for (var i = 0; i &lt; this.channels.length; i++) {
 		this.channels[i] = [];
 	}
 }
@@ -150,15 +190,34 @@ exports.EEGWindow = EEGWindow;
  * @param {number[]} frequencies - The frequencies to be included in the signal.
  * @param {number} sampleRate - The sample rate of the signal in Hz.
  * @param {number} duration - The duration of the signal in seconds.
- * @returns {number[]} The generated signal. Equals the summation of <pre>amplitudes[i] * sin(2 * pi * frequencies[i] * t)</pre>.
+ * @returns {number[]} The generated signal. Equals the summation of &lt;pre>amplitudes[i] * sin(2 * pi * frequencies[i] * t)&lt;/pre>.
  */
 exports.generate = function (amplitudes, frequencies, sampleRate, duration) {
 	var x = math.range(0, duration, 1 / sampleRate);
 
 	var signal = math.zeros(x.size()[0]);
-	for (var i = 0; i < amplitudes.length; i++) {
+	for (var i = 0; i &lt; amplitudes.length; i++) {
 		signal = math.add(signal, math.multiply(amplitudes[i], math.sin(math.multiply(2 * math.pi * frequencies[i], x))));
 	}
 
 	return signal.toArray();
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated on Fri Nov 17 2017 13:20:55 GMT-0600 (Central Standard Time)
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
