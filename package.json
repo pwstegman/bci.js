@@ -1,6 +1,6 @@
 {
   "name": "webbci",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A JavaScript based EEG processing tool",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,9 @@
   },
   "keywords": [
     "eeg",
-    "bci"
+    "bci",
+    "signal processing",
+    "machine learning"
   ],
   "bugs": {
     "url": "https://github.com/pwstegman/WebBCI/issues"
