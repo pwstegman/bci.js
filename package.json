@@ -19,14 +19,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pwstegman/webbci.git"
+    "url": "git+https://github.com/pwstegman/WebBCI.git"
   },
   "keywords": [
     "eeg",
     "bci"
   ],
   "bugs": {
-    "url": "https://github.com/pwstegman/webbci/issues"
+    "url": "https://github.com/pwstegman/WebBCI/issues"
   },
-  "homepage": "https://github.com/pwstegman/webbci#readme"
+  "homepage": "https://github.com/pwstegman/WebBCI#readme"
 }
