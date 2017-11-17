@@ -43,3 +43,7 @@ console.log(ws.getBandPower(length, psd, sampleRate, 'beta')); // 512
 ## Examples
 
 More examples can be found in the [examples](examples/) directory
+
+## Documentation
+
+Documentation can be found at [http://pwstegman.me/WebBCI/](http://pwstegman.me/WebBCI/)
