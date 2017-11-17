@@ -13,6 +13,7 @@ npm install webbci
 
 ```javascript
 var wbci = require('webbci');
+var ws = wbci.signal;
 
 // Generate 1 second of sample data
 var sampleRate = 512;
@@ -24,8 +25,6 @@ var frequencies = [
 	8, // 8 Hz, alpha range
 	17 // 17 Hz, beta range
 ];
-
-var ws = wbci.signal;
 
 var signal = ws.generate(amplitudes, frequencies, sampleRate, duration);
 
