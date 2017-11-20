@@ -75,10 +75,10 @@ describe('signal', function () {
 			var power_a = webbci.signal.getBandPower(length, psd, sampleRate, 'alpha');
 			var power_b = webbci.signal.getBandPower(length, psd, sampleRate, 'beta');
 
-			assert(Math.abs(power_d - 64) < 0.00001);
-			assert(Math.abs(power_t - 128) < 0.00001);
-			assert(Math.abs(power_a - 204.8) < 0.00001);
-			assert(Math.abs(power_b - 512) < 0.00001);
+			assert(Math.abs(power_d - 85.333333333) < 0.00001);
+			assert(Math.abs(power_t - 128.00000000) < 0.00001);
+			assert(Math.abs(power_a - 204.80000000) < 0.00001);
+			assert(Math.abs(power_b - 113.77777777) < 0.00001);
 		});
 	});
 });

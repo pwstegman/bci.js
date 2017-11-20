@@ -33,10 +33,10 @@ var length = sampleRate * duration;
 var psd = ws.getPSD(length, signal);
 
 // Compute average power in each frequency band
-console.log(ws.getBandPower(length, psd, sampleRate, 'delta')); // 64
+console.log(ws.getBandPower(length, psd, sampleRate, 'delta')); // 85
 console.log(ws.getBandPower(length, psd, sampleRate, 'theta')); // 128
-console.log(ws.getBandPower(length, psd, sampleRate, 'alpha')); // 204
-console.log(ws.getBandPower(length, psd, sampleRate, 'beta')); // 512
+console.log(ws.getBandPower(length, psd, sampleRate, 'alpha')); // 205
+console.log(ws.getBandPower(length, psd, sampleRate, 'beta')); // 114
 ```
 
 ## Examples
