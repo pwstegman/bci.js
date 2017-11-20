@@ -3,16 +3,10 @@
  * @module webbci
  */
 
-/** webbci.signal - Signal processing */
 exports.signal = require('./lib/signal.js');
-
-/** webbci.network - Retrieve EEG data over OSC */
 exports.network = require('./lib/network.js');
+exports.LDA = require('./lib/lda.js');
 
-var pierce = require('pierce');
-
-/** webbci.lda - Use linear discriminant analysis to classify feature vectors */
-exports.lda = pierce.lda;
-
-/** webbci.csp - Compute the common spatial pattern for given signals */
-exports.csp = pierce.csp;
+// backwards compatibility
+exports.lda = exports.LDA;
+exports.csp = exports.signal.CSP;

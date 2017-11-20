@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/network.js - Documentation</title>
+    <title>lib/lda.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,7 +28,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">lib/network.js</h1>
+    <h1 class="page-title">lib/lda.js</h1>
     
 
     
@@ -38,33 +38,27 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * The network operations for webbci
- * @namespace network
- * @memberof module:webbci
- */
-
-var osc = require('node-osc');
+            <pre class="prettyprint source linenums"><code>var pwlda = require('pw-lda');
 
 /**
- * Calls callback when EEG data is received over the network.
- * @memberof module:webbci.network
- * @param {string} oscAddress - The address of the OSC server. For example: 127.0.0.1.
- * @param {number} oscPort - The port of the OSC server.
- * @param {string} eegAddress - The OSC header for the EEG data. For example: Person0/eeg.
- * @param {requestCallback} callback - Called when EEG data is received. 
+ * An LDA object that's a member of webbci.
+ * @name LDA
+ * @memberof module:webbci
+ * @constructor
+ * @param {number[][]} class1 - Data set for class 1, rows are samples, columns are variables
+ * @param {number[][]} class2 - Data set for class 2, rows are samples, columns are variables
  */
-function addEEGListener(oscAddress, oscPort, eegAddress, callback){
-  var oscServer = new osc.Server(oscPort, oscAddress);
 
-  oscServer.on("message", function (msg, rinfo) {
-        if(msg[0] == eegAddress){
-          callback(msg.slice(1));
-        }
-  });
-}
+/**
+ * Predict the class of an unknown data point.
+ * @name project
+ * @memberof module:webbci.LDA
+ * @function
+ * @param {number[]} point - The data point to be classified.
+ * @returns {number} value less than 0 if predicted to be in class 1, 0 if exactly inbetween, greater than 0 if class 2
+ */
 
-exports.addEEGListener = addEEGListener;
+module.exports = pwlda;
 </code></pre>
         </article>
     </section>

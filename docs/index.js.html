@@ -23,7 +23,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-webbci_signal-EEGWindow.html">EEGWindow</a><ul class='methods'><li data-type='method'><a href="module-webbci_signal-EEGWindow.html#addData">addData</a></li><li data-type='method'><a href="module-webbci_signal-EEGWindow.html#clear">clear</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-webbci.html">webbci</a></li><li><a href="module-webbci_network.html">webbci/network</a><ul class='methods'><li data-type='method'><a href="module-webbci_network.html#.addEEGListener">addEEGListener</a></li></ul></li><li><a href="module-webbci_signal.html">webbci/signal</a><ul class='methods'><li data-type='method'><a href="module-webbci_signal.html#.generate">generate</a></li><li data-type='method'><a href="module-webbci_signal.html#.getBandPower">getBandPower</a></li><li data-type='method'><a href="module-webbci_signal.html#.getPSD">getPSD</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-webbci.LDA.html">LDA</a><ul class='methods'><li data-type='method'><a href="module-webbci.LDA.html#.project">project</a></li></ul></li><li><a href="module-webbci.signal.CSP.html">CSP</a><ul class='methods'><li data-type='method'><a href="module-webbci.signal.CSP.html#.project">project</a></li></ul></li><li><a href="module-webbci.signal.EEGWindow.html">EEGWindow</a><ul class='methods'><li data-type='method'><a href="module-webbci.signal.EEGWindow.html#addData">addData</a></li><li data-type='method'><a href="module-webbci.signal.EEGWindow.html#clear">clear</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-webbci.html">webbci</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-webbci.network.html">network</a><ul class='methods'><li data-type='method'><a href="module-webbci.network.html#.addEEGListener">addEEGListener</a></li></ul></li><li><a href="module-webbci.signal.html">signal</a><ul class='methods'><li data-type='method'><a href="module-webbci.signal.html">generate</a></li><li data-type='method'><a href="module-webbci.signal.html#.getBandPower">getBandPower</a></li><li data-type='method'><a href="module-webbci.signal.html#.getPSD">getPSD</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -43,19 +43,13 @@
  * @module webbci
  */
 
-/** webbci.signal - Signal processing */
 exports.signal = require('./lib/signal.js');
-
-/** webbci.network - Retrieve EEG data over OSC */
 exports.network = require('./lib/network.js');
+exports.LDA = require('./lib/lda.js');
 
-var pierce = require('pierce');
-
-/** webbci.lda - Use linear discriminant analysis to classify feature vectors */
-exports.lda = pierce.lda;
-
-/** webbci.csp - Compute the common spatial pattern for given signals */
-exports.csp = pierce.csp;</code></pre>
+// backwards compatibility
+exports.lda = exports.LDA;
+exports.csp = exports.signal.CSP;</code></pre>
         </article>
     </section>
 
@@ -67,7 +61,7 @@ exports.csp = pierce.csp;</code></pre>
 <br class="clear">
 
 <footer>
-    Documentation generated on Fri Nov 17 2017 13:20:55 GMT-0600 (Central Standard Time)
+    Documentation generated on Sun Nov 19 2017 20:20:37 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script>prettyPrint();</script>

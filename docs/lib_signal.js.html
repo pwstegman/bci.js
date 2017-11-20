@@ -23,7 +23,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-webbci_signal-EEGWindow.html">EEGWindow</a><ul class='methods'><li data-type='method'><a href="module-webbci_signal-EEGWindow.html#addData">addData</a></li><li data-type='method'><a href="module-webbci_signal-EEGWindow.html#clear">clear</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-webbci.html">webbci</a></li><li><a href="module-webbci_network.html">webbci/network</a><ul class='methods'><li data-type='method'><a href="module-webbci_network.html#.addEEGListener">addEEGListener</a></li></ul></li><li><a href="module-webbci_signal.html">webbci/signal</a><ul class='methods'><li data-type='method'><a href="module-webbci_signal.html#.generate">generate</a></li><li data-type='method'><a href="module-webbci_signal.html#.getBandPower">getBandPower</a></li><li data-type='method'><a href="module-webbci_signal.html#.getPSD">getPSD</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-webbci.LDA.html">LDA</a><ul class='methods'><li data-type='method'><a href="module-webbci.LDA.html#.project">project</a></li></ul></li><li><a href="module-webbci.signal.CSP.html">CSP</a><ul class='methods'><li data-type='method'><a href="module-webbci.signal.CSP.html#.project">project</a></li></ul></li><li><a href="module-webbci.signal.EEGWindow.html">EEGWindow</a><ul class='methods'><li data-type='method'><a href="module-webbci.signal.EEGWindow.html#addData">addData</a></li><li data-type='method'><a href="module-webbci.signal.EEGWindow.html#clear">clear</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-webbci.html">webbci</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-webbci.network.html">network</a><ul class='methods'><li data-type='method'><a href="module-webbci.network.html#.addEEGListener">addEEGListener</a></li></ul></li><li><a href="module-webbci.signal.html">signal</a><ul class='methods'><li data-type='method'><a href="module-webbci.signal.html">generate</a></li><li data-type='method'><a href="module-webbci.signal.html#.getBandPower">getBandPower</a></li><li data-type='method'><a href="module-webbci.signal.html#.getPSD">getPSD</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -39,8 +39,9 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * A module for EEG signal processing.
- * @module webbci/signal
+ * Signal processing operations
+ * @namespace signal
+ * @memberof module:webbci
  */
 
 var math = require('mathjs');
@@ -50,11 +51,12 @@ var fftCache = {};
 
 /**
  * Compute the power spectral density of a given signal.
+ * @memberof module:webbci.signal
  * @param {number} size - Size of the fourier transform to be used. Should be a power of 2.
  * @param {number[]} signal - The signal.
  * @returns {number[]} The PSD.
  */
-exports.getPSD = function (size, signal) {
+function getPSD(size, signal) {
 	if (fftCache.hasOwnProperty(size)) {
 		f = fftCache[size];
 	} else {
@@ -99,6 +101,7 @@ var bands = {
 
 /**
  * Compute the average power across a given frequency band given the PSD.
+ * @memberof module:webbci.signal
  * @param {number} size - Size of the fourier transform used to compute the PSD.
  * @param {number[]} psd - Power spectral density of the signal.
  * @param {number} sampleRate - The sample rate of the signal.
@@ -107,7 +110,7 @@ var bands = {
  * currently allow for easier prototyping, the use of a specific band passed as an array is recommended.
  * @returns {number} The average power in the frequency band.
  */
-exports.getBandPower = function (size, psd, sampleRate, band) {
+function getBandPower(size, psd, sampleRate, band) {
 	// Allow selecting of a band by name
 	if (typeof band === 'string' || band instanceof String) {
 		band = bands[band];
@@ -141,6 +144,7 @@ function displayComplex(complexArray, precision) {
 
 /**
  * Create a new EEGWindow object.
+ * @memberof module:webbci.signal
  * @constructor
  * @param {number} size - The number of samples to be stored before callback is called.
  * @param {number} numChannels - The number of channels in each sample.
@@ -186,6 +190,8 @@ exports.EEGWindow = EEGWindow;
 
 /**
  * Generate a signal.
+ * @alias generate
+ * @memberof module:webbci.signal
  * @param {number[]} amplitudes - The amplitudes of each frequency in the signal.
  * @param {number[]} frequencies - The frequencies to be included in the signal.
  * @param {number} sampleRate - The sample rate of the signal in Hz.
@@ -202,7 +208,10 @@ exports.generate = function (amplitudes, frequencies, sampleRate, duration) {
 
 	return signal.toArray();
 }
-</code></pre>
+
+exports.getPSD = getPSD;
+exports.getBandPower = getBandPower;
+exports.CSP = require('./csp.js');</code></pre>
         </article>
     </section>
 
@@ -214,7 +223,7 @@ exports.generate = function (amplitudes, frequencies, sampleRate, duration) {
 <br class="clear">
 
 <footer>
-    Documentation generated on Fri Nov 17 2017 13:20:55 GMT-0600 (Central Standard Time)
+    Documentation generated on Sun Nov 19 2017 20:20:37 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script>prettyPrint();</script>
