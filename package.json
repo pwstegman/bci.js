@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "fft.js": "^4.0.3",
-    "mathjs": "^3.16.3",
+    "mathjs": "^3.19.0",
     "node-osc": "^2.1.0",
     "pw-csp": "^1.0.0",
     "pw-lda": "^1.0.0"
