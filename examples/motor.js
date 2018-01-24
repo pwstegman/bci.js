@@ -7,23 +7,23 @@ var port = 7000;
 var header = "Person0/eeg";
 
 // Collect training data
-var rightHand;
-var leftHand;
+async function collectTraining() {
+	console.log("Move your right hand. Data collection starts in 3 seconds.");
+	await net.wait(3000);
+	console.log("Collecting...");
+	var rightHand = await net.oscCollect(address, port, header, 100);
+	console.log("Complete");
 
-const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+	console.log("Move your left hand. Data collection starts in 3 seconds.")
+	await net.wait(3000);
+	var leftHand = await net.oscCollect(address, port, header, 100);
+	console.log("Complete");
 
-console.log("Move your right hand. Data collection starts in 3 seconds");
+	parseTraining();
+}
+collectTraining();
 
-wait(3000)
-	.then(() => net.oscCollect(address, port, header, 3, 1))
-	.then(data => {
-		rightHand = data;
-		console.log("Move your left hand. Data collection starts in 3 seconds");
-		return wait(3000);
-	})
-	.then(() => net.oscCollect(address, port, header, 3, 1))
-	.then(data => {
-		console.log(rightHand);
-		console.log(data);
-	});
-	
+// Parse the training data
+function parseTraining() {
+	console.log("TODO");
+}
