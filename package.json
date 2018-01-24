@@ -4,16 +4,18 @@
   "description": "JavaScript based EEG processing tool",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "gulp build"
   },
   "author": "Pierce Stegman <pwstegman@gmail.com> (https://github.com/pwstegman)",
   "license": "MIT",
   "dependencies": {
     "fft.js": "^4.0.3",
-    "mathjs": "^3.16.3",
+    "mathjs": "^3.19.0",
     "node-osc": "^2.1.0",
     "pw-csp": "^1.0.0",
-    "pw-lda": "^1.0.0"
+    "pw-lda": "^1.0.0",
+    "pw-stat": "^1.0.0"
   },
   "directories": {
     "lib": "lib"
@@ -33,6 +35,7 @@
   },
   "homepage": "https://github.com/pwstegman/WebBCI#readme",
   "devDependencies": {
+    "gulp": "^3.9.1",
     "jsdoc": "^3.5.5",
     "mocha": "^4.0.1"
   }
