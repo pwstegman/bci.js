@@ -1,33 +1,29 @@
-var wbci = require('webbci');
+var bci = require('../lib/index.js');
+var net = bci.network;
 
 // OSC settings
 var address = "127.0.0.1";
-var port = 12345;
-var header = "person0/eeg";
+var port = 7000;
+var header = "Person0/eeg";
 
-// Step 1: Collect training data
-var prompts = [
-	{
-		delay: 3000,
-		message: "Move your left hand"
-	},
+// Collect training data
+var rightHand;
+var leftHand;
 
-	{
-		delay: 3000,
-		message: "Move your right hand"
-	}
-];
-oscPrompt(address, port, header, prompts, "channels", onTraining);
+const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-// Step 2: Process training data
-function onTraining(data) {
-	console.log("Processing training data");
+console.log("Move your right hand. Data collection starts in 3 seconds");
 
-	var cspParams = cspLearn(data[0], data[1]);
-
-	var A = cspProject(cspParams, data[0]);
-	var B = cspProject(cspParams, data[1]);
-
-	var fA = [];
-	for (var i = 0; i < A[0].length; )
-}
+wait(3000)
+	.then(() => net.oscCollect(address, port, header, 3, 1))
+	.then(data => {
+		rightHand = data;
+		console.log("Move your left hand. Data collection starts in 3 seconds");
+		return wait(3000);
+	})
+	.then(() => net.oscCollect(address, port, header, 3, 1))
+	.then(data => {
+		console.log(rightHand);
+		console.log(data);
+	});
+	
