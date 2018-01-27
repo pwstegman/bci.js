@@ -3,10 +3,8 @@
  * @module webbci
  */
 
-exports.signal = require('./lib/signal.js');
-exports.network = require('./lib/network.js');
-exports.LDA = require('./lib/lda.js');
+// Current version
+module.exports = require('./build/index.js');
 
 // backwards compatibility
-exports.lda = exports.LDA;
-exports.csp = exports.signal.CSP;
+// TODO

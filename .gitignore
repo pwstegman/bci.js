@@ -59,3 +59,6 @@ typings/
 
 # visual studio
 .vs/
+
+# build files
+build/
