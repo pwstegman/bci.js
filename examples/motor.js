@@ -18,25 +18,44 @@ async function collectTraining() {
 
 	parseTraining(leftHand, rightHand);
 }
-collectTraining().catch(error => console.error(error));
+// collectTraining().catch(error => console.error(error));
+
+var left = new bci.ds.Matrix(math.random([32, 4]));
+var right = new bci.ds.Matrix(math.random([32, 4]));
+
+parseTraining(left, right);
 
 // Parse the training data
 function parseTraining(left, right) {
-	// Get all samples, and only channels 1 through 4
-	// Subscript uses matlab style syntax (arrays start at 1, indicies are inclusive)
-	left = left.subscript(":", "1:4");
-	right = right.subscript(":", "1:4");
-
+	// CSP project the data
 	var cspParams = bci.math.cspLearn(left, right);
+	left = bci.math.cspProject(cspParams, left);
+	right = bci.math.cspProject(cspParams, right);
 
-	var leftP = bci.math.cspProject(cspParams, left);
-	var rightP = bci.math.cspProject(cspParams, right);
+	// Extract features from data windows
+	// Feature vector is log of variance of each channel in window sizes of 4 with 50% window overlap
+	var leftFeatures = left.windowApply(window => {
+		return math.transpose(window).map(data => Math.log(math.var(data)));
+	}, 4, 2, false);
 
-	// Get the log of variance of each channel
-	var leftFeatures = leftP.transpose().array.map(data => Math.log(math.var(data)));
-	var rightFeatures = rightP.transpose().array.map(data => Math.log(math.var(data)));
+	var rightFeatures = right.windowApply(window => {
+		return math.transpose(window).map(data => Math.log(math.var(data)));
+	}, 4, 2, false);
 
-	console.log(leftFeatures);
-	console.log(rightFeatures);
-	
+	// Pass feature vectures to LDA for classification
+	var ldaParams = bci.math.ldaLearn(leftFeatures, rightFeatures);
+
+	// Classify original data using LDA
+	var leftEstimates = left.windowApply(window => {
+		var features = math.transpose(window).map(data => Math.log(math.var(data)));
+		return Math.sign(bci.math.ldaProject(ldaParams, features));
+	}, 4, 2);
+
+	var rightEstimates = right.windowApply(window => {
+		var features = math.transpose(window).map(data => Math.log(math.var(data)));
+		return Math.sign(bci.math.ldaProject(ldaParams, features));
+	}, 4, 2);
+
+	console.log(leftEstimates.filter(i => i == -1).length / leftEstimates.length);
+	console.log(rightEstimates.filter(i => i == 1).length / rightEstimates.length);
 }
