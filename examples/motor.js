@@ -11,10 +11,13 @@ var header = "Person1/eeg";
 // Collect training data
 async function collectTraining() {
 	console.log("Move your right hand.");
-	var rightHand = await net.oscCollect(address, port, header, 250*10);
+
+	var rightHand = await net.oscCollect(address, port, header, 250 * 10);
+
 	console.log("Move your left hand");
 	var leftHand = await net.oscCollect(address, port, header, 250*10);
-	console.log();
+
+	console.log(leftHand, rightHand);
 
 	parseTraining(leftHand, rightHand);
 }
