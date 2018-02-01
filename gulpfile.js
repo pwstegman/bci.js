@@ -4,7 +4,7 @@ var mkdirp = require('mkdirp');
 
 gulp.task('build', function () {
 	var libdir = 'lib';
-	var libs = ['math', 'network', 'ds'];
+	var libs = ['math', 'network', 'data'];
 	var builddir = './build';
 
 	var header = "// This file was auto generated, changes will be overwritten\n// Created on " + (new Date()) + "\n";
