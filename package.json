@@ -10,6 +10,8 @@
   "author": "Pierce Stegman <pwstegman@gmail.com> (https://github.com/pwstegman)",
   "license": "MIT",
   "dependencies": {
+    "csvtojson": "^1.1.9",
+    "fast-csv": "^2.4.1",
     "fft.js": "^4.0.3",
     "mathjs": "^3.19.0",
     "node-osc": "^2.1.0",
