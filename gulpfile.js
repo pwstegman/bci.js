@@ -36,5 +36,7 @@ gulp.task('build', function () {
 		fs.appendFileSync(index, 'module.exports.' + lib + ' = require(\'./' + lib + '.js\');\n');
 	});
 
+	fs.appendFileSync(index, 'module.exports.mathjs = require(\'mathjs\');');
+
 	fs.closeSync(index);
 });

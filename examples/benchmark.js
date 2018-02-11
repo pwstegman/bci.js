@@ -26,9 +26,8 @@ function runTests(A, B) {
 }
 
 function clock(start) {
-	if (!start) return process.hrtime();
-	var end = process.hrtime(start);
-	return end[0] * 1000 + end[1] / 1000000;
+	if (!start) return Date.now();
+	return Date.now() - start;
 }
 
 runTests();
