@@ -13,12 +13,10 @@ async function run() {
 	}
 
 	var cspParams = bci.math.cspLearn(...events.array);
-	// events = events.map(e => bci.math.cspProject(cspParams, e));
-	
-	// Get alpha of each channel as features
-	var features = events.map(event => event.windowApply(window => {
-		return math.transpose(window).map(data => math.log(math.var(data)));
-	}, 64, 32, false));
+	events = events.map(e => bci.math.cspProject(cspParams, e));
+
+	/* TODO: Allow passing of strings like 'logvar' */
+	var features = events.map(event => event.windowApply(bci.math.features.logvar, 64, 32, false));
 
 	// Pass features into LDA
 	var training = features.map(f => f.subscript("1:39", ":"));
