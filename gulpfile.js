@@ -43,6 +43,7 @@ gulp.task('dist', function () {
 		standalone: 'bci',
 		ignore: [require.resolve('mathjs')]
 	})
+	.external(['mathjs'])
 		.transform(babelify.configure({
 			presets: ["env"]
 		}))
