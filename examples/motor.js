@@ -16,7 +16,7 @@ async function run() {
 	events = events.map(e => bci.math.cspProject(cspParams, e));
 
 	/* TODO: Allow passing of strings like 'logvar' */
-	var features = events.map(event => event.windowApply(bci.math.features.logvar, 64, 32, false));
+	var features = events.map(event => event.windowApply(bci.features.logvar, 64, 32, false));
 
 	// Pass features into LDA
 	var training = features.map(f => f.subscript("1:39", ":"));
