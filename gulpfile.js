@@ -12,15 +12,9 @@ var sourcemaps = require('gulp-sourcemaps');
 gulp.task('build', function () {
 	var libdir = 'lib';
 	var libs = ['math', 'network', 'data', 'compat'];
-	var builddir = './build';
 
 	var header = "// This file was auto generated, changes will be overwritten\n// Created on " + (new Date()) + "\n";
-
-	mkdirp(builddir, function (err) {
-		if (err) console.error(err)
-	});
-
-	var out = fs.openSync(builddir + '/index.js', 'w');
+	var out = fs.openSync('./index.js', 'w');
 	fs.writeSync(out, header);
 
 	libs.forEach(lib => {
@@ -29,7 +23,7 @@ gulp.task('build', function () {
 
 		files.forEach(file => {
 			var functionName = file.substring(0, file.length - 3);
-			fs.appendFileSync(out, 'module.exports.' + functionName + ' = require(\'../' + path + '/' + file + '\');\n');
+			fs.appendFileSync(out, 'module.exports.' + functionName + ' = require(\'./' + path + '/' + file + '\');\n');
 		});
 	});
 
@@ -40,19 +34,18 @@ gulp.task('dist', function () {
 	return browserify({
 		debug: true,
 		entries: './index.js',
-		standalone: 'bci',
-		ignore: [require.resolve('mathjs')]
+		standalone: 'bci'//,
+		/*ignore: [require.resolve('mathjs')]*/
 	})
-	.external(['mathjs'])
 		.transform(babelify.configure({
 			presets: ["env"]
 		}))
 		.bundle()
 		.on('error', (...args) => console.log(args))
-		.pipe(source('bci.minnm.js'))
+		.pipe(source('bci.min.js'))
 		.pipe(buffer())
 		.pipe(sourcemaps.init({ loadMaps: true }))
 		.pipe(uglify())
 		.pipe(sourcemaps.write('./maps', { addComment: false }))
-		.pipe(gulp.dest('dist'))
+		.pipe(gulp.dest('dist'));
 });
