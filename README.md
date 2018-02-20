@@ -3,6 +3,10 @@ JavaScript based EEG signal processing
 
 **Goal:** Build portable/modern framework for web-based BCI applications
 
+## Dev
+
+This is the dev branch of webbci. Documentation may be lacking and the API can change at any time.
+
 ## Installation
 
 ```bash
