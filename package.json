@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha",
     "build": "gulp build",
-    "dist": "gulp dist"
+    "dist": "gulp dist",
+    "dist-dev": "gulp dist-dev"
   },
   "author": "Pierce Stegman <pwstegman@gmail.com> (https://github.com/pwstegman)",
   "license": "MIT",

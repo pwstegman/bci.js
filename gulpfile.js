@@ -49,3 +49,16 @@ gulp.task('dist', function () {
 		.pipe(sourcemaps.write('./maps', { addComment: false }))
 		.pipe(gulp.dest('dist'));
 });
+
+gulp.task('dist-dev', function () {
+	return browserify({
+		debug: true,
+		entries: './index.js',
+		standalone: 'bci'
+	})
+		.bundle()
+		.on('error', (...args) => console.log(args))
+		.pipe(source('bci.min.js'))
+		.pipe(buffer())
+		.pipe(gulp.dest('dist'));
+});
