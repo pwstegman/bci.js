@@ -11,7 +11,7 @@ var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('build', function () {
 	var libdir = 'lib';
-	var libs = ['math', 'network', 'data'];
+	var libs = ['math', 'network', 'data', 'compat'];
 	var builddir = './build';
 
 	var header = "// This file was auto generated, changes will be overwritten\n// Created on " + (new Date()) + "\n";
