@@ -1,6 +1,6 @@
 {
   "name": "webbci",
-  "version": "1.1.0-alpha.1.1",
+  "version": "1.1.0-alpha.1.2",
   "description": "JavaScript based EEG processing tool",
   "main": "index.js",
   "scripts": {
