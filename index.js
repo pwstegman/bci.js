@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Tue Feb 20 2018 16:54:43 GMT-0600 (Central Standard Time)
+// Created on Wed Feb 21 2018 17:40:58 GMT-0600 (Central Standard Time)
 module.exports.cspLearn = require('./lib/math/cspLearn.js');
 module.exports.cspProject = require('./lib/math/cspProject.js');
 module.exports.features = require('./lib/math/features.js');
@@ -24,3 +24,6 @@ module.exports.csp = require('./lib/compat/csp.js');
 module.exports.lda = require('./lib/compat/lda.js');
 module.exports.network = require('./lib/compat/network.js');
 module.exports.signal = require('./lib/compat/signal.js');
+// Additional backwards compatibility
+exports.LDA = exports.lda;
+exports.csp = exports.signal.CSP;

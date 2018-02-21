@@ -27,6 +27,9 @@ gulp.task('build', function () {
 		});
 	});
 
+	var moreCompat = fs.readFileSync('./compat.js', {encoding: 'utf8'});
+	fs.appendFileSync(out, moreCompat);
+
 	fs.closeSync(out);
 });
 
