@@ -32,6 +32,58 @@ function arrayAlmostEqual(arr1, arr2, tolerance) {
 	return true;
 }
 
+describe('data', function(){
+	describe('[TODO] loadCSV', function(){
+		it('Loads a CSV file into an array', function(){
+
+		});
+	});
+
+	describe('[TODO] roundArray', function(){
+		it('Rounds every value in an array to a set number of decimal places', function(){
+
+		});
+	});
+
+	describe('[TODO] saveCSV', function(){
+		it('Saves an array to a CSV file', function(){
+
+		});
+	});
+
+	describe('[TODO] subscript', function(){
+		it('Applies MATLAB style subscripting to an array', function(){
+
+		});
+	});
+
+	describe('[TODO] toFixed', function(){
+		it('Rounds and zero pads as a string every value in an array to a set number of decimal places', function(){
+
+		});
+	});
+
+	describe('[TODO] toTable', function(){
+		it('Returns an ASCII table representation of an array', function(){
+
+		});
+	});
+
+	describe('[TODO] windowApply', function(){
+		it('Applies a function over the sub arrays of an array', function(){
+
+		});
+	});
+});
+
+describe('math', function(){
+
+});
+
+describe('network', function(){
+
+});
+
 describe('backwards compatibility tests and deprecated methods', function () {
 	describe('signal', function () {
 		describe('CSP', function () {
