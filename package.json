@@ -7,7 +7,8 @@
     "test": "mocha",
     "build": "gulp build",
     "dist": "gulp dist",
-    "dist-dev": "gulp dist-dev"
+    "dist-dev": "gulp dist-dev",
+    "docs": "jsdoc2md ./index.js ./lib/*/*.js > api.md"
   },
   "author": "Pierce Stegman <pwstegman@gmail.com> (https://github.com/pwstegman)",
   "license": "MIT",
@@ -50,6 +51,7 @@
     "gulp-uglify": "^3.0.0",
     "gulp-uglify-es": "^1.0.0",
     "jsdoc": "^3.5.5",
+    "jsdoc-to-markdown": "^4.0.1",
     "mkdirp": "^0.5.1",
     "mocha": "^4.0.1",
     "vinyl-buffer": "^1.0.1",

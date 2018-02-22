@@ -1,5 +1,6 @@
 // This file was auto generated, changes will be overwritten
-// Created on Wed Feb 21 2018 17:40:58 GMT-0600 (Central Standard Time)
+// Created on Thu Feb 22 2018 18:20:07 GMT-0500 (Eastern Standard Time)
+/** @module webbci */
 module.exports.cspLearn = require('./lib/math/cspLearn.js');
 module.exports.cspProject = require('./lib/math/cspProject.js');
 module.exports.features = require('./lib/math/features.js');

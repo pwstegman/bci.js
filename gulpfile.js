@@ -14,6 +14,7 @@ gulp.task('build', function () {
 	var libs = ['math', 'network', 'data', 'compat'];
 
 	var header = "// This file was auto generated, changes will be overwritten\n// Created on " + (new Date()) + "\n";
+	header += "/** @module webbci */\n";
 	var out = fs.openSync('./index.js', 'w');
 	fs.writeSync(out, header);
 
