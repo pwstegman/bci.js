@@ -5,17 +5,19 @@ JavaScript based EEG signal processing
 
 ## Installation
 
+For the latest stable release
+
 ```bash
 npm install webbci
 ```
 
-If you want to use the latest development release
+For the latest unstable development release
 
 ```bash
 npm install webbci@dev
 ```
 
-There isn't much documentation available for the development release right now, but there is in-code documentation on the dev branch: https://github.com/pwstegman/WebBCI/tree/dev
+Documentation for the development release can be found at https://github.com/pwstegman/WebBCI/tree/dev
 
 ## Getting Started
 
