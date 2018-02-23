@@ -1,0 +1,21 @@
+var bci = require('../index.js');
+
+// Generate 1 second of sample data
+var sampleRate = 512;
+var duration = 1;
+var amplitudes = [1, 2, 4, 8];
+var frequencies = [
+	1, // 1 Hz, delta range
+	5, // 5 Hz, theta range
+	8, // 8 Hz, alpha range
+	17 // 17 Hz, beta range
+];
+
+var signal = bci.generateSignal(amplitudes, frequencies, sampleRate, duration);
+
+// Compute average power in each frequency band
+var length = sampleRate * duration;
+console.log(bci.signalBandPower(signal, length, sampleRate, 'delta'));
+console.log(bci.signalBandPower(signal, length, sampleRate, 'theta'));
+console.log(bci.signalBandPower(signal, length, sampleRate, 'alpha'));
+console.log(bci.signalBandPower(signal, length, sampleRate, 'beta'));

@@ -10,14 +10,13 @@ This is the dev branch of webbci. Documentation may be lacking and the API can c
 ## Installation
 
 ```bash
-npm install webbci
+npm install webbci@dev
 ```
 
 ## Getting Started
 
 ```javascript
-var wbci = require('webbci');
-var ws = wbci.signal;
+var bci = require('webbci');
 
 // Generate 1 second of sample data
 var sampleRate = 512;
@@ -30,17 +29,14 @@ var frequencies = [
 	17 // 17 Hz, beta range
 ];
 
-var signal = ws.generate(amplitudes, frequencies, sampleRate, duration);
-
-// Get frequency powers in signal
-var length = sampleRate * duration;
-var psd = ws.getPSD(length, signal);
+var signal = bci.generateSignal(amplitudes, frequencies, sampleRate, duration);
 
 // Compute average power in each frequency band
-console.log(ws.getBandPower(length, psd, sampleRate, 'delta')); // 85
-console.log(ws.getBandPower(length, psd, sampleRate, 'theta')); // 128
-console.log(ws.getBandPower(length, psd, sampleRate, 'alpha')); // 205
-console.log(ws.getBandPower(length, psd, sampleRate, 'beta')); // 114
+var length = sampleRate * duration;
+console.log(bci.signalBandPower(signal, length, sampleRate, 'delta')); // 85
+console.log(bci.signalBandPower(signal, length, sampleRate, 'theta')); // 128
+console.log(bci.signalBandPower(signal, length, sampleRate, 'alpha')); // 205
+console.log(bci.signalBandPower(signal, length, sampleRate, 'beta'));  // 114
 ```
 
 ## Examples
@@ -49,4 +45,4 @@ More examples can be found in the [examples](examples/) directory
 
 ## Documentation
 
-Documentation can be found at [http://pwstegman.me/WebBCI/](http://pwstegman.me/WebBCI/)
+For documentation check out [api.md](api.md)
