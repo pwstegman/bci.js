@@ -16,7 +16,7 @@
     "csvtojson": "^1.1.9",
     "fast-csv": "^2.4.1",
     "fft.js": "^4.0.3",
-    "mathjs": "^3.19.0",
+    "mathjs": "^3.20.2",
     "node-osc": "^2.1.0",
     "pw-csp": "^1.0.0",
     "pw-lda": "^1.0.0",
@@ -49,11 +49,11 @@
     "gulp": "^3.9.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
-    "gulp-uglify-es": "^1.0.0",
+    "gulp-uglify-es": "^1.0.1",
     "jsdoc": "^3.5.5",
     "jsdoc-to-markdown": "^4.0.1",
     "mkdirp": "^0.5.1",
-    "mocha": "^4.0.1",
+    "mocha": "^4.1.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }
