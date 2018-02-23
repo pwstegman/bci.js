@@ -32,11 +32,11 @@ var frequencies = [
 var signal = bci.generateSignal(amplitudes, frequencies, sampleRate, duration);
 
 // Compute average power in each frequency band
-var length = sampleRate * duration;
-console.log(bci.signalBandPower(signal, length, sampleRate, 'delta')); // 85
-console.log(bci.signalBandPower(signal, length, sampleRate, 'theta')); // 128
-console.log(bci.signalBandPower(signal, length, sampleRate, 'alpha')); // 205
-console.log(bci.signalBandPower(signal, length, sampleRate, 'beta'));  // 114
+var fftSize = sampleRate * duration;
+console.log(bci.signalBandPower(signal, fftSize, sampleRate, 'delta')); // 85
+console.log(bci.signalBandPower(signal, fftSize, sampleRate, 'theta')); // 128
+console.log(bci.signalBandPower(signal, fftSize, sampleRate, 'alpha')); // 205
+console.log(bci.signalBandPower(signal, fftSize, sampleRate, 'beta'));  // 114
 ```
 
 ## Examples
