@@ -8,7 +8,7 @@
     "build": "gulp build",
     "dist": "gulp dist",
     "dist-dev": "gulp dist-dev",
-    "docs": "jsdoc2md ./index.js ./lib/math/*.js ./lib/data/*.js ./lib/network/*.js > api.md && jsdoc2md ./index.js ./lib/compat/*.js > deprecated.md"
+    "docs": "jsdoc2md ./index.js ./lib/math/*.js ./lib/data/*.js ./lib/network/*.js > docs/api.md && jsdoc2md ./index.js ./lib/compat/*.js > docs/deprecated.md"
   },
   "author": "Pierce Stegman <pwstegman@gmail.com> (https://github.com/pwstegman)",
   "license": "MIT",
@@ -18,9 +18,12 @@
     "fft.js": "^4.0.3",
     "mathjs": "^3.20.2",
     "node-osc": "^2.1.0",
+    "opn": "^5.2.0",
+    "pngjs-image": "^0.11.7",
     "pw-csp": "^1.0.0",
     "pw-lda": "^1.0.0",
-    "pw-stat": "^1.0.0"
+    "pw-stat": "^1.0.0",
+    "tmp": "0.0.33"
   },
   "directories": {
     "lib": "lib"
