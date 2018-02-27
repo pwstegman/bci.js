@@ -45,4 +45,4 @@ More examples can be found in the [examples](examples/) directory
 
 ## Documentation
 
-For documentation check out [api.md](api.md)
+For documentation check out [docs/api.md](docs/api.md)
