@@ -4,6 +4,7 @@
 - Documentation page
 - Update tests
 - Gulp method for doc generation
+- Add examples to methods in docs
 
 ## Methods
 - ICA
