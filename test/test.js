@@ -1,4 +1,5 @@
 var assert = require('assert');
+var math = require('mathjs');
 var bci = require('../index.js');
 
 // From https://stackoverflow.com/questions/10865025/merge-flatten-an-array-of-arrays-in-javascript/39000004#39000004
@@ -33,45 +34,55 @@ function arrayAlmostEqual(arr1, arr2, tolerance) {
 }
 
 describe('data', function(){
+	describe('[TODO] saveCSV', function(){
+		it('Saves an array to a CSV file', function(){
+
+		});
+	});
+	
 	describe('[TODO] loadCSV', function(){
 		it('Loads a CSV file into an array', function(){
 
 		});
 	});
 
-	describe('[TODO] roundArray', function(){
+	describe('round', function(){
 		it('Rounds every value in an array to a set number of decimal places', function(){
-
+			var arr = [[1.123, 1.55], [5.50000], [17]];
+			var arrRounded = bci.round(arr, 1);
+			assert.deepEqual(arrRounded, [[1.1, 1.6], [5.5], [17]]);
 		});
 	});
 
-	describe('[TODO] saveCSV', function(){
-		it('Saves an array to a CSV file', function(){
-
-		});
-	});
-
-	describe('[TODO] subscript', function(){
+	describe('subscript', function(){
 		it('Applies MATLAB style subscripting to an array', function(){
-
+			var data = [[1,2,3], [1,2,3], [1,2,3]];
+			var sub = bci.subscript(data, ":", "1 3");
+			assert.deepEqual(sub, [[1,3], [1,3], [1,3]]);
 		});
 	});
 
-	describe('[TODO] toFixed', function(){
+	describe('toFixed', function(){
 		it('Rounds and zero pads as a string every value in an array to a set number of decimal places', function(){
-
+			var arr = [1, 1.1, [1.12], [1.129]];
+			var fixed = bci.toFixed(arr, 2);
+			assert.deepEqual(fixed, ['1.00', '1.10', ['1.12'], ['1.13']]);
 		});
 	});
 
-	describe('[TODO] toTable', function(){
+	describe('toTable', function(){
 		it('Returns an ASCII table representation of an array', function(){
-
+			var testArray = [[1,2],[3,4]];
+			var tableASCII = bci.toTable(testArray);
+			assert.equal(tableASCII, '0  1\n-  -\n1  2\n3  4\n');
 		});
 	});
 
-	describe('[TODO] windowApply', function(){
+	describe('windowApply', function(){
 		it('Applies a function over the sub arrays of an array', function(){
-
+			var data = [[1,2], [3,4], [5,6], [7,8], [9,10]];
+			var features = bci.windowApply(data, window=>math.sum(window), 3, 2, false);
+			assert.deepEqual(features, [21, 45]);
 		});
 	});
 });
