@@ -1,5 +1,7 @@
 var assert = require('assert');
 var math = require('mathjs');
+var tmp = require('tmp');
+var path = require('path');
 var bci = require('../index.js');
 
 // From https://stackoverflow.com/questions/10865025/merge-flatten-an-array-of-arrays-in-javascript/39000004#39000004
@@ -34,15 +36,25 @@ function arrayAlmostEqual(arr1, arr2, tolerance = 0.00001) {
 }
 
 describe('data', function(){
-	describe('[TODO] saveCSV', function(){
-		it('Saves an array to a CSV file', function(){
+	describe('saveCSV and loadCSV', function(){
+		it('Saves an array to and loads an array from a CSV file', function(){
+			var tmpobj = tmp.dirSync();
+			var tmpdir = tmpobj.name;
+			var csvpath = path.join(tmpdir, new Date().getTime() + '.csv');
 
-		});
-	});
-	
-	describe('[TODO] loadCSV', function(){
-		it('Loads a CSV file into an array', function(){
+			var array = [[1,2], [3,4], [5,6]];
 
+			bci.saveCSV(array, csvpath)
+			.then(() => {
+				return bci.loadCSV(csvpath);
+			}).then(result => {
+				assert.deepEqual(result, array);
+			})
+			.catch(() => {
+				// saveCSV and loadCSV don't current have error checking
+				// Adding this for future when it is added
+				console.warn('Unable to test saveCSV and loadCSV using temporary files');
+			});
 		});
 	});
 
@@ -190,26 +202,18 @@ describe('math', function(){
 
 	describe('psd', function(){
 		it('Computes the power spectral density of a signal', function(){
-			let psd = bci.psd([1,2,1,2,5,2,1,2], 8);
+			var psd = bci.psd([1,2,1,2,5,2,1,2], 8);
 			assert(arrayAlmostEqual(psd, [16, 4, 4, 4]));
 		});
 	});
 
 	describe('psdBandPower', function(){
-		it('TODO', function(){
-			
+		it('Computes the average power in a frequency band', function(){
+			var bandPower = bci.signalBandPower([1, 2, 3, 4, 5, 6, 7], 8, 256, 'alpha');
+			var expected = 19.2263;
+			assert(Math.abs(bandPower - expected) < 0.0001);
 		});
 	});
-
-	describe('cspProject', function(){
-		it('TODO', function(){
-			
-		});
-	});
-});
-
-describe('network', function(){
-	// Not sure how to test this...
 });
 
 describe('backwards compatibility tests and deprecated methods', function () {
