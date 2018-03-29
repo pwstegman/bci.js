@@ -15,7 +15,7 @@ const flatten = function (arr, result = []) {
 	return result;
 };
 
-function arrayAlmostEqual(arr1, arr2, tolerance) {
+function arrayAlmostEqual(arr1, arr2, tolerance = 0.00001) {
 
 	var a = flatten(arr1);
 	var b = flatten(arr2);
@@ -88,11 +88,128 @@ describe('data', function(){
 });
 
 describe('math', function(){
+	describe('cspLearn and cspProject', function(){
+		it('Learns parameters for a CSP transformation on a set of signals', function(){
+			var A = [[-1, -1], [1, 1]];
+			var B = [[-1, 1], [1, -1]];
 
+			var params = bci.cspLearn(A, B);
+
+			var Ap = bci.cspProject(params, A);
+			var Bp = bci.cspProject(params, B);
+
+			assert(arrayAlmostEqual(Ap, [[1.414213562373095, 0], [-1.414213562373095, 0]], 0.00001));
+			assert(arrayAlmostEqual(Bp, [[0, -1.414213562373095], [0, 1.414213562373095]], 0.00001));
+		});
+	});
+
+	describe('features', function(){
+		var x = [
+			[1, 1],
+			[2, 5],
+			[3, 3],
+			[4, 1],
+			[5, 5]
+		];
+
+		describe('rms', function(){
+			it('Computes root mean square of every column', function(){
+				var rms = bci.features.rms(x);
+				assert(arrayAlmostEqual(rms, [3.3166247903554, 3.492849839314596], 0.00001));
+			});
+		});
+		
+		describe('logvar', function(){
+			it('Computes the log of the variance of every column', function(){
+				var logvar = bci.features.logvar(x);
+				assert(arrayAlmostEqual(logvar, [0.9162907318741551, 1.3862943611198906], 0.00001));
+			});
+		});
+	});
+
+	describe('generateSignal', function(){
+		it('Generates a signal given frequencies and amplitudes', function(){
+			var x = bci.generateSignal([10], [5], 256, 1);
+			var y = bci.generateSignal([3], [20], 256, 1);
+			var z = bci.generateSignal([10, 3], [5, 20], 256, 1);
+
+			assert.equal(x.length, y.length);
+			assert.equal(x.length, y.length);
+
+			var same = true;
+			for(var i = 0; i < x.length; i++){
+				if(Math.abs(x[i] + y[i] - z[i]) > 0.00001){
+					same = false;
+				}
+			}
+			assert(same);
+		});
+	});
+
+	describe('ldaLearn and ldaProject', function(){
+		it('Runs linear discriminant analysis on data', function(){
+			var class1 = [
+				[0, 0],
+				[1, 2],
+				[2, 2],
+				[1.5, 0.5]
+			];
+
+			var class2 = [
+				[8, 8],
+				[9, 10],
+				[7, 8],
+				[9, 9]
+			];
+
+			var params = bci.ldaLearn(class1, class2);
+
+			var unknownPoints = [
+				[-1, 0],
+				[1.5, 2],
+				[3, 3],
+				[5, 5],
+				[7, 9],
+				[10, 12]
+			];
+
+			var projections = unknownPoints.map(function (p) {
+				return bci.ldaProject(params, p);
+			});
+
+			assert(arrayAlmostEqual(projections, [
+				-25.45927601809955,
+				-14.623303167420817,
+				-8.53846153846154,
+				0.9638009049773757,
+				14.633484162895929,
+				28.8868778280543
+			]));
+		});
+	});
+
+	describe('psd', function(){
+		it('Computes the power spectral density of a signal', function(){
+			let psd = bci.psd([1,2,1,2,5,2,1,2], 8);
+			assert(arrayAlmostEqual(psd, [16, 4, 4, 4]));
+		});
+	});
+
+	describe('psdBandPower', function(){
+		it('TODO', function(){
+			
+		});
+	});
+
+	describe('cspProject', function(){
+		it('TODO', function(){
+			
+		});
+	});
 });
 
 describe('network', function(){
-
+	// Not sure how to test this...
 });
 
 describe('backwards compatibility tests and deprecated methods', function () {
