@@ -65,3 +65,6 @@ build/
 
 # dist files
 dist/
+
+# data files
+examples/data/
