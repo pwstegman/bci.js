@@ -13,6 +13,7 @@
   "author": "Pierce Stegman <pwstegman@gmail.com> (https://github.com/pwstegman)",
   "license": "MIT",
   "dependencies": {
+    "console.table": "^0.10.0",
     "csvtojson": "^1.1.9",
     "fast-csv": "^2.4.1",
     "fft.js": "^4.0.3",
@@ -45,7 +46,6 @@
     "babel-preset-env": "^1.6.1",
     "babelify": "^8.0.0",
     "browserify": "^16.1.0",
-    "console.table": "^0.10.0",
     "easy-table": "^1.1.1",
     "gulp": "^3.9.1",
     "gulp-sourcemaps": "^2.6.4",

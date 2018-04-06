@@ -1,4 +1,5 @@
 var bci = require('../index.js');
+var ctable = require('console.table');
 
 async function classify(data){
     // Time how long the function takes
@@ -33,8 +34,8 @@ async function classify(data){
     var featuresRight = bci.windowApply(cspRight, bci.features.logvar, 64, 32);
 
     // Separate into training and testing sets
-    var [trainingLeft, testingLeft] = bci.partition(featuresLeft, 0.6, 0.4); 
-    var [trainingRight, testingRight] = bci.partition(featuresRight, 0.6, 0.4); 
+    var [trainingLeft, testingLeft] = bci.partition(featuresLeft, 0.6, 0.4);
+    var [trainingRight, testingRight] = bci.partition(featuresRight, 0.6, 0.4);
 
     console.log('Using 60/40 split for training and testing sets');
     console.log('left hand training set size: ' + trainingLeft.length + ', testing set size: ' + testingLeft.length);
@@ -48,20 +49,22 @@ async function classify(data){
     var predictionsRight = bci.ldaProject(ldaParams, testingRight);
 
     var leftCorrect = predictionsLeft.filter(x => x < 0).length;
+    var leftIncorrect = predictionsLeft.length - leftCorrect;
     var rightCorrect = predictionsRight.filter(x => x > 0).length;
+    var rightIncorrect = predictionsRight.length - rightCorrect;
 
-    var percentCorrectLeft = leftCorrect / predictionsLeft.length * 100;
-    var percentCorrectRight = rightCorrect / predictionsRight.length * 100;
-    var percentCorrectCombined = (leftCorrect + rightCorrect) / (predictionsLeft.length + predictionsRight.length) * 100;
-
-    console.log('Percent of left hand movements correctly classified as left');
-    console.log(percentCorrectLeft.toFixed(2) + '%');
-
-    console.log('Percent of right hand movements correctly classified as right');
-    console.log(percentCorrectRight.toFixed(2) + '%');
-
-    console.log('Combined accuracy');
-    console.log(percentCorrectCombined.toFixed(2) + '%');
+    var confusionMatrix = [
+        ['           ', 'Predicted left', 'Predicted right'],
+        ['Actual left', leftCorrect, leftIncorrect],
+        ['Actual right', rightIncorrect, rightCorrect]
+    ];
+    var precision = leftCorrect / (leftCorrect + rightIncorrect);
+    var recall = leftCorrect / (leftCorrect + leftIncorrect);
+    var f1 = 2*recall*precision / (recall + precision);
+    console.log();
+    console.table(confusionMatrix[0], confusionMatrix.slice(1));
+    console.log('f1 score ' + f1.toFixed(2));
+    console.log();
 
     var runtime = Date.now() - startTime;
     console.log('Total run time ' + runtime + 'ms');
