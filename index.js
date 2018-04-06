@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Wed Mar 28 2018 19:35:50 GMT-0500 (Central Daylight Time)
+// Created on Thu Apr 05 2018 21:09:09 GMT-0500 (Central Daylight Time)
 /** @module webbci */
 module.exports.cspLearn = require('./lib/math/cspLearn.js');
 module.exports.cspProject = require('./lib/math/cspProject.js');
@@ -15,6 +15,7 @@ module.exports.oscHeaderScan = require('./lib/network/oscHeaderScan.js');
 module.exports.oscStream = require('./lib/network/oscStream.js');
 module.exports.wait = require('./lib/network/wait.js');
 module.exports.loadCSV = require('./lib/data/loadCSV.js');
+module.exports.partition = require('./lib/data/partition.js');
 module.exports.round = require('./lib/data/round.js');
 module.exports.saveCSV = require('./lib/data/saveCSV.js');
 module.exports.subscript = require('./lib/data/subscript.js');
