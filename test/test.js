@@ -58,6 +58,20 @@ describe('data', function(){
 		});
 	});
 
+	describe('partition', function(){
+		it('partitions data into subsets such as training and testing sets', function(){
+			assert.deepEqual(
+				bci.partition([1, 2, 3, 4], 0.5, 0.5),
+				[[1,2], [3,4]]
+			);
+
+			assert.deepEqual(
+				bci.partition([1, 2, 3, 4, 5, 6], 0.6, 0.4),
+				[[1, 2, 3, 4], [5, 6]]
+			);
+		});
+	});
+
 	describe('round', function(){
 		it('Rounds every value in an array to a set number of decimal places', function(){
 			var arr = [[1.123, 1.55], [5.50000], [17]];
