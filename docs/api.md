@@ -8,22 +8,24 @@
     * [.features](#module_webbci.features) : <code>object</code>
         * [.module.exports.logvar(window)](#module_webbci.features.module.exports.logvar)
         * [.module.exports.rms(window)](#module_webbci.features.module.exports.rms)
-    * [.cspLearn(class1, class2)](#module_webbci.cspLearn) ⇒
+    * [.cspLearn(class1, class2)](#module_webbci.cspLearn) ⇒ <code>Object</code>
     * [.cspProject(cspParams, data, [dimensions])](#module_webbci.cspProject) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
     * [.generateSignal(amplitudes, frequencies, sampleRate, duration)](#module_webbci.generateSignal) ⇒ <code>Array.&lt;number&gt;</code>
-    * [.ldaLearn(class1, class2)](#module_webbci.ldaLearn) ⇒
+    * [.ldaLearn(class1, class2)](#module_webbci.ldaLearn) ⇒ <code>Object</code>
     * [.ldaProject(ldaParams, point)](#module_webbci.ldaProject) ⇒ <code>number</code>
+    * [.psd(signal, size)](#module_webbci.psd) ⇒ <code>Array.&lt;number&gt;</code>
     * [.psdBandPower(psd, length, sampleRate, band)](#module_webbci.psdBandPower) ⇒ <code>number</code>
     * [.signalBandPower(signal, length, sampleRate, band)](#module_webbci.signalBandPower) ⇒ <code>number</code>
     * [.loadCSV(filePath)](#module_webbci.loadCSV) ⇒ <code>Promise</code>
+    * [.partition(array, ...divisions)](#module_webbci.partition) ⇒ <code>Array.&lt;Array&gt;</code>
     * [.round(array, places)](#module_webbci.round) ⇒ <code>Array.&lt;number&gt;</code>
     * [.saveCSV(array, filename)](#module_webbci.saveCSV) ⇒ <code>Promise</code>
     * [.subscript(array, ...params)](#module_webbci.subscript) ⇒ <code>Array</code>
-    * [.toFixed(array, places)](#module_webbci.toFixed)
-    * [.table(array)](#module_webbci.table)
+    * [.toFixed(array, places)](#module_webbci.toFixed) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.toTable(array)](#module_webbci.toTable) ⇒ <code>string</code>
     * [.windowApply(array, func, length, step, tail)](#module_webbci.windowApply) ⇒ <code>Array</code>
-    * [.oscCollect(address, port, header, samples)](#module_webbci.oscCollect)
-    * [.oscHeaderScan(address, port, duration)](#module_webbci.oscHeaderScan)
+    * [.oscCollect(address, port, header, samples)](#module_webbci.oscCollect) ⇒ <code>Promise</code>
+    * [.oscHeaderScan(address, port, duration)](#module_webbci.oscHeaderScan) ⇒ <code>Promise</code>
 
 <a name="module_webbci.oscStream"></a>
 
@@ -73,11 +75,11 @@ Computes the root mean square of each channel in a 2d array of samples, where ch
 
 <a name="module_webbci.cspLearn"></a>
 
-### webbci.cspLearn(class1, class2) ⇒
+### webbci.cspLearn(class1, class2) ⇒ <code>Object</code>
 Learn common spatial pattern for two datasets
 
 **Kind**: static method of [<code>webbci</code>](#module_webbci)  
-**Returns**: Learned CSP parameters  
+**Returns**: <code>Object</code> - Learned CSP parameters  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -115,11 +117,11 @@ Generate a signal with the given frequencies and their amplitudes.
 
 <a name="module_webbci.ldaLearn"></a>
 
-### webbci.ldaLearn(class1, class2) ⇒
+### webbci.ldaLearn(class1, class2) ⇒ <code>Object</code>
 Perform linear discriminant analysis between two datasets
 
 **Kind**: static method of [<code>webbci</code>](#module_webbci)  
-**Returns**: Computed LDA parameters  
+**Returns**: <code>Object</code> - Computed LDA parameters  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -138,6 +140,19 @@ Predict the class of an unknown data point.
 | --- | --- | --- |
 | ldaParams | <code>object</code> | The parameters for the LDA, computed with the function ldaLearn |
 | point | <code>Array.&lt;number&gt;</code> | The data point to be classified. |
+
+<a name="module_webbci.psd"></a>
+
+### webbci.psd(signal, size) ⇒ <code>Array.&lt;number&gt;</code>
+Compute the power spectral density of a given signal.
+
+**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Returns**: <code>Array.&lt;number&gt;</code> - The PSD.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| signal | <code>Array.&lt;number&gt;</code> | The signal. |
+| size | <code>number</code> | Size of the fourier transform to be used. Should be a power of 2. |
 
 <a name="module_webbci.psdBandPower"></a>
 
@@ -181,6 +196,23 @@ Loads a CSV file into an array
 | --- | --- | --- |
 | filePath | <code>string</code> | The path to the CSV file |
 
+<a name="module_webbci.partition"></a>
+
+### webbci.partition(array, ...divisions) ⇒ <code>Array.&lt;Array&gt;</code>
+Partitions an array into multiple arraysCan be used to split data into training and testing sets
+
+**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Returns**: <code>Array.&lt;Array&gt;</code> - Array of subarrays which are the partitons  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| array | <code>Array</code> | The array to be partitioned |
+| ...divisions | <code>Array.&lt;number&gt;</code> | The size of each partition, each value should range from 0 to 1 |
+
+**Example**  
+```js
+partition([1, 2, 3, 4], 0.25, 0.75); // returns [[1], [2, 3, 4]]
+```
 <a name="module_webbci.round"></a>
 
 ### webbci.round(array, places) ⇒ <code>Array.&lt;number&gt;</code>
@@ -222,22 +254,24 @@ Subscript an array with MATLAB-like syntax
 
 <a name="module_webbci.toFixed"></a>
 
-### webbci.toFixed(array, places)
+### webbci.toFixed(array, places) ⇒ <code>Array.&lt;string&gt;</code>
 Returns an array of numbers as strings rounded to the proper number of decimal places and padded with zeros as needed.
 
 **Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Returns**: <code>Array.&lt;string&gt;</code> - Array of string representations of numbers  
 
 | Param | Type |
 | --- | --- |
 | array | <code>Array</code> | 
 | places | <code>number</code> | 
 
-<a name="module_webbci.table"></a>
+<a name="module_webbci.toTable"></a>
 
-### webbci.table(array)
+### webbci.toTable(array) ⇒ <code>string</code>
 Returns an ASCII table representation of an array
 
 **Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Returns**: <code>string</code> - ASCII table  
 
 | Param | Type |
 | --- | --- |
@@ -261,10 +295,11 @@ Similar to JavaScript's map, but it applies a function to sub arrays instead of 
 
 <a name="module_webbci.oscCollect"></a>
 
-### webbci.oscCollect(address, port, header, samples)
+### webbci.oscCollect(address, port, header, samples) ⇒ <code>Promise</code>
 Collect a set number of samples over OSC
 
 **Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Returns**: <code>Promise</code> - Resolves with collected data  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -275,10 +310,11 @@ Collect a set number of samples over OSC
 
 <a name="module_webbci.oscHeaderScan"></a>
 
-### webbci.oscHeaderScan(address, port, duration)
+### webbci.oscHeaderScan(address, port, duration) ⇒ <code>Promise</code>
 Scan for OSC headers on a port and address
 
 **Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Returns**: <code>Promise</code> - Resolves with an array of found headers  
 
 | Param | Type | Description |
 | --- | --- | --- |
