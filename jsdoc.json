@@ -1,0 +1,35 @@
+{
+	"recurseDepth": 10,
+	"sourceType": "module",
+	"tags": {
+		"allowUnknownTags": true,
+		"dictionaries": ["jsdoc", "closure"]
+    },
+	"source": {
+		"include": [],
+		"exclude": [],
+		"includePattern": ".js$",
+		"excludePattern": "(node_modules/|docs)"
+	},
+	"plugins": [
+		"plugins/markdown"
+	],
+	"markdown": {
+		"excludeTags": ["author"]
+	},
+	"templates": {
+		"cleverLinks": false,
+		"monospaceLinks": false
+	},
+	"opts": {
+		"destination": "./docs/",
+		"encoding": "utf8",
+		"private": false,
+		"recurse": true,
+		"template": "./node_modules/docdash"
+    },
+    "docdash": {
+        "static": true,
+        "sort": true
+    }
+}

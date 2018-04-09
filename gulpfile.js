@@ -9,6 +9,8 @@ var buffer = require('vinyl-buffer');
 var uglify = uglify = require('gulp-uglify-es').default;
 var sourcemaps = require('gulp-sourcemaps');
 
+var jsdoc = require('gulp-jsdoc3');
+
 gulp.task('build', function () {
 	var libdir = 'lib';
 	var libs = ['math', 'network', 'data', 'compat'];
@@ -54,7 +56,7 @@ gulp.task('dist', function () {
 		.pipe(gulp.dest('dist'));
 });
 
-gulp.task('dist-dev', function () {
+gulp.task('dist-nobabel', function () {
 	return browserify({
 		debug: true,
 		entries: './index.js',
@@ -65,4 +67,17 @@ gulp.task('dist-dev', function () {
 		.pipe(source('bci.min.js'))
 		.pipe(buffer())
 		.pipe(gulp.dest('dist'));
+});
+
+gulp.task('docs-html', function(cb){
+	var config = require('./jsdoc.json');
+	var files = [
+		'README.md',
+		'index.js',
+		'lib/data',
+		'lib/math',
+		'lib/network'
+	];
+	gulp.src(files, {read: false})
+		.pipe(jsdoc(config, cb));
 });

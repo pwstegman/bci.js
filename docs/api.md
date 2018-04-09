@@ -4,10 +4,9 @@
 
 * [webbci](#module_webbci)
     * [.oscStream](#module_webbci.oscStream)
-    * [.wait](#module_webbci.wait)
     * [.features](#module_webbci.features) : <code>object</code>
-        * [.module.exports.logvar(window)](#module_webbci.features.module.exports.logvar)
-        * [.module.exports.rms(window)](#module_webbci.features.module.exports.rms)
+        * [.logvar(window)](#module_webbci.features.logvar)
+        * [.rms(window)](#module_webbci.features.rms)
     * [.cspLearn(class1, class2)](#module_webbci.cspLearn) ⇒ <code>Object</code>
     * [.cspProject(cspParams, data, [dimensions])](#module_webbci.cspProject) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
     * [.generateSignal(amplitudes, frequencies, sampleRate, duration)](#module_webbci.generateSignal) ⇒ <code>Array.&lt;number&gt;</code>
@@ -26,20 +25,12 @@
     * [.windowApply(array, func, length, step, tail)](#module_webbci.windowApply) ⇒ <code>Array</code>
     * [.oscCollect(address, port, header, samples)](#module_webbci.oscCollect) ⇒ <code>Promise</code>
     * [.oscHeaderScan(address, port, duration)](#module_webbci.oscHeaderScan) ⇒ <code>Promise</code>
+    * [.wait(ms)](#module_webbci.wait)
 
 <a name="module_webbci.oscStream"></a>
 
 ### webbci.oscStream
 **Kind**: static class of [<code>webbci</code>](#module_webbci)  
-<a name="module_webbci.wait"></a>
-
-### webbci.wait
-**Kind**: static property of [<code>webbci</code>](#module_webbci)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| ms | <code>number</code> | Number of milliseconds to wait |
-
 <a name="module_webbci.features"></a>
 
 ### webbci.features : <code>object</code>
@@ -48,12 +39,12 @@ Feature extraction methods
 **Kind**: static namespace of [<code>webbci</code>](#module_webbci)  
 
 * [.features](#module_webbci.features) : <code>object</code>
-    * [.module.exports.logvar(window)](#module_webbci.features.module.exports.logvar)
-    * [.module.exports.rms(window)](#module_webbci.features.module.exports.rms)
+    * [.logvar(window)](#module_webbci.features.logvar)
+    * [.rms(window)](#module_webbci.features.rms)
 
-<a name="module_webbci.features.module.exports.logvar"></a>
+<a name="module_webbci.features.logvar"></a>
 
-#### features.module.exports.logvar(window)
+#### features.logvar(window)
 Computes the log of the variance of each channel in a 2d array of samples, where channels are columns
 
 **Kind**: static method of [<code>features</code>](#module_webbci.features)  
@@ -62,9 +53,9 @@ Computes the log of the variance of each channel in a 2d array of samples, where
 | --- | --- |
 | window | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | 
 
-<a name="module_webbci.features.module.exports.rms"></a>
+<a name="module_webbci.features.rms"></a>
 
-#### features.module.exports.rms(window)
+#### features.rms(window)
 Computes the root mean square of each channel in a 2d array of samples, where channels are columns
 
 **Kind**: static method of [<code>features</code>](#module_webbci.features)  
@@ -321,4 +312,13 @@ Scan for OSC headers on a port and address
 | address | <code>any</code> | OSC address |
 | port | <code>any</code> | OSC port |
 | duration | <code>any</code> | Duration of scan in milliseconds |
+
+<a name="module_webbci.wait"></a>
+
+### webbci.wait(ms)
+**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| ms | <code>number</code> | Number of milliseconds to wait |
 

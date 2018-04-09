@@ -7,8 +7,10 @@
     "test": "mocha",
     "build": "gulp build",
     "dist": "gulp dist",
-    "dist-dev": "gulp dist-dev",
-    "docs": "jsdoc2md ./index.js ./lib/math/*.js ./lib/data/*.js ./lib/network/*.js > docs/api.md && jsdoc2md ./index.js ./lib/compat/*.js > docs/deprecated.md"
+    "dist-nobabel": "gulp dist-nobabel",
+    "docs-md": "jsdoc2md ./index.js ./lib/math/*.js ./lib/data/*.js ./lib/network/*.js > docs/api.md && jsdoc2md ./index.js ./lib/compat/*.js > docs/deprecated.md",
+    "docs-html": "gulp docs-html",
+    "docs": "npm run docs-html && npm run docs-md"
   },
   "author": "Pierce Stegman <pwstegman@gmail.com> (https://github.com/pwstegman)",
   "license": "MIT",
@@ -46,8 +48,10 @@
     "babel-preset-env": "^1.6.1",
     "babelify": "^8.0.0",
     "browserify": "^16.1.0",
+    "docdash": "^0.4.0",
     "easy-table": "^1.1.1",
     "gulp": "^3.9.1",
+    "gulp-jsdoc3": "^2.0.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "gulp-uglify-es": "^1.0.1",
