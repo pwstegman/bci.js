@@ -4,6 +4,10 @@
 
 * [webbci](#module_webbci)
     * [.oscStream](#module_webbci.oscStream)
+        * [new oscStream(port, [address])](#new_module_webbci.oscStream_new)
+        * [.start()](#module_webbci.oscStream+start)
+        * [.stop()](#module_webbci.oscStream+stop)
+        * [.on(header, callback)](#module_webbci.oscStream+on)
     * [.features](#module_webbci.features) : <code>object</code>
         * [.logvar(window)](#module_webbci.features.logvar)
         * [.rms(window)](#module_webbci.features.rms)
@@ -30,7 +34,49 @@
 <a name="module_webbci.oscStream"></a>
 
 ### webbci.oscStream
+Listen for messages over OSC
+
 **Kind**: static class of [<code>webbci</code>](#module_webbci)  
+
+* [.oscStream](#module_webbci.oscStream)
+    * [new oscStream(port, [address])](#new_module_webbci.oscStream_new)
+    * [.start()](#module_webbci.oscStream+start)
+    * [.stop()](#module_webbci.oscStream+stop)
+    * [.on(header, callback)](#module_webbci.oscStream+on)
+
+<a name="new_module_webbci.oscStream_new"></a>
+
+#### new oscStream(port, [address])
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| port | <code>number</code> |  | Port to listen on |
+| [address] | <code>string</code> | <code>&quot;0.0.0.0&quot;</code> | Address to listen on |
+
+<a name="module_webbci.oscStream+start"></a>
+
+#### oscStream.start()
+Start listening for OSC messages
+
+**Kind**: instance method of [<code>oscStream</code>](#module_webbci.oscStream)  
+<a name="module_webbci.oscStream+stop"></a>
+
+#### oscStream.stop()
+Stop listening for OSC messages
+
+**Kind**: instance method of [<code>oscStream</code>](#module_webbci.oscStream)  
+<a name="module_webbci.oscStream+on"></a>
+
+#### oscStream.on(header, callback)
+Call a callback function when data containing a specified OSC header is seen
+
+**Kind**: instance method of [<code>oscStream</code>](#module_webbci.oscStream)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| header | <code>string</code> | The OSC header |
+| callback | <code>requestCallback</code> | Called with the OSC data passed as the parameter |
+
 <a name="module_webbci.features"></a>
 
 ### webbci.features : <code>object</code>

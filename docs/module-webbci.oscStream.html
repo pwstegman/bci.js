@@ -22,7 +22,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-webbci.oscStream.html">oscStream</a></li></ul><h3>Modules</h3><ul><li><a href="module-webbci.html">webbci</a><ul class='methods'><li data-type='method'><a href="module-webbci.html#.cspLearn">cspLearn</a></li><li data-type='method'><a href="module-webbci.html#.cspProject">cspProject</a></li><li data-type='method'><a href="module-webbci.html#.generateSignal">generateSignal</a></li><li data-type='method'><a href="module-webbci.html#.ldaLearn">ldaLearn</a></li><li data-type='method'><a href="module-webbci.html#.ldaProject">ldaProject</a></li><li data-type='method'><a href="module-webbci.html#.loadCSV">loadCSV</a></li><li data-type='method'><a href="module-webbci.html#.oscCollect">oscCollect</a></li><li data-type='method'><a href="module-webbci.html#.oscHeaderScan">oscHeaderScan</a></li><li data-type='method'><a href="module-webbci.html#.partition">partition</a></li><li data-type='method'><a href="module-webbci.html#.psd">psd</a></li><li data-type='method'><a href="module-webbci.html#.psdBandPower">psdBandPower</a></li><li data-type='method'><a href="module-webbci.html#.round">round</a></li><li data-type='method'><a href="module-webbci.html#.saveCSV">saveCSV</a></li><li data-type='method'><a href="module-webbci.html#.signalBandPower">signalBandPower</a></li><li data-type='method'><a href="module-webbci.html#.subscript">subscript</a></li><li data-type='method'><a href="module-webbci.html#.toFixed">toFixed</a></li><li data-type='method'><a href="module-webbci.html#.toTable">toTable</a></li><li data-type='method'><a href="module-webbci.html#.wait">wait</a></li><li data-type='method'><a href="module-webbci.html#.windowApply">windowApply</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="module-webbci.features.html">features</a><ul class='methods'><li data-type='method'><a href="module-webbci.features.html#.logvar">logvar</a></li><li data-type='method'><a href="module-webbci.features.html#.rms">rms</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-webbci.oscStream.html">oscStream</a><ul class='methods'><li data-type='method'><a href="module-webbci.oscStream.html#on">on</a></li><li data-type='method'><a href="module-webbci.oscStream.html#start">start</a></li><li data-type='method'><a href="module-webbci.oscStream.html#stop">stop</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-webbci.html">webbci</a><ul class='methods'><li data-type='method'><a href="module-webbci.html#.cspLearn">cspLearn</a></li><li data-type='method'><a href="module-webbci.html#.cspProject">cspProject</a></li><li data-type='method'><a href="module-webbci.html#.generateSignal">generateSignal</a></li><li data-type='method'><a href="module-webbci.html#.ldaLearn">ldaLearn</a></li><li data-type='method'><a href="module-webbci.html#.ldaProject">ldaProject</a></li><li data-type='method'><a href="module-webbci.html#.loadCSV">loadCSV</a></li><li data-type='method'><a href="module-webbci.html#.oscCollect">oscCollect</a></li><li data-type='method'><a href="module-webbci.html#.oscHeaderScan">oscHeaderScan</a></li><li data-type='method'><a href="module-webbci.html#.partition">partition</a></li><li data-type='method'><a href="module-webbci.html#.psd">psd</a></li><li data-type='method'><a href="module-webbci.html#.psdBandPower">psdBandPower</a></li><li data-type='method'><a href="module-webbci.html#.round">round</a></li><li data-type='method'><a href="module-webbci.html#.saveCSV">saveCSV</a></li><li data-type='method'><a href="module-webbci.html#.signalBandPower">signalBandPower</a></li><li data-type='method'><a href="module-webbci.html#.subscript">subscript</a></li><li data-type='method'><a href="module-webbci.html#.toFixed">toFixed</a></li><li data-type='method'><a href="module-webbci.html#.toTable">toTable</a></li><li data-type='method'><a href="module-webbci.html#.wait">wait</a></li><li data-type='method'><a href="module-webbci.html#.windowApply">windowApply</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="module-webbci.features.html">features</a><ul class='methods'><li data-type='method'><a href="module-webbci.features.html#.logvar">logvar</a></li><li data-type='method'><a href="module-webbci.features.html#.rms">rms</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -45,6 +45,8 @@
         oscStream
         </h2>
         
+            <div class="class-description"><p>Listen for messages over OSC</p></div>
+        
     
 </header>
 
@@ -54,8 +56,10 @@
         
 
     
+    <h2>Constructor</h2>
+    
 
-    <h4 class="name" id="oscStream"><span class="type-signature"></span>new oscStream<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="oscStream"><span class="type-signature"></span>new oscStream<span class="signature">(port, address<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -67,7 +71,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_network_oscStream.js.html">lib/network/oscStream.js</a>, <a href="lib_network_oscStream.js.html#line6">line 6</a>
+        <a href="lib_network_oscStream.js.html">lib/network/oscStream.js</a>, <a href="lib_network_oscStream.js.html#line7">line 7</a>
     </li></ul></dd>
     
 
@@ -116,6 +120,110 @@
 
 
 
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>port</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Port to listen on</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>address</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>0.0.0.0</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Address to listen on</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
 
 
 
@@ -146,6 +254,334 @@
     
 
     
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="on"><span class="type-signature"></span>on<span class="signature">(header, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_network_oscStream.js.html">lib/network/oscStream.js</a>, <a href="lib_network_oscStream.js.html#line48">line 48</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Call a callback function when data containing a specified OSC header is seen</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>header</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The OSC header</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">requestCallback</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Called with the OSC data passed as the parameter</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="start"><span class="type-signature"></span>start<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_network_oscStream.js.html">lib/network/oscStream.js</a>, <a href="lib_network_oscStream.js.html#line23">line 23</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Start listening for OSC messages</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="stop"><span class="type-signature"></span>stop<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_network_oscStream.js.html">lib/network/oscStream.js</a>, <a href="lib_network_oscStream.js.html#line39">line 39</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Stop listening for OSC messages</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
 
     
 
@@ -162,7 +598,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Apr 08 2018 19:00:20 GMT-0500 (Central Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Apr 08 2018 19:07:55 GMT-0500 (Central Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
