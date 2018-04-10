@@ -1,5 +1,4 @@
 var bci = require('../index.js');
-var ctable = require('console.table');
 
 async function classify(data){
     // Time how long the function takes
@@ -62,7 +61,7 @@ async function classify(data){
     var recall = leftCorrect / (leftCorrect + leftIncorrect);
     var f1 = 2*recall*precision / (recall + precision);
     console.log();
-    console.table(confusionMatrix[0], confusionMatrix.slice(1));
+    console.log(bci.toTable(confusionMatrix));
     console.log('f1 score ' + f1.toFixed(2));
     console.log();
 

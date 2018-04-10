@@ -9,8 +9,8 @@
         * [.stop()](#module_webbci.oscStream+stop)
         * [.on(header, callback)](#module_webbci.oscStream+on)
     * [.features](#module_webbci.features) : <code>object</code>
-        * [.logvar(window)](#module_webbci.features.logvar)
-        * [.rms(window)](#module_webbci.features.rms)
+        * [.logvar(window, [dimension])](#module_webbci.features.logvar)
+        * [.rootMeanSquare(window, [dimension])](#module_webbci.features.rootMeanSquare)
     * [.cspLearn(class1, class2)](#module_webbci.cspLearn) ⇒ <code>Object</code>
     * [.cspProject(cspParams, data, [dimensions])](#module_webbci.cspProject) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
     * [.generateSignal(amplitudes, frequencies, sampleRate, duration)](#module_webbci.generateSignal) ⇒ <code>Array.&lt;number&gt;</code>
@@ -85,30 +85,32 @@ Feature extraction methods
 **Kind**: static namespace of [<code>webbci</code>](#module_webbci)  
 
 * [.features](#module_webbci.features) : <code>object</code>
-    * [.logvar(window)](#module_webbci.features.logvar)
-    * [.rms(window)](#module_webbci.features.rms)
+    * [.logvar(window, [dimension])](#module_webbci.features.logvar)
+    * [.rootMeanSquare(window, [dimension])](#module_webbci.features.rootMeanSquare)
 
 <a name="module_webbci.features.logvar"></a>
 
-#### features.logvar(window)
-Computes the log of the variance of each channel in a 2d array of samples, where channels are columns
+#### features.logvar(window, [dimension])
+Computes the log of the variance along the specified dimension
 
 **Kind**: static method of [<code>features</code>](#module_webbci.features)  
 
-| Param | Type |
-| --- | --- |
-| window | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| window | <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;Array.&lt;number&gt;&gt;</code> |  | The data |
+| [dimension] | <code>string</code> | <code>null</code> | If 'rows' or 'columns' passed, the features are calculated along that dimension |
 
-<a name="module_webbci.features.rms"></a>
+<a name="module_webbci.features.rootMeanSquare"></a>
 
-#### features.rms(window)
-Computes the root mean square of each channel in a 2d array of samples, where channels are columns
+#### features.rootMeanSquare(window, [dimension])
+Computes the root mean square along the specified dimension
 
 **Kind**: static method of [<code>features</code>](#module_webbci.features)  
 
-| Param | Type |
-| --- | --- |
-| window | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| window | <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;Array.&lt;number&gt;&gt;</code> |  | The data |
+| [dimension] | <code>string</code> | <code>null</code> | If 'rows' or 'columns' passed, the features are calculated along that dimension |
 
 <a name="module_webbci.cspLearn"></a>
 
