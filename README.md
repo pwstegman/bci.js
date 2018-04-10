@@ -46,8 +46,6 @@ console.log(bci.signalBandPower(signal, fftSize, sampleRate, 'beta'));  // 114
 ```javascript
 var bci = require('webbci');
 
-// Learn an LDA classifier for a 2D vector
-
 // Training set
 var class1 = [
 	[0, 0],
@@ -72,7 +70,7 @@ var unknownPoints = [
 	[10, 12]
 ];
 
-// Learn classifier
+// Learn an LDA classifier
 var ldaParams = bci.ldaLearn(class1, class2);
 
 // Test classifier
