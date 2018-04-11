@@ -319,7 +319,7 @@ Returns an ASCII table representation of an array
 <a name="module_webbci.windowApply"></a>
 
 ### webbci.windowApply(array, func, length, step, tail) ⇒ <code>Array</code>
-Similar to JavaScript's map, but it applies a function to sub arrays instead of each element.Each sub array, or window, starts at index 0 and has length 'lenght'The start will be incremented the window until the end of the array is. The result of each function is stored in a returned array.
+Similar to JavaScript's map, but it applies a function to sub arrays instead of each element.Each sub array, or window, starts at index 0 and has length 'length'Each next window will be shifted 'step' elements from the first. The result of each function is stored in a returned array.
 
 **Kind**: static method of [<code>webbci</code>](#module_webbci)  
 **Returns**: <code>Array</code> - An array containing the function result for each window  
@@ -332,6 +332,14 @@ Similar to JavaScript's map, but it applies a function to sub arrays instead of 
 | step | <code>number</code> |  | The start of the window is incremented by this amount every iteration |
 | tail | <code>boolean</code> | <code>false</code> | If false, windows which begin near the end of the array which cannot reach length 'length' will be ignored |
 
+**Example**  
+```js
+var bci = require('webbci');bci.windowApply([1, 2, 3, 4, 5], window => console.log(window), 3, 1);// [1, 2, 3]// [2, 3, 4]// [3, 4, 5] 
+```
+**Example**  
+```js
+var bci = require('webbci');var sums = bci.windowApply([1, 2, 3, 4, 5], window => {  var sum = 0;  window.forEach(x => sum += x);  return sum;}, 3, 1);console.log(sums);// [6, 9, 12]
+```
 <a name="module_webbci.oscCollect"></a>
 
 ### webbci.oscCollect(address, port, header, samples) ⇒ <code>Promise</code>
