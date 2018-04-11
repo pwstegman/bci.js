@@ -20,4 +20,4 @@ bci.windowApply(data, window => console.log(window), 3, 2);
 
 // Find the log of the variance of these windows (feature extraction)
 var features = bci.windowApply(data, bci.features.logvar, 3, 2);
-console.log(features); // [2.708, 2.887, 2.309, 3.697]
+console.log(features); // [-1.099, 1.466, 1.674, 1.946]
