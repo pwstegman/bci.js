@@ -111,8 +111,8 @@ console.log(features); // [-1.099, 1.466, 1.674, 1.946]
 
 ## Documentation
 
-For a complete list of methods and documentation check out [docs/api.md](docs/api.md)
+For a complete list of methods and documentation check out [docs/api.md](https://github.com/pwstegman/WebBCI/blob/dev/docs/api.md)
 
 ## Examples
 
-More examples can be found in the [examples](examples/) directory
+More examples can be found in the [examples](https://github.com/pwstegman/WebBCI/tree/dev/examples) directory
