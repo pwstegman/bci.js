@@ -4,7 +4,7 @@
 
 * [webbci](#module_webbci)
     * [.oscStream](#module_webbci.oscStream)
-        * [new oscStream(port, [address])](#new_module_webbci.oscStream_new)
+        * [new oscStream(address, port)](#new_module_webbci.oscStream_new)
         * [.start()](#module_webbci.oscStream+start)
         * [.stop()](#module_webbci.oscStream+stop)
         * [.on(header, callback)](#module_webbci.oscStream+on)
@@ -39,19 +39,19 @@ Listen for messages over OSC
 **Kind**: static class of [<code>webbci</code>](#module_webbci)  
 
 * [.oscStream](#module_webbci.oscStream)
-    * [new oscStream(port, [address])](#new_module_webbci.oscStream_new)
+    * [new oscStream(address, port)](#new_module_webbci.oscStream_new)
     * [.start()](#module_webbci.oscStream+start)
     * [.stop()](#module_webbci.oscStream+stop)
     * [.on(header, callback)](#module_webbci.oscStream+on)
 
 <a name="new_module_webbci.oscStream_new"></a>
 
-#### new oscStream(port, [address])
+#### new oscStream(address, port)
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| port | <code>number</code> |  | Port to listen on |
-| [address] | <code>string</code> | <code>&quot;0.0.0.0&quot;</code> | Address to listen on |
+| Param | Type | Description |
+| --- | --- | --- |
+| address | <code>string</code> | Address to listen on |
+| port | <code>number</code> | Port to listen on |
 
 <a name="module_webbci.oscStream+start"></a>
 
