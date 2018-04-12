@@ -35,10 +35,10 @@ var signal = bci.generateSignal(amplitudes, frequencies, sampleRate, duration);
 
 // Compute average power in each frequency band
 var fftSize = sampleRate * duration;
-console.log(bci.signalBandPower(signal, fftSize, sampleRate, 'delta')); // 85
-console.log(bci.signalBandPower(signal, fftSize, sampleRate, 'theta')); // 128
-console.log(bci.signalBandPower(signal, fftSize, sampleRate, 'alpha')); // 205
-console.log(bci.signalBandPower(signal, fftSize, sampleRate, 'beta'));  // 114
+console.log(bci.signalBandPower(signal, sampleRate, 'delta', fftSize)); // 85
+console.log(bci.signalBandPower(signal, sampleRate, 'theta', fftSize)); // 128
+console.log(bci.signalBandPower(signal, sampleRate, 'alpha', fftSize)); // 205
+console.log(bci.signalBandPower(signal, sampleRate, 'beta', fftSize));  // 114
 ```
 
 ### Machine Learning

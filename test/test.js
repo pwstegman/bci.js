@@ -221,9 +221,9 @@ describe('math', function(){
 		});
 	});
 
-	describe('psdBandPower', function(){
+	describe('signalBandPower and psdBandPower', function(){
 		it('Computes the average power in a frequency band', function(){
-			var bandPower = bci.signalBandPower([1, 2, 3, 4, 5, 6, 7], 8, 256, 'alpha');
+			var bandPower = bci.signalBandPower([1, 2, 3, 4, 5, 6, 7], 256, 'alpha', 8);
 			var expected = 19.2263;
 			assert(Math.abs(bandPower - expected) < 0.0001);
 		});
