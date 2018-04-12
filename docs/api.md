@@ -16,7 +16,7 @@
     * [.generateSignal(amplitudes, frequencies, sampleRate, duration)](#module_webbci.generateSignal) ⇒ <code>Array.&lt;number&gt;</code>
     * [.ldaLearn(class1, class2)](#module_webbci.ldaLearn) ⇒ <code>Object</code>
     * [.ldaProject(ldaParams, point)](#module_webbci.ldaProject) ⇒ <code>number</code>
-    * [.psd(signal, size)](#module_webbci.psd) ⇒ <code>Array.&lt;number&gt;</code>
+    * [.psd(signal, fftSize)](#module_webbci.psd) ⇒ <code>Array.&lt;number&gt;</code>
     * [.psdBandPower(psd, sampleRate, band, fftSize)](#module_webbci.psdBandPower) ⇒ <code>number</code>
     * [.signalBandPower(signal, sampleRate, band, fftSize)](#module_webbci.signalBandPower) ⇒ <code>number</code>
     * [.loadCSV(filePath)](#module_webbci.loadCSV) ⇒ <code>Promise</code>
@@ -182,7 +182,7 @@ Predict the class of an unknown data point.
 
 <a name="module_webbci.psd"></a>
 
-### webbci.psd(signal, size) ⇒ <code>Array.&lt;number&gt;</code>
+### webbci.psd(signal, fftSize) ⇒ <code>Array.&lt;number&gt;</code>
 Compute the power spectral density of a given signal.
 
 **Kind**: static method of [<code>webbci</code>](#module_webbci)  
@@ -191,7 +191,7 @@ Compute the power spectral density of a given signal.
 | Param | Type | Description |
 | --- | --- | --- |
 | signal | <code>Array.&lt;number&gt;</code> | The signal. |
-| size | <code>number</code> | Size of the fourier transform to be used. Should be a power of 2. |
+| fftSize | <code>number</code> | Size of the fourier transform to be used. Should be a power of 2. |
 
 <a name="module_webbci.psdBandPower"></a>
 
