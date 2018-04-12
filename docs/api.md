@@ -291,6 +291,14 @@ Subscript an array with MATLAB-like syntax
 | array | <code>Array</code> | The array to be subscripted |
 | ...params | <code>string</code> | Colon notation for which elements to include in each dimension |
 
+**Example**  
+```js
+var bci = require('webbci');var arr = [3, 2, 4, 1, 5];var sub = bci.subscript(arr, '1:3');console.log(sub); // [3, 2, 4]
+```
+**Example**  
+```js
+var bci = require('webbci');var arr = [  [1, 2, 3],  [4, 5, 6],  [7, 8, 9]];var sub = bci.subscript(arr, '1 3', '2:3'); // rows 1 and 3, columns 2 through 3console.log(sub); // [[2, 3], [8, 9]]
+```
 <a name="module_webbci.toFixed"></a>
 
 ### webbci.toFixed(array, places) ⇒ <code>Array.&lt;string&gt;</code>
