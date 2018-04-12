@@ -29,8 +29,8 @@ async function classify(data){
     // Split the data into 64 sample windows with 50% overlap
     // Use the log of the variance of each channel in a window as the feature vector
     console.log('Passing features to LDA. Window size = 64 samples, overlap = 50%');
-    var featuresLeft = bci.windowApply(cspLeft, bci.features.logvar, 64, 32);
-    var featuresRight = bci.windowApply(cspRight, bci.features.logvar, 64, 32);
+    var featuresLeft = bci.windowApply(cspLeft, window => bci.features.logvar(window, 'columns'), 64, 32);
+    var featuresRight = bci.windowApply(cspRight, window => bci.features.logvar(window, 'columns'), 64, 32);
 
     // Separate into training and testing sets
     var [trainingLeft, testingLeft] = bci.partition(featuresLeft, 0.6, 0.4);
