@@ -10,7 +10,8 @@
     "dist-nobabel": "gulp dist-nobabel",
     "docs-md": "jsdoc2md ./index.js ./lib/math/*.js ./lib/data/*.js ./lib/network/*.js > docs/api.md && jsdoc2md ./index.js ./lib/compat/*.js > docs/deprecated.md",
     "docs-html": "gulp docs-html",
-    "docs": "npm run docs-html && npm run docs-md"
+    "docs": "npm run docs-html && npm run docs-md",
+    "prepublish": "npm run build && npm run test && npm run docs"
   },
   "author": "Pierce Stegman <pwstegman@gmail.com> (https://github.com/pwstegman)",
   "license": "MIT",
