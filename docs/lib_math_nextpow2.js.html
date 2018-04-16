@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/data/toTable.js - Documentation</title>
+    <title>lib/math/nextpow2.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">lib/data/toTable.js</h1>
+    <h1 class="page-title">lib/math/nextpow2.js</h1>
     
 
     
@@ -37,20 +37,22 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>var Table = require('easy-table');
-var toFixed = require('./toFixed.js');
-
-/**
- * Returns an ASCII table representation of an array
+            <pre class="prettyprint source linenums"><code>/**
+ * Returns the ceil of the log2 of the absolute value of the passed number
  * @memberof module:webbci
- * @param {Array} array
- * @returns {string} ASCII table
+ * @param {number} num
+ * @example
+ * nextpow2(8); // 3
+ * nextpow2(9); // 4
+ * nextpow2(16); // 4
+ * nextpow2(30); // 5
+ * nextpow2(0); // -Infinity
  */
-function toTable(array) {
-	return Table.print(array);
+function nextpow2(num){
+    return Math.ceil(Math.log2(Math.abs(num)));
 }
 
-module.exports = toTable;</code></pre>
+module.exports = nextpow2;</code></pre>
         </article>
     </section>
 

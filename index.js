@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Thu Apr 12 2018 13:59:00 GMT-0500 (Central Daylight Time)
+// Created on Mon Apr 16 2018 15:46:48 GMT-0500 (Central Daylight Time)
 /** @module webbci */
 module.exports.cspLearn = require('./lib/math/cspLearn.js');
 module.exports.cspProject = require('./lib/math/cspProject.js');
@@ -7,6 +7,7 @@ module.exports.features = require('./lib/math/features.js');
 module.exports.generateSignal = require('./lib/math/generateSignal.js');
 module.exports.ldaLearn = require('./lib/math/ldaLearn.js');
 module.exports.ldaProject = require('./lib/math/ldaProject.js');
+module.exports.nextpow2 = require('./lib/math/nextpow2.js');
 module.exports.psd = require('./lib/math/psd.js');
 module.exports.psdBandPower = require('./lib/math/psdBandPower.js');
 module.exports.signalBandPower = require('./lib/math/signalBandPower.js');

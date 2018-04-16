@@ -16,6 +16,7 @@
     * [.generateSignal(amplitudes, frequencies, sampleRate, duration)](#module_webbci.generateSignal) ⇒ <code>Array.&lt;number&gt;</code>
     * [.ldaLearn(class1, class2)](#module_webbci.ldaLearn) ⇒ <code>Object</code>
     * [.ldaProject(ldaParams, point)](#module_webbci.ldaProject) ⇒ <code>number</code>
+    * [.nextpow2(num)](#module_webbci.nextpow2)
     * [.psd(signal, fftSize)](#module_webbci.psd) ⇒ <code>Array.&lt;number&gt;</code>
     * [.psdBandPower(psd, sampleRate, band, fftSize)](#module_webbci.psdBandPower) ⇒ <code>number</code>
     * [.signalBandPower(signal, sampleRate, band, fftSize)](#module_webbci.signalBandPower) ⇒ <code>number</code>
@@ -180,6 +181,21 @@ Predict the class of an unknown data point.
 | ldaParams | <code>object</code> | The parameters for the LDA, computed with the function ldaLearn |
 | point | <code>Array.&lt;number&gt;</code> | The data point to be classified. |
 
+<a name="module_webbci.nextpow2"></a>
+
+### webbci.nextpow2(num)
+Returns the ceil of the log2 of the absolute value of the passed number
+
+**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+
+| Param | Type |
+| --- | --- |
+| num | <code>number</code> | 
+
+**Example**  
+```js
+nextpow2(8); // 3nextpow2(9); // 4nextpow2(16); // 4nextpow2(30); // 5nextpow2(0); // -Infinity
+```
 <a name="module_webbci.psd"></a>
 
 ### webbci.psd(signal, fftSize) ⇒ <code>Array.&lt;number&gt;</code>
