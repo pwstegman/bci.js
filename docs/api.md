@@ -17,9 +17,9 @@
     * [.ldaLearn(class1, class2)](#module_webbci.ldaLearn) ⇒ <code>Object</code>
     * [.ldaProject(ldaParams, point)](#module_webbci.ldaProject) ⇒ <code>number</code>
     * [.nextpow2(num)](#module_webbci.nextpow2)
-    * [.psd(signal, fftSize)](#module_webbci.psd) ⇒ <code>Array.&lt;number&gt;</code>
-    * [.psdBandPower(psd, sampleRate, band, fftSize)](#module_webbci.psdBandPower) ⇒ <code>number</code>
-    * [.signalBandPower(signal, sampleRate, band, fftSize)](#module_webbci.signalBandPower) ⇒ <code>number</code>
+    * [.psd(signal, [options])](#module_webbci.psd) ⇒ <code>Array.&lt;number&gt;</code>
+    * [.psdBandPower(psd, sampleRate, band, [fftSize])](#module_webbci.psdBandPower) ⇒ <code>number</code>
+    * [.signalBandPower(signal, sampleRate, band, [fftSize])](#module_webbci.signalBandPower) ⇒ <code>number</code>
     * [.loadCSV(filePath)](#module_webbci.loadCSV) ⇒ <code>Promise</code>
     * [.partition(array, ...divisions)](#module_webbci.partition) ⇒ <code>Array.&lt;Array&gt;</code>
     * [.round(array, places)](#module_webbci.round) ⇒ <code>Array.&lt;number&gt;</code>
@@ -198,46 +198,48 @@ nextpow2(8); // 3nextpow2(9); // 4nextpow2(16); // 4nextpow2(30); // 5nextpo
 ```
 <a name="module_webbci.psd"></a>
 
-### webbci.psd(signal, fftSize) ⇒ <code>Array.&lt;number&gt;</code>
+### webbci.psd(signal, [options]) ⇒ <code>Array.&lt;number&gt;</code>
 Compute the power spectral density of a given signal.
 
 **Kind**: static method of [<code>webbci</code>](#module_webbci)  
 **Returns**: <code>Array.&lt;number&gt;</code> - The PSD.  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| signal | <code>Array.&lt;number&gt;</code> | The signal. |
-| fftSize | <code>number</code> | Size of the fourier transform to be used. Should be a power of 2. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| signal | <code>Array.&lt;number&gt;</code> |  | The signal. |
+| [options] | <code>Object</code> |  |  |
+| [options.fftSize] | <code>number</code> | <code>Math.pow(2, bci.nextpow2(signal.length))</code> | Size of the fft to be used. Should be a power of 2. |
+| [options.truncate] | <code>boolean</code> | <code>false</code> | If true, only the first half of the PSD array is returned |
 
 <a name="module_webbci.psdBandPower"></a>
 
-### webbci.psdBandPower(psd, sampleRate, band, fftSize) ⇒ <code>number</code>
+### webbci.psdBandPower(psd, sampleRate, band, [fftSize]) ⇒ <code>number</code>
 Compute the average power across a given frequency band given the PSD.
 
 **Kind**: static method of [<code>webbci</code>](#module_webbci)  
 **Returns**: <code>number</code> - The average power in the frequency band.  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| psd | <code>Array.&lt;number&gt;</code> | Power spectral density of the signal. |
-| sampleRate | <code>number</code> | The sample rate of the signal. |
-| band | <code>Array.&lt;number&gt;</code> \| <code>string</code> | The frequency band provided as an array [frequencyStart, frequencyStop] or a string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz). While string representations allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in future updates. |
-| fftSize | <code>number</code> | Size of the fourier transform used to compute the PSD. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| psd | <code>Array.&lt;number&gt;</code> |  | Power spectral density of the signal. |
+| sampleRate | <code>number</code> |  | The sample rate of the signal. |
+| band | <code>Array.&lt;number&gt;</code> \| <code>string</code> |  | The frequency band provided as an array [frequencyStart, frequencyStop] or a string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz). While string representations allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in future updates. |
+| [fftSize] | <code>number</code> | <code>Math.pow(2, bci.nextpow2(psd.length))</code> | Size of the fourier transform used to compute the PSD. |
 
 <a name="module_webbci.signalBandPower"></a>
 
-### webbci.signalBandPower(signal, sampleRate, band, fftSize) ⇒ <code>number</code>
+### webbci.signalBandPower(signal, sampleRate, band, [fftSize]) ⇒ <code>number</code>
 Compute the average power across a given frequency band in a signal.
 
 **Kind**: static method of [<code>webbci</code>](#module_webbci)  
 **Returns**: <code>number</code> - The average power in the frequency band.  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| signal | <code>Array.&lt;number&gt;</code> | The signal. |
-| sampleRate | <code>number</code> | The sample rate of the signal. |
-| band | <code>Array.&lt;number&gt;</code> \| <code>string</code> | The frequency band provided as an array [frequencyStart, frequencyStop] or a string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz). While string representations allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in future updates. |
-| fftSize | <code>number</code> | Size of the fourier transform used to compute the PSD. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| signal | <code>Array.&lt;number&gt;</code> |  | The signal. |
+| sampleRate | <code>number</code> |  | The sample rate of the signal. |
+| band | <code>Array.&lt;number&gt;</code> \| <code>string</code> |  | The frequency band provided as an array [frequencyStart, frequencyStop] or a string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz). While string representations allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in future updates. |
+| [fftSize] | <code>number</code> | <code>Math.pow(2, bci.nextpow2(signal.length))</code> | Size of the fourier transform used to compute the PSD. |
 
 <a name="module_webbci.loadCSV"></a>
 

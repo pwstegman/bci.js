@@ -1995,7 +1995,7 @@ Can be used to split data into training and testing sets</p>
 
     
 
-    <h4 class="name" id=".psd"><span class="type-signature">(static) </span>psd<span class="signature">(signal, fftSize)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span></h4>
+    <h4 class="name" id=".psd"><span class="type-signature">(static) </span>psd<span class="signature">(signal, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span></h4>
 
     
 
@@ -2007,7 +2007,7 @@ Can be used to split data into training and testing sets</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_psd.js.html">lib/math/psd.js</a>, <a href="lib_math_psd.js.html#line12">line 12</a>
+        <a href="lib_math_psd.js.html">lib/math/psd.js</a>, <a href="lib_math_psd.js.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -2073,6 +2073,8 @@ Can be used to split data into training and testing sets</p>
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -2098,12 +2100,76 @@ Can be used to split data into training and testing sets</p>
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
             <td class="description last"><p>The signal.</p></td>
         </tr>
 
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
     
 
         <tr>
@@ -2121,10 +2187,72 @@ Can be used to split data into training and testing sets</p>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>Size of the fourier transform to be used. Should be a power of 2.</p></td>
+            
+                <td class="default">
+                
+                    <code>Math.pow(2, bci.nextpow2(signal.length))</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Size of the fft to be used. Should be a power of 2.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>truncate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>false</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>If true, only the first half of the PSD array is returned</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -2173,7 +2301,7 @@ Can be used to split data into training and testing sets</p>
 
     
 
-    <h4 class="name" id=".psdBandPower"><span class="type-signature">(static) </span>psdBandPower<span class="signature">(psd, sampleRate, band, fftSize)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    <h4 class="name" id=".psdBandPower"><span class="type-signature">(static) </span>psdBandPower<span class="signature">(psd, sampleRate, band, fftSize<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {number}</span></h4>
 
     
 
@@ -2185,7 +2313,7 @@ Can be used to split data into training and testing sets</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_psdBandPower.js.html">lib/math/psdBandPower.js</a>, <a href="lib_math_psdBandPower.js.html#line14">line 14</a>
+        <a href="lib_math_psdBandPower.js.html">lib/math/psdBandPower.js</a>, <a href="lib_math_psdBandPower.js.html#line16">line 16</a>
     </li></ul></dd>
     
 
@@ -2251,7 +2379,11 @@ Can be used to split data into training and testing sets</p>
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -2276,7 +2408,19 @@ Can be used to split data into training and testing sets</p>
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
             
 
             <td class="description last"><p>Power spectral density of the signal.</p></td>
@@ -2299,7 +2443,19 @@ Can be used to split data into training and testing sets</p>
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
             
 
             <td class="description last"><p>The sample rate of the signal.</p></td>
@@ -2325,7 +2481,19 @@ Can be used to split data into training and testing sets</p>
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
             
 
             <td class="description last"><p>The frequency band provided as an array [frequencyStart, frequencyStop] or a
@@ -2352,7 +2520,23 @@ future updates.</p></td>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>Math.pow(2, bci.nextpow2(psd.length))</code>
+                
+                </td>
             
 
             <td class="description last"><p>Size of the fourier transform used to compute the PSD.</p></td>
@@ -2760,7 +2944,7 @@ future updates.</p></td>
 
     
 
-    <h4 class="name" id=".signalBandPower"><span class="type-signature">(static) </span>signalBandPower<span class="signature">(signal, sampleRate, band, fftSize)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    <h4 class="name" id=".signalBandPower"><span class="type-signature">(static) </span>signalBandPower<span class="signature">(signal, sampleRate, band, fftSize<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {number}</span></h4>
 
     
 
@@ -2772,7 +2956,7 @@ future updates.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_signalBandPower.js.html">lib/math/signalBandPower.js</a>, <a href="lib_math_signalBandPower.js.html#line17">line 17</a>
+        <a href="lib_math_signalBandPower.js.html">lib/math/signalBandPower.js</a>, <a href="lib_math_signalBandPower.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -2838,7 +3022,11 @@ future updates.</p></td>
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -2863,7 +3051,19 @@ future updates.</p></td>
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
             
 
             <td class="description last"><p>The signal.</p></td>
@@ -2886,7 +3086,19 @@ future updates.</p></td>
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
             
 
             <td class="description last"><p>The sample rate of the signal.</p></td>
@@ -2912,7 +3124,19 @@ future updates.</p></td>
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
             
 
             <td class="description last"><p>The frequency band provided as an array [frequencyStart, frequencyStop] or a
@@ -2939,7 +3163,23 @@ future updates.</p></td>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>Math.pow(2, bci.nextpow2(signal.length))</code>
+                
+                </td>
             
 
             <td class="description last"><p>Size of the fourier transform used to compute the PSD.</p></td>
@@ -3951,7 +4191,7 @@ Each next window will be shifted 'step' elements from the first. The result of e
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Apr 16 2018 16:10:21 GMT-0500 (Central Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Apr 22 2018 02:12:09 GMT-0500 (Central Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
