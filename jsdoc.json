@@ -19,7 +19,10 @@
 	},
 	"templates": {
 		"cleverLinks": false,
-		"monospaceLinks": false
+		"monospaceLinks": false,
+		"default": {
+			"layoutFile": "./docs-layout.tmpl"
+		}
 	},
 	"opts": {
 		"destination": "./docs/",
