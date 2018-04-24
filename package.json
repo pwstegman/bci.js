@@ -8,7 +8,7 @@
     "build": "gulp build",
     "dist": "gulp dist",
     "dist-nobabel": "gulp dist-nobabel",
-    "docs-md": "jsdoc2md ./index.js ./lib/math/*.js ./lib/data/*.js ./lib/network/*.js > docs/api.md && jsdoc2md ./index.js ./lib/compat/*.js > docs/deprecated.md",
+    "docs-md": "gulp docs-md",
     "docs-html": "gulp docs-html",
     "docs": "npm run docs-html && npm run docs-md",
     "prepublish": "npm run build && npm run test && npm run docs"
@@ -51,6 +51,7 @@
     "browserify": "^16.1.0",
     "docdash": "^0.4.0",
     "easy-table": "^1.1.1",
+    "fs-then-native": "^2.0.0",
     "gulp": "^3.9.1",
     "gulp-jsdoc3": "^2.0.0",
     "gulp-sourcemaps": "^2.6.4",

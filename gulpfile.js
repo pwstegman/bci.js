@@ -11,6 +11,9 @@ var sourcemaps = require('gulp-sourcemaps');
 
 var jsdoc = require('gulp-jsdoc3');
 
+var fsThen = require('fs-then-native');
+var jsdoc2md = require('jsdoc-to-markdown');
+
 gulp.task('build', function () {
 	var libdir = 'lib';
 	var libs = ['math', 'network', 'data', 'compat'];
@@ -80,4 +83,11 @@ gulp.task('docs-html', function(cb){
 	];
 	gulp.src(files, {read: false})
 		.pipe(jsdoc(config, cb));
+});
+
+gulp.task('docs-md', function(cb){
+  return jsdoc2md.render({ files: ['./index.js', './lib/math/*.js', './lib/data/*.js', './lib/network/*.js'] })
+	.then(output => fsThen.writeFile('docs/api.md', output))
+	.then(() => jsdoc2md.render({files: ['./index.js', './lib/compat/*.js']}))
+	.then(output => fsThen.writeFile('docs/deprecated.md', output));
 });
