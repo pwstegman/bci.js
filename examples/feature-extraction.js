@@ -21,3 +21,16 @@ bci.windowApply(data, window => console.log(window), 3, 2);
 // Find the log of the variance of these windows (feature extraction)
 var features = bci.windowApply(data, bci.features.logvar, 3, 2);
 console.log(features); // [-1.099, 1.466, 1.674, 1.946]
+
+// Colon notation for array subscripting
+var arr = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+var subarr = bci.subscript(arr, '1 3', '2:3'); // rows 1 and 3, columns 2 through 3
+console.log(subarr);
+/*
+[[2, 3],
+ [8, 9]]
+*/
