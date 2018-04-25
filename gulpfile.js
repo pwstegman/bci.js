@@ -6,8 +6,9 @@ var browserify = require('browserify');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
-var uglify = uglify = require('gulp-uglify-es').default;
+var uglify = require('gulp-uglify-es').default;
 var sourcemaps = require('gulp-sourcemaps');
+var rename = require('gulp-rename');
 
 var jsdoc = require('gulp-jsdoc3');
 
@@ -39,39 +40,6 @@ gulp.task('build', function () {
 	fs.closeSync(out);
 });
 
-gulp.task('dist', function () {
-	return browserify({
-		debug: true,
-		entries: './index.js',
-		standalone: 'bci'//,
-		/*ignore: [require.resolve('mathjs')]*/
-	})
-		.transform(babelify.configure({
-			presets: ["env"]
-		}))
-		.bundle()
-		.on('error', (...args) => console.log(args))
-		.pipe(source('bci.min.js'))
-		.pipe(buffer())
-		.pipe(sourcemaps.init({ loadMaps: true }))
-		.pipe(uglify())
-		.pipe(sourcemaps.write('./maps', { addComment: false }))
-		.pipe(gulp.dest('dist'));
-});
-
-gulp.task('dist-nobabel', function () {
-	return browserify({
-		debug: true,
-		entries: './index.js',
-		standalone: 'bci'
-	})
-		.bundle()
-		.on('error', (...args) => console.log(args))
-		.pipe(source('bci.min.js'))
-		.pipe(buffer())
-		.pipe(gulp.dest('dist'));
-});
-
 gulp.task('docs-html', function(cb){
 	var config = require('./jsdoc.json');
 	var files = [
@@ -90,4 +58,20 @@ gulp.task('docs-md', function(cb){
 	.then(output => fsThen.writeFile('docs/api.md', output))
 	.then(() => jsdoc2md.render({files: ['./index.js', './lib/compat/*.js']}))
 	.then(output => fsThen.writeFile('docs/deprecated.md', output));
+});
+
+gulp.task('dist', function () {
+	return browserify({
+		debug: false,
+		entries: './index.js',
+		standalone: 'bci'
+	})
+		.bundle()
+		.on('error', (...args) => console.log(args))
+		.pipe(source('bci.js'))
+		.pipe(buffer())
+		.pipe(gulp.dest('dist'))
+		.pipe(rename({ extname: '.min.js' }))
+		.pipe(uglify())
+		.pipe(gulp.dest('dist'));
 });
