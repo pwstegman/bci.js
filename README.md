@@ -3,6 +3,8 @@ JavaScript based EEG signal processing
 
 **Goal:** Build portable/modern framework for web-based BCI applications
 
+Deploying BCI applications in a more portable language such as JavaScript can be difficult as many BCI specific methods have yet to be implemented. WebBCI aims to help bridge this gap by implementing BCI specific methods, building on existing libraries such as Math.js and Numeric Javascript. It also implements MATLAB specific methods, such as colon notation for array subscripting, to make data manipulation in JavaScript easier.
+
 ## Dev
 
 This is the dev branch of webbci. Documentation may be lacking and the API can change at any time.
@@ -128,7 +130,9 @@ console.log(subarr);
 npm run dist
 ```
 
-This will generate `dist/bci.js` and `dist/bci.min.js`. WebBCI methods can be accessed via the global object *bci*.  
+This will generate `dist/bci.js` and `dist/bci.min.js`. WebBCI methods can be accessed via the global object *bci*.
+
+OSC methods will not work in the web.
 
 ## Documentation
 
