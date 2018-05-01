@@ -122,6 +122,14 @@ console.log(subarr);
 */
 ```
 
+## Usage in the web
+
+```bash
+npm run dist
+```
+
+This will generate `dist/bci.js` and `dist/bci.min.js`. WebBCI methods can be accessed via the global object *bci*.  
+
 ## Documentation
 
 For a complete list of methods and documentation check out [docs/api.md](https://github.com/pwstegman/WebBCI/blob/dev/docs/api.md)
