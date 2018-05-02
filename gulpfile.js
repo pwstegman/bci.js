@@ -1,13 +1,10 @@
 var fs = require('fs');
 var gulp = require('gulp');
-var mkdirp = require('mkdirp');
 
 var browserify = require('browserify');
-var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify-es').default;
-var sourcemaps = require('gulp-sourcemaps');
 var rename = require('gulp-rename');
 
 var jsdoc = require('gulp-jsdoc3');
