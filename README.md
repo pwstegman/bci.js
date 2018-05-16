@@ -3,6 +3,8 @@ JavaScript based EEG signal processing
 
 **Goal:** Build portable/modern framework for web-based BCI applications
 
+WebBCI is being developed out of the Human Technology Interaction Lab at the University of Alabama Department of Computer Science
+
 ## Installation
 
 For the latest stable release
