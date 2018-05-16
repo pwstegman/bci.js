@@ -59,3 +59,7 @@ typings/
 
 # visual studio
 .vs/
+
+# Other
+dist/
+examples/data/
