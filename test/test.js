@@ -36,81 +36,8 @@ function arrayAlmostEqual(arr1, arr2, tolerance = 0.00001) {
 }
 
 describe('data', function(){
-	describe('saveCSV and loadCSV', function(){
-		it('Saves an array to and loads an array from a CSV file', function(){
-			var tmpobj = tmp.dirSync();
-			var tmpdir = tmpobj.name;
-			var csvpath = path.join(tmpdir, new Date().getTime() + '.csv');
-
-			var array = [[1,2], [3,4], [5,6]];
-
-			bci.saveCSV(array, csvpath)
-			.then(() => {
-				return bci.loadCSV(csvpath);
-			}).then(result => {
-				assert.deepEqual(result, array);
-			})
-			.catch(() => {
-				// saveCSV and loadCSV don't current have error checking
-				// Adding this for future when it is added
-				console.warn('Unable to test saveCSV and loadCSV using temporary files');
-			});
-		});
-	});
-
-	describe('partition', function(){
-		it('partitions data into subsets such as training and testing sets', function(){
-			assert.deepEqual(
-				bci.partition([1, 2, 3, 4], 0.5, 0.5),
-				[[1,2], [3,4]]
-			);
-
-			assert.deepEqual(
-				bci.partition([1, 2, 3, 4, 5, 6], 0.6, 0.4),
-				[[1, 2, 3, 4], [5, 6]]
-			);
-		});
-	});
-
-	describe('round', function(){
-		it('Rounds every value in an array to a set number of decimal places', function(){
-			var arr = [[1.123, 1.55], [5.50000], [17]];
-			var arrRounded = bci.round(arr, 1);
-			assert.deepEqual(arrRounded, [[1.1, 1.6], [5.5], [17]]);
-		});
-	});
-
-	describe('subscript', function(){
-		it('Applies MATLAB style subscripting to an array', function(){
-			var data = [[1,2,3], [1,2,3], [1,2,3]];
-			var sub = bci.subscript(data, ":", "1 3");
-			assert.deepEqual(sub, [[1,3], [1,3], [1,3]]);
-		});
-	});
-
-	describe('toFixed', function(){
-		it('Rounds and zero pads as a string every value in an array to a set number of decimal places', function(){
-			var arr = [1, 1.1, [1.12], [1.129]];
-			var fixed = bci.toFixed(arr, 2);
-			assert.deepEqual(fixed, ['1.00', '1.10', ['1.12'], ['1.13']]);
-		});
-	});
-
-	describe('toTable', function(){
-		it('Returns an ASCII table representation of an array', function(){
-			var testArray = [[1,2],[3,4]];
-			var tableASCII = bci.toTable(testArray);
-			assert.equal(tableASCII, '0  1\n-  -\n1  2\n3  4\n');
-		});
-	});
-
-	describe('windowApply', function(){
-		it('Applies a function over the sub arrays of an array', function(){
-			var data = [[1,2], [3,4], [5,6], [7,8], [9,10]];
-			var features = bci.windowApply(data, window=>math.sum(window), 3, 2, false);
-			assert.deepEqual(features, [21, 45]);
-		});
-	});
+	it('Data tests are being moved into their own files as lib/data/*.test.js', function(){});
+	// run with mocha .\lib\**\*.test.js
 });
 
 describe('math', function(){
