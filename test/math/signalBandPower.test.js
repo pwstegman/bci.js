@@ -1,0 +1,1 @@
+// Please see psdBandPower.test.js which tests both psdBandPower and signalBandPower

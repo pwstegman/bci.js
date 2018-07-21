@@ -4,7 +4,7 @@
   "description": "JavaScript based EEG processing tool",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha test/**/*.test.js",
     "build": "gulp build",
     "dist": "gulp dist",
     "dist-nobabel": "gulp dist-nobabel",
@@ -16,6 +16,7 @@
   "author": "Pierce Stegman <pwstegman@gmail.com> (https://github.com/pwstegman)",
   "license": "MIT",
   "dependencies": {
+    "app-root-path": "^2.1.0",
     "console.table": "^0.10.0",
     "csvtojson": "^1.1.9",
     "fast-csv": "^2.4.1",

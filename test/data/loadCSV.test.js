@@ -1,5 +1,6 @@
-const saveCSV = require('./saveCSV.js');
-const loadCSV = require('./loadCSV.js');
+const reqlib = require('app-root-path').require;
+const bci = reqlib('index.js');
+
 const assert = require('assert');
 const tmp = require('tmp');
 const path = require('path');
@@ -14,9 +15,9 @@ describe('saveCSV and loadCSV', function(){
 
         var array = [[1,2], [3,4], [5,6]];
 
-        saveCSV(array, csvpath)
+        bci.saveCSV(array, csvpath)
         .then(() => {
-            return loadCSV(csvpath);
+            return bci.loadCSV(csvpath);
         }).then(result => {
             assert.deepEqual(result, array);
         })

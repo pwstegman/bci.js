@@ -1,15 +1,17 @@
-const partition = require('./partition.js');
+const reqlib = require('app-root-path').require;
+const bci = reqlib('index.js');
+
 const assert = require('assert');
 
 describe('partition', function(){
     it('partitions data into subsets such as training and testing sets', function(){
         assert.deepEqual(
-            partition([1, 2, 3, 4], 0.5, 0.5),
+            bci.partition([1, 2, 3, 4], 0.5, 0.5),
             [[1,2], [3,4]]
         );
 
         assert.deepEqual(
-            partition([1, 2, 3, 4, 5, 6], 0.6, 0.4),
+            bci.partition([1, 2, 3, 4, 5, 6], 0.6, 0.4),
             [[1, 2, 3, 4], [5, 6]]
         );
     });
