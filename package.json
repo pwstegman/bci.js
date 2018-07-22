@@ -4,7 +4,7 @@
   "description": "JavaScript based EEG processing tool",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/**/*.test.js",
+    "test": "mocha \"test/**/*.test.js\"",
     "build": "gulp build",
     "dist": "gulp dist",
     "dist-nobabel": "gulp dist-nobabel",
