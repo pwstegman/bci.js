@@ -2,9 +2,8 @@
 ## General
 - Add deprecation messages and console logs
 - Documentation page
-- Update tests
 - Add examples to methods in docs
-- Add path checking to csvLoad
+- Make saveCSV errors work with promises
 - Faster bci.min.js compile and get working with babelify
 
 ## Methods
