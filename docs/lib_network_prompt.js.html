@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/math/signalBandPower.js - Documentation</title>
+    <title>lib/network/prompt.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">lib/math/signalBandPower.js</h1>
+    <h1 class="page-title">lib/network/prompt.js</h1>
     
 
     
@@ -42,33 +42,31 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>var psd = require('./psd.js');
-var psdBandPower = require('./psdBandPower.js');
-var nextpow2 = require('./nextpow2.js');
-
-/**
- * Compute the average power across a given frequency band in a signal.
+            <pre class="prettyprint source linenums"><code>/**
+ * Prompts the user for input via stdin
  * @memberof module:webbci
- * @param {number[]} signal - The signal.
- * @param {number} sampleRate - The sample rate of the signal.
- * @param {(number[]|string)} - The frequency band provided as an array [frequencyStart, frequencyStop] or a
- * string &lt;code>delta&lt;/code> (1-3 Hz), &lt;code>theta&lt;/code> (4-7 Hz), &lt;code>alpha&lt;/code> (8-12 Hz), &lt;code>beta&lt;/code> (13-30 Hz), or &lt;code>gamma&lt;/code> (31-50 Hz).
- * While string representations
- * allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in
- * future updates.
- * @param {number} [fftSize=Math.pow(2, bci.nextpow2(signal.length))] - Size of the fourier transform used to compute the PSD.
- * @returns {number} The average power in the frequency band.
+ * @function
+ * @name prompt
+ * @param {string} question - Question shown to user
+ * @returns {Promise} A promise object that resolves with the response
  */
-function signalBandPower(signal, sampleRate, band, fftSize = null) {
-	if(fftSize === null){
-		fftSize = Math.pow(2, nextpow2(signal.length));
-	}
+var readline = require('readline');
 
-	var p = psd(signal, {fftSize: fftSize});
-	return psdBandPower(p, sampleRate, band, fftSize);
+function prompt(question){
+    var rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    return new Promise(resolve => {
+        rl.question(question, answer => {
+            rl.close();
+            resolve(answer);
+        });
+    });
 }
 
-module.exports = signalBandPower;</code></pre>
+module.exports = prompt;</code></pre>
         </article>
     </section>
 

@@ -16,7 +16,7 @@
     * [.generateSignal(amplitudes, frequencies, sampleRate, duration)](#module_webbci.generateSignal) ⇒ <code>Array.&lt;number&gt;</code>
     * [.ldaLearn(class1, class2)](#module_webbci.ldaLearn) ⇒ <code>Object</code>
     * [.ldaProject(ldaParams, point)](#module_webbci.ldaProject) ⇒ <code>number</code>
-    * [.nextpow2(num)](#module_webbci.nextpow2)
+    * [.nextpow2(num)](#module_webbci.nextpow2) ⇒ <code>number</code>
     * [.psd(signal, [options])](#module_webbci.psd) ⇒ <code>Array.&lt;number&gt;</code>
     * [.psdBandPower(psd, sampleRate, band, [fftSize])](#module_webbci.psdBandPower) ⇒ <code>number</code>
     * [.signalBandPower(signal, sampleRate, band, [fftSize])](#module_webbci.signalBandPower) ⇒ <code>number</code>
@@ -30,7 +30,8 @@
     * [.windowApply(array, func, length, step, tail)](#module_webbci.windowApply) ⇒ <code>Array</code>
     * [.oscCollect(address, port, header, samples)](#module_webbci.oscCollect) ⇒ <code>Promise</code>
     * [.oscHeaderScan(address, port, duration)](#module_webbci.oscHeaderScan) ⇒ <code>Promise</code>
-    * [.wait(ms)](#module_webbci.wait)
+    * [.prompt(question)](#module_webbci.prompt) ⇒ <code>Promise</code>
+    * [.wait(ms)](#module_webbci.wait) ⇒ <code>Promise</code>
 
 <a name="module_webbci.oscStream"></a>
 
@@ -183,10 +184,11 @@ Predict the class of an unknown data point.
 
 <a name="module_webbci.nextpow2"></a>
 
-### webbci.nextpow2(num)
+### webbci.nextpow2(num) ⇒ <code>number</code>
 Returns the ceil of the log2 of the absolute value of the passed number
 
 **Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Returns**: <code>number</code> - The ceil of the log2 of the absolute value of the passed number  
 
 | Param | Type |
 | --- | --- |
@@ -247,7 +249,7 @@ Compute the average power across a given frequency band in a signal.
 Loads a CSV file into an array
 
 **Kind**: static method of [<code>webbci</code>](#module_webbci)  
-**Returns**: <code>Promise</code> - A promise object representing the CSV data array  
+**Returns**: <code>Promise</code> - A promise object which resolves to the CSV data array  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -395,10 +397,23 @@ Scan for OSC headers on a port and address
 | port | <code>any</code> | OSC port |
 | duration | <code>any</code> | Duration of scan in milliseconds |
 
+<a name="module_webbci.prompt"></a>
+
+### webbci.prompt(question) ⇒ <code>Promise</code>
+Prompts the user for input via stdin
+
+**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Returns**: <code>Promise</code> - A promise object that resolves with the response  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| question | <code>string</code> | Question shown to user |
+
 <a name="module_webbci.wait"></a>
 
-### webbci.wait(ms)
+### webbci.wait(ms) ⇒ <code>Promise</code>
 **Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Returns**: <code>Promise</code> - A promise which resolves when the timeout occurs  
 
 | Param | Type | Description |
 | --- | --- | --- |
