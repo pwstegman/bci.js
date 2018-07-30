@@ -17,7 +17,8 @@ async function collect(){
     console.log("Selected header '" + header + "'");
 
     // Collect a set of 8 samples
-    var data = await bci.oscCollect('0.0.0.0', '7000', header, 8);
+    console.log('Collecting 8 samples of data...');
+    var data = await bci.oscCollect('0.0.0.0', 7000, header, 8);
     console.log(data);
 }
 collect().catch(error => console.log(error));
