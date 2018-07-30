@@ -9,21 +9,11 @@ WebBCI is being developed out of the Human Technology Interaction Lab at the Uni
 
 ## Installation
 
-For the upcoming release, version 1.1.0
-
-```bash
-npm install webbci@next
-```
-
-For the previous stable release, version 1.0.6
-
 ```bash
 npm install webbci
 ```
 
 ## Getting Started
-
-The below examples are for the upcoming release of version 1.1.0. For example usage of the previous stable release, 1.0.6, please see [https://github.com/pwstegman/WebBCI/tree/4026d5723b111fe849e738ab813e64156ee310c0/examples](https://github.com/pwstegman/WebBCI/tree/4026d5723b111fe849e738ab813e64156ee310c0/examples)
 
 ### Signal Processing
 
@@ -144,7 +134,7 @@ OSC methods will not work in the web.
 
 ## Documentation
 
-For a complete list of methods and documentation check out [docs/api.md](https://github.com/pwstegman/WebBCI/blob/master/docs/api.md)
+Documentation can be found at [webbci.pwstegman.me](http://webbci.pwstegman.me/) or by viewing [docs/api.md](https://github.com/pwstegman/WebBCI/blob/master/docs/api.md)
 
 ## Examples
 
