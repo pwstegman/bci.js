@@ -19,6 +19,7 @@
     "app-root-path": "^2.1.0",
     "console.table": "^0.10.0",
     "csvtojson": "^1.1.9",
+    "easy-table": "^1.1.1",
     "fast-csv": "^2.4.1",
     "fft.js": "^4.0.3",
     "mathjs": "^3.20.2",
@@ -48,7 +49,6 @@
   "devDependencies": {
     "browserify": "^16.1.0",
     "docdash": "^0.4.0",
-    "easy-table": "^1.1.1",
     "fs-then-native": "^2.0.0",
     "gulp": "^3.9.1",
     "gulp-jsdoc3": "^2.0.0",
