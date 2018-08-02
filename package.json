@@ -17,14 +17,12 @@
   "license": "MIT",
   "dependencies": {
     "app-root-path": "^2.1.0",
-    "console.table": "^0.10.0",
     "csvtojson": "^1.1.9",
     "easy-table": "^1.1.1",
     "fast-csv": "^2.4.1",
     "fft.js": "^4.0.3",
     "mathjs": "^3.20.2",
     "node-osc": "^2.1.0",
-    "opn": "^5.2.0",
     "pw-csp": "^1.0.0",
     "pw-lda": "^1.0.0",
     "pw-stat": "^1.0.0"
