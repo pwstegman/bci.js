@@ -21,7 +21,8 @@ function arrayAlmostEqual(arr1, arr2, tolerance = 0.00001) {
 	}
 
 	for (var i = 0; i < a.length; i++) {
-		if (Math.abs(a[i] - b[i]) > tolerance) {
+		var diff = Math.abs(a[i] - b[i]);
+		if (isNaN(diff) || diff > tolerance) {
 			return false;
 		}
 	}
