@@ -17,7 +17,6 @@
   "author": "Pierce Stegman <pwstegman@gmail.com> (https://github.com/pwstegman)",
   "license": "MIT",
   "dependencies": {
-    "app-root-path": "^2.1.0",
     "csvtojson": "^1.1.12",
     "easy-table": "^1.1.1",
     "fast-csv": "^2.4.1",
@@ -46,6 +45,7 @@
   },
   "homepage": "https://github.com/pwstegman/WebBCI#readme",
   "devDependencies": {
+    "app-root-path": "^2.1.0",
     "browserify": "^16.1.0",
     "docdash": "^0.4.0",
     "fs-then-native": "^2.0.0",
