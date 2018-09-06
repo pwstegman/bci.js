@@ -1,11 +1,8 @@
 # WebBCI
-JavaScript based EEG signal processing
 
-**Goal:** Build portable/modern framework for web-based BCI applications
+WebBCI is a library for EEG-based BCI implementation with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, containing methods for signal processing and machine learning, such as LDA, CSP, and PSD, methods for data manipulation, such as MATLAB style array subscripting, data windowing, and CSV file support, and methods for networking, including data collection and streaming via OSC.
 
-Deploying BCI applications in a more portable language such as JavaScript can be difficult as many BCI specific methods have yet to be implemented. WebBCI aims to help bridge this gap by implementing BCI specific methods, building on existing libraries such as Math.js and Numeric Javascript. It also implements MATLAB specific methods, such as colon notation for array subscripting, to make data manipulation in JavaScript easier.
-
-WebBCI is being developed out of the Human Technology Interaction Lab at the University of Alabama Department of Computer Science
+WebBCI is being developed out of the Human Technology Interaction Lab at the University of Alabama Department of Computer Science.
 
 ## Installation
 
