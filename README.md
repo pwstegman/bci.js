@@ -1,4 +1,4 @@
-![WebBCI](WebBCI.png | width=250)
+# <img src="WebBCI.png" height="50px">
 
 WebBCI is a library for EEG-based BCI implementation with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, containing methods for signal processing and machine learning, such as LDA, CSP, and PSD, methods for data manipulation, such as MATLAB style array subscripting, data windowing, and CSV file support, and methods for networking, including data collection and streaming via OSC.
 
