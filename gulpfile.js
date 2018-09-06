@@ -1,16 +1,17 @@
-var fs = require('fs');
-var gulp = require('gulp');
+const fs = require('fs');
+const gulp = require('gulp');
 
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
-var uglify = require('gulp-uglify-es').default;
-var rename = require('gulp-rename');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const uglify = require('gulp-uglify-es').default;
+const rename = require('gulp-rename');
+const headerComment = require('gulp-header-comment');
 
-var jsdoc = require('gulp-jsdoc3');
+const jsdoc = require('gulp-jsdoc3');
 
-var fsThen = require('fs-then-native');
-var jsdoc2md = require('jsdoc-to-markdown');
+const fsThen = require('fs-then-native');
+const jsdoc2md = require('jsdoc-to-markdown');
 
 gulp.task('build', function () {
 	var libdir = 'lib';
@@ -58,6 +59,14 @@ gulp.task('docs-md', function(cb){
 });
 
 gulp.task('dist', function () {
+	let header = `
+		WebBCI v<%= pkg.version %>
+		https://github.com/pwstegman/WebBCI
+
+		License: <%= pkg.license %>
+		Generated <%= moment.utc().format() %>
+	`;
+
 	return browserify({
 		debug: false,
 		entries: './index.js',
@@ -67,8 +76,10 @@ gulp.task('dist', function () {
 		.on('error', (...args) => console.log(args))
 		.pipe(source('bci.js'))
 		.pipe(buffer())
+		.pipe(headerComment(header))
 		.pipe(gulp.dest('dist'))
 		.pipe(rename({ extname: '.min.js' }))
 		.pipe(uglify())
+		.pipe(headerComment(header))
 		.pipe(gulp.dest('dist'));
 });

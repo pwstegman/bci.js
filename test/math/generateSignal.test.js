@@ -2,6 +2,7 @@ const reqlib = require('app-root-path').require;
 const bci = reqlib('index.js');
 
 const assert = require('assert');
+const arrayAlmostEqual = reqlib('/test/util/arrayAlmostEqual.js');
 
 describe('generateSignal', function(){
     it('Generates a signal given frequencies and amplitudes', function(){
@@ -19,5 +20,10 @@ describe('generateSignal', function(){
             }
         }
         assert(same);
+
+        var actual = bci.generateSignal([1, 2], [7, 3], 8, 2);
+        // Expected value computed with GNU Octave as sin(2*pi*7*x)*1+sin(2*pi*3*x)*2 where x is 0:1/8:2-1/8
+        var expected = [0, 0.70711, -3, 0.70711, 0, -0.70711, 3, -0.70711, 0, 0.70711, -3, 0.70711, 0, -0.70711, 3, -0.70711];
+        assert(arrayAlmostEqual(actual, expected, 0.00001));
     });
 });
