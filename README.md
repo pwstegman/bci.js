@@ -140,3 +140,9 @@ Documentation can be found at [webbci.pwstegman.me](http://webbci.pwstegman.me/)
 ## Examples
 
 More examples can be found in the [examples](https://github.com/pwstegman/WebBCI/tree/master/examples) directory
+
+## Reference
+
+If you use WebBCI in a published work, please reference this paper
+
+P. Stegman, C. Crawford, and J. Gray, "WebBCI: An Electroencephalography Toolkit Built on Modern Web Technologies," in Augmented Cognition: Intelligent Technologies, 2018, pp. 212–221.
