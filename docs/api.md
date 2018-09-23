@@ -148,7 +148,7 @@ Projects data and reduces to given number of dimensions
 FastICA algorithm for independent component analysis
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
-**Returns**: <code>Object</code> - An object with the following values: {source: the estimated source matrix, weights: the estimated unmixing matrix, whitening: the computer whitening matrix, iterations: number of iterations taken to converge on each weight}  
+**Returns**: <code>Object</code> - An object with the following values: {source: the estimated source matrix, weights: the estimated unmixing matrix, whitening: the computed whitening matrix, iterations: number of iterations taken to converge on each weight}  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
