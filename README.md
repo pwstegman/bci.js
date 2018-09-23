@@ -135,7 +135,7 @@ OSC and CSV methods will not work in the web.
 
 ## Documentation
 
-Documentation can be found at [bcijs.pwstegman.me](http://bcijs.pwstegman.me/) or by viewing [docs/api.md](https://github.com/pwstegman/bcijs/blob/master/docs/api.md)
+Documentation can be found at [https://bci.js.org](https://bci.js.org) or by viewing [docs/api.md](https://github.com/pwstegman/bcijs/blob/master/docs/api.md)
 
 ## Examples
 
