@@ -1,4 +1,48 @@
-const math = require('mathjs/core').create();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib/math/fastICA.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <style>
+        li > code {
+            min-height: 1em;
+        }
+    </style>
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-bcijs.oscStream.html">oscStream</a><ul class='methods'><li data-type='method'><a href="module-bcijs.oscStream.html#on">on</a></li><li data-type='method'><a href="module-bcijs.oscStream.html#start">start</a></li><li data-type='method'><a href="module-bcijs.oscStream.html#stop">stop</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-bcijs.html">bcijs</a><ul class='methods'><li data-type='method'><a href="module-bcijs.html#.cspLearn">cspLearn</a></li><li data-type='method'><a href="module-bcijs.html#.cspProject">cspProject</a></li><li data-type='method'><a href="module-bcijs.html#.fastICA">fastICA</a></li><li data-type='method'><a href="module-bcijs.html#.generateSignal">generateSignal</a></li><li data-type='method'><a href="module-bcijs.html#.ldaLearn">ldaLearn</a></li><li data-type='method'><a href="module-bcijs.html#.ldaProject">ldaProject</a></li><li data-type='method'><a href="module-bcijs.html#.loadCSV">loadCSV</a></li><li data-type='method'><a href="module-bcijs.html#.nextpow2">nextpow2</a></li><li data-type='method'><a href="module-bcijs.html#.oscCollect">oscCollect</a></li><li data-type='method'><a href="module-bcijs.html#.oscHeaderScan">oscHeaderScan</a></li><li data-type='method'><a href="module-bcijs.html#.partition">partition</a></li><li data-type='method'><a href="module-bcijs.html#.prompt">prompt</a></li><li data-type='method'><a href="module-bcijs.html#.psd">psd</a></li><li data-type='method'><a href="module-bcijs.html#.psdBandPower">psdBandPower</a></li><li data-type='method'><a href="module-bcijs.html#.round">round</a></li><li data-type='method'><a href="module-bcijs.html#.saveCSV">saveCSV</a></li><li data-type='method'><a href="module-bcijs.html#.signalBandPower">signalBandPower</a></li><li data-type='method'><a href="module-bcijs.html#.subscript">subscript</a></li><li data-type='method'><a href="module-bcijs.html#.toFixed">toFixed</a></li><li data-type='method'><a href="module-bcijs.html#.toTable">toTable</a></li><li data-type='method'><a href="module-bcijs.html#.wait">wait</a></li><li data-type='method'><a href="module-bcijs.html#.windowApply">windowApply</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="module-bcijs.features.html">features</a><ul class='methods'><li data-type='method'><a href="module-bcijs.features.html#.logvar">logvar</a></li><li data-type='method'><a href="module-bcijs.features.html#.rootMeanSquare">rootMeanSquare</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">lib/math/fastICA.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const math = require('mathjs/core').create();
 math.import(require('mathjs/lib/type/matrix'));
 math.import(require('mathjs/lib/type/complex'));
 math.import(require('mathjs/lib/function/arithmetic'));
@@ -55,9 +99,9 @@ function fastICA(signals, options){
 
     let mean = math.mean(signals, 1);
     let centered = [];
-    for(let i = 0; i < signals.length; i++){
+    for(let i = 0; i &lt; signals.length; i++){
         centered.push([]);
-        for(let j = 0; j < signals[i].length; j++){
+        for(let j = 0; j &lt; signals[i].length; j++){
             centered[i].push(signals[i][j] - mean[i]);
         }
     }
@@ -78,13 +122,13 @@ function fastICA(signals, options){
     let numComponenents = N;
     // Create a weight vector for each component
     let weights = [];
-    for(let i = 0; i < numComponenents; i++){
+    for(let i = 0; i &lt; numComponenents; i++){
         weights.push(math.random([N]));
     }
 
     let totalIterations = [];
 
-    for(let p = 0; p < numComponenents; p++){
+    for(let p = 0; p &lt; numComponenents; p++){
         let previousWeight = math.clone(weights[p]);
 
         if(debug){
@@ -93,7 +137,7 @@ function fastICA(signals, options){
 
         let converged = false;
 
-        for(let i = 0; i < maxIterations; i++){
+        for(let i = 0; i &lt; maxIterations; i++){
             // Convergence test
             let a = previousWeight;
             let b = weights[p];
@@ -101,15 +145,15 @@ function fastICA(signals, options){
             let delta = 1 - math.abs(cosTheta);
             previousWeight = b;
 
-            if(debug && i == 0){
+            if(debug &amp;&amp; i == 0){
                 console.log((new Date()).toLocaleTimeString(), 'On iteration', i+1, '/', maxIterations);
             }
 
-            if(debug && (i+1)%10 == 0){
+            if(debug &amp;&amp; (i+1)%10 == 0){
                 console.log((new Date()).toLocaleTimeString(), 'On iteration', i+1, '/', maxIterations, 'with a change of', Math.acos(Math.abs(cosTheta)), 'rad');
             }
             
-            if(i != 0 && delta < 5e-11){
+            if(i != 0 &amp;&amp; delta &lt; 5e-11){
                 totalIterations.push(i);
                 converged = true;
                 
@@ -133,7 +177,7 @@ function fastICA(signals, options){
                 )
             ));
 
-            for(let j = 0; j < p; j++){
+            for(let j = 0; j &lt; p; j++){
                 weights[p] = math.subtract(
                     weights[p],
                     math.multiply(
@@ -165,4 +209,22 @@ function fastICA(signals, options){
     }
 }
 
-module.exports = fastICA;
+module.exports = fastICA;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Sep 22 2018 19:10:48 GMT-0500 (Central Daylight Time) using a modified version of the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

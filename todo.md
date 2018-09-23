@@ -7,5 +7,4 @@
 - Copy static files to docs folder when docs generated
 
 ## Methods
-- ICA
 - Filters (low, high, band, notch, etc.)

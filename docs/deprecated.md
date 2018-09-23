@@ -1,38 +1,38 @@
-<a name="module_webbci"></a>
+<a name="module_bcijs"></a>
 
-## webbci
+## bcijs
 
-* [webbci](#module_webbci)
-    * ~~[.LDA](#module_webbci.LDA)~~
-        * [new LDA(class1, class2)](#new_module_webbci.LDA_new)
-        * [.project(point)](#module_webbci.LDA.project) ⇒ <code>number</code>
-    * ~~[.network](#module_webbci.network) : <code>object</code>~~
-        * [.addEEGListener(oscAddress, oscPort, eegAddress, callback)](#module_webbci.network.addEEGListener)
-    * ~~[.signal](#module_webbci.signal) : <code>object</code>~~
+* [bcijs](#module_bcijs)
+    * ~~[.LDA](#module_bcijs.LDA)~~
+        * [new LDA(class1, class2)](#new_module_bcijs.LDA_new)
+        * [.project(point)](#module_bcijs.LDA.project) ⇒ <code>number</code>
+    * ~~[.network](#module_bcijs.network) : <code>object</code>~~
+        * [.addEEGListener(oscAddress, oscPort, eegAddress, callback)](#module_bcijs.network.addEEGListener)
+    * ~~[.signal](#module_bcijs.signal) : <code>object</code>~~
         * [generate(amplitudes, frequencies, sampleRate, duration)](#generate) ⇒ <code>Array.&lt;number&gt;</code>
         * _static_
-            * [.CSP](#module_webbci.signal.CSP)
-                * [new CSP(class1, class2)](#new_module_webbci.signal.CSP_new)
-                * [.project(data, [dimensions])](#module_webbci.signal.CSP.project) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
-            * [.EEGWindow](#module_webbci.signal.EEGWindow)
-                * [new EEGWindow(size, numChannels, callback)](#new_module_webbci.signal.EEGWindow_new)
-                * [.addData(data)](#module_webbci.signal.EEGWindow+addData)
-                * [.clear()](#module_webbci.signal.EEGWindow+clear)
-            * [.getPSD(size, signal)](#module_webbci.signal.getPSD) ⇒ <code>Array.&lt;number&gt;</code>
-            * [.getBandPower(size, psd, sampleRate, band)](#module_webbci.signal.getBandPower) ⇒ <code>number</code>
+            * [.CSP](#module_bcijs.signal.CSP)
+                * [new CSP(class1, class2)](#new_module_bcijs.signal.CSP_new)
+                * [.project(data, [dimensions])](#module_bcijs.signal.CSP.project) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+            * [.EEGWindow](#module_bcijs.signal.EEGWindow)
+                * [new EEGWindow(size, numChannels, callback)](#new_module_bcijs.signal.EEGWindow_new)
+                * [.addData(data)](#module_bcijs.signal.EEGWindow+addData)
+                * [.clear()](#module_bcijs.signal.EEGWindow+clear)
+            * [.getPSD(size, signal)](#module_bcijs.signal.getPSD) ⇒ <code>Array.&lt;number&gt;</code>
+            * [.getBandPower(size, psd, sampleRate, band)](#module_bcijs.signal.getBandPower) ⇒ <code>number</code>
 
-<a name="module_webbci.LDA"></a>
+<a name="module_bcijs.LDA"></a>
 
-### ~~webbci.LDA~~
+### ~~bcijs.LDA~~
 ***Deprecated***
 
-**Kind**: static class of [<code>webbci</code>](#module_webbci)  
+**Kind**: static class of [<code>bcijs</code>](#module_bcijs)  
 
-* ~~[.LDA](#module_webbci.LDA)~~
-    * [new LDA(class1, class2)](#new_module_webbci.LDA_new)
-    * [.project(point)](#module_webbci.LDA.project) ⇒ <code>number</code>
+* ~~[.LDA](#module_bcijs.LDA)~~
+    * [new LDA(class1, class2)](#new_module_bcijs.LDA_new)
+    * [.project(point)](#module_bcijs.LDA.project) ⇒ <code>number</code>
 
-<a name="new_module_webbci.LDA_new"></a>
+<a name="new_module_bcijs.LDA_new"></a>
 
 #### new LDA(class1, class2)
 An LDA object
@@ -43,32 +43,32 @@ An LDA object
 | class1 | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | Data set for class 1, rows are samples, columns are variables |
 | class2 | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | Data set for class 2, rows are samples, columns are variables |
 
-<a name="module_webbci.LDA.project"></a>
+<a name="module_bcijs.LDA.project"></a>
 
 #### LDA.project(point) ⇒ <code>number</code>
 Predict the class of an unknown data point
 
-**Kind**: static method of [<code>LDA</code>](#module_webbci.LDA)  
+**Kind**: static method of [<code>LDA</code>](#module_bcijs.LDA)  
 **Returns**: <code>number</code> - value less than 0 if predicted to be in class 1, 0 if exactly inbetween, greater than 0 if class 2  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | point | <code>Array.&lt;number&gt;</code> | The data point to be classified. |
 
-<a name="module_webbci.network"></a>
+<a name="module_bcijs.network"></a>
 
-### ~~webbci.network : <code>object</code>~~
+### ~~bcijs.network : <code>object</code>~~
 ***Deprecated***
 
 The network operations for webbci
 
-**Kind**: static namespace of [<code>webbci</code>](#module_webbci)  
-<a name="module_webbci.network.addEEGListener"></a>
+**Kind**: static namespace of [<code>bcijs</code>](#module_bcijs)  
+<a name="module_bcijs.network.addEEGListener"></a>
 
 #### network.addEEGListener(oscAddress, oscPort, eegAddress, callback)
 Calls callback when EEG data is received over the network.
 
-**Kind**: static method of [<code>network</code>](#module_webbci.network)  
+**Kind**: static method of [<code>network</code>](#module_bcijs.network)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -77,27 +77,27 @@ Calls callback when EEG data is received over the network.
 | eegAddress | <code>string</code> | The OSC header for the EEG data. For example: Person0/eeg. |
 | callback | <code>requestCallback</code> | Called when EEG data is received. |
 
-<a name="module_webbci.signal"></a>
+<a name="module_bcijs.signal"></a>
 
-### ~~webbci.signal : <code>object</code>~~
+### ~~bcijs.signal : <code>object</code>~~
 ***Deprecated***
 
 Signal processing operations
 
-**Kind**: static namespace of [<code>webbci</code>](#module_webbci)  
+**Kind**: static namespace of [<code>bcijs</code>](#module_bcijs)  
 
-* ~~[.signal](#module_webbci.signal) : <code>object</code>~~
+* ~~[.signal](#module_bcijs.signal) : <code>object</code>~~
     * [generate(amplitudes, frequencies, sampleRate, duration)](#generate) ⇒ <code>Array.&lt;number&gt;</code>
     * _static_
-        * [.CSP](#module_webbci.signal.CSP)
-            * [new CSP(class1, class2)](#new_module_webbci.signal.CSP_new)
-            * [.project(data, [dimensions])](#module_webbci.signal.CSP.project) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
-        * [.EEGWindow](#module_webbci.signal.EEGWindow)
-            * [new EEGWindow(size, numChannels, callback)](#new_module_webbci.signal.EEGWindow_new)
-            * [.addData(data)](#module_webbci.signal.EEGWindow+addData)
-            * [.clear()](#module_webbci.signal.EEGWindow+clear)
-        * [.getPSD(size, signal)](#module_webbci.signal.getPSD) ⇒ <code>Array.&lt;number&gt;</code>
-        * [.getBandPower(size, psd, sampleRate, band)](#module_webbci.signal.getBandPower) ⇒ <code>number</code>
+        * [.CSP](#module_bcijs.signal.CSP)
+            * [new CSP(class1, class2)](#new_module_bcijs.signal.CSP_new)
+            * [.project(data, [dimensions])](#module_bcijs.signal.CSP.project) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+        * [.EEGWindow](#module_bcijs.signal.EEGWindow)
+            * [new EEGWindow(size, numChannels, callback)](#new_module_bcijs.signal.EEGWindow_new)
+            * [.addData(data)](#module_bcijs.signal.EEGWindow+addData)
+            * [.clear()](#module_bcijs.signal.EEGWindow+clear)
+        * [.getPSD(size, signal)](#module_bcijs.signal.getPSD) ⇒ <code>Array.&lt;number&gt;</code>
+        * [.getBandPower(size, psd, sampleRate, band)](#module_bcijs.signal.getBandPower) ⇒ <code>number</code>
 
 <a name="generate"></a>
 
@@ -113,16 +113,16 @@ Generate a signal.
 | sampleRate | <code>number</code> | The sample rate of the signal in Hz. |
 | duration | <code>number</code> | The duration of the signal in seconds. |
 
-<a name="module_webbci.signal.CSP"></a>
+<a name="module_bcijs.signal.CSP"></a>
 
 #### signal.CSP
-**Kind**: static class of [<code>signal</code>](#module_webbci.signal)  
+**Kind**: static class of [<code>signal</code>](#module_bcijs.signal)  
 
-* [.CSP](#module_webbci.signal.CSP)
-    * [new CSP(class1, class2)](#new_module_webbci.signal.CSP_new)
-    * [.project(data, [dimensions])](#module_webbci.signal.CSP.project) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+* [.CSP](#module_bcijs.signal.CSP)
+    * [new CSP(class1, class2)](#new_module_bcijs.signal.CSP_new)
+    * [.project(data, [dimensions])](#module_bcijs.signal.CSP.project) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
 
-<a name="new_module_webbci.signal.CSP_new"></a>
+<a name="new_module_bcijs.signal.CSP_new"></a>
 
 ##### new CSP(class1, class2)
 Creates a new CSP object
@@ -133,12 +133,12 @@ Creates a new CSP object
 | class1 | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | Data samples for class 1. Rows should be samples, columns should be signals. |
 | class2 | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | Data samples for class 2. Rows should be samples, columns should be signals. |
 
-<a name="module_webbci.signal.CSP.project"></a>
+<a name="module_bcijs.signal.CSP.project"></a>
 
 ##### CSP.project(data, [dimensions]) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
 Projects data and reduces to given number of dimensions
 
-**Kind**: static method of [<code>CSP</code>](#module_webbci.signal.CSP)  
+**Kind**: static method of [<code>CSP</code>](#module_bcijs.signal.CSP)  
 **Returns**: <code>Array.&lt;Array.&lt;number&gt;&gt;</code> - Projected data. Rows are samples, columns are dimensions sorted by descending importance.  
 
 | Param | Type | Description |
@@ -146,17 +146,17 @@ Projects data and reduces to given number of dimensions
 | data | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | Data points to be projected. Rows should be samples, columns should be signals. |
 | [dimensions] | <code>number</code> | Number of dimensions to be returned. Can range from 1 to number of signals. Defaults to number of signals. |
 
-<a name="module_webbci.signal.EEGWindow"></a>
+<a name="module_bcijs.signal.EEGWindow"></a>
 
 #### signal.EEGWindow
-**Kind**: static class of [<code>signal</code>](#module_webbci.signal)  
+**Kind**: static class of [<code>signal</code>](#module_bcijs.signal)  
 
-* [.EEGWindow](#module_webbci.signal.EEGWindow)
-    * [new EEGWindow(size, numChannels, callback)](#new_module_webbci.signal.EEGWindow_new)
-    * [.addData(data)](#module_webbci.signal.EEGWindow+addData)
-    * [.clear()](#module_webbci.signal.EEGWindow+clear)
+* [.EEGWindow](#module_bcijs.signal.EEGWindow)
+    * [new EEGWindow(size, numChannels, callback)](#new_module_bcijs.signal.EEGWindow_new)
+    * [.addData(data)](#module_bcijs.signal.EEGWindow+addData)
+    * [.clear()](#module_bcijs.signal.EEGWindow+clear)
 
-<a name="new_module_webbci.signal.EEGWindow_new"></a>
+<a name="new_module_bcijs.signal.EEGWindow_new"></a>
 
 ##### new EEGWindow(size, numChannels, callback)
 Create a new EEGWindow object.
@@ -168,29 +168,29 @@ Create a new EEGWindow object.
 | numChannels | <code>number</code> | The number of channels in each sample. |
 | callback | <code>requestCallback</code> | Called when the EEGWindow has a number of samples equal to size. An array of dimensions channels x samples is passed to the callback function. |
 
-<a name="module_webbci.signal.EEGWindow+addData"></a>
+<a name="module_bcijs.signal.EEGWindow+addData"></a>
 
 ##### eegWindow.addData(data)
 Adds a data sample to the EEGWindow.
 
-**Kind**: instance method of [<code>EEGWindow</code>](#module_webbci.signal.EEGWindow)  
+**Kind**: instance method of [<code>EEGWindow</code>](#module_bcijs.signal.EEGWindow)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | data | <code>Array.&lt;number&gt;</code> | The data sample to be added. Should be of length 'channels' |
 
-<a name="module_webbci.signal.EEGWindow+clear"></a>
+<a name="module_bcijs.signal.EEGWindow+clear"></a>
 
 ##### eegWindow.clear()
 Reset the EEGWindow and clear all data from it.
 
-**Kind**: instance method of [<code>EEGWindow</code>](#module_webbci.signal.EEGWindow)  
-<a name="module_webbci.signal.getPSD"></a>
+**Kind**: instance method of [<code>EEGWindow</code>](#module_bcijs.signal.EEGWindow)  
+<a name="module_bcijs.signal.getPSD"></a>
 
 #### signal.getPSD(size, signal) ⇒ <code>Array.&lt;number&gt;</code>
 Compute the power spectral density of a given signal.
 
-**Kind**: static method of [<code>signal</code>](#module_webbci.signal)  
+**Kind**: static method of [<code>signal</code>](#module_bcijs.signal)  
 **Returns**: <code>Array.&lt;number&gt;</code> - The PSD.  
 
 | Param | Type | Description |
@@ -198,12 +198,12 @@ Compute the power spectral density of a given signal.
 | size | <code>number</code> | Size of the fourier transform to be used. Should be a power of 2. |
 | signal | <code>Array.&lt;number&gt;</code> | The signal. |
 
-<a name="module_webbci.signal.getBandPower"></a>
+<a name="module_bcijs.signal.getBandPower"></a>
 
 #### signal.getBandPower(size, psd, sampleRate, band) ⇒ <code>number</code>
 Compute the average power across a given frequency band given the PSD.
 
-**Kind**: static method of [<code>signal</code>](#module_webbci.signal)  
+**Kind**: static method of [<code>signal</code>](#module_bcijs.signal)  
 **Returns**: <code>number</code> - The average power in the frequency band.  
 
 | Param | Type | Description |

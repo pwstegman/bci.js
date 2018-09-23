@@ -1,13 +1,13 @@
-<img src="WebBCI.png" height="50px">
+<img src="static/bcijs-logo.png" height="68px">
 
-WebBCI is a library for EEG-based BCI implementation with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, containing methods for signal processing and machine learning, such as LDA, CSP, and PSD, methods for data manipulation, such as MATLAB style array subscripting, data windowing, and CSV file support, and methods for networking, including data collection and streaming via OSC.
+BCI.js is a library for EEG-based brain computer interface (BCI) design with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, containing methods for signal processing and machine learning, such as LDA, CSP, and PSD, methods for data manipulation, such as MATLAB style array subscripting, data windowing, and CSV file support, and methods for networking, including data collection and streaming via OSC.
 
-WebBCI is being developed out of the Human Technology Interaction Lab at the University of Alabama Department of Computer Science.
+BCI.js is being developed out of the Human Technology Interaction Lab at the University of Alabama Department of Computer Science.
 
 ## Installation
 
 ```bash
-npm install webbci
+npm install bcijs
 ```
 
 ## Getting Started
@@ -15,7 +15,7 @@ npm install webbci
 ### Signal Processing
 
 ```javascript
-var bci = require('webbci');
+var bci = require('bcijs');
 
 // Generate 1 second of sample data
 var sampleRate = 512;
@@ -41,7 +41,7 @@ console.log(bci.signalBandPower(signal, sampleRate, 'beta', fftSize));  // 114
 ### Machine Learning
 
 ```javascript
-var bci = require('webbci');
+var bci = require('bcijs');
 
 // Training set
 var class1 = [
@@ -81,7 +81,7 @@ console.log(predictions); // [ -1, -1, -1, 1, 1, 1 ]
 ### Data Manipulation and Feature Extraction
 
 ```javascript
-var bci = require('webbci');
+var bci = require('bcijs');
 
 // Some random numbers
 var data = [3, 2, 3, 0, 4, 0, 0, 5, 4, 0];
@@ -125,14 +125,14 @@ console.log(subarr);
 npm run dist
 ```
 
-This will generate `dist/bci.js` and `dist/bci.min.js`. WebBCI methods can be accessed via the global object *bci*.
+This will generate `dist/bci.js` and `dist/bci.min.js`. BCI.js methods can be accessed via the global object *bci*.
 
-OSC methods will not work in the web.
+OSC and CSV methods will not work in the web.
 
 ## Documentation
 
-Documentation can be found at [webbci.pwstegman.me](http://webbci.pwstegman.me/) or by viewing [docs/api.md](https://github.com/pwstegman/WebBCI/blob/master/docs/api.md)
+Documentation can be found at [bcijs.pwstegman.me](http://bcijs.pwstegman.me/) or by viewing [docs/api.md](https://github.com/pwstegman/bcijs/blob/master/docs/api.md)
 
 ## Examples
 
-More examples can be found in the [examples](https://github.com/pwstegman/WebBCI/tree/master/examples) directory
+More examples can be found in the [examples](https://github.com/pwstegman/bcijs/tree/master/examples) directory
