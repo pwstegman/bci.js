@@ -60,7 +60,7 @@ Predict the class of an unknown data point
 ### ~~bcijs.network : <code>object</code>~~
 ***Deprecated***
 
-The network operations for webbci
+The network operations for bcijs
 
 **Kind**: static namespace of [<code>bcijs</code>](#module_bcijs)  
 <a name="module_bcijs.network.addEEGListener"></a>

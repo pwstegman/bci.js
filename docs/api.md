@@ -330,11 +330,11 @@ Subscript an array with MATLAB-like syntax
 
 **Example**  
 ```js
-var bci = require('webbci');var arr = [3, 2, 4, 1, 5];var subarr = bci.subscript(arr, '1:3');console.log(subarr); // [3, 2, 4]
+var bci = require('bcijs');var arr = [3, 2, 4, 1, 5];var subarr = bci.subscript(arr, '1:3');console.log(subarr); // [3, 2, 4]
 ```
 **Example**  
 ```js
-var bci = require('webbci');var arr = [  [1, 2, 3],  [4, 5, 6],  [7, 8, 9]];var subarr = bci.subscript(arr, '1 3', '2:3'); // rows 1 and 3, columns 2 through 3console.log(subarr); // [[2, 3], [8, 9]]
+var bci = require('bcijs');var arr = [  [1, 2, 3],  [4, 5, 6],  [7, 8, 9]];var subarr = bci.subscript(arr, '1 3', '2:3'); // rows 1 and 3, columns 2 through 3console.log(subarr); // [[2, 3], [8, 9]]
 ```
 <a name="module_bcijs.toFixed"></a>
 
@@ -379,11 +379,11 @@ Similar to JavaScript's map, but it applies a function to sub arrays instead of 
 
 **Example**  
 ```js
-var bci = require('webbci');bci.windowApply([1, 2, 3, 4, 5], window => console.log(window), 3, 1);// [1, 2, 3]// [2, 3, 4]// [3, 4, 5] 
+var bci = require('bcijs');bci.windowApply([1, 2, 3, 4, 5], window => console.log(window), 3, 1);// [1, 2, 3]// [2, 3, 4]// [3, 4, 5] 
 ```
 **Example**  
 ```js
-var bci = require('webbci');var sums = bci.windowApply([1, 2, 3, 4, 5], window => {  var sum = 0;  window.forEach(x => sum += x);  return sum;}, 3, 1);console.log(sums);// [6, 9, 12]
+var bci = require('bcijs');var sums = bci.windowApply([1, 2, 3, 4, 5], window => {  var sum = 0;  window.forEach(x => sum += x);  return sum;}, 3, 1);console.log(sums);// [6, 9, 12]
 ```
 <a name="module_bcijs.oscCollect"></a>
 
