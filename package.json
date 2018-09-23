@@ -1,5 +1,5 @@
 {
-  "name": "webbci",
+  "name": "bcijs",
   "version": "1.1.3",
   "description": "JavaScript based EEG processing tool",
   "main": "index.js",
@@ -32,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pwstegman/WebBCI.git"
+    "url": "git+https://github.com/pwstegman/bcijs.git"
   },
   "keywords": [
     "eeg",
@@ -41,9 +41,9 @@
     "machine learning"
   ],
   "bugs": {
-    "url": "https://github.com/pwstegman/WebBCI/issues"
+    "url": "https://github.com/pwstegman/bcijs/issues"
   },
-  "homepage": "https://github.com/pwstegman/WebBCI#readme",
+  "homepage": "https://github.com/pwstegman/bcijs#readme",
   "devDependencies": {
     "app-root-path": "^2.1.0",
     "browserify": "^16.1.0",
