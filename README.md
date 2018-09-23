@@ -1,17 +1,17 @@
-<p><img src="WebBCI.png" height="50px"></p>
+<p><img src="static/bcijs-logo.png" height="68px"></p>
 
-[![npm](https://img.shields.io/npm/v/webbci.svg)](https://www.npmjs.com/package/webbci)
-[![npm](https://img.shields.io/npm/dm/webbci.svg)](https://www.npmjs.com/package/webbci)
-[![NpmLicense](https://img.shields.io/npm/l/webbci.svg)](https://github.com/pwstegman/WebBCI/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/bcijs.svg)](https://www.npmjs.com/package/bcijs)
+[![npm](https://img.shields.io/npm/dm/bcijs.svg)](https://www.npmjs.com/package/bcijs)
+[![NpmLicense](https://img.shields.io/npm/l/bcijs.svg)](https://github.com/pwstegman/bcijs/blob/master/LICENSE)
 
-WebBCI is a library for EEG-based BCI implementation with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, containing methods for signal processing and machine learning, such as LDA, CSP, and PSD, methods for data manipulation, such as MATLAB style array subscripting, data windowing, and CSV file support, and methods for networking, including data collection and streaming via OSC.
+BCI.js is a library for EEG-based brain computer interface (BCI) design with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, containing methods for signal processing and machine learning, such as LDA, CSP, ICA, and PSD, methods for data manipulation, such as MATLAB style array subscripting, data windowing, and CSV file support, and methods for networking, including data collection and streaming via OSC.
 
-WebBCI is being developed out of the Human Technology Interaction Lab at the University of Alabama Department of Computer Science.
+BCI.js is being developed out of the Human Technology Interaction Lab at the University of Alabama Department of Computer Science.
 
 ## Installation
 
 ```bash
-npm install webbci
+npm install bcijs
 ```
 
 ## Getting Started
@@ -19,7 +19,7 @@ npm install webbci
 ### Signal Processing
 
 ```javascript
-var bci = require('webbci');
+var bci = require('bcijs');
 
 // Generate 1 second of sample data
 var sampleRate = 512;
@@ -45,7 +45,7 @@ console.log(bci.signalBandPower(signal, sampleRate, 'beta', fftSize));  // 114
 ### Machine Learning
 
 ```javascript
-var bci = require('webbci');
+var bci = require('bcijs');
 
 // Training set
 var class1 = [
@@ -85,7 +85,7 @@ console.log(predictions); // [ -1, -1, -1, 1, 1, 1 ]
 ### Data Manipulation and Feature Extraction
 
 ```javascript
-var bci = require('webbci');
+var bci = require('bcijs');
 
 // Some random numbers
 var data = [3, 2, 3, 0, 4, 0, 0, 5, 4, 0];
@@ -129,20 +129,20 @@ console.log(subarr);
 npm run dist
 ```
 
-This will generate `dist/bci.js` and `dist/bci.min.js`. WebBCI methods can be accessed via the global object *bci*.
+This will generate `dist/bci.js` and `dist/bci.min.js`. BCI.js methods can be accessed via the global object *bci*.
 
-OSC methods will not work in the web.
+OSC and CSV methods will not work in the web.
 
 ## Documentation
 
-Documentation can be found at [webbci.pwstegman.me](http://webbci.pwstegman.me/) or by viewing [docs/api.md](https://github.com/pwstegman/WebBCI/blob/master/docs/api.md)
+Documentation can be found at [bcijs.pwstegman.me](http://bcijs.pwstegman.me/) or by viewing [docs/api.md](https://github.com/pwstegman/bcijs/blob/master/docs/api.md)
 
 ## Examples
 
-More examples can be found in the [examples](https://github.com/pwstegman/WebBCI/tree/master/examples) directory
+More examples can be found in the [examples](https://github.com/pwstegman/bcijs/tree/master/examples) directory
 
 ## Reference
 
-If you use WebBCI in a published work, please reference this paper
+If you use bci.js in a published work, please reference this paper
 
 P. Stegman, C. Crawford, and J. Gray, "WebBCI: An Electroencephalography Toolkit Built on Modern Web Technologies," in Augmented Cognition: Intelligent Technologies, 2018, pp. 212–221.

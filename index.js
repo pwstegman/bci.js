@@ -1,8 +1,9 @@
 // This file was auto generated, changes will be overwritten
-// Created on Thu Sep 06 2018 17:08:07 GMT-0500 (Central Daylight Time)
-/** @module webbci */
+// Created on Sat Sep 22 2018 19:42:34 GMT-0500 (Central Daylight Time)
+/** @module bcijs */
 module.exports.cspLearn = require('./lib/math/cspLearn.js');
 module.exports.cspProject = require('./lib/math/cspProject.js');
+module.exports.fastICA = require('./lib/math/fastICA.js');
 module.exports.features = require('./lib/math/features.js');
 module.exports.generateSignal = require('./lib/math/generateSignal.js');
 module.exports.ldaLearn = require('./lib/math/ldaLearn.js');

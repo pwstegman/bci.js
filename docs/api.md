@@ -1,52 +1,53 @@
-<a name="module_webbci"></a>
+<a name="module_bcijs"></a>
 
-## webbci
+## bcijs
 
-* [webbci](#module_webbci)
-    * [.oscStream](#module_webbci.oscStream)
-        * [new oscStream(address, port)](#new_module_webbci.oscStream_new)
-        * [.start()](#module_webbci.oscStream+start)
-        * [.stop()](#module_webbci.oscStream+stop)
-        * [.on(header, callback)](#module_webbci.oscStream+on)
-    * [.features](#module_webbci.features) : <code>object</code>
-        * [.logvar(window, [dimension])](#module_webbci.features.logvar)
-        * [.rootMeanSquare(window, [dimension])](#module_webbci.features.rootMeanSquare)
-    * [.cspLearn(class1, class2)](#module_webbci.cspLearn) ⇒ <code>Object</code>
-    * [.cspProject(cspParams, data, [dimensions])](#module_webbci.cspProject) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
-    * [.generateSignal(amplitudes, frequencies, sampleRate, duration)](#module_webbci.generateSignal) ⇒ <code>Array.&lt;number&gt;</code>
-    * [.ldaLearn(class1, class2)](#module_webbci.ldaLearn) ⇒ <code>Object</code>
-    * [.ldaProject(ldaParams, point)](#module_webbci.ldaProject) ⇒ <code>number</code>
-    * [.nextpow2(num)](#module_webbci.nextpow2) ⇒ <code>number</code>
-    * [.psd(signal, [options])](#module_webbci.psd) ⇒ <code>Array.&lt;number&gt;</code>
-    * [.psdBandPower(psd, sampleRate, band, [fftSize])](#module_webbci.psdBandPower) ⇒ <code>number</code>
-    * [.signalBandPower(signal, sampleRate, band, [fftSize])](#module_webbci.signalBandPower) ⇒ <code>number</code>
-    * [.loadCSV(filePath)](#module_webbci.loadCSV) ⇒ <code>Promise</code>
-    * [.partition(array, ...divisions)](#module_webbci.partition) ⇒ <code>Array.&lt;Array&gt;</code>
-    * [.round(array, places)](#module_webbci.round) ⇒ <code>Array.&lt;number&gt;</code>
-    * [.saveCSV(array, filename)](#module_webbci.saveCSV) ⇒ <code>Promise</code>
-    * [.subscript(array, ...params)](#module_webbci.subscript) ⇒ <code>Array</code>
-    * [.toFixed(array, places)](#module_webbci.toFixed) ⇒ <code>Array.&lt;string&gt;</code>
-    * [.toTable(array)](#module_webbci.toTable) ⇒ <code>string</code>
-    * [.windowApply(array, func, length, step, tail)](#module_webbci.windowApply) ⇒ <code>Array</code>
-    * [.oscCollect(address, port, header, samples)](#module_webbci.oscCollect) ⇒ <code>Promise</code>
-    * [.oscHeaderScan(address, port, duration)](#module_webbci.oscHeaderScan) ⇒ <code>Promise</code>
-    * [.prompt(question)](#module_webbci.prompt) ⇒ <code>Promise</code>
-    * [.wait(ms)](#module_webbci.wait) ⇒ <code>Promise</code>
+* [bcijs](#module_bcijs)
+    * [.oscStream](#module_bcijs.oscStream)
+        * [new oscStream(address, port)](#new_module_bcijs.oscStream_new)
+        * [.start()](#module_bcijs.oscStream+start)
+        * [.stop()](#module_bcijs.oscStream+stop)
+        * [.on(header, callback)](#module_bcijs.oscStream+on)
+    * [.features](#module_bcijs.features) : <code>object</code>
+        * [.logvar(window, [dimension])](#module_bcijs.features.logvar)
+        * [.rootMeanSquare(window, [dimension])](#module_bcijs.features.rootMeanSquare)
+    * [.cspLearn(class1, class2)](#module_bcijs.cspLearn) ⇒ <code>Object</code>
+    * [.cspProject(cspParams, data, [dimensions])](#module_bcijs.cspProject) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+    * [.fastICA(signals, options)](#module_bcijs.fastICA) ⇒ <code>Object</code>
+    * [.generateSignal(amplitudes, frequencies, sampleRate, duration)](#module_bcijs.generateSignal) ⇒ <code>Array.&lt;number&gt;</code>
+    * [.ldaLearn(class1, class2)](#module_bcijs.ldaLearn) ⇒ <code>Object</code>
+    * [.ldaProject(ldaParams, point)](#module_bcijs.ldaProject) ⇒ <code>number</code>
+    * [.nextpow2(num)](#module_bcijs.nextpow2) ⇒ <code>number</code>
+    * [.psd(signal, [options])](#module_bcijs.psd) ⇒ <code>Array.&lt;number&gt;</code>
+    * [.psdBandPower(psd, sampleRate, band, [fftSize])](#module_bcijs.psdBandPower) ⇒ <code>number</code>
+    * [.signalBandPower(signal, sampleRate, band, [fftSize])](#module_bcijs.signalBandPower) ⇒ <code>number</code>
+    * [.loadCSV(filePath)](#module_bcijs.loadCSV) ⇒ <code>Promise</code>
+    * [.partition(array, ...divisions)](#module_bcijs.partition) ⇒ <code>Array.&lt;Array&gt;</code>
+    * [.round(array, places)](#module_bcijs.round) ⇒ <code>Array.&lt;number&gt;</code>
+    * [.saveCSV(array, filename)](#module_bcijs.saveCSV) ⇒ <code>Promise</code>
+    * [.subscript(array, ...params)](#module_bcijs.subscript) ⇒ <code>Array</code>
+    * [.toFixed(array, places)](#module_bcijs.toFixed) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.toTable(array)](#module_bcijs.toTable) ⇒ <code>string</code>
+    * [.windowApply(array, func, length, step, tail)](#module_bcijs.windowApply) ⇒ <code>Array</code>
+    * [.oscCollect(address, port, header, samples)](#module_bcijs.oscCollect) ⇒ <code>Promise</code>
+    * [.oscHeaderScan(address, port, duration)](#module_bcijs.oscHeaderScan) ⇒ <code>Promise</code>
+    * [.prompt(question)](#module_bcijs.prompt) ⇒ <code>Promise</code>
+    * [.wait(ms)](#module_bcijs.wait) ⇒ <code>Promise</code>
 
-<a name="module_webbci.oscStream"></a>
+<a name="module_bcijs.oscStream"></a>
 
-### webbci.oscStream
+### bcijs.oscStream
 Listen for messages over OSC
 
-**Kind**: static class of [<code>webbci</code>](#module_webbci)  
+**Kind**: static class of [<code>bcijs</code>](#module_bcijs)  
 
-* [.oscStream](#module_webbci.oscStream)
-    * [new oscStream(address, port)](#new_module_webbci.oscStream_new)
-    * [.start()](#module_webbci.oscStream+start)
-    * [.stop()](#module_webbci.oscStream+stop)
-    * [.on(header, callback)](#module_webbci.oscStream+on)
+* [.oscStream](#module_bcijs.oscStream)
+    * [new oscStream(address, port)](#new_module_bcijs.oscStream_new)
+    * [.start()](#module_bcijs.oscStream+start)
+    * [.stop()](#module_bcijs.oscStream+stop)
+    * [.on(header, callback)](#module_bcijs.oscStream+on)
 
-<a name="new_module_webbci.oscStream_new"></a>
+<a name="new_module_bcijs.oscStream_new"></a>
 
 #### new oscStream(address, port)
 
@@ -55,71 +56,71 @@ Listen for messages over OSC
 | address | <code>string</code> | Address to listen on |
 | port | <code>number</code> | Port to listen on |
 
-<a name="module_webbci.oscStream+start"></a>
+<a name="module_bcijs.oscStream+start"></a>
 
 #### oscStream.start()
 Start listening for OSC messages
 
-**Kind**: instance method of [<code>oscStream</code>](#module_webbci.oscStream)  
-<a name="module_webbci.oscStream+stop"></a>
+**Kind**: instance method of [<code>oscStream</code>](#module_bcijs.oscStream)  
+<a name="module_bcijs.oscStream+stop"></a>
 
 #### oscStream.stop()
 Stop listening for OSC messages
 
-**Kind**: instance method of [<code>oscStream</code>](#module_webbci.oscStream)  
-<a name="module_webbci.oscStream+on"></a>
+**Kind**: instance method of [<code>oscStream</code>](#module_bcijs.oscStream)  
+<a name="module_bcijs.oscStream+on"></a>
 
 #### oscStream.on(header, callback)
 Call a callback function when data containing a specified OSC header is seen
 
-**Kind**: instance method of [<code>oscStream</code>](#module_webbci.oscStream)  
+**Kind**: instance method of [<code>oscStream</code>](#module_bcijs.oscStream)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | header | <code>string</code> | The OSC header |
 | callback | <code>requestCallback</code> | Called with the OSC data passed as the parameter |
 
-<a name="module_webbci.features"></a>
+<a name="module_bcijs.features"></a>
 
-### webbci.features : <code>object</code>
+### bcijs.features : <code>object</code>
 Feature extraction methods
 
-**Kind**: static namespace of [<code>webbci</code>](#module_webbci)  
+**Kind**: static namespace of [<code>bcijs</code>](#module_bcijs)  
 
-* [.features](#module_webbci.features) : <code>object</code>
-    * [.logvar(window, [dimension])](#module_webbci.features.logvar)
-    * [.rootMeanSquare(window, [dimension])](#module_webbci.features.rootMeanSquare)
+* [.features](#module_bcijs.features) : <code>object</code>
+    * [.logvar(window, [dimension])](#module_bcijs.features.logvar)
+    * [.rootMeanSquare(window, [dimension])](#module_bcijs.features.rootMeanSquare)
 
-<a name="module_webbci.features.logvar"></a>
+<a name="module_bcijs.features.logvar"></a>
 
 #### features.logvar(window, [dimension])
 Computes the log of the variance along the specified dimension
 
-**Kind**: static method of [<code>features</code>](#module_webbci.features)  
+**Kind**: static method of [<code>features</code>](#module_bcijs.features)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | window | <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;Array.&lt;number&gt;&gt;</code> |  | The data |
 | [dimension] | <code>string</code> | <code>null</code> | If 'rows' or 'columns' passed, the features are calculated along that dimension |
 
-<a name="module_webbci.features.rootMeanSquare"></a>
+<a name="module_bcijs.features.rootMeanSquare"></a>
 
 #### features.rootMeanSquare(window, [dimension])
 Computes the root mean square along the specified dimension
 
-**Kind**: static method of [<code>features</code>](#module_webbci.features)  
+**Kind**: static method of [<code>features</code>](#module_bcijs.features)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | window | <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;Array.&lt;number&gt;&gt;</code> |  | The data |
 | [dimension] | <code>string</code> | <code>null</code> | If 'rows' or 'columns' passed, the features are calculated along that dimension |
 
-<a name="module_webbci.cspLearn"></a>
+<a name="module_bcijs.cspLearn"></a>
 
-### webbci.cspLearn(class1, class2) ⇒ <code>Object</code>
+### bcijs.cspLearn(class1, class2) ⇒ <code>Object</code>
 Learn common spatial pattern for two datasets
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Object</code> - Learned CSP parameters  
 
 | Param | Type | Description |
@@ -127,12 +128,12 @@ Learn common spatial pattern for two datasets
 | class1 | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | Data samples for class 1. Rows should be samples, columns should be signals. |
 | class2 | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | Data samples for class 2. Rows should be samples, columns should be signals. |
 
-<a name="module_webbci.cspProject"></a>
+<a name="module_bcijs.cspProject"></a>
 
-### webbci.cspProject(cspParams, data, [dimensions]) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+### bcijs.cspProject(cspParams, data, [dimensions]) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
 Projects data and reduces to given number of dimensions
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Array.&lt;Array.&lt;number&gt;&gt;</code> - Projected data. Rows are samples, columns are dimensions sorted by descending importance.  
 
 | Param | Type | Description |
@@ -141,12 +142,28 @@ Projects data and reduces to given number of dimensions
 | data | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | Data points to be projected. Rows should be samples, columns should be signals. |
 | [dimensions] | <code>number</code> | Number of dimensions to be returned. Can range from 1 to number of signals. Defaults to number of signals. |
 
-<a name="module_webbci.generateSignal"></a>
+<a name="module_bcijs.fastICA"></a>
 
-### webbci.generateSignal(amplitudes, frequencies, sampleRate, duration) ⇒ <code>Array.&lt;number&gt;</code>
+### bcijs.fastICA(signals, options) ⇒ <code>Object</code>
+FastICA algorithm for independent component analysis
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>Object</code> - An object with the following values: {source: the estimated source matrix, weights: the estimated unmixing matrix, whitening: the computer whitening matrix, iterations: number of iterations taken to converge on each weight}  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| signals | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> |  | The mixed signals. Each row should be a signal and each column a sample. |
+| options | <code>Object</code> |  |  |
+| [options.maxIterations] | <code>number</code> | <code>1000</code> | Maximum number of iterations |
+| [options.debug] | <code>boolean</code> | <code>false</code> | If true, prints out debug information while running |
+| [options.fun] | <code>string</code> | <code>&quot;logcosh&quot;</code> | The functional form of the G function used in the approximation of negentropy. Can be either 'exp' or 'logcosh. |
+
+<a name="module_bcijs.generateSignal"></a>
+
+### bcijs.generateSignal(amplitudes, frequencies, sampleRate, duration) ⇒ <code>Array.&lt;number&gt;</code>
 Generate a signal with the given frequencies and their amplitudes.
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Array.&lt;number&gt;</code> - The generated signal.  
 
 | Param | Type | Description |
@@ -156,12 +173,12 @@ Generate a signal with the given frequencies and their amplitudes.
 | sampleRate | <code>number</code> | Sample rate of the signal in Hz. |
 | duration | <code>number</code> | Duration of the signal in seconds. |
 
-<a name="module_webbci.ldaLearn"></a>
+<a name="module_bcijs.ldaLearn"></a>
 
-### webbci.ldaLearn(class1, class2) ⇒ <code>Object</code>
+### bcijs.ldaLearn(class1, class2) ⇒ <code>Object</code>
 Perform linear discriminant analysis between two datasets
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Object</code> - Computed LDA parameters  
 
 | Param | Type | Description |
@@ -169,12 +186,12 @@ Perform linear discriminant analysis between two datasets
 | class1 | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | Data set for class 1, rows are samples, columns are variables |
 | class2 | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | Data set for class 2, rows are samples, columns are variables |
 
-<a name="module_webbci.ldaProject"></a>
+<a name="module_bcijs.ldaProject"></a>
 
-### webbci.ldaProject(ldaParams, point) ⇒ <code>number</code>
+### bcijs.ldaProject(ldaParams, point) ⇒ <code>number</code>
 Predict the class of an unknown data point.
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>number</code> - value less than 0 if predicted to be in class 1, 0 if exactly inbetween, greater than 0 if class 2  
 
 | Param | Type | Description |
@@ -182,12 +199,12 @@ Predict the class of an unknown data point.
 | ldaParams | <code>object</code> | The parameters for the LDA, computed with the function ldaLearn |
 | point | <code>Array.&lt;number&gt;</code> | The data point to be classified. |
 
-<a name="module_webbci.nextpow2"></a>
+<a name="module_bcijs.nextpow2"></a>
 
-### webbci.nextpow2(num) ⇒ <code>number</code>
+### bcijs.nextpow2(num) ⇒ <code>number</code>
 Returns the ceil of the log2 of the absolute value of the passed number
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>number</code> - The ceil of the log2 of the absolute value of the passed number  
 
 | Param | Type |
@@ -198,12 +215,12 @@ Returns the ceil of the log2 of the absolute value of the passed number
 ```js
 nextpow2(8); // 3nextpow2(9); // 4nextpow2(16); // 4nextpow2(30); // 5nextpow2(0); // -Infinity
 ```
-<a name="module_webbci.psd"></a>
+<a name="module_bcijs.psd"></a>
 
-### webbci.psd(signal, [options]) ⇒ <code>Array.&lt;number&gt;</code>
+### bcijs.psd(signal, [options]) ⇒ <code>Array.&lt;number&gt;</code>
 Compute the power spectral density of a given signal.
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Array.&lt;number&gt;</code> - The PSD.  
 
 | Param | Type | Default | Description |
@@ -213,12 +230,12 @@ Compute the power spectral density of a given signal.
 | [options.fftSize] | <code>number</code> | <code>Math.pow(2, bci.nextpow2(signal.length))</code> | Size of the fft to be used. Should be a power of 2. |
 | [options.truncate] | <code>boolean</code> | <code>false</code> | If true, only the first half of the PSD array is returned |
 
-<a name="module_webbci.psdBandPower"></a>
+<a name="module_bcijs.psdBandPower"></a>
 
-### webbci.psdBandPower(psd, sampleRate, band, [fftSize]) ⇒ <code>number</code>
+### bcijs.psdBandPower(psd, sampleRate, band, [fftSize]) ⇒ <code>number</code>
 Compute the average power across a given frequency band given the PSD.
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>number</code> - The average power in the frequency band.  
 
 | Param | Type | Default | Description |
@@ -228,12 +245,12 @@ Compute the average power across a given frequency band given the PSD.
 | band | <code>Array.&lt;number&gt;</code> \| <code>string</code> |  | The frequency band provided as an array [frequencyStart, frequencyStop] or a string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz). While string representations allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in future updates. |
 | [fftSize] | <code>number</code> | <code>Math.pow(2, bci.nextpow2(psd.length))</code> | Size of the fourier transform used to compute the PSD. |
 
-<a name="module_webbci.signalBandPower"></a>
+<a name="module_bcijs.signalBandPower"></a>
 
-### webbci.signalBandPower(signal, sampleRate, band, [fftSize]) ⇒ <code>number</code>
+### bcijs.signalBandPower(signal, sampleRate, band, [fftSize]) ⇒ <code>number</code>
 Compute the average power across a given frequency band in a signal.
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>number</code> - The average power in the frequency band.  
 
 | Param | Type | Default | Description |
@@ -243,24 +260,24 @@ Compute the average power across a given frequency band in a signal.
 | band | <code>Array.&lt;number&gt;</code> \| <code>string</code> |  | The frequency band provided as an array [frequencyStart, frequencyStop] or a string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz). While string representations allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in future updates. |
 | [fftSize] | <code>number</code> | <code>Math.pow(2, bci.nextpow2(signal.length))</code> | Size of the fourier transform used to compute the PSD. |
 
-<a name="module_webbci.loadCSV"></a>
+<a name="module_bcijs.loadCSV"></a>
 
-### webbci.loadCSV(filePath) ⇒ <code>Promise</code>
+### bcijs.loadCSV(filePath) ⇒ <code>Promise</code>
 Loads a CSV file into an array
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Promise</code> - A promise object which resolves to the CSV data array  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | filePath | <code>string</code> | The path to the CSV file |
 
-<a name="module_webbci.partition"></a>
+<a name="module_bcijs.partition"></a>
 
-### webbci.partition(array, ...divisions) ⇒ <code>Array.&lt;Array&gt;</code>
+### bcijs.partition(array, ...divisions) ⇒ <code>Array.&lt;Array&gt;</code>
 Partitions an array into multiple arraysCan be used to split data into training and testing sets
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Array.&lt;Array&gt;</code> - Array of subarrays which are the partitons  
 
 | Param | Type | Description |
@@ -272,12 +289,12 @@ Partitions an array into multiple arraysCan be used to split data into training
 ```js
 partition([1, 2, 3, 4], 0.25, 0.75); // returns [[1], [2, 3, 4]]
 ```
-<a name="module_webbci.round"></a>
+<a name="module_bcijs.round"></a>
 
-### webbci.round(array, places) ⇒ <code>Array.&lt;number&gt;</code>
+### bcijs.round(array, places) ⇒ <code>Array.&lt;number&gt;</code>
 Rounds every value in an array to a set number of decimal places
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Array.&lt;number&gt;</code> - The rounded array  
 
 | Param | Type |
@@ -285,12 +302,12 @@ Rounds every value in an array to a set number of decimal places
 | array | <code>Array.&lt;number&gt;</code> | 
 | places | <code>number</code> | 
 
-<a name="module_webbci.saveCSV"></a>
+<a name="module_bcijs.saveCSV"></a>
 
-### webbci.saveCSV(array, filename) ⇒ <code>Promise</code>
+### bcijs.saveCSV(array, filename) ⇒ <code>Promise</code>
 Saves an array to a CSV file
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Promise</code> - A promise object that resolves when the file has been saved. Does not currently reject on write error.  
 
 | Param | Type |
@@ -298,12 +315,12 @@ Saves an array to a CSV file
 | array | <code>Array</code> | 
 | filename | <code>string</code> | 
 
-<a name="module_webbci.subscript"></a>
+<a name="module_bcijs.subscript"></a>
 
-### webbci.subscript(array, ...params) ⇒ <code>Array</code>
+### bcijs.subscript(array, ...params) ⇒ <code>Array</code>
 Subscript an array with MATLAB-like syntax
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Array</code> - The subscripted array  
 
 | Param | Type | Description |
@@ -313,18 +330,18 @@ Subscript an array with MATLAB-like syntax
 
 **Example**  
 ```js
-var bci = require('webbci');var arr = [3, 2, 4, 1, 5];var subarr = bci.subscript(arr, '1:3');console.log(subarr); // [3, 2, 4]
+var bci = require('bcijs');var arr = [3, 2, 4, 1, 5];var subarr = bci.subscript(arr, '1:3');console.log(subarr); // [3, 2, 4]
 ```
 **Example**  
 ```js
-var bci = require('webbci');var arr = [  [1, 2, 3],  [4, 5, 6],  [7, 8, 9]];var subarr = bci.subscript(arr, '1 3', '2:3'); // rows 1 and 3, columns 2 through 3console.log(subarr); // [[2, 3], [8, 9]]
+var bci = require('bcijs');var arr = [  [1, 2, 3],  [4, 5, 6],  [7, 8, 9]];var subarr = bci.subscript(arr, '1 3', '2:3'); // rows 1 and 3, columns 2 through 3console.log(subarr); // [[2, 3], [8, 9]]
 ```
-<a name="module_webbci.toFixed"></a>
+<a name="module_bcijs.toFixed"></a>
 
-### webbci.toFixed(array, places) ⇒ <code>Array.&lt;string&gt;</code>
+### bcijs.toFixed(array, places) ⇒ <code>Array.&lt;string&gt;</code>
 Returns an array of numbers as strings rounded to the proper number of decimal places and padded with zeros as needed.
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Array.&lt;string&gt;</code> - Array of string representations of numbers  
 
 | Param | Type |
@@ -332,24 +349,24 @@ Returns an array of numbers as strings rounded to the proper number of decimal p
 | array | <code>Array</code> | 
 | places | <code>number</code> | 
 
-<a name="module_webbci.toTable"></a>
+<a name="module_bcijs.toTable"></a>
 
-### webbci.toTable(array) ⇒ <code>string</code>
+### bcijs.toTable(array) ⇒ <code>string</code>
 Returns an ASCII table representation of an array
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>string</code> - ASCII table  
 
 | Param | Type |
 | --- | --- |
 | array | <code>Array</code> | 
 
-<a name="module_webbci.windowApply"></a>
+<a name="module_bcijs.windowApply"></a>
 
-### webbci.windowApply(array, func, length, step, tail) ⇒ <code>Array</code>
+### bcijs.windowApply(array, func, length, step, tail) ⇒ <code>Array</code>
 Similar to JavaScript's map, but it applies a function to sub arrays instead of each element.Each sub array, or window, starts at index 0 and has length 'length'Each next window will be shifted 'step' elements from the first. The result of each function is stored in a returned array.
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Array</code> - An array containing the function result for each window  
 
 | Param | Type | Default | Description |
@@ -362,18 +379,18 @@ Similar to JavaScript's map, but it applies a function to sub arrays instead of 
 
 **Example**  
 ```js
-var bci = require('webbci');bci.windowApply([1, 2, 3, 4, 5], window => console.log(window), 3, 1);// [1, 2, 3]// [2, 3, 4]// [3, 4, 5] 
+var bci = require('bcijs');bci.windowApply([1, 2, 3, 4, 5], window => console.log(window), 3, 1);// [1, 2, 3]// [2, 3, 4]// [3, 4, 5] 
 ```
 **Example**  
 ```js
-var bci = require('webbci');var sums = bci.windowApply([1, 2, 3, 4, 5], window => {  var sum = 0;  window.forEach(x => sum += x);  return sum;}, 3, 1);console.log(sums);// [6, 9, 12]
+var bci = require('bcijs');var sums = bci.windowApply([1, 2, 3, 4, 5], window => {  var sum = 0;  window.forEach(x => sum += x);  return sum;}, 3, 1);console.log(sums);// [6, 9, 12]
 ```
-<a name="module_webbci.oscCollect"></a>
+<a name="module_bcijs.oscCollect"></a>
 
-### webbci.oscCollect(address, port, header, samples) ⇒ <code>Promise</code>
+### bcijs.oscCollect(address, port, header, samples) ⇒ <code>Promise</code>
 Collect a set number of samples over OSC
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Promise</code> - Resolves with collected data  
 
 | Param | Type | Description |
@@ -383,12 +400,12 @@ Collect a set number of samples over OSC
 | header | <code>string</code> | OSC header, can be found by scanning with oscHeaderScan if unknown |
 | samples | <code>number</code> | The number of samples to collect |
 
-<a name="module_webbci.oscHeaderScan"></a>
+<a name="module_bcijs.oscHeaderScan"></a>
 
-### webbci.oscHeaderScan(address, port, duration) ⇒ <code>Promise</code>
+### bcijs.oscHeaderScan(address, port, duration) ⇒ <code>Promise</code>
 Scan for OSC headers on a port and address
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Promise</code> - Resolves with an array of found headers  
 
 | Param | Type | Description |
@@ -397,22 +414,22 @@ Scan for OSC headers on a port and address
 | port | <code>any</code> | OSC port |
 | duration | <code>any</code> | Duration of scan in milliseconds |
 
-<a name="module_webbci.prompt"></a>
+<a name="module_bcijs.prompt"></a>
 
-### webbci.prompt(question) ⇒ <code>Promise</code>
+### bcijs.prompt(question) ⇒ <code>Promise</code>
 Prompts the user for input via stdin
 
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Promise</code> - A promise object that resolves with the response  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | question | <code>string</code> | Question shown to user |
 
-<a name="module_webbci.wait"></a>
+<a name="module_bcijs.wait"></a>
 
-### webbci.wait(ms) ⇒ <code>Promise</code>
-**Kind**: static method of [<code>webbci</code>](#module_webbci)  
+### bcijs.wait(ms) ⇒ <code>Promise</code>
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Promise</code> - A promise which resolves when the timeout occurs  
 
 | Param | Type | Description |
