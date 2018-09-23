@@ -1,4 +1,8 @@
-<img src="static/bcijs-logo.png" height="68px">
+<p><img src="static/bcijs-logo.png" height="68px"></p>
+
+[![npm](https://img.shields.io/npm/v/bcijs.svg)](https://www.npmjs.com/package/bcijs)
+[![npm](https://img.shields.io/npm/dm/bcijs.svg)](https://www.npmjs.com/package/bcijs)
+[![NpmLicense](https://img.shields.io/npm/l/bcijs.svg)](https://github.com/pwstegman/bcijs/blob/master/LICENSE)
 
 BCI.js is a library for EEG-based brain computer interface (BCI) design with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, containing methods for signal processing and machine learning, such as LDA, CSP, and PSD, methods for data manipulation, such as MATLAB style array subscripting, data windowing, and CSV file support, and methods for networking, including data collection and streaming via OSC.
 
@@ -136,3 +140,9 @@ Documentation can be found at [bcijs.pwstegman.me](http://bcijs.pwstegman.me/) o
 ## Examples
 
 More examples can be found in the [examples](https://github.com/pwstegman/bcijs/tree/master/examples) directory
+
+## Reference
+
+If you use bci.js in a published work, please reference this paper
+
+P. Stegman, C. Crawford, and J. Gray, "WebBCI: An Electroencephalography Toolkit Built on Modern Web Technologies," in Augmented Cognition: Intelligent Technologies, 2018, pp. 212–221.
