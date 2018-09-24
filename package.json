@@ -59,6 +59,7 @@
     "mocha": "^4.1.0",
     "nyc": "^12.0.2",
     "tmp": "0.0.33",
+    "upath": "^1.1.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }

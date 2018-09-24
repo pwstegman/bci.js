@@ -13,6 +13,10 @@ const jsdoc = require('gulp-jsdoc3');
 const fsThen = require('fs-then-native');
 const jsdoc2md = require('jsdoc-to-markdown');
 
+const tmp = require('tmp');
+const path = require('path');
+const upath = require('upath');
+
 gulp.task('build', function () {
 	var libdir = 'lib';
 	var libs = ['math', 'network', 'data', 'compat'];
@@ -37,6 +41,7 @@ gulp.task('build', function () {
 
 	fs.closeSync(out);
 });
+
 
 gulp.task('docs-html', function(cb){
 	var config = require('./jsdoc.json');
@@ -68,9 +73,33 @@ gulp.task('dist', function () {
 		Generated <%= moment.utc().format() %>
 	`;
 
+	let libdir = 'lib';
+	let libs = ['math', 'network', 'data', 'compat'];
+	let modules = "/** @module bcijs */\n";
+
+	libs.forEach(lib => {
+		var modulePath = libdir + '/' + lib;
+		var files = fs.readdirSync(modulePath);
+		files.forEach(file => {
+			var functionName = file.substring(0, file.length - 3);
+			let moduleCode = fs.readFileSync('./' + modulePath + '/' + file);
+			// Allows you to exclude node specific modules by including 'exclusive to Node' in the function documentation
+			if(moduleCode.indexOf('exclusive to Node') == -1){
+				let absolutePath = upath.normalize(path.join(__dirname, modulePath, file));
+				modules += 'module.exports.' + functionName + " = require('" + absolutePath + "');\n";
+			}
+		});
+	});
+
+	var moreCompat = fs.readFileSync('./compat.js', {encoding: 'utf8'});
+	modules += moreCompat;
+
+	var tmpobj = tmp.fileSync();
+	fs.writeFileSync(tmpobj.name, modules);
+
 	return browserify({
 		debug: false,
-		entries: './index.js',
+		entries: tmpobj.name,
 		standalone: 'bci'
 	})
 		.bundle()
