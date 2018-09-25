@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Sat Sep 22 2018 19:42:34 GMT-0500 (Central Daylight Time)
+// Created on Mon Sep 24 2018 21:23:58 GMT-0500 (Central Daylight Time)
 /** @module bcijs */
 module.exports.cspLearn = require('./lib/math/cspLearn.js');
 module.exports.cspProject = require('./lib/math/cspProject.js');
