@@ -1,6 +1,6 @@
 {
   "name": "bcijs",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "JavaScript based EEG processing tool",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,7 @@
     "fft.js": "^4.0.3",
     "mathjs": "^3.20.2",
     "node-osc": "^2.1.0",
+    "numeric": "^1.2.6",
     "pw-csp": "^1.0.1",
     "pw-lda": "^1.0.1",
     "pw-stat": "^1.0.0"
