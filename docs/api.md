@@ -37,7 +37,7 @@
 <a name="module_bcijs.oscStream"></a>
 
 ### bcijs.oscStream
-Listen for messages over OSC
+Listen for messages over OSC<p>This method is exclusive to Node.js</p>
 
 **Kind**: static class of [<code>bcijs</code>](#module_bcijs)  
 
@@ -263,7 +263,7 @@ Compute the average power across a given frequency band in a signal.
 <a name="module_bcijs.loadCSV"></a>
 
 ### bcijs.loadCSV(filePath) ⇒ <code>Promise</code>
-Loads a CSV file into an array
+Loads a CSV file into an array<p>This method is exclusive to Node.js</p>
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Promise</code> - A promise object which resolves to the CSV data array  
@@ -305,7 +305,7 @@ Rounds every value in an array to a set number of decimal places
 <a name="module_bcijs.saveCSV"></a>
 
 ### bcijs.saveCSV(array, filename) ⇒ <code>Promise</code>
-Saves an array to a CSV file
+Saves an array to a CSV file<p>This method is exclusive to Node.js</p>
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Promise</code> - A promise object that resolves when the file has been saved. Does not currently reject on write error.  
@@ -388,7 +388,7 @@ var bci = require('bcijs');var sums = bci.windowApply([1, 2, 3, 4, 5], window =
 <a name="module_bcijs.oscCollect"></a>
 
 ### bcijs.oscCollect(address, port, header, samples) ⇒ <code>Promise</code>
-Collect a set number of samples over OSC
+Collect a set number of samples over OSC<p>This method is exclusive to Node.js</p>
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Promise</code> - Resolves with collected data  
@@ -403,7 +403,7 @@ Collect a set number of samples over OSC
 <a name="module_bcijs.oscHeaderScan"></a>
 
 ### bcijs.oscHeaderScan(address, port, duration) ⇒ <code>Promise</code>
-Scan for OSC headers on a port and address
+Scan for OSC headers on a port and address<p>This method is exclusive to Node.js</p>
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Promise</code> - Resolves with an array of found headers  
@@ -417,7 +417,7 @@ Scan for OSC headers on a port and address
 <a name="module_bcijs.prompt"></a>
 
 ### bcijs.prompt(question) ⇒ <code>Promise</code>
-Prompts the user for input via stdin
+Prompts the user for input via stdin<p>This method is exclusive to Node.js</p>
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Promise</code> - A promise object that resolves with the response  

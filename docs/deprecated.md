@@ -60,7 +60,7 @@ Predict the class of an unknown data point
 ### ~~bcijs.network : <code>object</code>~~
 ***Deprecated***
 
-The network operations for bcijs
+The network operations for bcijs<p>These methods are exclusive to Node.js</p>
 
 **Kind**: static namespace of [<code>bcijs</code>](#module_bcijs)  
 <a name="module_bcijs.network.addEEGListener"></a>
