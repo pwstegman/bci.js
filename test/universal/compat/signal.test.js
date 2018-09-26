@@ -1,5 +1,3 @@
-const bci = require('../../../index.js');
-
 const assert = require('assert');
 
 describe('signal (deprecated: methods are now standalone)', function () {
