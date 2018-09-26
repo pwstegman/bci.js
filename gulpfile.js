@@ -102,6 +102,11 @@ gulp.task('dist', function () {
 		entries: tmpobj.name,
 		standalone: 'bci'
 	})
+		.transform('babelify', {
+			presets : ['@babel/preset-env'],
+			global: true, // Allows files required from node_modules to be transformed as well
+			ignore: [/\/node_modules\/(?!app\/)/]
+		})
 		.bundle()
 		.on('error', (...args) => console.log(args))
 		.pipe(source('bci.js'))

@@ -1,10 +1,12 @@
 {
   "name": "bcijs",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "JavaScript based EEG processing tool",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha \"test/**/*.test.js\"",
+    "test-node": "nyc mocha \"test/**/*.test.js\"",
+    "test-web": "mochify --recursive test/universal/*.js",
+    "test": "npm run test-web && npm run test-node",
     "build": "gulp build",
     "dist": "gulp dist",
     "disc": "gulp disc",
@@ -44,8 +46,11 @@
     "url": "https://github.com/pwstegman/bcijs/issues"
   },
   "homepage": "https://github.com/pwstegman/bcijs#readme",
+  "browserslist": "> 0.25%, not dead",
   "devDependencies": {
+    "@babel/core": "^7.1.0",
     "app-root-path": "^2.1.0",
+    "babelify": "^10.0.0",
     "browserify": "^16.1.0",
     "docdash": "^0.4.0",
     "fs-then-native": "^2.0.0",
