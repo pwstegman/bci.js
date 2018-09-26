@@ -1,5 +1,4 @@
-const reqlib = require('app-root-path').require;
-const bci = reqlib('index.js');
+const bci = require('../../../index.js');
 
 const assert = require('assert');
 const math = require('mathjs');

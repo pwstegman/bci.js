@@ -1,8 +1,7 @@
-const reqlib = require('app-root-path').require;
-const bci = reqlib('index.js');
+const bci = require('../../../index.js');
 
 const assert = require('assert');
-const arrayAlmostEqual = reqlib('/test/util/arrayAlmostEqual.js');
+const arrayAlmostEqual = require('../util/arrayAlmostEqual.js');
 
 describe('psd', function(){
     it('Computes the power spectral density of a signal', function(){
