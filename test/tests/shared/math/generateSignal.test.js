@@ -1,6 +1,3 @@
-const assert = require('assert');
-const arrayAlmostEqual = require('../util/arrayAlmostEqual.js');
-
 describe('generateSignal', function(){
     it('Generates a signal given frequencies and amplitudes', function(){
         var x = bci.generateSignal([10], [5], 256, 1);

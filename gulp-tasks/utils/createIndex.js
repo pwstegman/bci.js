@@ -4,9 +4,10 @@ const upath = require('upath');
 const glob = require('glob');
 
 module.exports = function(src, outFile, options) {
-	let {includeFunction, header} = Object.assign({
+	let {includeFunction, header, projectRoot} = Object.assign({
 		includeFunction: () => true,
-		header: ''
+		header: '',
+		projectRoot: ''
 	}, options);
 
 	let out = fs.openSync(outFile, 'w');
@@ -16,6 +17,7 @@ module.exports = function(src, outFile, options) {
 		files.forEach(filePath => {
 			filePath = upath.normalize(filePath);
 			if(includeFunction(filePath)){
+				filePath = upath.normalize(path.join(projectRoot, filePath));
 				let functionName = path.basename(filePath, '.js');
 				fs.appendFileSync(out, 'module.exports.' + functionName + " = require('./" + filePath + "');\n");
 			}

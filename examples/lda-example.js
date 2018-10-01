@@ -1,4 +1,4 @@
-var bci = require('../index.js');
+var bci = require('../index.js'); // bcijs
 
 // Training set
 var class1 = [

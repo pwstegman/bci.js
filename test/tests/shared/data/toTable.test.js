@@ -1,5 +1,3 @@
-const assert = require('assert');
-
 describe('toTable', function(){
     it('Returns an ASCII table representation of an array', function(){
         var testArray = [[1,2],[3,4]];

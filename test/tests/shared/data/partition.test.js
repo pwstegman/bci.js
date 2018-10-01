@@ -1,5 +1,3 @@
-const assert = require('assert');
-
 describe('partition', function(){
     it('partitions data into subsets such as training and testing sets', function(){
         assert.deepEqual(

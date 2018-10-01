@@ -1,4 +1,4 @@
-var bci = require('../index.js');
+var bci = require('../index.js'); // bcijs
 
 // Generate 1 second of sample data
 var sampleRate = 512;

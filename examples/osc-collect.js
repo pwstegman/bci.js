@@ -1,4 +1,4 @@
-var bci = require('../index.js');
+var bci = require('../index.js'); // bcijs
 
 async function collect(){
     // View what OSC headers are being broadcasted over the next 2 seconds

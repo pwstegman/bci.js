@@ -1,5 +1,3 @@
-const assert = require('assert');
-
 describe('nextpow2', function(){
     it('Returns the ceil of the log2 of the abs of the passed number', function(){
         var actual = [-32, -30, 9, 8, 7, 4, 3, 0, 1, 30, 32].map(x => Math.pow(2, bci.nextpow2(x)));

@@ -1,6 +1,3 @@
-const assert = require('assert');
-const arrayAlmostEqual = require('../util/arrayAlmostEqual.js');
-
 describe('LDA (deprecated: replaced by ldaLearn and ldaProject)', function () {
 	describe('#project', function () {
 		it('Should compute LDA projected data', function () {

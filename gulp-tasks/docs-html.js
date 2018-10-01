@@ -17,4 +17,4 @@ function copyStatic(){
 	return gulp.src(['static/**/*']).pipe(gulp.dest('docs/static'));
 }
 
-gulp.task('docshtml', gulp.series(docshtml, copyStatic));
+gulp.task('docs-html', gulp.series(docshtml, copyStatic));

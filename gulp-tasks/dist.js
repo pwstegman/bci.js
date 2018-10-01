@@ -21,8 +21,9 @@ function dist() {
 	indexHeader += "// This index file excludes Node.js specific methods\n";
 	indexHeader += "/** @module bcijs */\n";
 
-	createIndex('lib/**/*.js', './index-web.js', {
+	createIndex('lib/**/*.js', './dist/bci.js', {
 		header: indexHeader,
+		projectRoot: '../',
 		includeFunction: (filePath) => {
 			let moduleCode = fs.readFileSync(filePath);
 			// Exclude modules marked as 'exclusive to Node' in the function documentation
@@ -32,7 +33,7 @@ function dist() {
 	
 	return browserify({
 		debug: false,
-		entries: './index-web.js',
+		entries: './dist/bci.js',
 		standalone: 'bci'
 	})
 		.transform('babelify', {

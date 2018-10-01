@@ -1,5 +1,3 @@
-const assert = require('assert');
-
 describe('signal (deprecated: methods are now standalone)', function () {
     describe('generate and getBandPower', function () {
         it('Should generate a signal and return the average power in a frequency band', function () {

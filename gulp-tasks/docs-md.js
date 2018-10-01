@@ -10,4 +10,4 @@ function docsmd(done){
 	.then(() => done());
 };
 
-gulp.task('docsmd', docsmd);
+gulp.task('docs-md', docsmd);

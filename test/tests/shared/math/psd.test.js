@@ -1,6 +1,3 @@
-const assert = require('assert');
-const arrayAlmostEqual = require('../util/arrayAlmostEqual.js');
-
 describe('psd', function(){
     it('Computes the power spectral density of a signal', function(){
         var psd = bci.psd([1,2,1,2,5,2,1,2], {truncate: true});

@@ -1,5 +1,3 @@
-const assert = require('assert');
-
 describe('subscript', function(){
     it('Applies MATLAB style subscripting to an array', function(){
         var data = [[1,2,3], [1,2,3], [1,2,3]];

@@ -1,6 +1,3 @@
-const assert = require('assert');
-const arrayAlmostEqual = require('../util/arrayAlmostEqual.js');
-
 describe('features', function(){
     var x = [
         [1, 1],

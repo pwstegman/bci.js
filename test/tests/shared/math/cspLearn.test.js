@@ -1,6 +1,3 @@
-const assert = require('assert');
-const arrayAlmostEqual = require('../util/arrayAlmostEqual.js');
-
 describe('cspLearn and cspProject', function(){
     it('Learns parameters for a CSP transformation on a set of signals', function(){
         var A = [[-1, -1], [1, 1]];
