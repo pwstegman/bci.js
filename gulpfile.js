@@ -5,3 +5,4 @@ var hub = new HubRegistry(['gulp-tasks/*.js']);
 gulp.registry(hub);
 
 gulp.task('docs', gulp.series('docshtml', 'docsmd'));
+gulp.task('dist', gulp.series('build', 'distfiles'));

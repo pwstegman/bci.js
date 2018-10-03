@@ -1,7 +1,7 @@
 {
   "name": "bcijs",
   "version": "1.2.2",
-  "description": "JavaScript based EEG processing tool",
+  "description": "EEG signal processing and machine learning",
   "main": "index.js",
   "scripts": {
     "test": "mocha --require ./test/tests/node-config.js --reporter min \"test/tests/**/*.test.js\"",
@@ -37,7 +37,8 @@
     "eeg",
     "bci",
     "signal processing",
-    "machine learning"
+    "machine learning",
+    "math"
   ],
   "bugs": {
     "url": "https://github.com/pwstegman/bcijs/issues"

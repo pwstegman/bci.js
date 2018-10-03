@@ -8,7 +8,7 @@ const rename = require('gulp-rename');
 const headerComment = require('gulp-header-comment');
 const createIndex = require('./utils/createIndex.js');
 
-function dist() {
+function distfiles() {
 	let header = `
 		bci.js v<%= pkg.version %>
 		https://github.com/pwstegman/bcijs
@@ -16,24 +16,10 @@ function dist() {
 		License: <%= pkg.license %>
 		Generated <%= moment.utc().format() %>
 	`;
-
-	let indexHeader = "// This file was auto generated, changes will be overwritten\n// Created on " + (new Date()) + "\n";
-	indexHeader += "// This index file excludes Node.js specific methods\n";
-	indexHeader += "/** @module bcijs */\n";
-
-	createIndex('lib/**/*.js', './dist/bci.js', {
-		header: indexHeader,
-		projectRoot: '../',
-		includeFunction: (filePath) => {
-			let moduleCode = fs.readFileSync(filePath);
-			// Exclude modules marked as 'exclusive to Node' in the function documentation
-			return moduleCode.indexOf('exclusive to Node') == -1;
-		}
-	});
 	
 	return browserify({
 		debug: false,
-		entries: './dist/bci.js',
+		entries: './browser.js',
 		standalone: 'bci'
 	})
 		.transform('babelify', {
@@ -53,4 +39,4 @@ function dist() {
 		.pipe(gulp.dest('dist'));
 };
 
-gulp.task('dist', dist);
+gulp.task('distfiles', distfiles);

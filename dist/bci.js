@@ -3,43 +3,43 @@
  * https://github.com/pwstegman/bcijs
  *
  * License: MIT
- * Generated 2018-10-01T01:00:52Z
+ * Generated 2018-10-03T16:30:23Z
  */
 
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.bci = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
 
 // This file was auto generated, changes will be overwritten
-// Created on Sun Sep 30 2018 20:00:41 GMT-0500 (Central Daylight Time)
-// This index file excludes Node.js specific methods
+// Created on Wed Oct 03 2018 11:30:07 GMT-0500 (Central Daylight Time)
+// This module excludes Node.js specific methods so it can be used in the browser
 
 /** @module bcijs */
-module.exports.csp = require('./../lib/compat/csp.js');
-module.exports.lda = require('./../lib/compat/lda.js');
-module.exports.signal = require('./../lib/compat/signal.js');
-module.exports.partition = require('./../lib/data/partition.js');
-module.exports.round = require('./../lib/data/round.js');
-module.exports.subscript = require('./../lib/data/subscript.js');
-module.exports.toFixed = require('./../lib/data/toFixed.js');
-module.exports.toTable = require('./../lib/data/toTable.js');
-module.exports.windowApply = require('./../lib/data/windowApply.js');
-module.exports.cspLearn = require('./../lib/math/cspLearn.js');
-module.exports.cspProject = require('./../lib/math/cspProject.js');
-module.exports.fastICA = require('./../lib/math/fastICA.js');
-module.exports.features = require('./../lib/math/features.js');
-module.exports.generateSignal = require('./../lib/math/generateSignal.js');
-module.exports.ldaLearn = require('./../lib/math/ldaLearn.js');
-module.exports.ldaProject = require('./../lib/math/ldaProject.js');
-module.exports.nextpow2 = require('./../lib/math/nextpow2.js');
-module.exports.psd = require('./../lib/math/psd.js');
-module.exports.psdBandPower = require('./../lib/math/psdBandPower.js');
-module.exports.signalBandPower = require('./../lib/math/signalBandPower.js');
-module.exports.wait = require('./../lib/network/wait.js'); // Additional backwards compatibility
+module.exports.csp = require('./lib/compat/csp.js');
+module.exports.lda = require('./lib/compat/lda.js');
+module.exports.signal = require('./lib/compat/signal.js');
+module.exports.partition = require('./lib/data/partition.js');
+module.exports.round = require('./lib/data/round.js');
+module.exports.subscript = require('./lib/data/subscript.js');
+module.exports.toFixed = require('./lib/data/toFixed.js');
+module.exports.toTable = require('./lib/data/toTable.js');
+module.exports.windowApply = require('./lib/data/windowApply.js');
+module.exports.cspLearn = require('./lib/math/cspLearn.js');
+module.exports.cspProject = require('./lib/math/cspProject.js');
+module.exports.fastICA = require('./lib/math/fastICA.js');
+module.exports.features = require('./lib/math/features.js');
+module.exports.generateSignal = require('./lib/math/generateSignal.js');
+module.exports.ldaLearn = require('./lib/math/ldaLearn.js');
+module.exports.ldaProject = require('./lib/math/ldaProject.js');
+module.exports.nextpow2 = require('./lib/math/nextpow2.js');
+module.exports.psd = require('./lib/math/psd.js');
+module.exports.psdBandPower = require('./lib/math/psdBandPower.js');
+module.exports.signalBandPower = require('./lib/math/signalBandPower.js');
+module.exports.wait = require('./lib/network/wait.js'); // Additional backwards compatibility
 
 exports.LDA = exports.lda;
 exports.csp = exports.signal.CSP;
 
-},{"./../lib/compat/csp.js":2,"./../lib/compat/lda.js":3,"./../lib/compat/signal.js":4,"./../lib/data/partition.js":5,"./../lib/data/round.js":6,"./../lib/data/subscript.js":7,"./../lib/data/toFixed.js":8,"./../lib/data/toTable.js":9,"./../lib/data/windowApply.js":10,"./../lib/math/cspLearn.js":11,"./../lib/math/cspProject.js":12,"./../lib/math/fastICA.js":13,"./../lib/math/features.js":14,"./../lib/math/generateSignal.js":15,"./../lib/math/ldaLearn.js":16,"./../lib/math/ldaProject.js":17,"./../lib/math/nextpow2.js":18,"./../lib/math/psd.js":19,"./../lib/math/psdBandPower.js":20,"./../lib/math/signalBandPower.js":21,"./../lib/network/wait.js":22}],2:[function(require,module,exports){
+},{"./lib/compat/csp.js":2,"./lib/compat/lda.js":3,"./lib/compat/signal.js":4,"./lib/data/partition.js":5,"./lib/data/round.js":6,"./lib/data/subscript.js":7,"./lib/data/toFixed.js":8,"./lib/data/toTable.js":9,"./lib/data/windowApply.js":10,"./lib/math/cspLearn.js":11,"./lib/math/cspProject.js":12,"./lib/math/fastICA.js":13,"./lib/math/features.js":14,"./lib/math/generateSignal.js":15,"./lib/math/ldaLearn.js":16,"./lib/math/ldaProject.js":17,"./lib/math/nextpow2.js":18,"./lib/math/psd.js":19,"./lib/math/psdBandPower.js":20,"./lib/math/signalBandPower.js":21,"./lib/network/wait.js":22}],2:[function(require,module,exports){
 "use strict";
 
 var pwcsp = require('pw-csp');
