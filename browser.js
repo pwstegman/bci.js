@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Wed Oct 03 2018 15:09:41 GMT-0500 (Central Daylight Time)
+// Created on Wed Oct 03 2018 15:12:53 GMT-0500 (Central Daylight Time)
 // This module excludes Node.js specific methods so it can be used in the browser
 /** @module bcijs */
 module.exports.csp = require('./lib/compat/csp.js');
