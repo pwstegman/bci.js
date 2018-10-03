@@ -1,9 +1,3 @@
-const reqlib = require('app-root-path').require;
-const bci = reqlib('index.js');
-
-const assert = require('assert');
-const arrayAlmostEqual = reqlib('/test/util/arrayAlmostEqual.js');
-
 describe('CSP (deprecated: replaced by cspLearn and cspProject)', function () {
     describe('#project', function () {
         it('Should return CSP projected data', function () {

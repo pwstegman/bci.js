@@ -1,8 +1,3 @@
-const reqlib = require('app-root-path').require;
-const bci = reqlib('index.js');
-
-const assert = require('assert');
-
 describe('signalBandPower and psdBandPower', function(){
     it('Computes the average power in a frequency band', function(){
         var bandPower = bci.signalBandPower([1, 2, 3, 4, 5, 6, 7], 256, 'alpha', 8);

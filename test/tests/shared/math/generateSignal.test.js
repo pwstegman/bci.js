@@ -1,9 +1,3 @@
-const reqlib = require('app-root-path').require;
-const bci = reqlib('index.js');
-
-const assert = require('assert');
-const arrayAlmostEqual = reqlib('/test/util/arrayAlmostEqual.js');
-
 describe('generateSignal', function(){
     it('Generates a signal given frequencies and amplitudes', function(){
         var x = bci.generateSignal([10], [5], 256, 1);

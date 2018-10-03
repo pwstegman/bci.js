@@ -1,8 +1,3 @@
-const reqlib = require('app-root-path').require;
-const bci = reqlib('index.js');
-
-const assert = require('assert');
-
 describe('partition', function(){
     it('partitions data into subsets such as training and testing sets', function(){
         assert.deepEqual(

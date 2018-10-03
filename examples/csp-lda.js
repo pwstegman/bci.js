@@ -1,4 +1,4 @@
-var bci = require('../index.js');
+var bci = require('../index.js'); // bcijs
 
 async function classify(data){
     // Time how long the function takes

@@ -62,9 +62,9 @@ typings/
 
 # build files
 build/
-
-# dist files
-dist/
+test/browser/bci.js
+test/browser/bci.min.js
+test/browser/bci.test.js
 
 # data files
 examples/data/

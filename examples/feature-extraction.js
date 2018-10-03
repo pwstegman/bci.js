@@ -1,4 +1,4 @@
-var bci = require('../index.js');
+var bci = require('../index.js'); // bcijs
 
 // Some random numbers
 var data = [3, 2, 3, 0, 4, 0, 0, 5, 4, 0];

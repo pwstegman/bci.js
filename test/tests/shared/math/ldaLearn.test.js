@@ -1,9 +1,3 @@
-const reqlib = require('app-root-path').require;
-const bci = reqlib('index.js');
-
-const assert = require('assert');
-const arrayAlmostEqual = reqlib('/test/util/arrayAlmostEqual.js');
-
 describe('ldaLearn and ldaProject', function(){
     it('Runs linear discriminant analysis on data', function(){
         var class1 = [
