@@ -8,34 +8,42 @@ BCI.js is a library for EEG-based brain computer interface (BCI) design with Jav
 
 BCI.js is being developed out of the Human Technology Interaction Lab at the University of Alabama Department of Computer Science.
 
-## Installation
+## Getting Started
+
+Node.js
 
 ```bash
 npm install bcijs
 ```
 
-## Getting Started
+Browser
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/bcijs@1.2.2/dist/bci.min.js"></script>
+```
+
+## Examples
 
 ### Signal Processing
 
 ```javascript
-var bci = require('bcijs');
+const bci = require('bcijs');
 
 // Generate 1 second of sample data
-var sampleRate = 512;
-var duration = 1;
-var amplitudes = [1, 2, 4, 8];
-var frequencies = [
+let sampleRate = 512;
+let duration = 1;
+let amplitudes = [1, 2, 4, 8];
+let frequencies = [
 	1, // 1 Hz, delta range
 	5, // 5 Hz, theta range
 	8, // 8 Hz, alpha range
 	17 // 17 Hz, beta range
 ];
 
-var signal = bci.generateSignal(amplitudes, frequencies, sampleRate, duration);
+let signal = bci.generateSignal(amplitudes, frequencies, sampleRate, duration);
 
 // Compute average power in each frequency band
-var fftSize = sampleRate * duration;
+let fftSize = sampleRate * duration;
 console.log(bci.signalBandPower(signal, sampleRate, 'delta', fftSize)); // 85
 console.log(bci.signalBandPower(signal, sampleRate, 'theta', fftSize)); // 128
 console.log(bci.signalBandPower(signal, sampleRate, 'alpha', fftSize)); // 205
@@ -45,16 +53,16 @@ console.log(bci.signalBandPower(signal, sampleRate, 'beta', fftSize));  // 114
 ### Machine Learning
 
 ```javascript
-var bci = require('bcijs');
+const bci = require('bcijs');
 
 // Training set
-var class1 = [
+let class1 = [
 	[0, 0],
 	[1, 2],
 	[2, 2],
 	[1.5, 0.5]
 ];
-var class2 = [
+let class2 = [
 	[8, 8],
 	[9, 10],
 	[7, 8],
@@ -62,7 +70,7 @@ var class2 = [
 ];
 
 // Testing set
-var unknownPoints = [
+let unknownPoints = [
 	[-1, 0],
 	[1.5, 2],
 	[3, 3],
@@ -72,10 +80,10 @@ var unknownPoints = [
 ];
 
 // Learn an LDA classifier
-var ldaParams = bci.ldaLearn(class1, class2);
+let ldaParams = bci.ldaLearn(class1, class2);
 
 // Test classifier
-var predictions = unknownPoints.map(point => {
+let predictions = unknownPoints.map(point => {
 	return Math.sign(bci.ldaProject(ldaParams, point))
 });
 
@@ -85,13 +93,13 @@ console.log(predictions); // [ -1, -1, -1, 1, 1, 1 ]
 ### Data Manipulation and Feature Extraction
 
 ```javascript
-var bci = require('bcijs');
+const bci = require('bcijs');
 
 // Some random numbers
-var data = [3, 2, 3, 0, 4, 0, 0, 5, 4, 0];
+let data = [3, 2, 3, 0, 4, 0, 0, 5, 4, 0];
 
 // Partition into training and testing sets
-var [training, testing] = bci.partition(data, 0.6, 0.4);
+let [training, testing] = bci.partition(data, 0.6, 0.4);
 
 console.log(training); // [3, 2, 3, 0, 4, 0]
 console.log(testing); // [0, 5, 4, 0]
@@ -106,16 +114,16 @@ bci.windowApply(data, window => console.log(window), 3, 2);
 */
 
 // Find the log of the variance of these windows (feature extraction)
-var features = bci.windowApply(data, bci.features.logvar, 3, 2);
+let features = bci.windowApply(data, bci.features.logvar, 3, 2);
 console.log(features); // [-1.099, 1.466, 1.674, 1.946]
 
 // Colon notation for array subscripting
-var arr = [
+let arr = [
   [1, 2, 3],
   [4, 5, 6],
   [7, 8, 9]
 ];
-var subarr = bci.subscript(arr, '1 3', '2:3'); // rows 1 and 3, columns 2 through 3
+let subarr = bci.subscript(arr, '1 3', '2:3'); // rows 1 and 3, columns 2 through 3
 console.log(subarr);
 /*
 [[2, 3],
@@ -125,13 +133,21 @@ console.log(subarr);
 
 ## Usage in the web
 
-```bash
-npm run dist
+BCI.js can be loaded from the jsDelivr CDN with
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/bcijs@1.2.2/dist/bci.min.js"></script>
 ```
 
-This will generate `dist/bci.js` and `dist/bci.min.js`. BCI.js methods can be accessed via the global object *bci*.
+You can also find `bci.js` and `bci.min.js` in the [/dist](https://github.com/pwstegman/bcijs/tree/master/dist) directory.
 
-OSC and CSV methods will not work in the web.
+BCI.js methods are accessible via the global object `bci`.
+
+If building a web distributable using a tool such as browserify or webpack, require `bcijs/browser.js` to load only methods that are browser compatible. Node.js specific methods such as networking and file system methods will not be included.
+
+```javascript
+const bci = require('bcijs/browser.js');
+```
 
 ## Documentation
 

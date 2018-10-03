@@ -1,13 +1,13 @@
-var bci = require('../index.js'); // bcijs
+const bci = require('../index.js'); // bcijs
 
 // Training set
-var class1 = [
+let class1 = [
 	[0, 0],
 	[1, 2],
 	[2, 2],
 	[1.5, 0.5]
 ];
-var class2 = [
+let class2 = [
 	[8, 8],
 	[9, 10],
 	[7, 8],
@@ -15,7 +15,7 @@ var class2 = [
 ];
 
 // Testing set
-var unknownPoints = [
+let unknownPoints = [
 	[-1, 0],
 	[1.5, 2],
 	[3, 3],
@@ -25,10 +25,10 @@ var unknownPoints = [
 ];
 
 // Learn an LDA classifier
-var ldaParams = bci.ldaLearn(class1, class2);
+let ldaParams = bci.ldaLearn(class1, class2);
 
 // Test classifier
-var predictions = unknownPoints.map(point => {
+let predictions = unknownPoints.map(point => {
 	return Math.sign(bci.ldaProject(ldaParams, point))
 });
 
