@@ -27,6 +27,14 @@
     "pw-lda": "^1.0.2",
     "pw-stat": "^1.0.1"
   },
+  "files": [
+    "dist/",
+    "lib/",
+    "browser.js",
+    "index.js",
+    "docs/api.md",
+    "docs/deprecated.md"
+  ],
   "directories": {
     "lib": "lib"
   },
