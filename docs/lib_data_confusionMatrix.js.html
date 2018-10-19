@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/math/psdBandPower.js - Documentation</title>
+    <title>lib/data/confusionMatrix.js - Documentation</title>
 
     <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
 
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">lib/math/psdBandPower.js</h1>
+    <h1 class="page-title">lib/data/confusionMatrix.js</h1>
     
 
     
@@ -44,50 +44,32 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>var nextpow2 = require('./nextpow2.js');
-
-/**
- * Compute the average power across a given frequency band given the PSD.
- * @memberof module:bcijs
- * @param {number[]} psd - Power spectral density of the signal.
- * @param {number} sampleRate - The sample rate of the signal.
- * @param {(number[]|string)} - The frequency band provided as an array [frequencyStart, frequencyStop] or a
- * string &lt;code>delta&lt;/code> (1-3 Hz), &lt;code>theta&lt;/code> (4-7 Hz), &lt;code>alpha&lt;/code> (8-12 Hz), &lt;code>beta&lt;/code> (13-30 Hz), or &lt;code>gamma&lt;/code> (31-50 Hz).
- * While string representations
- * allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in
- * future updates.
- * @param {number} [fftSize=Math.pow(2, bci.nextpow2(psd.length))] - Size of the fourier transform used to compute the PSD.
- * @returns {number} The average power in the frequency band.
+            <pre class="prettyprint source linenums"><code>/**
+ * Generate a confusion matrix where rows are actual classes and columns are predicted classes
+ * @param {number[]} predictedClasses - An array of predicted classes, with class numbers starting at 0
+ * @param {number[]} actualClasses - An array of the actual classes, with class numbers starting at 0
+ * @returns {number[][]} The confusion matrix
  */
-function psdBandPower(psd, sampleRate, band, fftSize=null) {
-	if(fftSize === null){
-		fftSize = Math.pow(2, nextpow2(psd.length));
-	}
+function confusionMatrix(predictedClasses, actualClasses){
+    if(predictedClasses.length != actualClasses.length){
+        throw new Error('predictedClasses length must equal actualClasses length');
+    }
+    
+    let largestClass = Math.max(...predictedClasses.concat(actualClasses));
+    // Fill a 2d array of size (largestClass + 1) x (largestClass + 1) with zeros
+    let cMatrix = Array(largestClass + 1).fill().map(() => Array(largestClass + 1).fill(0));
 
-	var bands = {
-		// From Dan Szafir's "Pay Attention!", 2012
-		'delta': [1, 3],
-		'theta': [4, 7],
-		'alpha': [8, 12],
-		'beta': [13, 30],
-		'gamma': [31, 50]
-	};
+    for(let i = 0; i &lt; predictedClasses.length; i++){
+        let predicted = predictedClasses[i];
+        let actual = actualClasses[i];
 
-	if (typeof band === 'string' || band instanceof String) {
-		band = bands[band];
-	}
+        cMatrix[actual][predicted]++;
+    }
 
-	var startIndex = Math.floor(band[0] / sampleRate * fftSize);
-	var endIndex = Math.min(Math.ceil(band[1] / sampleRate * fftSize), psd.length - 1);
-
-	var power = 0;
-	for (var i = startIndex; i &lt; endIndex + 1; i++) {
-		power += psd[i];
-	}
-	return power / (endIndex - startIndex + 1);
+    return cMatrix;
 }
 
-module.exports = psdBandPower;</code></pre>
+module.exports = confusionMatrix;</code></pre>
         </article>
     </section>
 

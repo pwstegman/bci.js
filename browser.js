@@ -1,10 +1,12 @@
 // This file was auto generated, changes will be overwritten
-// Created on Wed Oct 03 2018 15:12:53 GMT-0500 (Central Daylight Time)
+// Created on Fri Oct 19 2018 14:56:03 GMT-0500 (Central Daylight Time)
 // This module excludes Node.js specific methods so it can be used in the browser
 /** @module bcijs */
 module.exports.csp = require('./lib/compat/csp.js');
 module.exports.lda = require('./lib/compat/lda.js');
 module.exports.signal = require('./lib/compat/signal.js');
+module.exports.confusionMatrix = require('./lib/data/confusionMatrix.js');
+module.exports.f1score = require('./lib/data/f1score.js');
 module.exports.partition = require('./lib/data/partition.js');
 module.exports.round = require('./lib/data/round.js');
 module.exports.subscript = require('./lib/data/subscript.js');

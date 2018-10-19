@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>features - Documentation</title>
+    <title>Global - Documentation</title>
 
     <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
 
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">features</h1>
+    <h1 class="page-title">Global</h1>
     
 
     
@@ -47,9 +47,7 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="module-bcijs.html">bcijs</a>.</span>
         
-        features
         </h2>
         
     
@@ -62,11 +60,6 @@
 
 <dl class="details">
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_features.js.html">lib/math/features.js</a>, <a href="lib_math_features.js.html#line1">line 1</a>
-    </li></ul></dd>
     
 
     
@@ -103,8 +96,6 @@
 
 
 
-        
-            <div class="description"><p>Feature extraction methods</p></div>
         
 
         
@@ -131,7 +122,7 @@
 
     
 
-    <h4 class="name" id=".logvar"><span class="type-signature">(static) </span>logvar<span class="signature">(window, dimension<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="confusionMatrix"><span class="type-signature"></span>confusionMatrix<span class="signature">(predictedClasses, actualClasses)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;number>>}</span></h4>
 
     
 
@@ -143,7 +134,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_features.js.html">lib/math/features.js</a>, <a href="lib_math_features.js.html#line21">line 21</a>
+        <a href="lib_data_confusionMatrix.js.html">lib/data/confusionMatrix.js</a>, <a href="lib_data_confusionMatrix.js.html#line7">line 7</a>
     </li></ul></dd>
     
 
@@ -183,7 +174,7 @@
 
 
 <div class="description">
-    <p>Computes the log of the variance along the specified dimension</p>
+    <p>Generate a confusion matrix where rows are actual classes and columns are predicted classes</p>
 </div>
 
 
@@ -209,11 +200,7 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
-        
-        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -225,77 +212,46 @@
 
         <tr>
             
-                <td class="name"><code>window</code></td>
+                <td class="name"><code>predictedClasses</code></td>
             
 
             <td class="type">
             
                 
 <span class="param-type">Array.&lt;number></span>
-|
-
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
-                <td class="default">
-                
-                </td>
-            
 
-            <td class="description last"><p>The data</p></td>
+            <td class="description last"><p>An array of predicted classes, with class numbers starting at 0</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>dimension</code></td>
+                <td class="name"><code>actualClasses</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">Array.&lt;number></span>
 
 
             
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
-                <td class="default">
-                
-                    <code>null</code>
-                
-                </td>
-            
 
-            <td class="description last"><p>If 'rows' or 'columns' passed, the features are calculated along that dimension</p></td>
+            <td class="description last"><p>An array of the actual classes, with class numbers starting at 0</p></td>
         </tr>
 
     
@@ -315,6 +271,28 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>The confusion matrix</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;Array.&lt;number>></span>
+
+
+    </dd>
+</dl>
+
+    
 
 
         
@@ -322,7 +300,7 @@
 
     
 
-    <h4 class="name" id=".rootMeanSquare"><span class="type-signature">(static) </span>rootMeanSquare<span class="signature">(window, dimension<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="f1score"><span class="type-signature"></span>f1score<span class="signature">(confusionMatrix)</span><span class="type-signature"> &rarr; {number}</span></h4>
 
     
 
@@ -334,7 +312,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_features.js.html">lib/math/features.js</a>, <a href="lib_math_features.js.html#line69">line 69</a>
+        <a href="lib_data_f1score.js.html">lib/data/f1score.js</a>, <a href="lib_data_f1score.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -374,7 +352,7 @@
 
 
 <div class="description">
-    <p>Computes the root mean square along the specified dimension</p>
+    <p>Calculate the f1 score of a binary classifier given its confusion matrix</p>
 </div>
 
 
@@ -400,11 +378,7 @@
         <th>Type</th>
 
         
-        <th>Attributes</th>
-        
 
-        
-        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -416,15 +390,12 @@
 
         <tr>
             
-                <td class="name"><code>window</code></td>
+                <td class="name"><code>confusionMatrix</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;number></span>
-|
-
 <span class="param-type">Array.&lt;Array.&lt;number>></span>
 
 
@@ -432,61 +403,10 @@
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
-                <td class="default">
-                
-                </td>
-            
 
-            <td class="description last"><p>The data</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dimension</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    <code>null</code>
-                
-                </td>
-            
-
-            <td class="description last"><p>If 'rows' or 'columns' passed, the features are calculated along that dimension</p></td>
+            <td class="description last"><p>a 2x2 confusion matrix as 2d array where columns are predicted classes and rows are actual classes</p></td>
         </tr>
 
     
@@ -506,197 +426,28 @@
 
 
 
-
+<h5>Returns:</h5>
 
         
-            
-
-    
-
-    <h4 class="name" id=".variance"><span class="type-signature">(static) </span>variance<span class="signature">(window, dimension<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
-
-    
+<div class="param-desc">
+    <p>The f1 score</p>
+</div>
 
 
 
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
 
-<dl class="details">
 
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_features.js.html">lib/math/features.js</a>, <a href="lib_math_features.js.html#line45">line 45</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+    </dd>
 </dl>
 
-
-
-
-
-<div class="description">
-    <p>Computes the variance along the specified dimension</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
     
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>window</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;number></span>
-|
-
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>The data</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dimension</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    <code>null</code>
-                
-                </td>
-            
-
-            <td class="description last"><p>If 'rows' or 'columns' passed, the features are calculated along that dimension</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         

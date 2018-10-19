@@ -1,3 +1,21 @@
+## Modules
+
+<dl>
+<dt><a href="#module_bcijs">bcijs</a></dt>
+<dd></dd>
+</dl>
+
+## Functions
+
+<dl>
+<dt><a href="#confusionMatrix">confusionMatrix(predictedClasses, actualClasses)</a> ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code></dt>
+<dd><p>Generate a confusion matrix where rows are actual classes and columns are predicted classes</p>
+</dd>
+<dt><a href="#f1score">f1score(confusionMatrix)</a> ⇒ <code>number</code></dt>
+<dd><p>Calculate the f1 score of a binary classifier given its confusion matrix</p>
+</dd>
+</dl>
+
 <a name="module_bcijs"></a>
 
 ## bcijs
@@ -10,6 +28,7 @@
         * [.on(header, callback)](#module_bcijs.oscStream+on)
     * [.features](#module_bcijs.features) : <code>object</code>
         * [.logvar(window, [dimension])](#module_bcijs.features.logvar)
+        * [.variance(window, [dimension])](#module_bcijs.features.variance)
         * [.rootMeanSquare(window, [dimension])](#module_bcijs.features.rootMeanSquare)
     * [.cspLearn(class1, class2)](#module_bcijs.cspLearn) ⇒ <code>Object</code>
     * [.cspProject(cspParams, data, [dimensions])](#module_bcijs.cspProject) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
@@ -89,12 +108,25 @@ Feature extraction methods
 
 * [.features](#module_bcijs.features) : <code>object</code>
     * [.logvar(window, [dimension])](#module_bcijs.features.logvar)
+    * [.variance(window, [dimension])](#module_bcijs.features.variance)
     * [.rootMeanSquare(window, [dimension])](#module_bcijs.features.rootMeanSquare)
 
 <a name="module_bcijs.features.logvar"></a>
 
 #### features.logvar(window, [dimension])
 Computes the log of the variance along the specified dimension
+
+**Kind**: static method of [<code>features</code>](#module_bcijs.features)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| window | <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;Array.&lt;number&gt;&gt;</code> |  | The data |
+| [dimension] | <code>string</code> | <code>null</code> | If 'rows' or 'columns' passed, the features are calculated along that dimension |
+
+<a name="module_bcijs.features.variance"></a>
+
+#### features.variance(window, [dimension])
+Computes the variance along the specified dimension
 
 **Kind**: static method of [<code>features</code>](#module_bcijs.features)  
 
@@ -435,4 +467,29 @@ Prompts the user for input via stdin<p>This method is exclusive to Node.js</p>
 | Param | Type | Description |
 | --- | --- | --- |
 | ms | <code>number</code> | Number of milliseconds to wait |
+
+<a name="confusionMatrix"></a>
+
+## confusionMatrix(predictedClasses, actualClasses) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+Generate a confusion matrix where rows are actual classes and columns are predicted classes
+
+**Kind**: global function  
+**Returns**: <code>Array.&lt;Array.&lt;number&gt;&gt;</code> - The confusion matrix  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| predictedClasses | <code>Array.&lt;number&gt;</code> | An array of predicted classes, with class numbers starting at 0 |
+| actualClasses | <code>Array.&lt;number&gt;</code> | An array of the actual classes, with class numbers starting at 0 |
+
+<a name="f1score"></a>
+
+## f1score(confusionMatrix) ⇒ <code>number</code>
+Calculate the f1 score of a binary classifier given its confusion matrix
+
+**Kind**: global function  
+**Returns**: <code>number</code> - The f1 score  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| confusionMatrix | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | a 2x2 confusion matrix as 2d array where columns are predicted classes and rows are actual classes |
 
