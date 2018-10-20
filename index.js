@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Fri Oct 19 2018 22:01:46 GMT-0500 (Central Daylight Time)
+// Created on Fri Oct 19 2018 22:11:03 GMT-0500 (Central Daylight Time)
 /** @module bcijs */
 module.exports.csp = require('./lib/compat/csp.js');
 module.exports.lda = require('./lib/compat/lda.js');

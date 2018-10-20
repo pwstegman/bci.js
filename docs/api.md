@@ -5,14 +5,11 @@
 <dd></dd>
 </dl>
 
-## Functions
+## Typedefs
 
 <dl>
-<dt><a href="#confusionMatrix">confusionMatrix(predictedClasses, actualClasses)</a> ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code></dt>
-<dd><p>Generate a confusion matrix where rows are actual classes and columns are predicted classes</p>
-</dd>
-<dt><a href="#f1score">f1score(confusionMatrix)</a> ⇒ <code>number</code></dt>
-<dd><p>Calculate the f1 score of a binary classifier given its confusion matrix</p>
+<dt><a href="#EDFData">EDFData</a> : <code>Object</code></dt>
+<dd><p>An object containing EDF file data</p>
 </dd>
 </dl>
 
@@ -40,7 +37,10 @@
     * [.psd(signal, [options])](#module_bcijs.psd) ⇒ <code>Array.&lt;number&gt;</code>
     * [.psdBandPower(psd, sampleRate, band, [fftSize])](#module_bcijs.psdBandPower) ⇒ <code>number</code>
     * [.signalBandPower(signal, sampleRate, band, [fftSize])](#module_bcijs.signalBandPower) ⇒ <code>number</code>
+    * [.confusionMatrix(predictedClasses, actualClasses)](#module_bcijs.confusionMatrix) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+    * [.f1score(confusionMatrix)](#module_bcijs.f1score) ⇒ <code>number</code>
     * [.loadCSV(filePath)](#module_bcijs.loadCSV) ⇒ <code>Promise</code>
+    * [.loadEDF(filename)](#module_bcijs.loadEDF) ⇒ [<code>EDFData</code>](#EDFData)
     * [.partition(array, ...divisions)](#module_bcijs.partition) ⇒ <code>Array.&lt;Array&gt;</code>
     * [.round(array, places)](#module_bcijs.round) ⇒ <code>Array.&lt;number&gt;</code>
     * [.saveCSV(array, filename)](#module_bcijs.saveCSV) ⇒ <code>Promise</code>
@@ -292,6 +292,31 @@ Compute the average power across a given frequency band in a signal.
 | band | <code>Array.&lt;number&gt;</code> \| <code>string</code> |  | The frequency band provided as an array [frequencyStart, frequencyStop] or a string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz). While string representations allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in future updates. |
 | [fftSize] | <code>number</code> | <code>Math.pow(2, bci.nextpow2(signal.length))</code> | Size of the fourier transform used to compute the PSD. |
 
+<a name="module_bcijs.confusionMatrix"></a>
+
+### bcijs.confusionMatrix(predictedClasses, actualClasses) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+Generate a confusion matrix where rows are actual classes and columns are predicted classes
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>Array.&lt;Array.&lt;number&gt;&gt;</code> - The confusion matrix  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| predictedClasses | <code>Array.&lt;number&gt;</code> | An array of predicted classes, with class numbers starting at 0 |
+| actualClasses | <code>Array.&lt;number&gt;</code> | An array of the actual classes, with class numbers starting at 0 |
+
+<a name="module_bcijs.f1score"></a>
+
+### bcijs.f1score(confusionMatrix) ⇒ <code>number</code>
+Calculate the f1 score of a binary classifier given its confusion matrix
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>number</code> - The f1 score  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| confusionMatrix | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | a 2x2 confusion matrix as 2d array where columns are predicted classes and rows are actual classes |
+
 <a name="module_bcijs.loadCSV"></a>
 
 ### bcijs.loadCSV(filePath) ⇒ <code>Promise</code>
@@ -303,6 +328,18 @@ Loads a CSV file into an array<p>This method is exclusive to Node.js</p>
 | Param | Type | Description |
 | --- | --- | --- |
 | filePath | <code>string</code> | The path to the CSV file |
+
+<a name="module_bcijs.loadEDF"></a>
+
+### bcijs.loadEDF(filename) ⇒ [<code>EDFData</code>](#EDFData)
+Load data from an EDF file<p>This method is exclusive to Node.js</p>
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: [<code>EDFData</code>](#EDFData) - - The data from the EDF file  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| filename | <code>string</code> | Path to the EDF file |
 
 <a name="module_bcijs.partition"></a>
 
@@ -468,28 +505,22 @@ Prompts the user for input via stdin<p>This method is exclusive to Node.js</p>
 | --- | --- | --- |
 | ms | <code>number</code> | Number of milliseconds to wait |
 
-<a name="confusionMatrix"></a>
+<a name="EDFData"></a>
 
-## confusionMatrix(predictedClasses, actualClasses) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
-Generate a confusion matrix where rows are actual classes and columns are predicted classes
+## EDFData : <code>Object</code>
+An object containing EDF file data
 
-**Kind**: global function  
-**Returns**: <code>Array.&lt;Array.&lt;number&gt;&gt;</code> - The confusion matrix  
+**Kind**: global typedef  
+**Properties**
 
-| Param | Type | Description |
+| Name | Type | Description |
 | --- | --- | --- |
-| predictedClasses | <code>Array.&lt;number&gt;</code> | An array of predicted classes, with class numbers starting at 0 |
-| actualClasses | <code>Array.&lt;number&gt;</code> | An array of the actual classes, with class numbers starting at 0 |
-
-<a name="f1score"></a>
-
-## f1score(confusionMatrix) ⇒ <code>number</code>
-Calculate the f1 score of a binary classifier given its confusion matrix
-
-**Kind**: global function  
-**Returns**: <code>number</code> - The f1 score  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| confusionMatrix | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | a 2x2 confusion matrix as 2d array where columns are predicted classes and rows are actual classes |
+| subject | <code>string</code> | The name of the subject |
+| recording | <code>string</code> | The name of the recording |
+| num_channels | <code>number</code> | The number of channels |
+| starttime | <code>string</code> | The starttime as a date time string |
+| channel_labels | <code>Array.&lt;string&gt;</code> | The label for each channel |
+| samplerates | <code>Array.&lt;number&gt;</code> | The sample rate for each channel |
+| physical_dimensions | <code>Array.&lt;string&gt;</code> | The units for each channel (ex: uV) |
+| samples | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | The data samples where columns are channels and rows are samples |
 
