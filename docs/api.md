@@ -335,7 +335,7 @@ Loads a CSV file into an array<p>This method is exclusive to Node.js</p>
 Load data from an EDF file<p>This method is exclusive to Node.js</p>
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
-**Returns**: [<code>EDFData</code>](#EDFData) - - The data from the EDF file  
+**Returns**: [<code>EDFData</code>](#EDFData) - The data from the EDF file  
 
 | Param | Type | Description |
 | --- | --- | --- |
