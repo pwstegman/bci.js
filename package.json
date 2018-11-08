@@ -4,7 +4,7 @@
   "description": "EEG signal processing and machine learning",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require ./test/tests/node-config.js --reporter min \"test/tests/**/*.test.js\"",
+    "test": "nyc mocha --require ./test/tests/node-config.js --reporter min \"test/tests/**/*.test.js\"",
     "test-dist": "gulp test-dist",
     "build": "gulp build",
     "dist": "gulp dist",
@@ -56,8 +56,8 @@
   "homepage": "https://github.com/pwstegman/bcijs#readme",
   "browserslist": "> 0.25%, not dead",
   "devDependencies": {
-    "@babel/core": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
     "app-root-path": "^2.1.0",
     "babelify": "^10.0.0",
     "browserify": "^16.2.3",

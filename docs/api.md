@@ -1,18 +1,3 @@
-## Modules
-
-<dl>
-<dt><a href="#module_bcijs">bcijs</a></dt>
-<dd></dd>
-</dl>
-
-## Typedefs
-
-<dl>
-<dt><a href="#EDFData">EDFData</a> : <code>Object</code></dt>
-<dd><p>An object containing EDF file data</p>
-</dd>
-</dl>
-
 <a name="module_bcijs"></a>
 
 ## bcijs
@@ -40,7 +25,7 @@
     * [.confusionMatrix(predictedClasses, actualClasses)](#module_bcijs.confusionMatrix) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
     * [.f1score(confusionMatrix)](#module_bcijs.f1score) ⇒ <code>number</code>
     * [.loadCSV(filePath)](#module_bcijs.loadCSV) ⇒ <code>Promise</code>
-    * [.loadEDF(filename)](#module_bcijs.loadEDF) ⇒ [<code>EDFData</code>](#EDFData)
+    * [.loadEDF(filename)](#module_bcijs.loadEDF) ⇒ <code>Object</code>
     * [.partition(array, ...divisions)](#module_bcijs.partition) ⇒ <code>Array.&lt;Array&gt;</code>
     * [.round(array, places)](#module_bcijs.round) ⇒ <code>Array.&lt;number&gt;</code>
     * [.saveCSV(array, filename)](#module_bcijs.saveCSV) ⇒ <code>Promise</code>
@@ -331,11 +316,11 @@ Loads a CSV file into an array<p>This method is exclusive to Node.js</p>
 
 <a name="module_bcijs.loadEDF"></a>
 
-### bcijs.loadEDF(filename) ⇒ [<code>EDFData</code>](#EDFData)
+### bcijs.loadEDF(filename) ⇒ <code>Object</code>
 Load data from an EDF file<p>This method is exclusive to Node.js</p>
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
-**Returns**: [<code>EDFData</code>](#EDFData) - The data from the EDF file  
+**Returns**: <code>Object</code> - Data from the EDF file, contains the following parameters:<br> {string} subject - The name of the subject<br> {string} recording - The name of the recording<br> {number} num_channels - The number of channels<br> {string} starttime - The starttime as a date time string<br> {string[]} channel_labels - The label for each channel<br> {number[]} samplerates - The sample rate for each channel<br> {string[]} physical_dimensions - The units for each channel (ex: uV)<br> {number[][]} samples - The data samples where columns are channels and rows are samples  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -504,23 +489,4 @@ Prompts the user for input via stdin<p>This method is exclusive to Node.js</p>
 | Param | Type | Description |
 | --- | --- | --- |
 | ms | <code>number</code> | Number of milliseconds to wait |
-
-<a name="EDFData"></a>
-
-## EDFData : <code>Object</code>
-An object containing EDF file data
-
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| subject | <code>string</code> | The name of the subject |
-| recording | <code>string</code> | The name of the recording |
-| num_channels | <code>number</code> | The number of channels |
-| starttime | <code>string</code> | The starttime as a date time string |
-| channel_labels | <code>Array.&lt;string&gt;</code> | The label for each channel |
-| samplerates | <code>Array.&lt;number&gt;</code> | The sample rate for each channel |
-| physical_dimensions | <code>Array.&lt;string&gt;</code> | The units for each channel (ex: uV) |
-| samples | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | The data samples where columns are channels and rows are samples |
 
