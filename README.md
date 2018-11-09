@@ -19,7 +19,7 @@ npm install bcijs
 Browser
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bcijs@1.2.2/dist/bci.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bcijs@1.3.0/dist/bci.min.js"></script>
 ```
 
 ## Examples
@@ -136,7 +136,7 @@ console.log(subarr);
 BCI.js can be loaded from the jsDelivr CDN with
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bcijs@1.2.2/dist/bci.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bcijs@1.3.0/dist/bci.min.js"></script>
 ```
 
 You can also find `bci.js` and `bci.min.js` in the [/dist](https://github.com/pwstegman/bcijs/tree/master/dist) directory.
@@ -151,7 +151,7 @@ const bci = require('bcijs/browser.js');
 
 ## Requiring specific methods
 
-You can require specific methods as well, for example, if you only need fastICA, you can use
+You can require specific methods as well. For example, if you only need fastICA, you can use
 
 ```javascript
 const fastICA = require('bcijs/lib/math/fastICA.js');
