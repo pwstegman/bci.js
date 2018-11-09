@@ -1,11 +1,14 @@
 // This file was auto generated, changes will be overwritten
-// Created on Wed Oct 03 2018 15:12:53 GMT-0500 (Central Daylight Time)
+// Created on Fri Oct 19 2018 22:11:03 GMT-0500 (Central Daylight Time)
 /** @module bcijs */
 module.exports.csp = require('./lib/compat/csp.js');
 module.exports.lda = require('./lib/compat/lda.js');
 module.exports.network = require('./lib/compat/network.js');
 module.exports.signal = require('./lib/compat/signal.js');
+module.exports.confusionMatrix = require('./lib/data/confusionMatrix.js');
+module.exports.f1score = require('./lib/data/f1score.js');
 module.exports.loadCSV = require('./lib/data/loadCSV.js');
+module.exports.loadEDF = require('./lib/data/loadEDF.js');
 module.exports.partition = require('./lib/data/partition.js');
 module.exports.round = require('./lib/data/round.js');
 module.exports.saveCSV = require('./lib/data/saveCSV.js');

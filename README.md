@@ -149,6 +149,16 @@ If building a web distributable using a tool such as browserify or webpack, requ
 const bci = require('bcijs/browser.js');
 ```
 
+## Requiring specific methods
+
+You can require specific methods as well, for example, if you only need fastICA, you can use
+
+```javascript
+const fastICA = require('bcijs/lib/math/fastICA.js');
+```
+
+BCI.js methods can be found in the [lib/](https://github.com/pwstegman/bcijs/tree/master/lib) directory.
+
 ## Documentation
 
 Documentation can be found at [https://bci.js.org](https://bci.js.org) or by viewing [docs/api.md](https://github.com/pwstegman/bcijs/blob/master/docs/api.md)

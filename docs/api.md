@@ -10,6 +10,7 @@
         * [.on(header, callback)](#module_bcijs.oscStream+on)
     * [.features](#module_bcijs.features) : <code>object</code>
         * [.logvar(window, [dimension])](#module_bcijs.features.logvar)
+        * [.variance(window, [dimension])](#module_bcijs.features.variance)
         * [.rootMeanSquare(window, [dimension])](#module_bcijs.features.rootMeanSquare)
     * [.cspLearn(class1, class2)](#module_bcijs.cspLearn) ⇒ <code>Object</code>
     * [.cspProject(cspParams, data, [dimensions])](#module_bcijs.cspProject) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
@@ -21,7 +22,10 @@
     * [.psd(signal, [options])](#module_bcijs.psd) ⇒ <code>Array.&lt;number&gt;</code>
     * [.psdBandPower(psd, sampleRate, band, [fftSize])](#module_bcijs.psdBandPower) ⇒ <code>number</code>
     * [.signalBandPower(signal, sampleRate, band, [fftSize])](#module_bcijs.signalBandPower) ⇒ <code>number</code>
+    * [.confusionMatrix(predictedClasses, actualClasses)](#module_bcijs.confusionMatrix) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+    * [.f1score(confusionMatrix)](#module_bcijs.f1score) ⇒ <code>number</code>
     * [.loadCSV(filePath)](#module_bcijs.loadCSV) ⇒ <code>Promise</code>
+    * [.loadEDF(filename)](#module_bcijs.loadEDF) ⇒ <code>Object</code>
     * [.partition(array, ...divisions)](#module_bcijs.partition) ⇒ <code>Array.&lt;Array&gt;</code>
     * [.round(array, places)](#module_bcijs.round) ⇒ <code>Array.&lt;number&gt;</code>
     * [.saveCSV(array, filename)](#module_bcijs.saveCSV) ⇒ <code>Promise</code>
@@ -89,12 +93,25 @@ Feature extraction methods
 
 * [.features](#module_bcijs.features) : <code>object</code>
     * [.logvar(window, [dimension])](#module_bcijs.features.logvar)
+    * [.variance(window, [dimension])](#module_bcijs.features.variance)
     * [.rootMeanSquare(window, [dimension])](#module_bcijs.features.rootMeanSquare)
 
 <a name="module_bcijs.features.logvar"></a>
 
 #### features.logvar(window, [dimension])
 Computes the log of the variance along the specified dimension
+
+**Kind**: static method of [<code>features</code>](#module_bcijs.features)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| window | <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;Array.&lt;number&gt;&gt;</code> |  | The data |
+| [dimension] | <code>string</code> | <code>null</code> | If 'rows' or 'columns' passed, the features are calculated along that dimension |
+
+<a name="module_bcijs.features.variance"></a>
+
+#### features.variance(window, [dimension])
+Computes the variance along the specified dimension
 
 **Kind**: static method of [<code>features</code>](#module_bcijs.features)  
 
@@ -260,6 +277,31 @@ Compute the average power across a given frequency band in a signal.
 | band | <code>Array.&lt;number&gt;</code> \| <code>string</code> |  | The frequency band provided as an array [frequencyStart, frequencyStop] or a string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz). While string representations allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in future updates. |
 | [fftSize] | <code>number</code> | <code>Math.pow(2, bci.nextpow2(signal.length))</code> | Size of the fourier transform used to compute the PSD. |
 
+<a name="module_bcijs.confusionMatrix"></a>
+
+### bcijs.confusionMatrix(predictedClasses, actualClasses) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+Generate a confusion matrix where rows are actual classes and columns are predicted classes
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>Array.&lt;Array.&lt;number&gt;&gt;</code> - The confusion matrix  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| predictedClasses | <code>Array.&lt;number&gt;</code> | An array of predicted classes, with class numbers starting at 0 |
+| actualClasses | <code>Array.&lt;number&gt;</code> | An array of the actual classes, with class numbers starting at 0 |
+
+<a name="module_bcijs.f1score"></a>
+
+### bcijs.f1score(confusionMatrix) ⇒ <code>number</code>
+Calculate the f1 score of a binary classifier given its confusion matrix
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>number</code> - The f1 score  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| confusionMatrix | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | a 2x2 confusion matrix as 2d array where columns are predicted classes and rows are actual classes |
+
 <a name="module_bcijs.loadCSV"></a>
 
 ### bcijs.loadCSV(filePath) ⇒ <code>Promise</code>
@@ -271,6 +313,18 @@ Loads a CSV file into an array<p>This method is exclusive to Node.js</p>
 | Param | Type | Description |
 | --- | --- | --- |
 | filePath | <code>string</code> | The path to the CSV file |
+
+<a name="module_bcijs.loadEDF"></a>
+
+### bcijs.loadEDF(filename) ⇒ <code>Object</code>
+Load data from an EDF file<p>This method is exclusive to Node.js</p>
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>Object</code> - Data from the EDF file, contains the following parameters:<br> {string} subject - The name of the subject<br> {string} recording - The name of the recording<br> {number} num_channels - The number of channels<br> {string} starttime - The starttime as a date time string<br> {string[]} channel_labels - The label for each channel<br> {number[]} samplerates - The sample rate for each channel<br> {string[]} physical_dimensions - The units for each channel (ex: uV)<br> {number[][]} samples - The data samples where columns are channels and rows are samples  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| filename | <code>string</code> | Path to the EDF file |
 
 <a name="module_bcijs.partition"></a>
 

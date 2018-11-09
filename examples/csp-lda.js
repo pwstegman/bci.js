@@ -44,22 +44,14 @@ async function classify(data){
     let ldaParams = bci.ldaLearn(trainingLeft, trainingRight);
 
     // Let's see how well the learned LDA parameters perform on the testing set
-    let predictionsLeft = bci.ldaProject(ldaParams, testingLeft);
-    let predictionsRight = bci.ldaProject(ldaParams, testingRight);
+    let testingSet = testingLeft.concat(testingRight);
+    let predicted = bci.ldaProject(ldaParams, testingSet);
+    predicted = predicted.map(x => (x < 0) ? 0 : 1);
+    let actual = Array(testingLeft.length).fill(0).concat(Array(testingRight.length).fill(1));
 
-    let leftCorrect = predictionsLeft.filter(x => x < 0).length;
-    let leftIncorrect = predictionsLeft.length - leftCorrect;
-    let rightCorrect = predictionsRight.filter(x => x > 0).length;
-    let rightIncorrect = predictionsRight.length - rightCorrect;
+    let confusionMatrix = bci.confusionMatrix(predicted, actual);
+    let f1 = bci.f1score(confusionMatrix);
 
-    let confusionMatrix = [
-        ['           ', 'Predicted left', 'Predicted right'],
-        ['Actual left', leftCorrect, leftIncorrect],
-        ['Actual right', rightIncorrect, rightCorrect]
-    ];
-    let precision = leftCorrect / (leftCorrect + rightIncorrect);
-    let recall = leftCorrect / (leftCorrect + leftIncorrect);
-    let f1 = 2*recall*precision / (recall + precision);
     console.log();
     console.log(bci.toTable(confusionMatrix));
     console.log('f1 score ' + f1.toFixed(2));
