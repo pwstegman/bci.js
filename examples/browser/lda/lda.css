@@ -1,0 +1,63 @@
+#toolbar {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    text-align:center;
+    display:block;
+}
+
+#poweredBy {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    font-size: 1em;
+}
+
+#poweredBy a {
+    color: #00aaa6;
+}
+
+.ui {
+    margin-top: 0.25rem !important;
+}
+
+.ui.button {
+    font-weight: normal;
+    min-width: 10em;
+}
+
+.ui.button.active {
+    font-weight: bold;
+}
+
+#color1btn {
+    background-color: #007bff;
+}
+
+#color1btn:hover {
+    background-color: #0063cc;
+}
+
+#color2btn {
+    background-color: #dd5145;
+}
+
+#color2btn:hover {
+    background-color: #cb3325;
+}
+
+#helpText {
+    color: #555;
+    padding: 0.75em;
+    font-size: 1.5em;
+}
+
+.fadeOut {
+    opacity: 0;
+    transition: opacity 0.3s linear;
+}
+
+.fadeIn {
+    opacity: 1;
+    transition: opacity 0.3s linear;
+}
