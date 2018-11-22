@@ -1,4 +1,4 @@
-const bci = require('../index.js'); // bcijs
+const bci = require('../../index.js'); // bcijs
 
 // Training set
 let class1 = [

@@ -17,4 +17,8 @@ function copyStatic(){
 	return gulp.src(['static/**/*']).pipe(gulp.dest('docs/static'));
 }
 
-gulp.task('docs-html', gulp.series(docshtml, copyStatic));
+function copyExamples(){
+	return gulp.src(['examples/browser/**/*']).pipe(gulp.dest('docs/examples'));
+}
+
+gulp.task('docs-html', gulp.series(docshtml, copyStatic, copyExamples));

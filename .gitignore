@@ -67,4 +67,4 @@ test/browser/bci.min.js
 test/browser/bci.test.js
 
 # data files
-examples/data/
+examples/node/data/

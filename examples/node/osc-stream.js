@@ -1,4 +1,4 @@
-const bci = require('../index.js'); // bcijs
+const bci = require('../../index.js'); // bcijs
 
 // Listen on all interfaces over port 7000
 let osc = new bci.oscStream('0.0.0.0', 7000);
