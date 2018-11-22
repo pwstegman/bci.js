@@ -87,7 +87,6 @@ function clicked(event){
     }
 
     function showNextHelpText(){
-        return;
         currentInfoText++;
         if(currentInfoText > infoTexts.length - 1){
             currentInfoText = 1;
