@@ -169,6 +169,10 @@ Documentation can be found at [https://bci.js.org](https://bci.js.org) or by vie
 
 More examples can be found in the [examples](https://github.com/pwstegman/bcijs/tree/master/examples) directory
 
+## Building
+
+See [dev.md](dev.md) for info on how to modify and build bci.js
+
 ## Reference
 
 If you use bci.js in a published work, please reference this paper
