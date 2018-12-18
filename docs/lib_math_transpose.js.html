@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/math/psd.js - Documentation</title>
+    <title>lib/math/transpose.js - Documentation</title>
 
     <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
 
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">lib/math/psd.js</h1>
+    <h1 class="page-title">lib/math/transpose.js</h1>
     
 
     
@@ -44,59 +44,35 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>var fft = require('fft.js');
-var nextpow2 = require('./nextpow2.js');
-
-var fftCache = {};
-
-/**
- * Compute the power spectral density of a given signal.
+            <pre class="prettyprint source linenums"><code>/**
+ * Transpose an array
  * @memberof module:bcijs
- * @param {number[]} signal - The signal.
- * @param {Object} [options]
- * @param {number} [options.fftSize=Math.pow(2, bci.nextpow2(signal.length))] - Size of the fft to be used. Should be a power of 2.
- * @param {boolean} [options.truncate=false] - If true, only the first half of the PSD array is returned
- * @returns {number[]} The PSD.
+ * @param {Array} array - The array to transpose
+ * @returns {Array} The transposed array
  */
-function psd(signal, options) {
-	var {fftSize, truncate} = Object.assign({
-		fftSize: Math.pow(2, nextpow2(signal.length)),
-		truncate: false
-	}, options);
+function transpose(array){
+    let rows = array.length;
+    let cols = array[0].length;
 
-	var f;
-	if (fftCache.hasOwnProperty(fftSize)) {
-		f = fftCache[fftSize];
-	} else {
-		f = new fft(fftSize);
-		fftCache[fftSize] = f;
-	}
+    // Verify array dimensions
+    for(let i = 0; i &lt; rows; i++){
+        if(array[i].length != cols){
+            throw new Error('Array dimension error: must be 2d array with equal row lengths');
+        }
+    }
 
-	// Zero pad signal to length if needed
-	if (signal.length &lt; fftSize) {
-		signal = signal.concat(Array(fftSize - signal.length).fill(0));
-	}
+    // Create new array
+    let transposed = new Array(cols);
+    for(let c = 0; c &lt; cols; c++){
+        transposed[c] = new Array(rows);
+        for(let r = 0; r &lt; rows; r++){
+            transposed[c][r] = array[r][c];
+        }
+    }
 
-	var freqs = f.createComplexArray();
-	f.realTransform(freqs, signal);
-	if(truncate){
-		var powers = getPowers(freqs, freqs.length / 2);
-	}else{
-		var powers = getPowers(freqs, freqs.length);
-	}
-
-	return powers;
+    return transposed;
 }
-
-function getPowers(complexArray, length) {
-	var magnitudes = [];
-	for (var i = 0; i &lt; length - 1; i += 2) {
-		magnitudes.push(Math.sqrt(complexArray[i] * complexArray[i] + complexArray[i + 1] * complexArray[i + 1]));
-	}
-	return magnitudes;
-}
-
-module.exports = psd;</code></pre>
+module.exports = transpose;</code></pre>
         </article>
     </section>
 

@@ -12,6 +12,7 @@
         * [.logvar(window, [dimension])](#module_bcijs.features.logvar)
         * [.variance(window, [dimension])](#module_bcijs.features.variance)
         * [.rootMeanSquare(window, [dimension])](#module_bcijs.features.rootMeanSquare)
+    * [.averageBandPowers(samples, sampleRate, bands, [fftSize])](#module_bcijs.averageBandPowers)
     * [.cspLearn(class1, class2)](#module_bcijs.cspLearn) ⇒ <code>Object</code>
     * [.cspProject(cspParams, data, [dimensions])](#module_bcijs.cspProject) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
     * [.fastICA(signals, options)](#module_bcijs.fastICA) ⇒ <code>Object</code>
@@ -22,6 +23,7 @@
     * [.psd(signal, [options])](#module_bcijs.psd) ⇒ <code>Array.&lt;number&gt;</code>
     * [.psdBandPower(psd, sampleRate, band, [fftSize])](#module_bcijs.psdBandPower) ⇒ <code>number</code>
     * [.signalBandPower(signal, sampleRate, band, [fftSize])](#module_bcijs.signalBandPower) ⇒ <code>number</code>
+    * [.transpose(array)](#module_bcijs.transpose) ⇒ <code>Array</code>
     * [.confusionMatrix(predictedClasses, actualClasses)](#module_bcijs.confusionMatrix) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
     * [.f1score(confusionMatrix)](#module_bcijs.f1score) ⇒ <code>number</code>
     * [.loadCSV(filePath)](#module_bcijs.loadCSV) ⇒ <code>Promise</code>
@@ -132,6 +134,24 @@ Computes the root mean square along the specified dimension
 | window | <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;Array.&lt;number&gt;&gt;</code> |  | The data |
 | [dimension] | <code>string</code> | <code>null</code> | If 'rows' or 'columns' passed, the features are calculated along that dimension |
 
+<a name="module_bcijs.averageBandPowers"></a>
+
+### bcijs.averageBandPowers(samples, sampleRate, bands, [fftSize])
+Computes the power in each frequency band averaged across all channels
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| samples | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> |  | The signals where rows are samples and columns are electrodes |
+| sampleRate | <code>number</code> |  | Sample rate of the data |
+| bands | <code>Array</code> |  | An array of frequency bands. See signalBandPower for more info on frequency bands. |
+| [fftSize] | <code>number</code> | <code></code> | The size of the fft to use. See signalBandPower for more info on fft sizes. |
+
+**Example**  
+```js
+let feature = bci.averageBandPowers(samples, 256, ['alpha', 'beta']);// returns [alpha_power_averaged_across_channels, beta_power_averaged_across_channels]
+```
 <a name="module_bcijs.cspLearn"></a>
 
 ### bcijs.cspLearn(class1, class2) ⇒ <code>Object</code>
@@ -276,6 +296,18 @@ Compute the average power across a given frequency band in a signal.
 | sampleRate | <code>number</code> |  | The sample rate of the signal. |
 | band | <code>Array.&lt;number&gt;</code> \| <code>string</code> |  | The frequency band provided as an array [frequencyStart, frequencyStop] or a string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz). While string representations allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in future updates. |
 | [fftSize] | <code>number</code> | <code>Math.pow(2, bci.nextpow2(signal.length))</code> | Size of the fourier transform used to compute the PSD. |
+
+<a name="module_bcijs.transpose"></a>
+
+### bcijs.transpose(array) ⇒ <code>Array</code>
+Transpose an array
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>Array</code> - The transposed array  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| array | <code>Array</code> | The array to transpose |
 
 <a name="module_bcijs.confusionMatrix"></a>
 

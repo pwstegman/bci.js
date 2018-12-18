@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/math/psd.js - Documentation</title>
+    <title>lib/math/averageBandPowers.js - Documentation</title>
 
     <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
 
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">lib/math/psd.js</h1>
+    <h1 class="page-title">lib/math/averageBandPowers.js</h1>
     
 
     
@@ -44,59 +44,41 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>var fft = require('fft.js');
-var nextpow2 = require('./nextpow2.js');
-
-var fftCache = {};
+            <pre class="prettyprint source linenums"><code>const transpose = require('./transpose.js');
+const signalBandPower = require('./signalBandPower.js');
 
 /**
- * Compute the power spectral density of a given signal.
+ * Computes the power in each frequency band averaged across all channels
  * @memberof module:bcijs
- * @param {number[]} signal - The signal.
- * @param {Object} [options]
- * @param {number} [options.fftSize=Math.pow(2, bci.nextpow2(signal.length))] - Size of the fft to be used. Should be a power of 2.
- * @param {boolean} [options.truncate=false] - If true, only the first half of the PSD array is returned
- * @returns {number[]} The PSD.
+ * @param {number[][]} samples - The signals where rows are samples and columns are electrodes
+ * @param {number} sampleRate - Sample rate of the data
+ * @param {Array} bands - An array of frequency bands. See signalBandPower for more info on frequency bands.
+ * @param {number} [fftSize] - The size of the fft to use. See signalBandPower for more info on fft sizes.
+ * @example
+ * let feature = bci.averageBandPowers(samples, 256, ['alpha', 'beta']);
+ * // returns [alpha_power_averaged_across_channels, beta_power_averaged_across_channels]
  */
-function psd(signal, options) {
-	var {fftSize, truncate} = Object.assign({
-		fftSize: Math.pow(2, nextpow2(signal.length)),
-		truncate: false
-	}, options);
-
-	var f;
-	if (fftCache.hasOwnProperty(fftSize)) {
-		f = fftCache[fftSize];
-	} else {
-		f = new fft(fftSize);
-		fftCache[fftSize] = f;
-	}
-
-	// Zero pad signal to length if needed
-	if (signal.length &lt; fftSize) {
-		signal = signal.concat(Array(fftSize - signal.length).fill(0));
-	}
-
-	var freqs = f.createComplexArray();
-	f.realTransform(freqs, signal);
-	if(truncate){
-		var powers = getPowers(freqs, freqs.length / 2);
-	}else{
-		var powers = getPowers(freqs, freqs.length);
-	}
-
+function averageBandPowers(samples, sampleRate, bands, fftSize = null){
+	let powers = new Array(bands.length);
+	for(let i = 0; i &lt; bands.length; i++){
+		powers[i] = 0;
+    }
+    
+    let channels = transpose(samples);
+	for(let i = 0; i &lt; channels.length; i++){
+		for(let j = 0; j &lt; bands.length; j++){
+            let bandPower = signalBandPower(channels[i], sampleRate, bands[j], fftSize);
+            powers[j] += bandPower;
+        }
+    }
+    
+    for(let i = 0; i &lt; bands.length; i++){
+        powers[i] = powers[i] / channels.length;
+    }
 	return powers;
 }
-
-function getPowers(complexArray, length) {
-	var magnitudes = [];
-	for (var i = 0; i &lt; length - 1; i += 2) {
-		magnitudes.push(Math.sqrt(complexArray[i] * complexArray[i] + complexArray[i + 1] * complexArray[i + 1]));
-	}
-	return magnitudes;
-}
-
-module.exports = psd;</code></pre>
+module.exports = averageBandPowers;
+</code></pre>
         </article>
     </section>
 
