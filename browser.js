@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Fri Nov 23 2018 14:30:39 GMT-0500 (Eastern Standard Time)
+// Created on Mon Dec 17 2018 19:54:33 GMT-0500 (Eastern Standard Time)
 // This module excludes Node.js specific methods so it can be used in the browser
 /** @module bcijs */
 module.exports.csp = require('./lib/compat/csp.js');
@@ -24,6 +24,7 @@ module.exports.nextpow2 = require('./lib/math/nextpow2.js');
 module.exports.psd = require('./lib/math/psd.js');
 module.exports.psdBandPower = require('./lib/math/psdBandPower.js');
 module.exports.signalBandPower = require('./lib/math/signalBandPower.js');
+module.exports.transpose = require('./lib/math/transpose.js');
 module.exports.wait = require('./lib/network/wait.js');
 // Additional backwards compatibility
 exports.LDA = exports.lda;
