@@ -19,7 +19,7 @@ npm install bcijs
 Browser
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bcijs@1.3.1/dist/bci.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bcijs@1.4.0/dist/bci.min.js"></script>
 ```
 
 ## Examples
@@ -138,7 +138,7 @@ console.log(subarr);
 BCI.js can be loaded from the jsDelivr CDN with
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bcijs@1.3.1/dist/bci.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bcijs@1.4.0/dist/bci.min.js"></script>
 ```
 
 You can also find `bci.js` and `bci.min.js` in the [/dist](https://github.com/pwstegman/bcijs/tree/master/dist) directory.
