@@ -24,8 +24,6 @@
     * [.psdBandPower(psd, sampleRate, band, [fftSize])](#module_bcijs.psdBandPower) ⇒ <code>number</code>
     * [.signalBandPower(signal, sampleRate, band, [fftSize])](#module_bcijs.signalBandPower) ⇒ <code>number</code>
     * [.transpose(array)](#module_bcijs.transpose) ⇒ <code>Array</code>
-    * [.confusionMatrix(predictedClasses, actualClasses)](#module_bcijs.confusionMatrix) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
-    * [.f1score(confusionMatrix)](#module_bcijs.f1score) ⇒ <code>number</code>
     * [.loadCSV(filePath)](#module_bcijs.loadCSV) ⇒ <code>Promise</code>
     * [.loadEDF(filename)](#module_bcijs.loadEDF) ⇒ <code>Object</code>
     * [.partition(array, ...divisions)](#module_bcijs.partition) ⇒ <code>Array.&lt;Array&gt;</code>
@@ -39,6 +37,14 @@
     * [.oscHeaderScan(address, port, duration)](#module_bcijs.oscHeaderScan) ⇒ <code>Promise</code>
     * [.prompt(question)](#module_bcijs.prompt) ⇒ <code>Promise</code>
     * [.wait(ms)](#module_bcijs.wait) ⇒ <code>Promise</code>
+    * [.accuracy(confusionMatrix)](#module_bcijs.accuracy) ⇒ <code>number</code>
+    * [.balancedAccuracy(confusionMatrix)](#module_bcijs.balancedAccuracy) ⇒ <code>number</code>
+    * [.confusionMatrix(predictedClasses, actualClasses)](#module_bcijs.confusionMatrix) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+    * [.f1(confusionMatrix)](#module_bcijs.f1) ⇒ <code>number</code>
+    * [.mcc(confusionMatrix)](#module_bcijs.mcc) ⇒ <code>number</code>
+    * [.precision(confusionMatrix)](#module_bcijs.precision) ⇒ <code>number</code>
+    * [.recall(confusionMatrix)](#module_bcijs.recall) ⇒ <code>number</code>
+    * [.specificity(confusionMatrix)](#module_bcijs.specificity) ⇒ <code>number</code>
 
 <a name="module_bcijs.oscStream"></a>
 
@@ -309,31 +315,6 @@ Transpose an array
 | --- | --- | --- |
 | array | <code>Array</code> | The array to transpose |
 
-<a name="module_bcijs.confusionMatrix"></a>
-
-### bcijs.confusionMatrix(predictedClasses, actualClasses) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
-Generate a confusion matrix where rows are actual classes and columns are predicted classes
-
-**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
-**Returns**: <code>Array.&lt;Array.&lt;number&gt;&gt;</code> - The confusion matrix  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| predictedClasses | <code>Array.&lt;number&gt;</code> | An array of predicted classes, with class numbers starting at 0 |
-| actualClasses | <code>Array.&lt;number&gt;</code> | An array of the actual classes, with class numbers starting at 0 |
-
-<a name="module_bcijs.f1score"></a>
-
-### bcijs.f1score(confusionMatrix) ⇒ <code>number</code>
-Calculate the f1 score of a binary classifier given its confusion matrix
-
-**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
-**Returns**: <code>number</code> - The f1 score  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| confusionMatrix | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | a 2x2 confusion matrix as 2d array where columns are predicted classes and rows are actual classes |
-
 <a name="module_bcijs.loadCSV"></a>
 
 ### bcijs.loadCSV(filePath) ⇒ <code>Promise</code>
@@ -521,4 +502,101 @@ Prompts the user for input via stdin<p>This method is exclusive to Node.js</p>
 | Param | Type | Description |
 | --- | --- | --- |
 | ms | <code>number</code> | Number of milliseconds to wait |
+
+<a name="module_bcijs.accuracy"></a>
+
+### bcijs.accuracy(confusionMatrix) ⇒ <code>number</code>
+Calculate the accuracy of a classifier given its confusion matrix as defined by the confusionMatrix method
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>number</code> - The accuracy  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| confusionMatrix | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | a confusion matrix |
+
+<a name="module_bcijs.balancedAccuracy"></a>
+
+### bcijs.balancedAccuracy(confusionMatrix) ⇒ <code>number</code>
+Calculate the balanced accuracy of a classifier given its confusion matrix as defined by the confusionMatrix method
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>number</code> - The balanced accuracy  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| confusionMatrix | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | a confusion matrix |
+
+<a name="module_bcijs.confusionMatrix"></a>
+
+### bcijs.confusionMatrix(predictedClasses, actualClasses) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+Generate a confusion matrix C where rows are actual classes and columns are predicted classes.C = [  [true negative, false positive],  [false negative, true positive]].If two classes are passes, class 0 represents the negative case, and class 1 represents the positive case.If more than two classes are passed, an NxN confusion matrix is returned where N is the number of classes.
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>Array.&lt;Array.&lt;number&gt;&gt;</code> - The confusion matrix  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| predictedClasses | <code>Array.&lt;number&gt;</code> | An array of predicted classes, with class numbers starting at 0 |
+| actualClasses | <code>Array.&lt;number&gt;</code> | An array of the actual classes, with class numbers starting at 0 |
+
+<a name="module_bcijs.f1"></a>
+
+### bcijs.f1(confusionMatrix) ⇒ <code>number</code>
+Calculate the f1 score of a binary classifier given its confusion matrix as defined by the confusionMatrix method
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>number</code> - The f1 score  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| confusionMatrix | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | a 2x2 confusion matrix |
+
+<a name="module_bcijs.mcc"></a>
+
+### bcijs.mcc(confusionMatrix) ⇒ <code>number</code>
+Calculate the Matthews correlation coefficient (MCC) of a binary classifier given its confusion matrix as defined by the confusionMatrix method
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>number</code> - The Matthews correlation coefficient  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| confusionMatrix | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | a 2x2 confusion matrix |
+
+<a name="module_bcijs.precision"></a>
+
+### bcijs.precision(confusionMatrix) ⇒ <code>number</code>
+Calculate the precision of a binary classifier given its confusion matrix as defined by the confusionMatrix method
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>number</code> - The precision (positive predictive value)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| confusionMatrix | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | a 2x2 confusion matrix |
+
+<a name="module_bcijs.recall"></a>
+
+### bcijs.recall(confusionMatrix) ⇒ <code>number</code>
+Calculate the recall of a binary classifier given its confusion matrix as defined by the confusionMatrix method
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>number</code> - The recall (true positive rate)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| confusionMatrix | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | a 2x2 confusion matrix |
+
+<a name="module_bcijs.specificity"></a>
+
+### bcijs.specificity(confusionMatrix) ⇒ <code>number</code>
+Calculate the specificity of a binary classifier given its confusion matrix as defined by the confusionMatrix method
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>number</code> - The specificity (true negative rate)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| confusionMatrix | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | a 2x2 confusion matrix |
 

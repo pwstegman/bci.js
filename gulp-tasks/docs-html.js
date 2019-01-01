@@ -8,7 +8,8 @@ function docshtml(done){
 		'index.js',
 		'lib/data',
 		'lib/math',
-		'lib/network'
+		'lib/network',
+		'lib/metrics'
 	];
 	return gulp.src(files, {read: false}).pipe(jsdoc(config, done));
 };

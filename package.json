@@ -1,6 +1,6 @@
 {
   "name": "bcijs",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "EEG signal processing and machine learning",
   "main": "index.js",
   "scripts": {
@@ -57,7 +57,7 @@
   "browserslist": "> 0.25%, not dead",
   "devDependencies": {
     "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
     "app-root-path": "^2.1.0",
     "babelify": "^10.0.0",
     "browserify": "^16.2.3",

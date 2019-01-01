@@ -20,6 +20,7 @@
                 * [.clear()](#module_bcijs.signal.EEGWindow+clear)
             * [.getPSD(size, signal)](#module_bcijs.signal.getPSD) ⇒ <code>Array.&lt;number&gt;</code>
             * [.getBandPower(size, psd, sampleRate, band)](#module_bcijs.signal.getBandPower) ⇒ <code>number</code>
+    * ~~[.f1score(confusionMatrix)](#module_bcijs.f1score) ⇒ <code>number</code>~~
 
 <a name="module_bcijs.LDA"></a>
 
@@ -212,4 +213,18 @@ Compute the average power across a given frequency band given the PSD.
 | psd | <code>Array.&lt;number&gt;</code> | Power spectral density of the signal. |
 | sampleRate | <code>number</code> | The sample rate of the signal. |
 | band | <code>Array.&lt;number&gt;</code> \| <code>string</code> | The frequency band provided as an array [frequencyStart, frequencyStop] or a string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz). While string representations allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in future updates. |
+
+<a name="module_bcijs.f1score"></a>
+
+### ~~bcijs.f1score(confusionMatrix) ⇒ <code>number</code>~~
+***Deprecated***
+
+Calculate the f1 score of a binary classifier given its confusion matrixThis method uses the following definition of a confusion matrix:C = [  [true positive, false negative],  [false positive, true negative]]which does not match the definition provided by the method bcijs.confusionMatrix.As such, it has been deprecated and replaced with the method bcijs.f1 in order to prevent a version breaking change.
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>number</code> - The f1 score  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| confusionMatrix | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | a 2x2 confusion matrix |
 

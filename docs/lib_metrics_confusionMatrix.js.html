@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/network/oscCollect.js - Documentation</title>
+    <title>lib/metrics/confusionMatrix.js - Documentation</title>
 
     <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
 
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">lib/network/oscCollect.js</h1>
+    <h1 class="page-title">lib/metrics/confusionMatrix.js</h1>
     
 
     
@@ -45,50 +45,39 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @memberof module:bcijs.network
- */
-
-var osc = require('node-osc');
-
-/**
- * Collect a set number of samples over OSC
- * &lt;p>This method is exclusive to Node.js&lt;/p>
+ * Generate a confusion matrix C where rows are actual classes and columns are predicted classes.
+ * C = [
+ *   [true negative, false positive],
+ *   [false negative, true positive]
+ * ].
+ * 
+ * If two classes are passes, class 0 represents the negative case, and class 1 represents the positive case.
+ * If more than two classes are passed, an NxN confusion matrix is returned where N is the number of classes.
  * @memberof module:bcijs
- * @param {string} address - OSC address
- * @param {number} port - OSC port
- * @param {string} header - OSC header, can be found by scanning with oscHeaderScan if unknown
- * @param {number} samples - The number of samples to collect
- * @returns {Promise} Resolves with collected data
+ * @param {number[]} predictedClasses - An array of predicted classes, with class numbers starting at 0
+ * @param {number[]} actualClasses - An array of the actual classes, with class numbers starting at 0
+ * @returns {number[][]} The confusion matrix
  */
-function oscCollect(address, port, header, samples) {
-	return new Promise(function (resolve, reject) {
-		var data = [];
+function confusionMatrix(predictedClasses, actualClasses){
+    if(predictedClasses.length != actualClasses.length){
+        throw new Error('predictedClasses length must equal actualClasses length');
+    }
+    
+    let largestClass = Math.max(...predictedClasses.concat(actualClasses));
+    // Fill a 2d array of size (largestClass + 1) x (largestClass + 1) with zeros
+    let cMatrix = Array(largestClass + 1).fill().map(() => Array(largestClass + 1).fill(0));
 
-		if (samples == 0) {
-			resolve(data);
-			return;
-		}
+    for(let i = 0; i &lt; predictedClasses.length; i++){
+        let predicted = predictedClasses[i];
+        let actual = actualClasses[i];
 
-		var server = new osc.Server(port, address);
+        cMatrix[actual][predicted]++;
+    }
 
-		server.on("message", function (msg, rinfo) {
-			if (msg[0] == header) {
-				data.push(msg.slice(1));
-
-				if (data.length > samples) {
-					server.kill();
-					reject("More OSC samples seen than expected");
-				}else if (data.length == samples) {
-					server.kill();
-					resolve(data);
-					data = [];
-				}
-			}
-		});
-	});
+    return cMatrix;
 }
 
-module.exports = oscCollect;</code></pre>
+module.exports = confusionMatrix;</code></pre>
         </article>
     </section>
 

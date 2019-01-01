@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/network/oscCollect.js - Documentation</title>
+    <title>lib/metrics/mcc.js - Documentation</title>
 
     <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
 
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">lib/network/oscCollect.js</h1>
+    <h1 class="page-title">lib/metrics/mcc.js</h1>
     
 
     
@@ -45,50 +45,26 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @memberof module:bcijs.network
- */
-
-var osc = require('node-osc');
-
-/**
- * Collect a set number of samples over OSC
- * &lt;p>This method is exclusive to Node.js&lt;/p>
+ * Calculate the Matthews correlation coefficient (MCC) of a binary classifier given its confusion matrix as defined by the confusionMatrix method
  * @memberof module:bcijs
- * @param {string} address - OSC address
- * @param {number} port - OSC port
- * @param {string} header - OSC header, can be found by scanning with oscHeaderScan if unknown
- * @param {number} samples - The number of samples to collect
- * @returns {Promise} Resolves with collected data
+ * @param {number[][]} confusionMatrix - a 2x2 confusion matrix
+ * @returns {number} The Matthews correlation coefficient
  */
-function oscCollect(address, port, header, samples) {
-	return new Promise(function (resolve, reject) {
-		var data = [];
+function mcc(confusionMatrix){
+    if(confusionMatrix.length != 2 || confusionMatrix[0].length != 2 || confusionMatrix[1].length != 2){
+        throw new Error('Confusion matrix must be of size 2x2');
+    }
 
-		if (samples == 0) {
-			resolve(data);
-			return;
-		}
+    let TN = confusionMatrix[0][0];
+    let FP = confusionMatrix[0][1];
+    let FN = confusionMatrix[1][0];
+    let TP = confusionMatrix[1][1];
 
-		var server = new osc.Server(port, address);
-
-		server.on("message", function (msg, rinfo) {
-			if (msg[0] == header) {
-				data.push(msg.slice(1));
-
-				if (data.length > samples) {
-					server.kill();
-					reject("More OSC samples seen than expected");
-				}else if (data.length == samples) {
-					server.kill();
-					resolve(data);
-					data = [];
-				}
-			}
-		});
-	});
+    return (TP * TN - FP * FN) / Math.sqrt((TP + FP) * (TP + FN) * (TN + FP) * (TN + FN));
 }
 
-module.exports = oscCollect;</code></pre>
+module.exports = mcc;
+</code></pre>
         </article>
     </section>
 

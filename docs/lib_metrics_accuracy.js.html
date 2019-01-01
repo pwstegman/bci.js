@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/network/oscCollect.js - Documentation</title>
+    <title>lib/metrics/accuracy.js - Documentation</title>
 
     <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
 
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">lib/network/oscCollect.js</h1>
+    <h1 class="page-title">lib/metrics/accuracy.js</h1>
     
 
     
@@ -45,50 +45,29 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @memberof module:bcijs.network
- */
-
-var osc = require('node-osc');
-
-/**
- * Collect a set number of samples over OSC
- * &lt;p>This method is exclusive to Node.js&lt;/p>
+ * Calculate the accuracy of a classifier given its confusion matrix as defined by the confusionMatrix method
  * @memberof module:bcijs
- * @param {string} address - OSC address
- * @param {number} port - OSC port
- * @param {string} header - OSC header, can be found by scanning with oscHeaderScan if unknown
- * @param {number} samples - The number of samples to collect
- * @returns {Promise} Resolves with collected data
+ * @param {number[][]} confusionMatrix - a confusion matrix
+ * @returns {number} The accuracy
  */
-function oscCollect(address, port, header, samples) {
-	return new Promise(function (resolve, reject) {
-		var data = [];
+function accuracy(confusionMatrix){
+    let correct = 0;
+    for(let i = 0; i &lt; confusionMatrix.length; i++){
+        correct += confusionMatrix[i][i];
+    }
 
-		if (samples == 0) {
-			resolve(data);
-			return;
-		}
+    let total = 0;
+    for(let i = 0; i &lt; confusionMatrix.length; i++){
+        for(let j = 0; j &lt; confusionMatrix.length; j++){
+            total += confusionMatrix[i][j];
+        }
+    }
 
-		var server = new osc.Server(port, address);
-
-		server.on("message", function (msg, rinfo) {
-			if (msg[0] == header) {
-				data.push(msg.slice(1));
-
-				if (data.length > samples) {
-					server.kill();
-					reject("More OSC samples seen than expected");
-				}else if (data.length == samples) {
-					server.kill();
-					resolve(data);
-					data = [];
-				}
-			}
-		});
-	});
+    return correct / total;
 }
 
-module.exports = oscCollect;</code></pre>
+module.exports = accuracy;
+</code></pre>
         </article>
     </section>
 
