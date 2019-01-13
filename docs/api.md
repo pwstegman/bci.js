@@ -530,7 +530,7 @@ Calculate the balanced accuracy of a classifier given its confusion matrix as de
 <a name="module_bcijs.confusionMatrix"></a>
 
 ### bcijs.confusionMatrix(predictedClasses, actualClasses) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
-Generate a confusion matrix C where rows are actual classes and columns are predicted classes.C = [  [true negative, false positive],  [false negative, true positive]].If two classes are passes, class 0 represents the negative case, and class 1 represents the positive case.If more than two classes are passed, an NxN confusion matrix is returned where N is the number of classes.
+Generate a confusion matrix C where rows are actual classes and columns are predicted classes.C = [  [true negative, false positive],  [false negative, true positive]].If two classes are passed, class 0 represents the negative case, and class 1 represents the positive case.If more than two classes are passed, an NxN confusion matrix is returned where N is the number of classes.
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Array.&lt;Array.&lt;number&gt;&gt;</code> - The confusion matrix  
