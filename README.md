@@ -133,6 +133,9 @@ console.log(subarr);
 */
 ```
 
+## Tutorials
+- [EEG Motor Imagery Classification in Node.js with BCI.js](https://medium.com/@pwstegman/eeg-motor-imagery-classification-in-node-js-with-bci-js-d21f29cf165)
+
 ## Usage in the web
 
 BCI.js can be loaded from the jsDelivr CDN with
