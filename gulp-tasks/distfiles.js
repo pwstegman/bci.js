@@ -5,17 +5,19 @@ const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const uglify = require('gulp-uglify-es').default;
 const rename = require('gulp-rename');
-const headerComment = require('gulp-header-comment');
-const createIndex = require('./utils/createIndex.js');
+const addheader = require('gulp-header');
+const moment = require('moment');
+const pkg = require('../package.json');
 
 function distfiles() {
-	let header = `
-		bci.js v<%= pkg.version %>
-		https://github.com/pwstegman/bcijs
-
-		License: <%= pkg.license %>
-		Generated <%= moment.utc().format() %>
-	`;
+	let header = ['/**',
+		' * bci.js v<%= pkg.version %>',
+		' * https://github.com/pwstegman/bcijs',
+		' *',
+		' * License: <%= pkg.license %>',
+		` * Generated ${moment().utc().format()}`,
+		' */',
+	].join('\n') + '\n\n';
 	
 	return browserify({
 		debug: false,
@@ -31,11 +33,11 @@ function distfiles() {
 		.on('error', (...args) => console.log(args))
 		.pipe(source('bci.js'))
 		.pipe(buffer())
-		.pipe(headerComment(header))
+		.pipe(addheader(header, {pkg:pkg}))
 		.pipe(gulp.dest('dist'))
 		.pipe(rename({ extname: '.min.js' }))
 		.pipe(uglify())
-		.pipe(headerComment(header))
+		.pipe(addheader(header, {pkg:pkg}))
 		.pipe(gulp.dest('dist'));
 };
 

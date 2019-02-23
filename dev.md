@@ -1,9 +1,10 @@
 ## Building bci.js
 
-BCI.js methods are contained within the [lib](lib) directory. To keep the project organized, methods are separated into four folders:
+BCI.js methods are contained within the [lib](lib) directory. To keep the project organized, methods are separated into five folders:
  - `compat` Deprecated methods which remain for compatibility purposes
  - `data` Methods which pertain to data management (CSV files, partition data, etc.)
  - `math` Methods used to process data (CSP, LDA, ICA, etc.)
+ - `metrics` Methods for result metrics (confusion matrices, precision, recall, f1 scores, etc.)
  - `network` Networking methods (OSC)
 
 If a method is Node.js exclusive and won't run in the browser, placing
