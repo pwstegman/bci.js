@@ -181,3 +181,7 @@ See [dev.md](dev.md) for info on how to modify and build bci.js
 If you use bci.js in a published work, please reference this paper
 
 P. Stegman, C. Crawford, and J. Gray, "WebBCI: An Electroencephalography Toolkit Built on Modern Web Technologies," in Augmented Cognition: Intelligent Technologies, 2018, pp. 212–221.
+
+## Contact
+
+If you have a commercial use case for BCI.js and would like to discuss working together, contact me at [pwstegman@gmail.com](mailto:pwstegman@gmail.com)
