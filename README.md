@@ -182,6 +182,8 @@ If you use bci.js in a published work, please reference this paper
 
 P. Stegman, C. Crawford, and J. Gray, "WebBCI: An Electroencephalography Toolkit Built on Modern Web Technologies," in Augmented Cognition: Intelligent Technologies, 2018, pp. 212–221.
 
+Logo uses icon from [Font Awesome](https://fontawesome.com/license/free).
+
 ## Contact
 
 If you have a commercial use case for BCI.js and would like to discuss working together, contact me at [pwstegman@gmail.com](mailto:pwstegman@gmail.com)
