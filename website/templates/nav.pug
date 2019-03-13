@@ -1,0 +1,24 @@
+nav.navbar.navbar-expand-lg.navbar-light
+    .container
+        a.navbar-brand(href='/')
+            img(src='/img/logo.svg', height='30', alt='BCI.js')
+        button.navbar-toggler(
+            type='button',
+            data-toggle='collapse',
+            data-target='#navbar',
+            aria-controls='navbar',
+            aria-expanded='false',
+            aria-label='Toggle navigation'
+            )
+            span.navbar-toggler-icon
+        
+        #navbar.collapse.navbar-collapse
+            .navbar-nav.ml-auto
+                a.nav-item.nav-link(href='/docs').
+                    #[i.fas.fa-book.mr-1] Docs
+                a.nav-item.nav-link(href='https://github.com/pwstegman/bci.js#tutorials').
+                    #[i.fas.fa-drafting-compass.mr-1] Tutorials
+                a.nav-item.nav-link(href='/#examples').
+                    #[i.fas.fa-code.mr-1] Examples
+                a.nav-item.nav-link(href='#', data-toggle='tooltip', data-placement='bottom', title='Coming soon').
+                    #[i.fas.fa-cubes.mr-1] Showcase #[span.d-lg-none (coming soon)]

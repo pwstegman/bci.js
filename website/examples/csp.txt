@@ -1,0 +1,16 @@
+const bci = require('bcijs');
+
+(async () => {
+    // Load EEG data from CSV 
+    // CSV methods are Node.js specific
+    let left = await bci.loadCSV('data/left.csv');
+    let right = await bci.loadCSV('data/right.csv');
+
+    // Learn a CSP filter for the EEG data
+    // CSP methods run in Node.js and the browser
+    let cspParams = bci.cspLearn(left, right);
+
+    // Project the loaded data with the learned CSP parameters
+    let cspLeft = bci.cspProject(cspParams, left);
+    let cspRight = bci.cspProject(cspParams, right);
+})();

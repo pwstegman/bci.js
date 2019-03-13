@@ -1,126 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Home - Documentation</title>
-
-    <link rel='shortcut icon' type='image/x-icon' href='/static/favicon.ico' />
-
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
-    <style>
-        li > code {
-            min-height: 1em;
-        }
-    </style>
-</head>
-<body>
-
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
-
-<label for="nav-trigger" class="overlay"></label>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-bcijs.oscStream.html">oscStream</a><ul class='methods'><li data-type='method'><a href="module-bcijs.oscStream.html#on">on</a></li><li data-type='method'><a href="module-bcijs.oscStream.html#start">start</a></li><li data-type='method'><a href="module-bcijs.oscStream.html#stop">stop</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-bcijs.html">bcijs</a><ul class='methods'><li data-type='method'><a href="module-bcijs.html#.accuracy">accuracy</a></li><li data-type='method'><a href="module-bcijs.html#.averageBandPowers">averageBandPowers</a></li><li data-type='method'><a href="module-bcijs.html#.balancedAccuracy">balancedAccuracy</a></li><li data-type='method'><a href="module-bcijs.html#.confusionMatrix">confusionMatrix</a></li><li data-type='method'><a href="module-bcijs.html#.cspLearn">cspLearn</a></li><li data-type='method'><a href="module-bcijs.html#.cspProject">cspProject</a></li><li data-type='method'><a href="module-bcijs.html#.f1">f1</a></li><li data-type='method'><a href="module-bcijs.html#.fastICA">fastICA</a></li><li data-type='method'><a href="module-bcijs.html#.generateSignal">generateSignal</a></li><li data-type='method'><a href="module-bcijs.html#.ldaLearn">ldaLearn</a></li><li data-type='method'><a href="module-bcijs.html#.ldaProject">ldaProject</a></li><li data-type='method'><a href="module-bcijs.html#.loadCSV">loadCSV</a></li><li data-type='method'><a href="module-bcijs.html#.loadEDF">loadEDF</a></li><li data-type='method'><a href="module-bcijs.html#.mcc">mcc</a></li><li data-type='method'><a href="module-bcijs.html#.nextpow2">nextpow2</a></li><li data-type='method'><a href="module-bcijs.html#.oscCollect">oscCollect</a></li><li data-type='method'><a href="module-bcijs.html#.oscHeaderScan">oscHeaderScan</a></li><li data-type='method'><a href="module-bcijs.html#.partition">partition</a></li><li data-type='method'><a href="module-bcijs.html#.precision">precision</a></li><li data-type='method'><a href="module-bcijs.html#.prompt">prompt</a></li><li data-type='method'><a href="module-bcijs.html#.psd">psd</a></li><li data-type='method'><a href="module-bcijs.html#.psdBandPower">psdBandPower</a></li><li data-type='method'><a href="module-bcijs.html#.recall">recall</a></li><li data-type='method'><a href="module-bcijs.html#.round">round</a></li><li data-type='method'><a href="module-bcijs.html#.saveCSV">saveCSV</a></li><li data-type='method'><a href="module-bcijs.html#.signalBandPower">signalBandPower</a></li><li data-type='method'><a href="module-bcijs.html#.specificity">specificity</a></li><li data-type='method'><a href="module-bcijs.html#.subscript">subscript</a></li><li data-type='method'><a href="module-bcijs.html#.toFixed">toFixed</a></li><li data-type='method'><a href="module-bcijs.html#.toTable">toTable</a></li><li data-type='method'><a href="module-bcijs.html#.transpose">transpose</a></li><li data-type='method'><a href="module-bcijs.html#.wait">wait</a></li><li data-type='method'><a href="module-bcijs.html#.windowApply">windowApply</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="module-bcijs.features.html">features</a><ul class='methods'><li data-type='method'><a href="module-bcijs.features.html#.logvar">logvar</a></li><li data-type='method'><a href="module-bcijs.features.html#.rootMeanSquare">rootMeanSquare</a></li><li data-type='method'><a href="module-bcijs.features.html#.variance">variance</a></li></ul></li></ul>
-</nav>
-
-<div id="main">
-    
-
-    
-
-
-
-    
-
-
-
-
-
-
-
-
-
-    
-
-
-    <section class="readme">
-        <article><p><img src="static/bcijs-logo.png" height="68px"></p>
-
-<p><a href="https://www.npmjs.com/package/bcijs"><img src="https://img.shields.io/npm/v/bcijs.svg" alt="npm"></a>
-<a href="https://www.npmjs.com/package/bcijs"><img src="https://img.shields.io/npm/dm/bcijs.svg" alt="npm"></a>
-<a href="https://github.com/pwstegman/bcijs/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/bcijs.svg" alt="NpmLicense"></a></p>
-<p>BCI.js is a library for EEG-based brain computer interface (BCI) design with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, containing methods for signal processing and machine learning, such as LDA, CSP, ICA, and PSD, methods for data manipulation, such as MATLAB style array subscripting, data windowing, and CSV file support, and methods for networking, including data collection and streaming via OSC.</p>
-<p>BCI.js is being developed out of the Human Technology Interaction Lab at the University of Alabama Department of Computer Science.</p>
-<h2>Getting Started</h2><p>Node.js</p>
-<pre class="prettyprint source lang-bash"><code>npm install bcijs</code></pre><p>Browser</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.5.2/dist/bci.min.js&quot;>&lt;/script></code></pre><h2>Tutorials</h2><ul>
-<li><a href="https://medium.com/@pwstegman/eeg-motor-imagery-classification-in-node-js-with-bci-js-d21f29cf165">EEG Motor Imagery Classification in Node.js with BCI.js</a></li>
-</ul>
-<h2>Examples</h2><h3>Signal Processing</h3><pre class="prettyprint source lang-javascript"><code>const bci = require('bcijs');
+<!DOCTYPE html><html lang="en"><head><title>BCI.js</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico"><!-- Bootstrap--><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"><!-- Font Awesome--><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"><!-- Main CSS--><link rel="stylesheet" href="css/main.css"><link rel="stylesheet" href="css/prettify.css"></head><body><nav class="navbar navbar-expand-lg navbar-light"><div class="container"><a class="navbar-brand" href="/"><img src="/img/logo.svg" height="30" alt="BCI.js"></a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbar"><div class="navbar-nav ml-auto"><a class="nav-item nav-link" href="/docs"><i class="fas fa-book mr-1"></i> Docs</a><a class="nav-item nav-link" href="https://github.com/pwstegman/bci.js#tutorials"><i class="fas fa-drafting-compass mr-1"></i> Tutorials</a><a class="nav-item nav-link" href="/#examples"><i class="fas fa-code mr-1"></i> Examples</a><a class="nav-item nav-link" href="#" data-toggle="tooltip" data-placement="bottom" title="Coming soon"><i class="fas fa-cubes mr-1"></i> Showcase <span class="d-lg-none">(coming soon)</span></a></div></div></div></nav><section class="text-center" id="intro"><div class="container"><div class="py-5"><img id="logo" src="img/logo.svg" height="100"><p class="lead text-muted mt-2 font-weight-normal">Powering brain-computer interfaces with JavaScript</p><p><a class="btn btn-outline-primary my-2 mr-2" href="https://github.com/pwstegman/bci.js"><i class="fab fa-github"></i> GitHub</a><a class="btn btn-outline-success my-2" href="/docs"><i class="fas fa-book"></i> Docs</a></p></div></div></section><section class="blue" id="getstarted"><div class="container"><div class="row"><div class="col-md-4"><h2><i class="fas fa-download fa-sm mr-1"></i> Get Started</h2><p>Perform online and offline processing in Node.js with our NPM package, or get started directly in your browser with the jsDelivr CDN.</p><div class="d-md-none pb-2">&nbsp; </div></div><div class="col-md-8"><h5>Node.js</h5><pre class="prettyprint lang-bash codesnippet mx-auto"><code>npm install bcijs</code></pre><h5>Browser</h5><pre class="prettyprint lang-html codesnippet mx-auto"><code>&lt;script src="https://cdn.jsdelivr.net/npm/bcijs@1.5.2/dist/bci.min.js"&gt;&lt;/script&gt;</code></pre></div></div></div></section><div id="examples"><section class="feature" id="signalProcessing"><div class="container"><div class="row"><div class="col-lg-4"><h4><i class="fas fa-chart-line"></i> Signal Processing</h4><p>Isolate specific brainwaves with methods such as the fast fourier transform, common spatial pattern, FastICA, and more.</p><p>Find more examples in our <a href="https://github.com/pwstegman/bci.js/tree/master/examples">GitHub repo</a> and our <a href="https://bci.js.org/">docs</a>.</p><div class="d-md-none pb-2"></div></div><div class="col-lg-8"><nav><div class="nav nav-tabs" id="nav-tab" role="tablist"><a class="nav-item nav-link active" id="nav-bandpower-tab" data-toggle="tab" href="#nav-bandpower" role="tab" aria-controls="nav-bandpower" aria-selected="true">bandpower.js</a><a class="nav-item nav-link" id="nav-csp-tab" data-toggle="tab" href="#nav-csp" role="tab" aria-controls="nav-csp" aria-selected="true">csp.js</a></div></nav><div class="tab-content" id="nav-tabContent"><div class="tab-pane show active" id="nav-bandpower" role="tabpanel" aria-labelledby="nav-bandpower-tab"><pre class="prettyprint lang-js" style="min-height:27em;"><code>const bci = require('bcijs');
 
 // Generate 1 second of sample data
 let sampleRate = 512;
 let duration = 1;
-let amplitudes = [1, 2, 4, 8];
-let frequencies = [
-    1, // 1 Hz, delta range
-    5, // 5 Hz, theta range
-    8, // 8 Hz, alpha range
-    17 // 17 Hz, beta range
-];
+let amplitudes = [4, 8];
+// 10 Hz (alpha), 20 Hz (beta) 
+let frequencies = [10, 20];
 
-let signal = bci.generateSignal(amplitudes, frequencies, sampleRate, duration);
+let signal = bci.generateSignal(
+    amplitudes,
+    frequencies,
+    sampleRate,
+    duration
+);
 
-// Compute average power in each frequency band
-let fftSize = sampleRate * duration;
-console.log(bci.signalBandPower(signal, sampleRate, 'delta', fftSize)); // 85
-console.log(bci.signalBandPower(signal, sampleRate, 'theta', fftSize)); // 128
-console.log(bci.signalBandPower(signal, sampleRate, 'alpha', fftSize)); // 205
-console.log(bci.signalBandPower(signal, sampleRate, 'beta', fftSize));  // 114</code></pre><h3>Machine Learning</h3><p>Check out <a href="https://bci.js.org/examples/lda">https://bci.js.org/examples/lda</a> for a visual demo of how LDA works</p>
-<pre class="prettyprint source lang-javascript"><code>const bci = require('bcijs');
+// Compute average power in alpha and beta frequency bands
+// 205
+console.log(bci.signalBandPower(signal, sampleRate, 'alpha'));
+// 114
+console.log(bci.signalBandPower(signal, sampleRate, 'beta'));
+</code></pre></div><div class="tab-pane" id="nav-csp" role="tabpanel" aria-labelledby="nav-csp-tab"><pre class="prettyprint lang-js" style="min-height:27em;"><code>const bci = require('bcijs');
+
+(async () =&gt; {
+    // Load EEG data from CSV 
+    // CSV methods are Node.js specific
+    let left = await bci.loadCSV('data/left.csv');
+    let right = await bci.loadCSV('data/right.csv');
+
+    // Learn a CSP filter for the EEG data
+    // CSP methods run in Node.js and the browser
+    let cspParams = bci.cspLearn(left, right);
+
+    // Project the loaded data with the learned CSP parameters
+    let cspLeft = bci.cspProject(cspParams, left);
+    let cspRight = bci.cspProject(cspParams, right);
+})();
+</code></pre></div></div></div></div></div></section><section class="feature" id="machineLearning"><div class="container"><div class="row"><div class="col-lg-4"><h4><i class="fas fa-brain"></i> Machine Learning</h4><p>Epoch data, build features, and train a classifier to identify different thoughts and states of mind.</p><p>Find more examples in our <a href="https://github.com/pwstegman/bci.js/tree/master/examples">GitHub repo</a> and our <a href="https://bci.js.org/">docs</a>.</p><div class="d-md-none pb-2"></div></div><div class="col-lg-8"><nav><div class="nav nav-tabs" id="nav-tab" role="tablist"><a class="nav-item nav-link active" id="nav-lda-tab" data-toggle="tab" href="#nav-lda" role="tab" aria-controls="nav-lda" aria-selected="true">lda.js</a><a class="nav-item nav-link" id="nav-features-tab" data-toggle="tab" href="#nav-features" role="tab" aria-controls="nav-features" aria-selected="true">features.js</a></div></nav><div class="tab-content" id="nav-tabContent"><div class="tab-pane show active" id="nav-lda" role="tabpanel" aria-labelledby="nav-lda-tab"><pre class="prettyprint lang-js" style="min-height:30em;"><code>const bci = require('bcijs');
 
 // Training set
-let class1 = [
-    [0, 0],
-    [1, 2],
-    [2, 2],
-    [1.5, 0.5]
-];
-let class2 = [
-    [8, 8],
-    [9, 10],
-    [7, 8],
-    [9, 9]
-];
+let class1 = [[0, 0], [1, 2], [2, 2], [1.5, 0.5]];
+let class2 = [[8, 8], [9, 10], [7, 8], [9, 9]];
 
 // Testing set
 let unknownPoints = [
-    [-1, 0],
-    [1.5, 2],
-    [3, 3],
-    [5, 5],
-    [7, 9],
-    [10, 12]
+	[-1, 0],
+	[1.5, 2],
+	[3, 3],
+	[5, 5],
+	[7, 9],
+	[10, 12]
 ];
 
 // Learn an LDA classifier
 let ldaParams = bci.ldaLearn(class1, class2);
 
 // Test classifier
-let predictions = unknownPoints.map(point => {
-    return Math.sign(bci.ldaProject(ldaParams, point))
+let predictions = unknownPoints.map(point =&gt; {
+	return Math.sign(bci.ldaProject(ldaParams, point))
 });
 
-console.log(predictions); // [ -1, -1, -1, 1, 1, 1 ]</code></pre><h3>Data Manipulation and Feature Extraction</h3><pre class="prettyprint source lang-javascript"><code>const bci = require('bcijs');
+console.log(predictions); // [ -1, -1, -1, 1, 1, 1 ]
+</code></pre></div><div class="tab-pane" id="nav-features" role="tabpanel" aria-labelledby="nav-features-tab"><pre class="prettyprint lang-js" style="min-height:30em;"><code>const bci = require('bcijs');
 
 // Some random numbers
 let data = [3, 2, 3, 0, 4, 0, 0, 5, 4, 0];
@@ -131,57 +71,10 @@ let [training, testing] = bci.partition(data, 0.6, 0.4);
 console.log(training); // [3, 2, 3, 0, 4, 0]
 console.log(testing); // [0, 5, 4, 0]
 
-// Traverse the data array with windows of size 3 and a step of 2 (overlap of 1 item per window)
-bci.windowApply(data, window => console.log(window), 3, 2);
-/*
-[ 3, 2, 3 ]
-[ 3, 0, 4 ]
-[ 4, 0, 0 ]
-[ 0, 5, 4 ]
-*/
-
-// Find the log of the variance of these windows (feature extraction)
+/* Epoch EEG data
+   Traverse the data array with windows of size 3 and a step of 2
+   (overlap of 1 item per window). Then find the log of the variance
+   of these windows (feature extraction) */
 let features = bci.windowApply(data, bci.features.logvar, 3, 2);
 console.log(features); // [-1.099, 1.466, 1.674, 1.946]
-
-// Colon notation for array subscripting
-let arr = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
-];
-let subarr = bci.subscript(arr, '1 3', '2:3'); // rows 1 and 3, columns 2 through 3
-console.log(subarr);
-/*
-[[2, 3],
- [8, 9]]
-*/</code></pre><h2>Usage in the web</h2><p>BCI.js can be loaded from the jsDelivr CDN with</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.5.2/dist/bci.min.js&quot;>&lt;/script></code></pre><p>You can also find <code>bci.js</code> and <code>bci.min.js</code> in the <a href="https://github.com/pwstegman/bcijs/tree/master/dist">/dist</a> directory.</p>
-<p>BCI.js methods are accessible via the global object <code>bci</code>.</p>
-<p>If building a web distributable using a tool such as browserify or webpack, require <code>bcijs/browser.js</code> to load only methods that are browser compatible. Node.js specific methods such as networking and file system methods will not be included.</p>
-<pre class="prettyprint source lang-javascript"><code>const bci = require('bcijs/browser.js');</code></pre><h2>Requiring specific methods</h2><p>You can require specific methods as well. For example, if you only need fastICA, you can use</p>
-<pre class="prettyprint source lang-javascript"><code>const fastICA = require('bcijs/lib/math/fastICA.js');</code></pre><p>BCI.js methods can be found in the <a href="https://github.com/pwstegman/bcijs/tree/master/lib">lib/</a> directory.</p>
-<h2>Documentation</h2><p>Documentation can be found at <a href="https://bci.js.org">https://bci.js.org</a> or by viewing <a href="https://github.com/pwstegman/bcijs/blob/master/docs/api.md">docs/api.md</a></p>
-<h2>Examples</h2><p>More examples can be found in the <a href="https://github.com/pwstegman/bcijs/tree/master/examples">examples</a> directory</p>
-<h2>Building</h2><p>See <a href="dev.md">dev.md</a> for info on how to modify and build bci.js</p>
-<h2>Reference</h2><p>If you use bci.js in a published work, please reference this paper</p>
-<p>P. Stegman, C. Crawford, and J. Gray, &quot;WebBCI: An Electroencephalography Toolkit Built on Modern Web Technologies,&quot; in Augmented Cognition: Intelligent Technologies, 2018, pp. 212–221.</p></article>
-    </section>
-
-
-
-
-
-
-</div>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Feb 23 2019 16:48:01 GMT-0600 (Central Standard Time) using a modified version of the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
-</footer>
-
-<script>prettyPrint();</script>
-<script src="scripts/linenumber.js"></script>
-</body>
-</html>
+</code></pre></div></div></div></div></div></section></div><section class="feature"><div class="container"><div class="row"><div class="col-lg-4"><h4><i class="fas fa-bolt"></i> Real Time</h4><p>Fast enough for real time processing and classification, all in JavaScript. Methods run entirely in your browser or Node.js.</p><p>Read more about BCI.js (formerly WebBCI) and the state of BCIs in the web in our <a href="https://www.researchgate.net/publication/325529881_WebBCI_An_Electroencephalography_Toolkit_Built_on_Modern_Web_Technologies">paper</a>.</p><div class="d-md-none pb-1"></div></div><div class="col-lg-8"><h5>Method Run Times (16 channels, 128 samples)</h5><table class="table table-dark"><thead><tr><th scope="col">Bandpower</th><th scope="col">Common spatial pattern (CSP)</th><th scope="col">Linear discriminant analysis (LDA)</th></tr></thead><tbody><tr><td>&lt; 1 ms</td><td>&lt; 4 ms</td><td>&lt; 1 ms</td></tr></tbody></table><p>Benchmarks for three common processing methods within BCI.js. Tested in Google Chrome on an iPhone 8, a Nexus 5X, a Surface Book, and a Lenovo Ideacentre.</p></div></div></div></section><section class="blue" id="footer"><div class="container"><div class="row"><div class="col-lg-4" id="body">BCI.js made with <i class="fas fa-heart fa-sm"></i> and <i class="fas fa-coffee fa-sm"></i><div class="d-lg-none pb-1"></div></div><div class="col-lg-8" id="copyright">BCI.js &#169; 2017 Pierce Stegman. Logo and website made with icons from <a class="text-white" href="https://fontawesome.com/license/free">Font Awesome</a></div></div></div></section><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script><script src="js/prettify.js"></script><script src="js/main.js"></script></body></html>

@@ -1,0 +1,21 @@
+const bci = require('bcijs');
+
+// Generate 1 second of sample data
+let sampleRate = 512;
+let duration = 1;
+let amplitudes = [4, 8];
+// 10 Hz (alpha), 20 Hz (beta) 
+let frequencies = [10, 20];
+
+let signal = bci.generateSignal(
+    amplitudes,
+    frequencies,
+    sampleRate,
+    duration
+);
+
+// Compute average power in alpha and beta frequency bands
+// 205
+console.log(bci.signalBandPower(signal, sampleRate, 'alpha'));
+// 114
+console.log(bci.signalBandPower(signal, sampleRate, 'beta'));

@@ -1,0 +1,181 @@
+/* Navbar */
+
+.navbar-light .navbar-brand {
+    color: #000000;
+    margin-top: 0.5rem;
+}
+
+.navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
+    color: #000000;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #555555;
+    margin-top: 0.5em;
+}
+
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+    color: #000000;
+}
+
+.navbar-light .navbar-nav .nav-link.disabled {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.navbar-light .navbar-nav .show > .nav-link,
+.navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .nav-link.active {
+    color: #000000;
+}
+
+.navbar-light .navbar-toggler {
+    color: #555555;
+    border-color: rgba(0, 0, 0, 0);
+    outline: none;
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='%23555555' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-light .navbar-toggler-icon:active {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-light .navbar-text {
+    color: #555555;
+}
+
+.navbar-light .navbar-text a {
+    color: #000000;
+}
+
+.navbar-light .navbar-text a:hover, .navbar-light .navbar-text a:focus {
+    color: #000000;
+}
+
+/* Main page */
+
+p {
+    font-size: 1.1em;
+}
+
+.table {
+    border-radius:0.5rem;
+}
+
+.table th {
+    border-top: none;
+}
+
+section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.btn {
+    border-radius: 0;
+}
+
+#intro {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+section.blue {
+    background-color: #3673ec;
+    color: #FFF;
+}
+
+/* Modified from https://github.com/google/code-prettify/blob/master/styles/desert.css */
+#getstarted pre .pun,
+#getstarted pre .pln,
+#getstarted pre .atv { color: #fff }
+#getstarted pre .tag { color: #f0e68c; }
+#getstarted pre .atn { color: #bdb76b; }
+#getstarted .prettyprint {
+    background-color: #1b3976;
+}
+
+.feature .prettyprint {
+    border-radius: 0.5rem;
+    border-top-left-radius: 0;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    background-color: #343a40;
+    border: none;
+    color: #FFF;
+}
+.nav-tabs {
+    border-bottom: none;
+}
+.nav-tabs .nav-link {
+    border: none;
+    background-color: #5a5f64;
+    color: #EEE;
+}
+
+#logo {
+    max-width: 95%;
+}
+
+.lead {
+    font-size: 1.5rem;
+}
+
+#intro .btn {
+    font-size: 1.1rem;
+}
+
+.codesnippet {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.codesnippet::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.prettyprint {
+    font-size: 1em;
+    line-height: 18px;
+    display: block;
+    color: #aeaeae;
+    padding: 15px;
+}
+
+.prettyprint code {
+    line-height: 18px;
+    display: block;
+    color: #4D4E53;
+}
+
+section#machineLearning {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+section#footer {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+section#footer #body,
+section#footer #copyright {
+    text-align: center;
+}
+
+@media (min-width: 992px) {
+    section#footer #body {
+        text-align: left;
+    }
+    
+    section#footer #copyright {
+        text-align: right;
+    }
+}

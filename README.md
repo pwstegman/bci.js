@@ -55,7 +55,7 @@ console.log(bci.signalBandPower(signal, sampleRate, 'beta', fftSize));  // 114
 
 ### Machine Learning
 
-Check out [https://bci.js.org/examples/lda](https://bci.js.org/examples/lda) for a visual demo of how LDA works
+Check out [https://bci.js.org/docs/examples/lda](https://bci.js.org/docs/examples/lda) for a visual demo of how LDA works
 
 ```javascript
 const bci = require('bcijs');
@@ -166,7 +166,7 @@ BCI.js methods can be found in the [lib/](https://github.com/pwstegman/bcijs/tre
 
 ## Documentation
 
-Documentation can be found at [https://bci.js.org](https://bci.js.org) or by viewing [docs/api.md](https://github.com/pwstegman/bcijs/blob/master/docs/api.md)
+Documentation can be found at [https://bci.js.org/docs](https://bci.js.org/docs) or by viewing [api.md](https://github.com/pwstegman/bcijs/blob/master/docs/docs/api.md)
 
 ## Examples
 

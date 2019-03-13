@@ -16,6 +16,7 @@
   "author": "Pierce Stegman <pwstegman@gmail.com> (https://github.com/pwstegman)",
   "license": "MIT",
   "dependencies": {
+    "csv": "^5.1.1",
     "csvtojson": "^1.1.12",
     "easy-table": "^1.1.1",
     "edfjs": "^0.2.0",
@@ -33,8 +34,8 @@
     "lib/",
     "browser.js",
     "index.js",
-    "docs/api.md",
-    "docs/deprecated.md"
+    "docs/docs/api.md",
+    "docs/docs/deprecated.md"
   ],
   "directories": {
     "lib": "lib"
@@ -65,11 +66,14 @@
     "fs-then-native": "^2.0.0",
     "glob": "^7.1.3",
     "gulp": "^4.0.0",
+    "gulp-clean-css": "^4.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-header": "^2.0.7",
     "gulp-hub": "^4.2.0",
     "gulp-jsdoc3": "^2.0.0",
+    "gulp-pug": "^4.0.1",
     "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.2",
     "gulp-uglify-es": "^1.0.1",
     "jsdoc": "^3.5.5",
     "jsdoc-to-markdown": "^4.0.1",
@@ -77,6 +81,8 @@
     "mocha": "^4.1.0",
     "moment": "^2.24.0",
     "nyc": "^13.3.0",
+    "pug": "^2.0.3",
+    "readable-stream": "^3.2.0",
     "tmp": "0.0.33",
     "upath": "^1.1.0",
     "vinyl-buffer": "^1.0.1",

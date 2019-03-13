@@ -25,7 +25,7 @@
 		}
 	},
 	"opts": {
-		"destination": "./docs/",
+		"destination": "./docs/docs/",
 		"encoding": "utf8",
 		"private": false,
 		"recurse": true,

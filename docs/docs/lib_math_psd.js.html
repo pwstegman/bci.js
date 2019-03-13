@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib/math/psd.js - Documentation</title>
+
+    <link rel='shortcut icon' type='image/x-icon' href='/img/favicon.ico' />
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <style>
+        li > code {
+            min-height: 1em;
+        }
+    </style>
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-bcijs.oscStream.html">oscStream</a><ul class='methods'><li data-type='method'><a href="module-bcijs.oscStream.html#on">on</a></li><li data-type='method'><a href="module-bcijs.oscStream.html#start">start</a></li><li data-type='method'><a href="module-bcijs.oscStream.html#stop">stop</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-bcijs.html">bcijs</a><ul class='methods'><li data-type='method'><a href="module-bcijs.html#.accuracy">accuracy</a></li><li data-type='method'><a href="module-bcijs.html#.averageBandPowers">averageBandPowers</a></li><li data-type='method'><a href="module-bcijs.html#.balancedAccuracy">balancedAccuracy</a></li><li data-type='method'><a href="module-bcijs.html#.confusionMatrix">confusionMatrix</a></li><li data-type='method'><a href="module-bcijs.html#.cspLearn">cspLearn</a></li><li data-type='method'><a href="module-bcijs.html#.cspProject">cspProject</a></li><li data-type='method'><a href="module-bcijs.html#.f1">f1</a></li><li data-type='method'><a href="module-bcijs.html#.fastICA">fastICA</a></li><li data-type='method'><a href="module-bcijs.html#.generateSignal">generateSignal</a></li><li data-type='method'><a href="module-bcijs.html#.ldaLearn">ldaLearn</a></li><li data-type='method'><a href="module-bcijs.html#.ldaProject">ldaProject</a></li><li data-type='method'><a href="module-bcijs.html#.loadCSV">loadCSV</a></li><li data-type='method'><a href="module-bcijs.html#.loadEDF">loadEDF</a></li><li data-type='method'><a href="module-bcijs.html#.mcc">mcc</a></li><li data-type='method'><a href="module-bcijs.html#.nextpow2">nextpow2</a></li><li data-type='method'><a href="module-bcijs.html#.oscCollect">oscCollect</a></li><li data-type='method'><a href="module-bcijs.html#.oscHeaderScan">oscHeaderScan</a></li><li data-type='method'><a href="module-bcijs.html#.partition">partition</a></li><li data-type='method'><a href="module-bcijs.html#.precision">precision</a></li><li data-type='method'><a href="module-bcijs.html#.prompt">prompt</a></li><li data-type='method'><a href="module-bcijs.html#.psd">psd</a></li><li data-type='method'><a href="module-bcijs.html#.psdBandPower">psdBandPower</a></li><li data-type='method'><a href="module-bcijs.html#.recall">recall</a></li><li data-type='method'><a href="module-bcijs.html#.round">round</a></li><li data-type='method'><a href="module-bcijs.html#.saveCSV">saveCSV</a></li><li data-type='method'><a href="module-bcijs.html#.signalBandPower">signalBandPower</a></li><li data-type='method'><a href="module-bcijs.html#.specificity">specificity</a></li><li data-type='method'><a href="module-bcijs.html#.subscript">subscript</a></li><li data-type='method'><a href="module-bcijs.html#.toFixed">toFixed</a></li><li data-type='method'><a href="module-bcijs.html#.toTable">toTable</a></li><li data-type='method'><a href="module-bcijs.html#.transpose">transpose</a></li><li data-type='method'><a href="module-bcijs.html#.wait">wait</a></li><li data-type='method'><a href="module-bcijs.html#.windowApply">windowApply</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="module-bcijs.features.html">features</a><ul class='methods'><li data-type='method'><a href="module-bcijs.features.html#.logvar">logvar</a></li><li data-type='method'><a href="module-bcijs.features.html#.rootMeanSquare">rootMeanSquare</a></li><li data-type='method'><a href="module-bcijs.features.html#.variance">variance</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">lib/math/psd.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var fft = require('fft.js');
+var nextpow2 = require('./nextpow2.js');
+
+var fftCache = {};
+
+/**
+ * Compute the power spectral density of a given signal.
+ * @memberof module:bcijs
+ * @param {number[]} signal - The signal.
+ * @param {Object} [options]
+ * @param {number} [options.fftSize=Math.pow(2, bci.nextpow2(signal.length))] - Size of the fft to be used. Should be a power of 2.
+ * @param {boolean} [options.truncate=false] - If true, only the first half of the PSD array is returned
+ * @returns {number[]} The PSD.
+ */
+function psd(signal, options) {
+	var {fftSize, truncate} = Object.assign({
+		fftSize: Math.pow(2, nextpow2(signal.length)),
+		truncate: false
+	}, options);
+
+	var f;
+	if (fftCache.hasOwnProperty(fftSize)) {
+		f = fftCache[fftSize];
+	} else {
+		f = new fft(fftSize);
+		fftCache[fftSize] = f;
+	}
+
+	// Zero pad signal to length if needed
+	if (signal.length &lt; fftSize) {
+		signal = signal.concat(Array(fftSize - signal.length).fill(0));
+	}
+
+	var freqs = f.createComplexArray();
+	f.realTransform(freqs, signal);
+	if(truncate){
+		var powers = getPowers(freqs, freqs.length / 2);
+	}else{
+		var powers = getPowers(freqs, freqs.length);
+	}
+
+	return powers;
+}
+
+function getPowers(complexArray, length) {
+	var magnitudes = [];
+	for (var i = 0; i &lt; length - 1; i += 2) {
+		magnitudes.push(Math.sqrt(complexArray[i] * complexArray[i] + complexArray[i + 1] * complexArray[i + 1]));
+	}
+	return magnitudes;
+}
+
+module.exports = psd;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Mar 12 2019 20:52:16 GMT-0400 (Eastern Daylight Time) using a modified version of the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

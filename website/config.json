@@ -1,0 +1,12 @@
+{
+    "examples": [
+        {
+            "id": "signalProcessing",
+            "files": ["examples/bandpower.txt", "examples/csp.txt"]
+        },
+        {
+            "id": "machineLearning",
+            "files": ["examples/lda.txt", "examples/features.txt"]
+        }
+    ]
+}

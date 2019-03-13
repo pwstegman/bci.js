@@ -1,0 +1,71 @@
+-
+ var sp =  {
+    title: 'Signal Processing',
+    icon: 'fas fa-chart-line',
+    text: 'Isolate specific brainwaves with methods such as the fast fourier transform, common spatial pattern, FastICA, and more.'
+ };
+
+ var ml = {
+    title: 'Machine Learning',
+    icon: 'fas fa-brain',
+    text: 'Epoch data, build features, and train a classifier to identify different thoughts and states of mind.'
+ };
+
+
+mixin codeSamples(id, icon, title, text, examples, minheight)
+    section.feature(id= id)
+        .container
+            .row
+                .col-lg-4
+                    h4 #[i(class=icon)] #{title}
+                    p= text
+                    p Find more examples in our #[a(href='https://github.com/pwstegman/bci.js/tree/master/examples') GitHub repo] and our #[a(href='https://bci.js.org/') docs].
+                    .d-md-none.pb-2
+                .col-lg-8
+                    nav
+                        #nav-tab.nav.nav-tabs(role='tablist')
+                            each example, index in examples
+                                a.nav-item.nav-link(
+                                    id=`nav-${example.filename}-tab`,
+                                    class=(index == 0) ? 'active':'',
+                                    data-toggle='tab',
+                                    href=`#nav-${example.filename}`,
+                                    role='tab',
+                                    aria-controls=`nav-${example.filename}`,
+                                    aria-selected='true')= example.filename + '.js'
+                    #nav-tabContent.tab-content
+                        each example, index in examples
+                            .tab-pane(
+                                id=`nav-${example.filename}`
+                                class=(index == 0)?'show active':'',
+                                role='tabpanel',
+                                aria-labelledby=`nav-${example.filename}-tab`)
+                                pre.prettyprint.lang-js(style='min-height:' + minheight + ';')
+                                    code= example.contents
+
+#examples
+    +codeSamples('signalProcessing', sp.icon, sp.title, sp.text, signalProcessing, '27em')
+    +codeSamples('machineLearning', ml.icon, ml.title, ml.text, machineLearning, '30em')
+
+section.feature
+    .container
+        .row
+            .col-lg-4
+                h4 #[i(class='fas fa-bolt')] Real Time
+                p Fast enough for real time processing and classification, all in JavaScript. Methods run entirely in your browser or Node.js.
+                p Read more about BCI.js (formerly WebBCI) and the state of BCIs in the web in our #[a(href='https://www.researchgate.net/publication/325529881_WebBCI_An_Electroencephalography_Toolkit_Built_on_Modern_Web_Technologies') paper].
+                .d-md-none.pb-1
+            .col-lg-8
+                h5 Method Run Times (16 channels, 128 samples)
+                table.table.table-dark
+                    thead
+                        tr
+                            th(scope='col') Bandpower
+                            th(scope='col') Common spatial pattern (CSP)
+                            th(scope='col') Linear discriminant analysis (LDA)
+                    tbody
+                        tr
+                            td &lt; 1 ms
+                            td &lt; 4 ms
+                            td &lt; 1 ms
+                p Benchmarks for three common processing methods within BCI.js. Tested in Google Chrome on an iPhone 8, a Nexus 5X, a Surface Book, and a Lenovo Ideacentre.
