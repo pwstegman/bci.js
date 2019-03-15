@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/data/windowApply.js - Documentation</title>
+    <title>lib/math/ldaClassify.js - Documentation</title>
 
     <link rel='shortcut icon' type='image/x-icon' href='/img/favicon.ico' />
 
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">lib/data/windowApply.js</h1>
+    <h1 class="page-title">lib/math/ldaClassify.js</h1>
     
 
     
@@ -44,49 +44,31 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Similar to JavaScript's map, but it applies a function to sub arrays instead of each element.
- * Each sub array, or window, starts at index 0 and has length 'length'
- * Each next window will be shifted 'step' elements from the first. The result of each function is stored in a returned array.
+            <pre class="prettyprint source linenums"><code>const ldaProject = require('./ldaProject');
+
+/**
+ * Classify an unknown data point.
  * @memberof module:bcijs
- * @param {Array} array - The array of elements which will be windowed
- * @param {Function} func - The function to call on each window, the returned result is stored in a returned array
- * @param {number} length - The number of elements to include in each window
- * @param {number} step - The start of the window is incremented by this amount every iteration
- * @param {boolean} tail - If false, windows which begin near the end of the array which cannot reach length 'length' will be ignored
- * @returns {Array} An array containing the function result for each window
- * @example
- * var bci = require('bcijs');
- * bci.windowApply([1, 2, 3, 4, 5], window => console.log(window), 3, 1);
- * // [1, 2, 3]
- * // [2, 3, 4]
- * // [3, 4, 5] 
- * @example
- * var bci = require('bcijs');
- * var sums = bci.windowApply([1, 2, 3, 4, 5], window => {
- *   var sum = 0;
- *   window.forEach(x => sum += x);
- *   return sum;
- * }, 3, 1);
- * console.log(sums);
- * // [6, 9, 12]
+ * @param {object} ldaParams - The parameters for the LDA, computed with the function ldaLearn
+ * @param {number[]|number[][]} point - The data point or array of points to be classified.
+ * @returns {number} 0 if the first class, 1 if the second class
  */
-function windowApply(array, func, length, step = -1, tail = false) {
-	if (step == -1) step = length;
+function ldaClassify(ldaParams, point) {
+    let result = ldaProject(ldaParams, point);
+    
+    if(Array.isArray(result)){
+        for(let i = 0; i &lt; result.length; i++){
+            result[i] = result[i] &lt; 0 ? 0 : 1;
+        }
+    } else {
+        result = result &lt; 0 ? 0 : 1;
+    }
 
-	var result = [];
-
-	for (var i = 0; i &lt; array.length; i += step) {
-		var window = array.slice(i, i + length);
-		if (tail || window.length == length) {
-			result.push(func(window));
-		}
-	}
-
-	return result;
+    return result;
 }
 
-module.exports = windowApply;</code></pre>
+module.exports = ldaClassify;
+</code></pre>
         </article>
     </section>
 

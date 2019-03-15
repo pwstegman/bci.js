@@ -88,9 +88,7 @@ let unknownPoints = [
 let ldaParams = bci.ldaLearn(class1, class2);
 
 // Test classifier
-let predictions = unknownPoints.map(point => {
-	return Math.sign(bci.ldaProject(ldaParams, point))
-});
+let predictions = bci.ldaClassify(ldaParams, unknownPoints);
 
 console.log(predictions); // [ -1, -1, -1, 1, 1, 1 ]
 ```
