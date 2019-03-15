@@ -90,7 +90,7 @@ let ldaParams = bci.ldaLearn(class1, class2);
 // Test classifier
 let predictions = bci.ldaClassify(ldaParams, unknownPoints);
 
-console.log(predictions); // [ -1, -1, -1, 1, 1, 1 ]
+console.log(predictions); // [ 0, 0, 0, 1, 1, 1 ]
 ```
 
 ### Data Manipulation and Feature Extraction
