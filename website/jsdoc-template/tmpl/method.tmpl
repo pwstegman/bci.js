@@ -115,6 +115,20 @@
   } 
 } ?>
 
+<?js if (data.returns && returns.length) { ?>
+<h5>Returns:</h5>
+<?js if (returns.length > 1) { ?>
+<ul>
+  <?js returns.forEach(function(r) { ?>
+    <li><?js= self.partial('returns.tmpl', r) ?></li>
+  <?js }); ?>
+</ul>
+<?js } else {
+    returns.forEach(function(r) { ?>
+        <?js= self.partial('returns.tmpl', r) ?>
+    <?js });
+} } ?>
+
 <?js if (data.examples && examples.length) { ?>
   <div class="example-container">
     <a class="link-icon" href="<?js= '#' + data.name + '-examples' ?>">

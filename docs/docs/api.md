@@ -12,7 +12,7 @@
         * [.logvar(window, [dimension])](#module_bcijs.features.logvar)
         * [.variance(window, [dimension])](#module_bcijs.features.variance)
         * [.rootMeanSquare(window, [dimension])](#module_bcijs.features.rootMeanSquare)
-    * [.averageBandPowers(samples, sampleRate, bands, [fftSize])](#module_bcijs.averageBandPowers)
+    * [.averageBandPowers(samples, sampleRate, bands, [fftSize])](#module_bcijs.averageBandPowers) ⇒ <code>Array.&lt;number&gt;</code>
     * [.cspLearn(class1, class2)](#module_bcijs.cspLearn) ⇒ <code>Object</code>
     * [.cspProject(cspParams, data, [dimensions])](#module_bcijs.cspProject) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
     * [.fastICA(signals, options)](#module_bcijs.fastICA) ⇒ <code>Object</code>
@@ -142,10 +142,11 @@ Computes the root mean square along the specified dimension
 
 <a name="module_bcijs.averageBandPowers"></a>
 
-### bcijs.averageBandPowers(samples, sampleRate, bands, [fftSize])
+### bcijs.averageBandPowers(samples, sampleRate, bands, [fftSize]) ⇒ <code>Array.&lt;number&gt;</code>
 Computes the power in each frequency band averaged across all channels
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>Array.&lt;number&gt;</code> - Array containing the average power across all channels in each band  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
