@@ -18,21 +18,16 @@
 		"excludeTags": ["author"]
 	},
 	"templates": {
+		"referenceTitle": "BCI.js",
+		"disableSort": false,
 		"cleverLinks": false,
-		"monospaceLinks": false,
-		"default": {
-			"layoutFile": "./docs-layout.tmpl"
-		}
+		"monospaceLinks": false
 	},
 	"opts": {
 		"destination": "./docs/docs/",
 		"encoding": "utf8",
 		"private": false,
 		"recurse": true,
-		"template": "./node_modules/docdash"
-    },
-    "docdash": {
-        "static": true,
-        "sort": true
+		"template": "./website/jsdoc-template"
     }
 }

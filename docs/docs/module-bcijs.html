@@ -1,62 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>bcijs - Documentation</title>
 
-    <link rel='shortcut icon' type='image/x-icon' href='/img/favicon.ico' />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
-    <style>
-        li > code {
-            min-height: 1em;
-        }
-    </style>
+  <title>
+      bcijs - Documentation
+  </title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400" rel="stylesheet">
+
+  <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+  <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+  
+
+  
 </head>
+
 <body>
 
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
+  <svg style="display: none;">
+    <defs>
+      <symbol id="linkIcon" fill="#706d77" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+      </symbol>
+    </defs>
+  </svg>
 
-<label for="nav-trigger" class="overlay"></label>
+  <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <label for="nav-trigger" class="navicon-button x">
+    <div class="navicon"></div>
+  </label>
 
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-bcijs.oscStream.html">oscStream</a><ul class='methods'><li data-type='method'><a href="module-bcijs.oscStream.html#on">on</a></li><li data-type='method'><a href="module-bcijs.oscStream.html#start">start</a></li><li data-type='method'><a href="module-bcijs.oscStream.html#stop">stop</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-bcijs.html">bcijs</a><ul class='methods'><li data-type='method'><a href="module-bcijs.html#.accuracy">accuracy</a></li><li data-type='method'><a href="module-bcijs.html#.averageBandPowers">averageBandPowers</a></li><li data-type='method'><a href="module-bcijs.html#.balancedAccuracy">balancedAccuracy</a></li><li data-type='method'><a href="module-bcijs.html#.confusionMatrix">confusionMatrix</a></li><li data-type='method'><a href="module-bcijs.html#.cspLearn">cspLearn</a></li><li data-type='method'><a href="module-bcijs.html#.cspProject">cspProject</a></li><li data-type='method'><a href="module-bcijs.html#.f1">f1</a></li><li data-type='method'><a href="module-bcijs.html#.fastICA">fastICA</a></li><li data-type='method'><a href="module-bcijs.html#.generateSignal">generateSignal</a></li><li data-type='method'><a href="module-bcijs.html#.ldaLearn">ldaLearn</a></li><li data-type='method'><a href="module-bcijs.html#.ldaProject">ldaProject</a></li><li data-type='method'><a href="module-bcijs.html#.loadCSV">loadCSV</a></li><li data-type='method'><a href="module-bcijs.html#.loadEDF">loadEDF</a></li><li data-type='method'><a href="module-bcijs.html#.mcc">mcc</a></li><li data-type='method'><a href="module-bcijs.html#.nextpow2">nextpow2</a></li><li data-type='method'><a href="module-bcijs.html#.oscCollect">oscCollect</a></li><li data-type='method'><a href="module-bcijs.html#.oscHeaderScan">oscHeaderScan</a></li><li data-type='method'><a href="module-bcijs.html#.partition">partition</a></li><li data-type='method'><a href="module-bcijs.html#.precision">precision</a></li><li data-type='method'><a href="module-bcijs.html#.prompt">prompt</a></li><li data-type='method'><a href="module-bcijs.html#.psd">psd</a></li><li data-type='method'><a href="module-bcijs.html#.psdBandPower">psdBandPower</a></li><li data-type='method'><a href="module-bcijs.html#.recall">recall</a></li><li data-type='method'><a href="module-bcijs.html#.round">round</a></li><li data-type='method'><a href="module-bcijs.html#.saveCSV">saveCSV</a></li><li data-type='method'><a href="module-bcijs.html#.signalBandPower">signalBandPower</a></li><li data-type='method'><a href="module-bcijs.html#.specificity">specificity</a></li><li data-type='method'><a href="module-bcijs.html#.subscript">subscript</a></li><li data-type='method'><a href="module-bcijs.html#.toFixed">toFixed</a></li><li data-type='method'><a href="module-bcijs.html#.toTable">toTable</a></li><li data-type='method'><a href="module-bcijs.html#.transpose">transpose</a></li><li data-type='method'><a href="module-bcijs.html#.wait">wait</a></li><li data-type='method'><a href="module-bcijs.html#.windowApply">windowApply</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="module-bcijs.features.html">features</a><ul class='methods'><li data-type='method'><a href="module-bcijs.features.html#.logvar">logvar</a></li><li data-type='method'><a href="module-bcijs.features.html#.rootMeanSquare">rootMeanSquare</a></li><li data-type='method'><a href="module-bcijs.features.html#.variance">variance</a></li></ul></li></ul>
-</nav>
+  <label for="nav-trigger" class="overlay"></label>
 
-<div id="main">
+  <!--<div class="top-nav-wrapper">
+    <ul>
+      <li >
+        <a href="index.html">
+          
+            <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          
+          
+        </a>
+      </li>
+
+      
+
+    </ul>
+  </div>-->
+
+  <nav id="docs-nav">
+    <div class="pt-5">
+      <a href="/"><img src="static/bcijs-logo.png" height="34px"></a>
+    </div>
     
-    <h1 class="page-title">bcijs</h1>
-    
+    <h3 class="reference-title">
+      BCI.js
+    </h3>
+    <ul>
+      <li><a href="index.html" class="indented-link" id="readme-link">Readme</a></li>
+      <li><a href="https://github.com/pwstegman/bci.js#tutorials" class="indented-link">Tutorials</a></li>
+      <li><a href="/#examples" class="indented-link">Examples</a></li>
+    </ul>
 
     
 
+    <h3>Classes</h3><ul><li id="oscStream-nav"><a href="module-bcijs.oscStream.html">oscStream</a><ul class='methods'><li data-type="method" id="oscStream-on-nav"><a href="module-bcijs.oscStream.html#on">on</a></li><li data-type="method" id="oscStream-start-nav"><a href="module-bcijs.oscStream.html#start">start</a></li><li data-type="method" id="oscStream-stop-nav"><a href="module-bcijs.oscStream.html#stop">stop</a></li></ul></li></ul><h3>Modules</h3><ul><li id="bcijs-nav"><a href="module-bcijs.html">bcijs</a><ul class='methods'><li data-type="method" id="bcijs-accuracy-nav"><a href="module-bcijs.html#.accuracy">accuracy</a></li><li data-type="method" id="bcijs-averageBandPowers-nav"><a href="module-bcijs.html#.averageBandPowers">averageBandPowers</a></li><li data-type="method" id="bcijs-balancedAccuracy-nav"><a href="module-bcijs.html#.balancedAccuracy">balancedAccuracy</a></li><li data-type="method" id="bcijs-confusionMatrix-nav"><a href="module-bcijs.html#.confusionMatrix">confusionMatrix</a></li><li data-type="method" id="bcijs-cspLearn-nav"><a href="module-bcijs.html#.cspLearn">cspLearn</a></li><li data-type="method" id="bcijs-cspProject-nav"><a href="module-bcijs.html#.cspProject">cspProject</a></li><li data-type="method" id="bcijs-f1-nav"><a href="module-bcijs.html#.f1">f1</a></li><li data-type="method" id="bcijs-fastICA-nav"><a href="module-bcijs.html#.fastICA">fastICA</a></li><li data-type="method" id="bcijs-generateSignal-nav"><a href="module-bcijs.html#.generateSignal">generateSignal</a></li><li data-type="method" id="bcijs-ldaLearn-nav"><a href="module-bcijs.html#.ldaLearn">ldaLearn</a></li><li data-type="method" id="bcijs-ldaProject-nav"><a href="module-bcijs.html#.ldaProject">ldaProject</a></li><li data-type="method" id="bcijs-loadCSV-nav"><a href="module-bcijs.html#.loadCSV">loadCSV</a></li><li data-type="method" id="bcijs-loadEDF-nav"><a href="module-bcijs.html#.loadEDF">loadEDF</a></li><li data-type="method" id="bcijs-mcc-nav"><a href="module-bcijs.html#.mcc">mcc</a></li><li data-type="method" id="bcijs-nextpow2-nav"><a href="module-bcijs.html#.nextpow2">nextpow2</a></li><li data-type="method" id="bcijs-oscCollect-nav"><a href="module-bcijs.html#.oscCollect">oscCollect</a></li><li data-type="method" id="bcijs-oscHeaderScan-nav"><a href="module-bcijs.html#.oscHeaderScan">oscHeaderScan</a></li><li data-type="method" id="bcijs-partition-nav"><a href="module-bcijs.html#.partition">partition</a></li><li data-type="method" id="bcijs-precision-nav"><a href="module-bcijs.html#.precision">precision</a></li><li data-type="method" id="bcijs-prompt-nav"><a href="module-bcijs.html#.prompt">prompt</a></li><li data-type="method" id="bcijs-psd-nav"><a href="module-bcijs.html#.psd">psd</a></li><li data-type="method" id="bcijs-psdBandPower-nav"><a href="module-bcijs.html#.psdBandPower">psdBandPower</a></li><li data-type="method" id="bcijs-recall-nav"><a href="module-bcijs.html#.recall">recall</a></li><li data-type="method" id="bcijs-round-nav"><a href="module-bcijs.html#.round">round</a></li><li data-type="method" id="bcijs-saveCSV-nav"><a href="module-bcijs.html#.saveCSV">saveCSV</a></li><li data-type="method" id="bcijs-signalBandPower-nav"><a href="module-bcijs.html#.signalBandPower">signalBandPower</a></li><li data-type="method" id="bcijs-specificity-nav"><a href="module-bcijs.html#.specificity">specificity</a></li><li data-type="method" id="bcijs-subscript-nav"><a href="module-bcijs.html#.subscript">subscript</a></li><li data-type="method" id="bcijs-toFixed-nav"><a href="module-bcijs.html#.toFixed">toFixed</a></li><li data-type="method" id="bcijs-toTable-nav"><a href="module-bcijs.html#.toTable">toTable</a></li><li data-type="method" id="bcijs-transpose-nav"><a href="module-bcijs.html#.transpose">transpose</a></li><li data-type="method" id="bcijs-wait-nav"><a href="module-bcijs.html#.wait">wait</a></li><li data-type="method" id="bcijs-windowApply-nav"><a href="module-bcijs.html#.windowApply">windowApply</a></li></ul></li></ul>
+  </nav>
 
+  <div id="main">
+    
+      <h1 class="page-title">
+        bcijs
+      </h1>
+    
 
+    
 
 <section>
-
-<header>
+  <header>
     
-        
-    
-</header>
+      
+  </header>
 
-<article>
+  <article>
     <div class="container-overview">
-    
+      
         
 
         
-    
+      
     </div>
 
     
@@ -64,89 +112,66 @@
     
 
     
-        <h3 class="subsection-title">Classes</h3>
+      <h3 class="subsection-title">Classes</h3>
 
-        <dl>
-            <dt><a href="module-bcijs.oscStream.html">oscStream</a></dt>
-            <dd></dd>
-        </dl>
+      <dl>
+        
+          <dt>
+            <a href="module-bcijs.oscStream.html">oscStream</a>
+          </dt>
+          <dd>
+            
+          </dd>
+        
+      </dl>
     
 
      
 
     
-        <h3 class="subsection-title">Namespaces</h3>
+      <h3 class="subsection-title">Namespaces</h3>
 
-        <dl>
-            <dt><a href="module-bcijs.features.html">features</a></dt>
-            <dd></dd>
-        </dl>
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
+      <dl>
         
+          <dt>
+            <a href="module-bcijs.features.html">features</a>
+          </dt>
+          <dd>
             
-
-    
-
-    <h4 class="name" id=".accuracy"><span class="type-signature">(static) </span>accuracy<span class="signature">(confusionMatrix)</span><span class="type-signature"> &rarr; {number}</span></h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_metrics_accuracy.js.html">lib/metrics/accuracy.js</a>, <a href="lib_metrics_accuracy.js.html#line7">line 7</a>
-    </li></ul></dd>
+          </dd>
+        
+      </dl>
     
 
     
 
     
+      <h3 class="subsection-title">Methods</h3>
 
-    
+      
+        
 
-    
 
-    
+  
 
-    
+  <span class='name-container'>
+    <a class="link-icon" href="#.accuracy">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".accuracy">
+      <span class="type-signature">(static) </span>accuracy<span class="signature">(confusionMatrix)</span><span class="type-signature"> &rarr; {number}</span>
+    </h4>
+  </span>
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
+  
 
 
 
-
-
-<div class="description">
+  <div class="description">
     <p>Calculate the accuracy of a classifier given its confusion matrix as defined by the confusionMatrix method</p>
-</div>
+  </div>
 
 
 
@@ -154,154 +179,145 @@
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>confusionMatrix</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array.&lt;Array.&lt;number>>
+    </span>
+
     
 
-        <tr>
-            
-                <td class="name"><code>confusionMatrix</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>a confusion matrix</p></td>
-        </tr>
+        <td class="description last">
+          <p>a confusion matrix</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The accuracy</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".averageBandPowers"><span class="type-signature">(static) </span>averageBandPowers<span class="signature">(samples, sampleRate, bands, fftSize<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_averageBandPowers.js.html">lib/math/averageBandPowers.js</a>, <a href="lib_math_averageBandPowers.js.html#line15">line 15</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_metrics_accuracy.js.html">lib/metrics/accuracy.js</a>, <a href="lib_metrics_accuracy.js.html#line7">line 7</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.averageBandPowers">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".averageBandPowers">
+      <span class="type-signature">(static) </span>averageBandPowers<span class="signature">(samples, sampleRate, bands, fftSize<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Computes the power in each frequency band averaged across all channels</p>
-</div>
+  </div>
 
 
 
@@ -309,262 +325,255 @@
 
 
 
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>let feature = bci.averageBandPowers(samples, 256, ['alpha', 'beta']);// returns [alpha_power_averaged_across_channels, beta_power_averaged_across_channels]</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
         <th>Attributes</th>
-        
+      
 
-        
+      
         <th>Default</th>
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>samples</code></td>
         
 
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>samples</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>The signals where rows are samples and columns are electrodes</p></td>
-        </tr>
+    <span class="param-type">
+      Array.&lt;Array.&lt;number>>
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>sampleRate</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
+          
+        </td>
 
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
+        
+          <td class="attributes">
             
 
             
-                <td class="default">
-                
-                </td>
-            
 
-            <td class="description last"><p>Sample rate of the data</p></td>
-        </tr>
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>The signals where rows are samples and columns are electrodes</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>sampleRate</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>bands</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
+          
+        </td>
 
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
+        
+          <td class="attributes">
             
 
             
-                <td class="default">
-                
-                </td>
-            
 
-            <td class="description last"><p>An array of frequency bands. See signalBandPower for more info on frequency bands.</p></td>
-        </tr>
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>Sample rate of the data</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>bands</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>fftSize</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
+          
+        </td>
 
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
+        
+          <td class="attributes">
             
 
             
-                <td class="default">
-                
-                    <code>null</code>
-                
-                </td>
-            
 
-            <td class="description last"><p>The size of the fft to use. See signalBandPower for more info on fft sizes.</p></td>
-        </tr>
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>An array of frequency bands. See signalBandPower for more info on frequency bands.</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+      <tr>
+        
+          <td class="name"><code>fftSize</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+              null
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>The size of the fft to use. See signalBandPower for more info on fft sizes.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".balancedAccuracy"><span class="type-signature">(static) </span>balancedAccuracy<span class="signature">(confusionMatrix)</span><span class="type-signature"> &rarr; {number}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_metrics_balancedAccuracy.js.html">lib/metrics/balancedAccuracy.js</a>, <a href="lib_metrics_balancedAccuracy.js.html#line10">line 10</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_math_averageBandPowers.js.html">lib/math/averageBandPowers.js</a>, <a href="lib_math_averageBandPowers.js.html#line15">line 15</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
-    <p>Calculate the balanced accuracy of a classifier given its confusion matrix as defined by the confusionMatrix method</p>
-</div>
 
 
 
@@ -573,151 +582,189 @@
 
 
 
-
-
-
-    <h5>Parameters:</h5>
+  <div class="example-container">
+    <a class="link-icon" href="#averageBandPowers-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="averageBandPowers-examples">Example</h5>
     
+
+  <pre class="prettyprint"><code>let feature = bci.averageBandPowers(samples, 256, ['alpha', 'beta']);// returns [alpha_power_averaged_across_channels, beta_power_averaged_across_channels]</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.balancedAccuracy">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".balancedAccuracy">
+      <span class="type-signature">(static) </span>balancedAccuracy<span class="signature">(confusionMatrix)</span><span class="type-signature"> &rarr; {number}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Calculate the balanced accuracy of a classifier given its confusion matrix as defined by the confusionMatrix method</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>confusionMatrix</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array.&lt;Array.&lt;number>>
+    </span>
+
     
 
-        <tr>
-            
-                <td class="name"><code>confusionMatrix</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>a confusion matrix</p></td>
-        </tr>
+        <td class="description last">
+          <p>a confusion matrix</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The balanced accuracy</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".confusionMatrix"><span class="type-signature">(static) </span>confusionMatrix<span class="signature">(predictedClasses, actualClasses)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;number>>}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_metrics_confusionMatrix.js.html">lib/metrics/confusionMatrix.js</a>, <a href="lib_metrics_confusionMatrix.js.html#line15">line 15</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_metrics_balancedAccuracy.js.html">lib/metrics/balancedAccuracy.js</a>, <a href="lib_metrics_balancedAccuracy.js.html#line10">line 10</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.confusionMatrix">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".confusionMatrix">
+      <span class="type-signature">(static) </span>confusionMatrix<span class="signature">(predictedClasses, actualClasses)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;number>>}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Generate a confusion matrix C where rows are actual classes and columns are predicted classes.
 C = [
   [true negative, false positive],
@@ -725,7 +772,7 @@ C = [
 ].</p>
 <p>If two classes are passed, class 0 represents the negative case, and class 1 represents the positive case.
 If more than two classes are passed, an NxN confusion matrix is returned where N is the number of classes.</p>
-</div>
+  </div>
 
 
 
@@ -733,177 +780,174 @@ If more than two classes are passed, an NxN confusion matrix is returned where N
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     
+      <tr>
+        
+          <td class="name"><code>predictedClasses</code></td>
+        
 
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>predictedClasses</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;number></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>An array of predicted classes, with class numbers starting at 0</p></td>
-        </tr>
+    <span class="param-type">
+      Array.&lt;number>
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>actualClasses</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;number></span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>An array of the actual classes, with class numbers starting at 0</p></td>
-        </tr>
+        <td class="description last">
+          <p>An array of predicted classes, with class numbers starting at 0</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+      <tr>
+        
+          <td class="name"><code>actualClasses</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array.&lt;number>
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>An array of the actual classes, with class numbers starting at 0</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The confusion matrix</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".cspLearn"><span class="type-signature">(static) </span>cspLearn<span class="signature">(class1, class2)</span><span class="type-signature"> &rarr; {Object}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_cspLearn.js.html">lib/math/cspLearn.js</a>, <a href="lib_math_cspLearn.js.html#line16">line 16</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_metrics_confusionMatrix.js.html">lib/metrics/confusionMatrix.js</a>, <a href="lib_metrics_confusionMatrix.js.html#line15">line 15</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.cspLearn">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".cspLearn">
+      <span class="type-signature">(static) </span>cspLearn<span class="signature">(class1, class2)</span><span class="type-signature"> &rarr; {Object}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Learn common spatial pattern for two datasets</p>
-</div>
+  </div>
 
 
 
@@ -911,177 +955,174 @@ If more than two classes are passed, an NxN confusion matrix is returned where N
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     
+      <tr>
+        
+          <td class="name"><code>class1</code></td>
+        
 
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>class1</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Data samples for class 1. Rows should be samples, columns should be signals.</p></td>
-        </tr>
+    <span class="param-type">
+      Array.&lt;Array.&lt;number>>
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>class2</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>Data samples for class 2. Rows should be samples, columns should be signals.</p></td>
-        </tr>
+        <td class="description last">
+          <p>Data samples for class 1. Rows should be samples, columns should be signals.</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+      <tr>
+        
+          <td class="name"><code>class2</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array.&lt;Array.&lt;number>>
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Data samples for class 2. Rows should be samples, columns should be signals.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Learned CSP parameters</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".cspProject"><span class="type-signature">(static) </span>cspProject<span class="signature">(cspParams, data, dimensions<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;number>>}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_cspProject.js.html">lib/math/cspProject.js</a>, <a href="lib_math_cspProject.js.html#line13">line 13</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_math_cspLearn.js.html">lib/math/cspLearn.js</a>, <a href="lib_math_cspLearn.js.html#line16">line 16</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.cspProject">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".cspProject">
+      <span class="type-signature">(static) </span>cspProject<span class="signature">(cspParams, data, dimensions<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Array.&lt;Array.&lt;number>>}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Projects data and reduces to given number of dimensions</p>
-</div>
+  </div>
 
 
 
@@ -1089,228 +1130,231 @@ If more than two classes are passed, an NxN confusion matrix is returned where N
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
         <th>Attributes</th>
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     
+      <tr>
+        
+          <td class="name"><code>cspParams</code></td>
+        
 
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>cspParams</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>CSP parameters computed using the cspLearn function</p></td>
-        </tr>
+    <span class="param-type">
+      object
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>data</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
+          
+        </td>
 
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
+        
+          <td class="attributes">
             
 
             
 
-            <td class="description last"><p>Data points to be projected. Rows should be samples, columns should be signals.</p></td>
-        </tr>
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>CSP parameters computed using the cspLearn function</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>data</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array.&lt;Array.&lt;number>>
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>dimensions</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
+          
+        </td>
 
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
+        
+          <td class="attributes">
             
 
             
 
-            <td class="description last"><p>Number of dimensions to be returned. Can range from 1 to number of signals. Defaults to number of signals.</p></td>
-        </tr>
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>Data points to be projected. Rows should be samples, columns should be signals.</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+      <tr>
+        
+          <td class="name"><code>dimensions</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>Number of dimensions to be returned. Can range from 1 to number of signals. Defaults to number of signals.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Projected data. Rows are samples, columns are dimensions sorted by descending importance.</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".f1"><span class="type-signature">(static) </span>f1<span class="signature">(confusionMatrix)</span><span class="type-signature"> &rarr; {number}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_metrics_f1.js.html">lib/metrics/f1.js</a>, <a href="lib_metrics_f1.js.html#line10">line 10</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_math_cspProject.js.html">lib/math/cspProject.js</a>, <a href="lib_math_cspProject.js.html#line13">line 13</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.f1">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".f1">
+      <span class="type-signature">(static) </span>f1<span class="signature">(confusionMatrix)</span><span class="type-signature"> &rarr; {number}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Calculate the f1 score of a binary classifier given its confusion matrix as defined by the confusionMatrix method</p>
-</div>
+  </div>
 
 
 
@@ -1318,154 +1362,145 @@ If more than two classes are passed, an NxN confusion matrix is returned where N
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>confusionMatrix</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array.&lt;Array.&lt;number>>
+    </span>
+
     
 
-        <tr>
-            
-                <td class="name"><code>confusionMatrix</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>a 2x2 confusion matrix</p></td>
-        </tr>
+        <td class="description last">
+          <p>a 2x2 confusion matrix</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The f1 score</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".fastICA"><span class="type-signature">(static) </span>fastICA<span class="signature">(signals, options)</span><span class="type-signature"> &rarr; {Object}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_fastICA.js.html">lib/math/fastICA.js</a>, <a href="lib_math_fastICA.js.html#line24">line 24</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_metrics_f1.js.html">lib/metrics/f1.js</a>, <a href="lib_metrics_f1.js.html#line10">line 10</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.fastICA">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".fastICA">
+      <span class="type-signature">(static) </span>fastICA<span class="signature">(signals, options)</span><span class="type-signature"> &rarr; {Object}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>FastICA algorithm for independent component analysis</p>
-</div>
+  </div>
 
 
 
@@ -1473,324 +1508,339 @@ If more than two classes are passed, an NxN confusion matrix is returned where N
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     
+      <tr>
+        
+          <td class="name"><code>signals</code></td>
+        
 
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>signals</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The mixed signals. Each row should be a signal and each column a sample.</p></td>
-        </tr>
+    <span class="param-type">
+      Array.&lt;Array.&lt;number>>
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
 
-            <td class="type">
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The mixed signals. Each row should be a signal and each column a sample.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>options</code></td>
+        
+
+        <td class="type">
+          
             
-                
-<span class="param-type">Object</span>
+    <span class="param-type">
+      Object
+    </span>
+
+    
 
 
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          
+          
+            <h6>Properties</h6>
             
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <h6>Properties</h6>
-                
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
         <th>Attributes</th>
-        
+      
 
-        
+      
         <th>Default</th>
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     
+      <tr>
+        
+          <td class="name"><code>maxIterations</code></td>
+        
 
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>maxIterations</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    <code>1000</code>
-                
-                </td>
-            
-
-            <td class="description last"><p>Maximum number of iterations</p></td>
-        </tr>
+    <span class="param-type">
+      number
+    </span>
 
     
 
-        <tr>
+
+          
+        </td>
+
+        
+          <td class="attributes">
             
-                <td class="name"><code>debug</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
+              &lt;optional><br>
             
 
             
-                <td class="default">
-                
-                    <code>false</code>
-                
-                </td>
-            
 
-            <td class="description last"><p>If true, prints out debug information while running</p></td>
-        </tr>
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+              1000
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>Maximum number of iterations</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>debug</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      boolean
+    </span>
 
     
 
-        <tr>
+
+          
+        </td>
+
+        
+          <td class="attributes">
             
-                <td class="name"><code>fun</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
+              &lt;optional><br>
             
 
             
-                <td class="default">
-                
-                    <code>logcosh</code>
-                
-                </td>
-            
 
-            <td class="description last"><p>The functional form of the G function used in the approximation of negentropy. Can be either 'exp' or 'logcosh.</p></td>
-        </tr>
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+              false
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>If true, prints out debug information while running</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+      <tr>
+        
+          <td class="name"><code>fun</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+              logcosh
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>The functional form of the G function used in the approximation of negentropy. Can be either 'exp' or 'logcosh.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
 </table>
 
-            </td>
-        </tr>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>An object with the following values: {source: the estimated source matrix, weights: the estimated unmixing matrix, whitening: the computed whitening matrix, iterations: number of iterations taken to converge on each weight}</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".generateSignal"><span class="type-signature">(static) </span>generateSignal<span class="signature">(amplitudes, frequencies, sampleRate, duration)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span></h4>
-
-    
 
 
 
 
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_generateSignal.js.html">lib/math/generateSignal.js</a>, <a href="lib_math_generateSignal.js.html#line17">line 17</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_math_fastICA.js.html">lib/math/fastICA.js</a>, <a href="lib_math_fastICA.js.html#line24">line 24</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.generateSignal">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".generateSignal">
+      <span class="type-signature">(static) </span>generateSignal<span class="signature">(amplitudes, frequencies, sampleRate, duration)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Generate a signal with the given frequencies and their amplitudes.</p>
-</div>
+  </div>
 
 
 
@@ -1798,223 +1848,232 @@ If more than two classes are passed, an NxN confusion matrix is returned where N
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     
+      <tr>
+        
+          <td class="name"><code>amplitudes</code></td>
+        
 
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>amplitudes</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;number></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The amplitudes of each frequency.</p></td>
-        </tr>
+    <span class="param-type">
+      Array.&lt;number>
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>frequencies</code></td>
-            
 
-            <td class="type">
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The amplitudes of each frequency.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>frequencies</code></td>
+        
+
+        <td class="type">
+          
             
-                
-<span class="param-type">Array.&lt;number></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The frequencies.</p></td>
-        </tr>
+    <span class="param-type">
+      Array.&lt;number>
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>sampleRate</code></td>
-            
 
-            <td class="type">
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The frequencies.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>sampleRate</code></td>
+        
+
+        <td class="type">
+          
             
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Sample rate of the signal in Hz.</p></td>
-        </tr>
+    <span class="param-type">
+      number
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>duration</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>Duration of the signal in seconds.</p></td>
-        </tr>
+        <td class="description last">
+          <p>Sample rate of the signal in Hz.</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+      <tr>
+        
+          <td class="name"><code>duration</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Duration of the signal in seconds.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The generated signal.</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;number></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".ldaLearn"><span class="type-signature">(static) </span>ldaLearn<span class="signature">(class1, class2)</span><span class="type-signature"> &rarr; {Object}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_ldaLearn.js.html">lib/math/ldaLearn.js</a>, <a href="lib_math_ldaLearn.js.html#line15">line 15</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_math_generateSignal.js.html">lib/math/generateSignal.js</a>, <a href="lib_math_generateSignal.js.html#line17">line 17</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.ldaLearn">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".ldaLearn">
+      <span class="type-signature">(static) </span>ldaLearn<span class="signature">(class1, class2)</span><span class="type-signature"> &rarr; {Object}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Perform linear discriminant analysis between two datasets</p>
-</div>
+  </div>
 
 
 
@@ -2022,177 +2081,174 @@ If more than two classes are passed, an NxN confusion matrix is returned where N
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     
+      <tr>
+        
+          <td class="name"><code>class1</code></td>
+        
 
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>class1</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Data set for class 1, rows are samples, columns are variables</p></td>
-        </tr>
+    <span class="param-type">
+      Array.&lt;Array.&lt;number>>
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>class2</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>Data set for class 2, rows are samples, columns are variables</p></td>
-        </tr>
+        <td class="description last">
+          <p>Data set for class 1, rows are samples, columns are variables</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+      <tr>
+        
+          <td class="name"><code>class2</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array.&lt;Array.&lt;number>>
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Data set for class 2, rows are samples, columns are variables</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Computed LDA parameters</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".ldaProject"><span class="type-signature">(static) </span>ldaProject<span class="signature">(ldaParams, point)</span><span class="type-signature"> &rarr; {number}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_ldaProject.js.html">lib/math/ldaProject.js</a>, <a href="lib_math_ldaProject.js.html#line12">line 12</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_math_ldaLearn.js.html">lib/math/ldaLearn.js</a>, <a href="lib_math_ldaLearn.js.html#line15">line 15</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.ldaProject">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".ldaProject">
+      <span class="type-signature">(static) </span>ldaProject<span class="signature">(ldaParams, point)</span><span class="type-signature"> &rarr; {number}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Predict the class of an unknown data point.</p>
-</div>
+  </div>
 
 
 
@@ -2200,178 +2256,175 @@ If more than two classes are passed, an NxN confusion matrix is returned where N
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     
+      <tr>
+        
+          <td class="name"><code>ldaParams</code></td>
+        
 
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>ldaParams</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The parameters for the LDA, computed with the function ldaLearn</p></td>
-        </tr>
+    <span class="param-type">
+      object
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>point</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;number></span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>The data point to be classified.</p></td>
-        </tr>
+        <td class="description last">
+          <p>The parameters for the LDA, computed with the function ldaLearn</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+      <tr>
+        
+          <td class="name"><code>point</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array.&lt;number>
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The data point to be classified.</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>value less than 0 if predicted to be in class 1, 0 if exactly inbetween, greater than 0 if class 2</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".loadCSV"><span class="type-signature">(static) </span>loadCSV<span class="signature">(filePath)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_data_loadCSV.js.html">lib/data/loadCSV.js</a>, <a href="lib_data_loadCSV.js.html#line10">line 10</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_math_ldaProject.js.html">lib/math/ldaProject.js</a>, <a href="lib_math_ldaProject.js.html#line12">line 12</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.loadCSV">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".loadCSV">
+      <span class="type-signature">(static) </span>loadCSV<span class="signature">(filePath)</span><span class="type-signature"> &rarr; {Promise}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Loads a CSV file into an array</p>
 <p>This method is exclusive to Node.js</p>
-</div>
+  </div>
 
 
 
@@ -2379,155 +2432,146 @@ If more than two classes are passed, an NxN confusion matrix is returned where N
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>filePath</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
     
 
-        <tr>
-            
-                <td class="name"><code>filePath</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>The path to the CSV file</p></td>
-        </tr>
+        <td class="description last">
+          <p>The path to the CSV file</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>A promise object which resolves to the CSV data array</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".loadEDF"><span class="type-signature">(static) </span>loadEDF<span class="signature">(filename)</span><span class="type-signature"> &rarr; {Object}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_data_loadEDF.js.html">lib/data/loadEDF.js</a>, <a href="lib_data_loadEDF.js.html#line22">line 22</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_data_loadCSV.js.html">lib/data/loadCSV.js</a>, <a href="lib_data_loadCSV.js.html#line10">line 10</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.loadEDF">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".loadEDF">
+      <span class="type-signature">(static) </span>loadEDF<span class="signature">(filename)</span><span class="type-signature"> &rarr; {Object}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Load data from an EDF file</p>
 <p>This method is exclusive to Node.js</p>
-</div>
+  </div>
 
 
 
@@ -2535,162 +2579,145 @@ If more than two classes are passed, an NxN confusion matrix is returned where N
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>filename</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
     
 
-        <tr>
-            
-                <td class="name"><code>filename</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>Path to the EDF file</p></td>
-        </tr>
+        <td class="description last">
+          <p>Path to the EDF file</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Data from the EDF file, contains the following parameters:
-<br> {string} subject - The name of the subject
-<br> {string} recording - The name of the recording
-<br> {number} num_channels - The number of channels
-<br> {string} starttime - The starttime as a date time string
-<br> {string[]} channel_labels - The label for each channel
-<br> {number[]} samplerates - The sample rate for each channel
-<br> {string[]} physical_dimensions - The units for each channel (ex: uV)
-<br> {number[][]} samples - The data samples where columns are channels and rows are samples</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".mcc"><span class="type-signature">(static) </span>mcc<span class="signature">(confusionMatrix)</span><span class="type-signature"> &rarr; {number}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_metrics_mcc.js.html">lib/metrics/mcc.js</a>, <a href="lib_metrics_mcc.js.html#line7">line 7</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_data_loadEDF.js.html">lib/data/loadEDF.js</a>, <a href="lib_data_loadEDF.js.html#line22">line 22</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.mcc">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".mcc">
+      <span class="type-signature">(static) </span>mcc<span class="signature">(confusionMatrix)</span><span class="type-signature"> &rarr; {number}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Calculate the Matthews correlation coefficient (MCC) of a binary classifier given its confusion matrix as defined by the confusionMatrix method</p>
-</div>
+  </div>
 
 
 
@@ -2698,154 +2725,145 @@ If more than two classes are passed, an NxN confusion matrix is returned where N
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>confusionMatrix</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array.&lt;Array.&lt;number>>
+    </span>
+
     
 
-        <tr>
-            
-                <td class="name"><code>confusionMatrix</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>a 2x2 confusion matrix</p></td>
-        </tr>
+        <td class="description last">
+          <p>a 2x2 confusion matrix</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The Matthews correlation coefficient</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".nextpow2"><span class="type-signature">(static) </span>nextpow2<span class="signature">(num)</span><span class="type-signature"> &rarr; {number}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_nextpow2.js.html">lib/math/nextpow2.js</a>, <a href="lib_math_nextpow2.js.html#line13">line 13</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_metrics_mcc.js.html">lib/metrics/mcc.js</a>, <a href="lib_metrics_mcc.js.html#line7">line 7</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.nextpow2">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".nextpow2">
+      <span class="type-signature">(static) </span>nextpow2<span class="signature">(num)</span><span class="type-signature"> &rarr; {number}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Returns the ceil of the log2 of the absolute value of the passed number</p>
-</div>
+  </div>
 
 
 
@@ -2853,160 +2871,160 @@ If more than two classes are passed, an NxN confusion matrix is returned where N
 
 
 
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>nextpow2(8); // 3nextpow2(9); // 4nextpow2(16); // 4nextpow2(30); // 5nextpow2(0); // -Infinity</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>num</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
+
     
 
-        <tr>
-            
-                <td class="name"><code>num</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
+        <td class="description last">
+          
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The ceil of the log2 of the absolute value of the passed number</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".oscCollect"><span class="type-signature">(static) </span>oscCollect<span class="signature">(address, port, header, samples)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_network_oscCollect.js.html">lib/network/oscCollect.js</a>, <a href="lib_network_oscCollect.js.html#line17">line 17</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_math_nextpow2.js.html">lib/math/nextpow2.js</a>, <a href="lib_math_nextpow2.js.html#line13">line 13</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#nextpow2-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="nextpow2-examples">Example</h5>
+    
+
+  <pre class="prettyprint"><code>nextpow2(8); // 3nextpow2(9); // 4nextpow2(16); // 4nextpow2(30); // 5nextpow2(0); // -Infinity</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.oscCollect">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".oscCollect">
+      <span class="type-signature">(static) </span>oscCollect<span class="signature">(address, port, header, samples)</span><span class="type-signature"> &rarr; {Promise}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Collect a set number of samples over OSC</p>
 <p>This method is exclusive to Node.js</p>
-</div>
+  </div>
 
 
 
@@ -3014,224 +3032,233 @@ If more than two classes are passed, an NxN confusion matrix is returned where N
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     
+      <tr>
+        
+          <td class="name"><code>address</code></td>
+        
 
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>address</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>OSC address</p></td>
-        </tr>
+    <span class="param-type">
+      string
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>port</code></td>
-            
 
-            <td class="type">
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>OSC address</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>port</code></td>
+        
+
+        <td class="type">
+          
             
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>OSC port</p></td>
-        </tr>
+    <span class="param-type">
+      number
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>header</code></td>
-            
 
-            <td class="type">
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>OSC port</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>header</code></td>
+        
+
+        <td class="type">
+          
             
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>OSC header, can be found by scanning with oscHeaderScan if unknown</p></td>
-        </tr>
+    <span class="param-type">
+      string
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>samples</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>The number of samples to collect</p></td>
-        </tr>
+        <td class="description last">
+          <p>OSC header, can be found by scanning with oscHeaderScan if unknown</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+      <tr>
+        
+          <td class="name"><code>samples</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>The number of samples to collect</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Resolves with collected data</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".oscHeaderScan"><span class="type-signature">(static) </span>oscHeaderScan<span class="signature">(address, port, duration)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_network_oscHeaderScan.js.html">lib/network/oscHeaderScan.js</a>, <a href="lib_network_oscHeaderScan.js.html#line16">line 16</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_network_oscCollect.js.html">lib/network/oscCollect.js</a>, <a href="lib_network_oscCollect.js.html#line17">line 17</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.oscHeaderScan">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".oscHeaderScan">
+      <span class="type-signature">(static) </span>oscHeaderScan<span class="signature">(address, port, duration)</span><span class="type-signature"> &rarr; {Promise}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Scan for OSC headers on a port and address</p>
 <p>This method is exclusive to Node.js</p>
-</div>
+  </div>
 
 
 
@@ -3239,201 +3266,204 @@ If more than two classes are passed, an NxN confusion matrix is returned where N
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     
+      <tr>
+        
+          <td class="name"><code>address</code></td>
+        
 
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>address</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>OSC address</p></td>
-        </tr>
+    <span class="param-type">
+      any
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>port</code></td>
-            
 
-            <td class="type">
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>OSC address</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>port</code></td>
+        
+
+        <td class="type">
+          
             
-                
-<span class="param-type">any</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>OSC port</p></td>
-        </tr>
+    <span class="param-type">
+      any
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>duration</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>Duration of scan in milliseconds</p></td>
-        </tr>
+        <td class="description last">
+          <p>OSC port</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+      <tr>
+        
+          <td class="name"><code>duration</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      any
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          <p>Duration of scan in milliseconds</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Resolves with an array of found headers</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".partition"><span class="type-signature">(static) </span>partition<span class="signature">(array, &hellip;divisions)</span><span class="type-signature"> &rarr; {Array.&lt;Array>}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_data_partition.js.html">lib/data/partition.js</a>, <a href="lib_data_partition.js.html#line11">line 11</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_network_oscHeaderScan.js.html">lib/network/oscHeaderScan.js</a>, <a href="lib_network_oscHeaderScan.js.html#line16">line 16</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.partition">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".partition">
+      <span class="type-signature">(static) </span>partition<span class="signature">(array, &hellip;divisions)</span><span class="type-signature"> &rarr; {Array.&lt;Array>}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Partitions an array into multiple arrays
 Can be used to split data into training and testing sets</p>
-</div>
+  </div>
 
 
 
@@ -3441,202 +3471,161 @@ Can be used to split data into training and testing sets</p>
 
 
 
-
-
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>partition([1, 2, 3, 4], 0.25, 0.75); // returns [[1], [2, 3, 4]]</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
         <th>Attributes</th>
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     
+      <tr>
+        
+          <td class="name"><code>array</code></td>
+        
 
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>array</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The array to be partitioned</p></td>
-        </tr>
+    <span class="param-type">
+      Array
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>divisions</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;number></span>
+          
+        </td>
 
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                    &lt;repeatable><br>
-                
-                </td>
+        
+          <td class="attributes">
             
 
             
 
-            <td class="description last"><p>The size of each partition, each value should range from 0 to 1</p></td>
-        </tr>
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>The array to be partitioned</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+      <tr>
+        
+          <td class="name"><code>divisions</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array.&lt;number>
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+              &lt;repeatable><br>
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>The size of each partition, each value should range from 0 to 1</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Array of subarrays which are the partitons</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;Array></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".precision"><span class="type-signature">(static) </span>precision<span class="signature">(confusionMatrix)</span><span class="type-signature"> &rarr; {number}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_metrics_precision.js.html">lib/metrics/precision.js</a>, <a href="lib_metrics_precision.js.html#line7">line 7</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_data_partition.js.html">lib/data/partition.js</a>, <a href="lib_data_partition.js.html#line11">line 11</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
-    <p>Calculate the precision of a binary classifier given its confusion matrix as defined by the confusionMatrix method</p>
-</div>
 
 
 
@@ -3645,154 +3634,192 @@ Can be used to split data into training and testing sets</p>
 
 
 
-
-
-
-    <h5>Parameters:</h5>
+  <div class="example-container">
+    <a class="link-icon" href="#partition-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="partition-examples">Example</h5>
     
+
+  <pre class="prettyprint"><code>partition([1, 2, 3, 4], 0.25, 0.75); // returns [[1], [2, 3, 4]]</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.precision">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".precision">
+      <span class="type-signature">(static) </span>precision<span class="signature">(confusionMatrix)</span><span class="type-signature"> &rarr; {number}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
+    <p>Calculate the precision of a binary classifier given its confusion matrix as defined by the confusionMatrix method</p>
+  </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>confusionMatrix</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array.&lt;Array.&lt;number>>
+    </span>
+
     
 
-        <tr>
-            
-                <td class="name"><code>confusionMatrix</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>a 2x2 confusion matrix</p></td>
-        </tr>
+        <td class="description last">
+          <p>a 2x2 confusion matrix</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The precision (positive predictive value)</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".prompt"><span class="type-signature">(static) </span>prompt<span class="signature">(question)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_network_prompt.js.html">lib/network/prompt.js</a>, <a href="lib_network_prompt.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_metrics_precision.js.html">lib/metrics/precision.js</a>, <a href="lib_metrics_precision.js.html#line7">line 7</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.prompt">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".prompt">
+      <span class="type-signature">(static) </span>prompt<span class="signature">(question)</span><span class="type-signature"> &rarr; {Promise}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Prompts the user for input via stdin</p>
 <p>This method is exclusive to Node.js</p>
-</div>
+  </div>
 
 
 
@@ -3800,154 +3827,145 @@ Can be used to split data into training and testing sets</p>
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>question</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
     
 
-        <tr>
-            
-                <td class="name"><code>question</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>Question shown to user</p></td>
-        </tr>
+        <td class="description last">
+          <p>Question shown to user</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>A promise object that resolves with the response</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".psd"><span class="type-signature">(static) </span>psd<span class="signature">(signal, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_psd.js.html">lib/math/psd.js</a>, <a href="lib_math_psd.js.html#line15">line 15</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_network_prompt.js.html">lib/network/prompt.js</a>, <a href="lib_network_prompt.js.html#line1">line 1</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.psd">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".psd">
+      <span class="type-signature">(static) </span>psd<span class="signature">(signal, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Compute the power spectral density of a given signal.</p>
-</div>
+  </div>
 
 
 
@@ -3955,305 +3973,314 @@ Can be used to split data into training and testing sets</p>
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
         <th>Attributes</th>
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     
+      <tr>
+        
+          <td class="name"><code>signal</code></td>
+        
 
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>signal</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;number></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The signal.</p></td>
-        </tr>
+    <span class="param-type">
+      Array.&lt;number>
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
+          
+        </td>
 
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
+        
+          <td class="attributes">
             
 
             
 
-            <td class="description last">
-                <h6>Properties</h6>
-                
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>The signal.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>options</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Object
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          
+          
+            <h6>Properties</h6>
+            
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
         <th>Attributes</th>
-        
+      
 
-        
+      
         <th>Default</th>
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     
+      <tr>
+        
+          <td class="name"><code>fftSize</code></td>
+        
 
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>fftSize</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                    <code>Math.pow(2, bci.nextpow2(signal.length))</code>
-                
-                </td>
-            
-
-            <td class="description last"><p>Size of the fft to be used. Should be a power of 2.</p></td>
-        </tr>
+    <span class="param-type">
+      number
+    </span>
 
     
 
-        <tr>
+
+          
+        </td>
+
+        
+          <td class="attributes">
             
-                <td class="name"><code>truncate</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
+              &lt;optional><br>
             
 
             
-                <td class="default">
-                
-                    <code>false</code>
-                
-                </td>
-            
 
-            <td class="description last"><p>If true, only the first half of the PSD array is returned</p></td>
-        </tr>
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+              Math.pow(2, bci.nextpow2(signal.length))
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>Size of the fft to be used. Should be a power of 2.</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+      <tr>
+        
+          <td class="name"><code>truncate</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      boolean
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+              false
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>If true, only the first half of the PSD array is returned</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
 </table>
 
-            </td>
-        </tr>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The PSD.</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;number></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".psdBandPower"><span class="type-signature">(static) </span>psdBandPower<span class="signature">(psd, sampleRate, band, fftSize<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {number}</span></h4>
-
-    
 
 
 
 
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_psdBandPower.js.html">lib/math/psdBandPower.js</a>, <a href="lib_math_psdBandPower.js.html#line16">line 16</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_math_psd.js.html">lib/math/psd.js</a>, <a href="lib_math_psd.js.html#line15">line 15</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.psdBandPower">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".psdBandPower">
+      <span class="type-signature">(static) </span>psdBandPower<span class="signature">(psd, sampleRate, band, fftSize<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {number}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Compute the average power across a given frequency band given the PSD.</p>
-</div>
+  </div>
 
 
 
@@ -4261,286 +4288,298 @@ Can be used to split data into training and testing sets</p>
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
         <th>Attributes</th>
-        
+      
 
-        
+      
         <th>Default</th>
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>psd</code></td>
         
 
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>psd</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;number></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>Power spectral density of the signal.</p></td>
-        </tr>
+    <span class="param-type">
+      Array.&lt;number>
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>sampleRate</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
+          
+        </td>
 
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
+        
+          <td class="attributes">
             
 
             
-                <td class="default">
-                
-                </td>
-            
 
-            <td class="description last"><p>The sample rate of the signal.</p></td>
-        </tr>
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>Power spectral density of the signal.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>sampleRate</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>band</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;number></span>
-|
+          
+        </td>
 
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
+        
+          <td class="attributes">
             
 
             
-                <td class="default">
-                
-                </td>
+
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>The sample rate of the signal.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>band</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array.&lt;number>
+    </span>
+
+    |
+
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
             
 
-            <td class="description last"><p>The frequency band provided as an array [frequencyStart, frequencyStop] or a
+            
+
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>The frequency band provided as an array [frequencyStart, frequencyStop] or a
 string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz).
 While string representations
 allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in
-future updates.</p></td>
-        </tr>
+future updates.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>fftSize</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
 
     
 
-        <tr>
+
+          
+        </td>
+
+        
+          <td class="attributes">
             
-                <td class="name"><code>fftSize</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
+              &lt;optional><br>
             
 
             
-                <td class="default">
-                
-                    <code>Math.pow(2, bci.nextpow2(psd.length))</code>
-                
-                </td>
-            
 
-            <td class="description last"><p>Size of the fourier transform used to compute the PSD.</p></td>
-        </tr>
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+              Math.pow(2, bci.nextpow2(psd.length))
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>Size of the fourier transform used to compute the PSD.</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The average power in the frequency band.</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".recall"><span class="type-signature">(static) </span>recall<span class="signature">(confusionMatrix)</span><span class="type-signature"> &rarr; {number}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_metrics_recall.js.html">lib/metrics/recall.js</a>, <a href="lib_metrics_recall.js.html#line7">line 7</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_math_psdBandPower.js.html">lib/math/psdBandPower.js</a>, <a href="lib_math_psdBandPower.js.html#line16">line 16</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.recall">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".recall">
+      <span class="type-signature">(static) </span>recall<span class="signature">(confusionMatrix)</span><span class="type-signature"> &rarr; {number}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Calculate the recall of a binary classifier given its confusion matrix as defined by the confusionMatrix method</p>
-</div>
+  </div>
 
 
 
@@ -4548,154 +4587,145 @@ future updates.</p></td>
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>confusionMatrix</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array.&lt;Array.&lt;number>>
+    </span>
+
     
 
-        <tr>
-            
-                <td class="name"><code>confusionMatrix</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>a 2x2 confusion matrix</p></td>
-        </tr>
+        <td class="description last">
+          <p>a 2x2 confusion matrix</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The recall (true positive rate)</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".round"><span class="type-signature">(static) </span>round<span class="signature">(array, places)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_data_round.js.html">lib/data/round.js</a>, <a href="lib_data_round.js.html#line8">line 8</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_metrics_recall.js.html">lib/metrics/recall.js</a>, <a href="lib_metrics_recall.js.html#line7">line 7</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.round">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".round">
+      <span class="type-signature">(static) </span>round<span class="signature">(array, places)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Rounds every value in an array to a set number of decimal places</p>
-</div>
+  </div>
 
 
 
@@ -4703,178 +4733,175 @@ future updates.</p></td>
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     
+      <tr>
+        
+          <td class="name"><code>array</code></td>
+        
 
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>array</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;number></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
+    <span class="param-type">
+      Array.&lt;number>
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>places</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
+        <td class="description last">
+          
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+      <tr>
+        
+          <td class="name"><code>places</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The rounded array</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;number></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".saveCSV"><span class="type-signature">(static) </span>saveCSV<span class="signature">(array, filename)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_data_saveCSV.js.html">lib/data/saveCSV.js</a>, <a href="lib_data_saveCSV.js.html#line11">line 11</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_data_round.js.html">lib/data/round.js</a>, <a href="lib_data_round.js.html#line8">line 8</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.saveCSV">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".saveCSV">
+      <span class="type-signature">(static) </span>saveCSV<span class="signature">(array, filename)</span><span class="type-signature"> &rarr; {Promise}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Saves an array to a CSV file</p>
 <p>This method is exclusive to Node.js</p>
-</div>
+  </div>
 
 
 
@@ -4882,177 +4909,174 @@ future updates.</p></td>
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     
+      <tr>
+        
+          <td class="name"><code>array</code></td>
+        
 
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>array</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
+    <span class="param-type">
+      Array
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>filename</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
+        <td class="description last">
+          
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+      <tr>
+        
+          <td class="name"><code>filename</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>A promise object that resolves when the file has been saved. Does not currently reject on write error.</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".signalBandPower"><span class="type-signature">(static) </span>signalBandPower<span class="signature">(signal, sampleRate, band, fftSize<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {number}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_signalBandPower.js.html">lib/math/signalBandPower.js</a>, <a href="lib_math_signalBandPower.js.html#line18">line 18</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_data_saveCSV.js.html">lib/data/saveCSV.js</a>, <a href="lib_data_saveCSV.js.html#line11">line 11</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.signalBandPower">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".signalBandPower">
+      <span class="type-signature">(static) </span>signalBandPower<span class="signature">(signal, sampleRate, band, fftSize<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {number}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Compute the average power across a given frequency band in a signal.</p>
-</div>
+  </div>
 
 
 
@@ -5060,286 +5084,298 @@ future updates.</p></td>
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
         <th>Attributes</th>
-        
+      
 
-        
+      
         <th>Default</th>
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>signal</code></td>
         
 
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>signal</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;number></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>The signal.</p></td>
-        </tr>
+    <span class="param-type">
+      Array.&lt;number>
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>sampleRate</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
+          
+        </td>
 
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
+        
+          <td class="attributes">
             
 
             
-                <td class="default">
-                
-                </td>
-            
 
-            <td class="description last"><p>The sample rate of the signal.</p></td>
-        </tr>
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>The signal.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>sampleRate</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>band</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;number></span>
-|
+          
+        </td>
 
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
+        
+          <td class="attributes">
             
 
             
-                <td class="default">
-                
-                </td>
+
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>The sample rate of the signal.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>band</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array.&lt;number>
+    </span>
+
+    |
+
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
             
 
-            <td class="description last"><p>The frequency band provided as an array [frequencyStart, frequencyStop] or a
+            
+
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>The frequency band provided as an array [frequencyStart, frequencyStop] or a
 string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz).
 While string representations
 allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in
-future updates.</p></td>
-        </tr>
+future updates.</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>fftSize</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
 
     
 
-        <tr>
+
+          
+        </td>
+
+        
+          <td class="attributes">
             
-                <td class="name"><code>fftSize</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
+              &lt;optional><br>
             
 
             
-                <td class="default">
-                
-                    <code>Math.pow(2, bci.nextpow2(signal.length))</code>
-                
-                </td>
-            
 
-            <td class="description last"><p>Size of the fourier transform used to compute the PSD.</p></td>
-        </tr>
+            
+          </td>
+        
+
+        
+          <td class="default">
+            
+              Math.pow(2, bci.nextpow2(signal.length))
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>Size of the fourier transform used to compute the PSD.</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The average power in the frequency band.</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".specificity"><span class="type-signature">(static) </span>specificity<span class="signature">(confusionMatrix)</span><span class="type-signature"> &rarr; {number}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_metrics_specificity.js.html">lib/metrics/specificity.js</a>, <a href="lib_metrics_specificity.js.html#line7">line 7</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_math_signalBandPower.js.html">lib/math/signalBandPower.js</a>, <a href="lib_math_signalBandPower.js.html#line18">line 18</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.specificity">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".specificity">
+      <span class="type-signature">(static) </span>specificity<span class="signature">(confusionMatrix)</span><span class="type-signature"> &rarr; {number}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Calculate the specificity of a binary classifier given its confusion matrix as defined by the confusionMatrix method</p>
-</div>
+  </div>
 
 
 
@@ -5347,154 +5383,145 @@ future updates.</p></td>
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>confusionMatrix</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array.&lt;Array.&lt;number>>
+    </span>
+
     
 
-        <tr>
-            
-                <td class="name"><code>confusionMatrix</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;Array.&lt;number>></span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>a 2x2 confusion matrix</p></td>
-        </tr>
+        <td class="description last">
+          <p>a 2x2 confusion matrix</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The specificity (true negative rate)</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".subscript"><span class="type-signature">(static) </span>subscript<span class="signature">(array, &hellip;params)</span><span class="type-signature"> &rarr; {Array}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_data_subscript.js.html">lib/data/subscript.js</a>, <a href="lib_data_subscript.js.html#line22">line 22</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_metrics_specificity.js.html">lib/metrics/specificity.js</a>, <a href="lib_metrics_specificity.js.html#line7">line 7</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.subscript">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".subscript">
+      <span class="type-signature">(static) </span>subscript<span class="signature">(array, &hellip;params)</span><span class="type-signature"> &rarr; {Array}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Subscript an array with MATLAB-like syntax</p>
-</div>
+  </div>
 
 
 
@@ -5502,204 +5529,211 @@ future updates.</p></td>
 
 
 
-
-
-    <h5>Examples</h5>
-    
-    <pre class="prettyprint"><code>var bci = require('bcijs');var arr = [3, 2, 4, 1, 5];var subarr = bci.subscript(arr, '1:3');console.log(subarr); // [3, 2, 4]</code></pre>
-
-    <pre class="prettyprint"><code>var bci = require('bcijs');var arr = [  [1, 2, 3],  [4, 5, 6],  [7, 8, 9]];var subarr = bci.subscript(arr, '1 3', '2:3'); // rows 1 and 3, columns 2 through 3console.log(subarr); // [[2, 3], [8, 9]]</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
         <th>Attributes</th>
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     
+      <tr>
+        
+          <td class="name"><code>array</code></td>
+        
 
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>array</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>The array to be subscripted</p></td>
-        </tr>
+    <span class="param-type">
+      Array
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>params</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
+          
+        </td>
 
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                    &lt;repeatable><br>
-                
-                </td>
+        
+          <td class="attributes">
             
 
             
 
-            <td class="description last"><p>Colon notation for which elements to include in each dimension</p></td>
-        </tr>
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>The array to be subscripted</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+      <tr>
+        
+          <td class="name"><code>params</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+              &lt;repeatable><br>
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>Colon notation for which elements to include in each dimension</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The subscripted array</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".toFixed"><span class="type-signature">(static) </span>toFixed<span class="signature">(array, places)</span><span class="type-signature"> &rarr; {Array.&lt;string>}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_data_toFixed.js.html">lib/data/toFixed.js</a>, <a href="lib_data_toFixed.js.html#line8">line 8</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_data_subscript.js.html">lib/data/subscript.js</a>, <a href="lib_data_subscript.js.html#line22">line 22</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#subscript-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="subscript-examples">Examples</h5>
+    
+
+  <pre class="prettyprint"><code>var bci = require('bcijs');var arr = [3, 2, 4, 1, 5];var subarr = bci.subscript(arr, '1:3');console.log(subarr); // [3, 2, 4]</code></pre>
+
+
+  <pre class="prettyprint"><code>var bci = require('bcijs');var arr = [  [1, 2, 3],  [4, 5, 6],  [7, 8, 9]];var subarr = bci.subscript(arr, '1 3', '2:3'); // rows 1 and 3, columns 2 through 3console.log(subarr); // [[2, 3], [8, 9]]</code></pre>
+
+
+  </div>
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.toFixed">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".toFixed">
+      <span class="type-signature">(static) </span>toFixed<span class="signature">(array, places)</span><span class="type-signature"> &rarr; {Array.&lt;string>}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Returns an array of numbers as strings rounded to the proper number of decimal places and padded with zeros as needed.</p>
-</div>
+  </div>
 
 
 
@@ -5707,177 +5741,174 @@ future updates.</p></td>
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
     
+      <tr>
+        
+          <td class="name"><code>array</code></td>
+        
 
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>array</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
+    <span class="param-type">
+      Array
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>places</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
+        <td class="description last">
+          
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+      <tr>
+        
+          <td class="name"><code>places</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+
+        <td class="description last">
+          
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Array of string representations of numbers</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array.&lt;string></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".toTable"><span class="type-signature">(static) </span>toTable<span class="signature">(array)</span><span class="type-signature"> &rarr; {string}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_data_toTable.js.html">lib/data/toTable.js</a>, <a href="lib_data_toTable.js.html#line10">line 10</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_data_toFixed.js.html">lib/data/toFixed.js</a>, <a href="lib_data_toFixed.js.html#line8">line 8</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.toTable">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".toTable">
+      <span class="type-signature">(static) </span>toTable<span class="signature">(array)</span><span class="type-signature"> &rarr; {string}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Returns an ASCII table representation of an array</p>
-</div>
+  </div>
 
 
 
@@ -5885,154 +5916,145 @@ future updates.</p></td>
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>array</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array
+    </span>
+
     
 
-        <tr>
-            
-                <td class="name"><code>array</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
+        <td class="description last">
+          
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>ASCII table</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".transpose"><span class="type-signature">(static) </span>transpose<span class="signature">(array)</span><span class="type-signature"> &rarr; {Array}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_math_transpose.js.html">lib/math/transpose.js</a>, <a href="lib_math_transpose.js.html#line7">line 7</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_data_toTable.js.html">lib/data/toTable.js</a>, <a href="lib_data_toTable.js.html#line10">line 10</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.transpose">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".transpose">
+      <span class="type-signature">(static) </span>transpose<span class="signature">(array)</span><span class="type-signature"> &rarr; {Array}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Transpose an array</p>
-</div>
+  </div>
 
 
 
@@ -6040,145 +6062,106 @@ future updates.</p></td>
 
 
 
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>array</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array
+    </span>
+
     
 
-        <tr>
-            
-                <td class="name"><code>array</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>The array to transpose</p></td>
-        </tr>
+        <td class="description last">
+          <p>The array to transpose</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The transposed array</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".wait"><span class="type-signature">(static) </span>wait<span class="signature">(ms)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_network_wait.js.html">lib/network/wait.js</a>, <a href="lib_network_wait.js.html#line2">line 2</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_math_transpose.js.html">lib/math/transpose.js</a>, <a href="lib_math_transpose.js.html#line7">line 7</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
@@ -6194,153 +6177,174 @@ future updates.</p></td>
 
 
 
+      
+        
 
-    <h5>Parameters:</h5>
-    
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.wait">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".wait">
+      <span class="type-signature">(static) </span>wait<span class="signature">(ms)</span><span class="type-signature"> &rarr; {Promise}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
 
-        <th class="last">Description</th>
+      <th class="last">Description</th>
     </tr>
-    </thead>
+  </thead>
 
-    <tbody>
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>ms</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
+
     
 
-        <tr>
-            
-                <td class="name"><code>ms</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
+          
+        </td>
 
+        
 
-            
-            </td>
+        
 
-            
-
-            
-
-            <td class="description last"><p>Number of milliseconds to wait</p></td>
-        </tr>
+        <td class="description last">
+          <p>Number of milliseconds to wait</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+  </tbody>
 </table>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>A promise which resolves when the timeout occurs</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".windowApply"><span class="type-signature">(static) </span>windowApply<span class="signature">(array, func, length, step, tail)</span><span class="type-signature"> &rarr; {Array}</span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
-    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="lib_data_windowApply.js.html">lib/data/windowApply.js</a>, <a href="lib_data_windowApply.js.html#line28">line 28</a>
-    </li></ul></dd>
-    
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_network_wait.js.html">lib/network/wait.js</a>, <a href="lib_network_wait.js.html#line2">line 2</a>
+        </li>
+      </ul>
+    </dd>
+  
 
-    
+  
 
-    
+  
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+  
 </dl>
 
 
 
 
 
-<div class="description">
+
+
+
+
+
+
+
+
+
+      
+        
+
+
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.windowApply">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".windowApply">
+      <span class="type-signature">(static) </span>windowApply<span class="signature">(array, func, length, step, tail)</span><span class="type-signature"> &rarr; {Array}</span>
+    </h4>
+  </span>
+
+  
+
+
+
+  <div class="description">
     <p>Similar to JavaScript's map, but it applies a function to sub arrays instead of each element.
 Each sub array, or window, starts at index 0 and has length 'length'
 Each next window will be shifted 'step' elements from the first. The result of each function is stored in a returned array.</p>
-</div>
+  </div>
 
 
 
@@ -6348,240 +6352,302 @@ Each next window will be shifted 'step' elements from the first. The result of e
 
 
 
-
-
-    <h5>Examples</h5>
-    
-    <pre class="prettyprint"><code>var bci = require('bcijs');bci.windowApply([1, 2, 3, 4, 5], window => console.log(window), 3, 1);// [1, 2, 3]// [2, 3, 4]// [3, 4, 5] </code></pre>
-
-    <pre class="prettyprint"><code>var bci = require('bcijs');var sums = bci.windowApply([1, 2, 3, 4, 5], window => {  var sum = 0;  window.forEach(x => sum += x);  return sum;}, 3, 1);console.log(sums);// [6, 9, 12]</code></pre>
-
-
-
-
-    <h5>Parameters:</h5>
-    
+  <h5>Parameters:</h5>
+  
 
 <table class="params">
-    <thead>
+  <thead>
     <tr>
-        
+      
         <th>Name</th>
-        
+      
 
-        <th>Type</th>
+      <th>Type</th>
 
-        
+      
 
-        
+      
         <th>Default</th>
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>array</code></td>
         
 
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
+        <td class="type">
+          
             
-                <td class="name"><code>array</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>The array of elements which will be windowed</p></td>
-        </tr>
+    <span class="param-type">
+      Array
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>func</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
+          
+        </td>
 
+        
 
+        
+          <td class="default">
             
-            </td>
+          </td>
+        
 
-            
+        <td class="description last">
+          <p>The array of elements which will be windowed</p>
+          
+        </td>
+      </tr>
 
-            
-                <td class="default">
-                
-                </td>
-            
+    
+      <tr>
+        
+          <td class="name"><code>func</code></td>
+        
 
-            <td class="description last"><p>The function to call on each window, the returned result is stored in a returned array</p></td>
-        </tr>
+        <td class="type">
+          
+            
+    <span class="param-type">
+      function
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>length</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
+          
+        </td>
 
+        
 
+        
+          <td class="default">
             
-            </td>
+          </td>
+        
 
-            
+        <td class="description last">
+          <p>The function to call on each window, the returned result is stored in a returned array</p>
+          
+        </td>
+      </tr>
 
-            
-                <td class="default">
-                
-                </td>
-            
+    
+      <tr>
+        
+          <td class="name"><code>length</code></td>
+        
 
-            <td class="description last"><p>The number of elements to include in each window</p></td>
-        </tr>
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>step</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
+          
+        </td>
 
+        
 
+        
+          <td class="default">
             
-            </td>
+          </td>
+        
 
-            
+        <td class="description last">
+          <p>The number of elements to include in each window</p>
+          
+        </td>
+      </tr>
 
-            
-                <td class="default">
-                
-                </td>
-            
+    
+      <tr>
+        
+          <td class="name"><code>step</code></td>
+        
 
-            <td class="description last"><p>The start of the window is incremented by this amount every iteration</p></td>
-        </tr>
+        <td class="type">
+          
+            
+    <span class="param-type">
+      number
+    </span>
 
     
 
-        <tr>
-            
-                <td class="name"><code>tail</code></td>
-            
 
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
+          
+        </td>
 
+        
 
+        
+          <td class="default">
             
-            </td>
+          </td>
+        
 
-            
-
-            
-                <td class="default">
-                
-                    <code>false</code>
-                
-                </td>
-            
-
-            <td class="description last"><p>If false, windows which begin near the end of the array which cannot reach length 'length' will be ignored</p></td>
-        </tr>
+        <td class="description last">
+          <p>The start of the window is incremented by this amount every iteration</p>
+          
+        </td>
+      </tr>
 
     
-    </tbody>
+      <tr>
+        
+          <td class="name"><code>tail</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      boolean
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+
+        
+          <td class="default">
+            
+              false
+            
+          </td>
+        
+
+        <td class="description last">
+          <p>If false, windows which begin near the end of the array which cannot reach length 'length' will be ignored</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
 </table>
 
 
 
 
 
+<dl class="details">
 
+  
 
+  
 
+  
 
+  
 
+  
 
+  
 
+  
 
+  
 
-<h5>Returns:</h5>
+  
 
-        
-<div class="param-desc">
-    <p>An array containing the function result for each window</p>
-</div>
+  
 
+  
 
+  
 
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Array</span>
-
-
+  
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source">
+      <ul class="dummy">
+        <li>
+          <a href="lib_data_windowApply.js.html">lib/data/windowApply.js</a>, <a href="lib_data_windowApply.js.html#line28">line 28</a>
+        </li>
+      </ul>
     </dd>
+  
+
+  
+
+  
+
+  
 </dl>
 
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="example-container">
+    <a class="link-icon" href="#windowApply-examples">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h5 id="windowApply-examples">Examples</h5>
     
 
+  <pre class="prettyprint"><code>var bci = require('bcijs');bci.windowApply([1, 2, 3, 4, 5], window => console.log(window), 3, 1);// [1, 2, 3]// [2, 3, 4]// [3, 4, 5] </code></pre>
 
-        
+
+  <pre class="prettyprint"><code>var bci = require('bcijs');var sums = bci.windowApply([1, 2, 3, 4, 5], window => {  var sum = 0;  window.forEach(x => sum += x);  return sum;}, 3, 1);console.log(sums);// [6, 9, 12]</code></pre>
+
+
+  </div>
+
+
+      
     
 
     
 
     
-</article>
-
+  </article>
 </section>
 
 
 
 
-</div>
+  </div>
 
-<br class="clear">
+  <br class="clear">
 
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Mar 12 2019 21:07:02 GMT-0400 (Eastern Daylight Time) using a modified version of the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
-</footer>
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+  </footer>
 
-<script>prettyPrint();</script>
-<script src="scripts/linenumber.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/pagelocation.js"></script>
+
+  
+
 </body>
 </html>

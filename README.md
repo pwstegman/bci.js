@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/bcijs.svg)](https://www.npmjs.com/package/bcijs)
 [![npm](https://img.shields.io/npm/dm/bcijs.svg)](https://www.npmjs.com/package/bcijs)
-[![NpmLicense](https://img.shields.io/npm/l/bcijs.svg)](https://github.com/pwstegman/bcijs/blob/master/LICENSE)
+[![NpmLicense](https://img.shields.io/npm/l/bcijs.svg)](https://github.com/pwstegman/bci.js/blob/master/LICENSE)
 
 BCI.js is a library for EEG-based brain computer interface (BCI) design with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, containing methods for signal processing and machine learning, such as LDA, CSP, ICA, and PSD, methods for data manipulation, such as MATLAB style array subscripting, data windowing, and CSV file support, and methods for networking, including data collection and streaming via OSC.
 
@@ -26,6 +26,8 @@ Browser
 - [EEG Motor Imagery Classification in Node.js with BCI.js](https://medium.com/@pwstegman/eeg-motor-imagery-classification-in-node-js-with-bci-js-d21f29cf165)
 
 ## Examples
+
+More examples can be found in the [examples](https://github.com/pwstegman/bci.js/tree/master/examples) directory
 
 ### Signal Processing
 
@@ -144,7 +146,7 @@ BCI.js can be loaded from the jsDelivr CDN with
 <script src="https://cdn.jsdelivr.net/npm/bcijs@1.5.2/dist/bci.min.js"></script>
 ```
 
-You can also find `bci.js` and `bci.min.js` in the [/dist](https://github.com/pwstegman/bcijs/tree/master/dist) directory.
+You can also find `bci.js` and `bci.min.js` in the [/dist](https://github.com/pwstegman/bci.js/tree/master/dist) directory.
 
 BCI.js methods are accessible via the global object `bci`.
 
@@ -162,23 +164,19 @@ You can require specific methods as well. For example, if you only need fastICA,
 const fastICA = require('bcijs/lib/math/fastICA.js');
 ```
 
-BCI.js methods can be found in the [lib/](https://github.com/pwstegman/bcijs/tree/master/lib) directory.
+BCI.js methods can be found in the [lib/](https://github.com/pwstegman/bci.js/tree/master/lib) directory.
 
 ## Documentation
 
-Documentation can be found at [https://bci.js.org/docs](https://bci.js.org/docs) or by viewing [api.md](https://github.com/pwstegman/bcijs/blob/master/docs/docs/api.md)
-
-## Examples
-
-More examples can be found in the [examples](https://github.com/pwstegman/bcijs/tree/master/examples) directory
+Documentation can be found at [https://bci.js.org/docs](https://bci.js.org/docs) or by viewing [api.md](https://github.com/pwstegman/bci.js/blob/master/docs/docs/api.md)
 
 ## Building
 
-See [dev.md](dev.md) for info on how to modify and build bci.js
+See [dev.md](dev.md) for info on how to modify and build BCI.js
 
 ## Reference
 
-If you use bci.js in a published work, please reference this paper
+If you use BCI.js in a published work, please reference this paper
 
 P. Stegman, C. Crawford, and J. Gray, "WebBCI: An Electroencephalography Toolkit Built on Modern Web Technologies," in Augmented Cognition: Intelligent Technologies, 2018, pp. 212–221.
 

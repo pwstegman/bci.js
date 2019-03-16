@@ -1,50 +1,103 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>lib/metrics/accuracy.js - Documentation</title>
 
-    <link rel='shortcut icon' type='image/x-icon' href='/img/favicon.ico' />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
-    <style>
-        li > code {
-            min-height: 1em;
-        }
-    </style>
+  <title>
+      lib/metrics/accuracy.js - Documentation
+  </title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400" rel="stylesheet">
+
+  <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+  <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+  
+
+  
 </head>
+
 <body>
 
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
+  <svg style="display: none;">
+    <defs>
+      <symbol id="linkIcon" fill="#706d77" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+      </symbol>
+    </defs>
+  </svg>
 
-<label for="nav-trigger" class="overlay"></label>
+  <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <label for="nav-trigger" class="navicon-button x">
+    <div class="navicon"></div>
+  </label>
 
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-bcijs.oscStream.html">oscStream</a><ul class='methods'><li data-type='method'><a href="module-bcijs.oscStream.html#on">on</a></li><li data-type='method'><a href="module-bcijs.oscStream.html#start">start</a></li><li data-type='method'><a href="module-bcijs.oscStream.html#stop">stop</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-bcijs.html">bcijs</a><ul class='methods'><li data-type='method'><a href="module-bcijs.html#.accuracy">accuracy</a></li><li data-type='method'><a href="module-bcijs.html#.averageBandPowers">averageBandPowers</a></li><li data-type='method'><a href="module-bcijs.html#.balancedAccuracy">balancedAccuracy</a></li><li data-type='method'><a href="module-bcijs.html#.confusionMatrix">confusionMatrix</a></li><li data-type='method'><a href="module-bcijs.html#.cspLearn">cspLearn</a></li><li data-type='method'><a href="module-bcijs.html#.cspProject">cspProject</a></li><li data-type='method'><a href="module-bcijs.html#.f1">f1</a></li><li data-type='method'><a href="module-bcijs.html#.fastICA">fastICA</a></li><li data-type='method'><a href="module-bcijs.html#.generateSignal">generateSignal</a></li><li data-type='method'><a href="module-bcijs.html#.ldaLearn">ldaLearn</a></li><li data-type='method'><a href="module-bcijs.html#.ldaProject">ldaProject</a></li><li data-type='method'><a href="module-bcijs.html#.loadCSV">loadCSV</a></li><li data-type='method'><a href="module-bcijs.html#.loadEDF">loadEDF</a></li><li data-type='method'><a href="module-bcijs.html#.mcc">mcc</a></li><li data-type='method'><a href="module-bcijs.html#.nextpow2">nextpow2</a></li><li data-type='method'><a href="module-bcijs.html#.oscCollect">oscCollect</a></li><li data-type='method'><a href="module-bcijs.html#.oscHeaderScan">oscHeaderScan</a></li><li data-type='method'><a href="module-bcijs.html#.partition">partition</a></li><li data-type='method'><a href="module-bcijs.html#.precision">precision</a></li><li data-type='method'><a href="module-bcijs.html#.prompt">prompt</a></li><li data-type='method'><a href="module-bcijs.html#.psd">psd</a></li><li data-type='method'><a href="module-bcijs.html#.psdBandPower">psdBandPower</a></li><li data-type='method'><a href="module-bcijs.html#.recall">recall</a></li><li data-type='method'><a href="module-bcijs.html#.round">round</a></li><li data-type='method'><a href="module-bcijs.html#.saveCSV">saveCSV</a></li><li data-type='method'><a href="module-bcijs.html#.signalBandPower">signalBandPower</a></li><li data-type='method'><a href="module-bcijs.html#.specificity">specificity</a></li><li data-type='method'><a href="module-bcijs.html#.subscript">subscript</a></li><li data-type='method'><a href="module-bcijs.html#.toFixed">toFixed</a></li><li data-type='method'><a href="module-bcijs.html#.toTable">toTable</a></li><li data-type='method'><a href="module-bcijs.html#.transpose">transpose</a></li><li data-type='method'><a href="module-bcijs.html#.wait">wait</a></li><li data-type='method'><a href="module-bcijs.html#.windowApply">windowApply</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="module-bcijs.features.html">features</a><ul class='methods'><li data-type='method'><a href="module-bcijs.features.html#.logvar">logvar</a></li><li data-type='method'><a href="module-bcijs.features.html#.rootMeanSquare">rootMeanSquare</a></li><li data-type='method'><a href="module-bcijs.features.html#.variance">variance</a></li></ul></li></ul>
-</nav>
+  <label for="nav-trigger" class="overlay"></label>
 
-<div id="main">
+  <!--<div class="top-nav-wrapper">
+    <ul>
+      <li >
+        <a href="index.html">
+          
+            <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          
+          
+        </a>
+      </li>
+
+      
+
+    </ul>
+  </div>-->
+
+  <nav id="docs-nav">
+    <div class="pt-5">
+      <a href="/"><img src="static/bcijs-logo.png" height="34px"></a>
+    </div>
     
-    <h1 class="page-title">lib/metrics/accuracy.js</h1>
-    
+    <h3 class="reference-title">
+      BCI.js
+    </h3>
+    <ul>
+      <li><a href="index.html" class="indented-link" id="readme-link">Readme</a></li>
+      <li><a href="https://github.com/pwstegman/bci.js#tutorials" class="indented-link">Tutorials</a></li>
+      <li><a href="/#examples" class="indented-link">Examples</a></li>
+    </ul>
 
     
 
+    <h3>Classes</h3><ul><li id="oscStream-nav"><a href="module-bcijs.oscStream.html">oscStream</a><ul class='methods'><li data-type="method" id="oscStream-on-nav"><a href="module-bcijs.oscStream.html#on">on</a></li><li data-type="method" id="oscStream-start-nav"><a href="module-bcijs.oscStream.html#start">start</a></li><li data-type="method" id="oscStream-stop-nav"><a href="module-bcijs.oscStream.html#stop">stop</a></li></ul></li></ul><h3>Modules</h3><ul><li id="bcijs-nav"><a href="module-bcijs.html">bcijs</a><ul class='methods'><li data-type="method" id="bcijs-accuracy-nav"><a href="module-bcijs.html#.accuracy">accuracy</a></li><li data-type="method" id="bcijs-averageBandPowers-nav"><a href="module-bcijs.html#.averageBandPowers">averageBandPowers</a></li><li data-type="method" id="bcijs-balancedAccuracy-nav"><a href="module-bcijs.html#.balancedAccuracy">balancedAccuracy</a></li><li data-type="method" id="bcijs-confusionMatrix-nav"><a href="module-bcijs.html#.confusionMatrix">confusionMatrix</a></li><li data-type="method" id="bcijs-cspLearn-nav"><a href="module-bcijs.html#.cspLearn">cspLearn</a></li><li data-type="method" id="bcijs-cspProject-nav"><a href="module-bcijs.html#.cspProject">cspProject</a></li><li data-type="method" id="bcijs-f1-nav"><a href="module-bcijs.html#.f1">f1</a></li><li data-type="method" id="bcijs-fastICA-nav"><a href="module-bcijs.html#.fastICA">fastICA</a></li><li data-type="method" id="bcijs-generateSignal-nav"><a href="module-bcijs.html#.generateSignal">generateSignal</a></li><li data-type="method" id="bcijs-ldaLearn-nav"><a href="module-bcijs.html#.ldaLearn">ldaLearn</a></li><li data-type="method" id="bcijs-ldaProject-nav"><a href="module-bcijs.html#.ldaProject">ldaProject</a></li><li data-type="method" id="bcijs-loadCSV-nav"><a href="module-bcijs.html#.loadCSV">loadCSV</a></li><li data-type="method" id="bcijs-loadEDF-nav"><a href="module-bcijs.html#.loadEDF">loadEDF</a></li><li data-type="method" id="bcijs-mcc-nav"><a href="module-bcijs.html#.mcc">mcc</a></li><li data-type="method" id="bcijs-nextpow2-nav"><a href="module-bcijs.html#.nextpow2">nextpow2</a></li><li data-type="method" id="bcijs-oscCollect-nav"><a href="module-bcijs.html#.oscCollect">oscCollect</a></li><li data-type="method" id="bcijs-oscHeaderScan-nav"><a href="module-bcijs.html#.oscHeaderScan">oscHeaderScan</a></li><li data-type="method" id="bcijs-partition-nav"><a href="module-bcijs.html#.partition">partition</a></li><li data-type="method" id="bcijs-precision-nav"><a href="module-bcijs.html#.precision">precision</a></li><li data-type="method" id="bcijs-prompt-nav"><a href="module-bcijs.html#.prompt">prompt</a></li><li data-type="method" id="bcijs-psd-nav"><a href="module-bcijs.html#.psd">psd</a></li><li data-type="method" id="bcijs-psdBandPower-nav"><a href="module-bcijs.html#.psdBandPower">psdBandPower</a></li><li data-type="method" id="bcijs-recall-nav"><a href="module-bcijs.html#.recall">recall</a></li><li data-type="method" id="bcijs-round-nav"><a href="module-bcijs.html#.round">round</a></li><li data-type="method" id="bcijs-saveCSV-nav"><a href="module-bcijs.html#.saveCSV">saveCSV</a></li><li data-type="method" id="bcijs-signalBandPower-nav"><a href="module-bcijs.html#.signalBandPower">signalBandPower</a></li><li data-type="method" id="bcijs-specificity-nav"><a href="module-bcijs.html#.specificity">specificity</a></li><li data-type="method" id="bcijs-subscript-nav"><a href="module-bcijs.html#.subscript">subscript</a></li><li data-type="method" id="bcijs-toFixed-nav"><a href="module-bcijs.html#.toFixed">toFixed</a></li><li data-type="method" id="bcijs-toTable-nav"><a href="module-bcijs.html#.toTable">toTable</a></li><li data-type="method" id="bcijs-transpose-nav"><a href="module-bcijs.html#.transpose">transpose</a></li><li data-type="method" id="bcijs-wait-nav"><a href="module-bcijs.html#.wait">wait</a></li><li data-type="method" id="bcijs-windowApply-nav"><a href="module-bcijs.html#.windowApply">windowApply</a></li></ul></li></ul>
+  </nav>
 
+  <div id="main">
+    
+      <h1 class="page-title">
+        lib/metrics/accuracy.js
+      </h1>
+    
 
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/**
+      
+
+<section>
+  <article>
+    <pre class="prettyprint source linenums"><code>/**
  * Calculate the accuracy of a classifier given its confusion matrix as defined by the confusionMatrix method
  * @memberof module:bcijs
  * @param {number[][]} confusionMatrix - a confusion matrix
@@ -68,21 +121,24 @@ function accuracy(confusionMatrix){
 
 module.exports = accuracy;
 </code></pre>
-        </article>
-    </section>
+  </article>
+</section>
+
+    
 
 
+  </div>
 
+  <br class="clear">
 
-</div>
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+  </footer>
 
-<br class="clear">
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/pagelocation.js"></script>
 
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Mar 12 2019 21:07:02 GMT-0400 (Eastern Daylight Time) using a modified version of the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
-</footer>
+  
 
-<script>prettyPrint();</script>
-<script src="scripts/linenumber.js"></script>
 </body>
 </html>
