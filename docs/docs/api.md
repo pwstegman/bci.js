@@ -17,12 +17,13 @@
     * [.cspProject(cspParams, data, [dimensions])](#module_bcijs.cspProject) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
     * [.fastICA(signals, options)](#module_bcijs.fastICA) ⇒ <code>Object</code>
     * [.generateSignal(amplitudes, frequencies, sampleRate, duration)](#module_bcijs.generateSignal) ⇒ <code>Array.&lt;number&gt;</code>
+    * [.ldaClassify(ldaParams, point)](#module_bcijs.ldaClassify) ⇒ <code>number</code>
     * [.ldaLearn(class1, class2)](#module_bcijs.ldaLearn) ⇒ <code>Object</code>
     * [.ldaProject(ldaParams, point)](#module_bcijs.ldaProject) ⇒ <code>number</code>
     * [.nextpow2(num)](#module_bcijs.nextpow2) ⇒ <code>number</code>
     * [.psd(signal, [options])](#module_bcijs.psd) ⇒ <code>Array.&lt;number&gt;</code>
     * [.psdBandPower(psd, sampleRate, band, [fftSize])](#module_bcijs.psdBandPower) ⇒ <code>number</code>
-    * [.signalBandPower(signal, sampleRate, band, [fftSize])](#module_bcijs.signalBandPower) ⇒ <code>number</code>
+    * [.signalBandPower(samples, sampleRate, bands, [fftSize])](#module_bcijs.signalBandPower) ⇒ <code>number</code>
     * [.transpose(array)](#module_bcijs.transpose) ⇒ <code>Array</code>
     * [.loadCSV(filePath)](#module_bcijs.loadCSV) ⇒ <code>Promise</code>
     * [.loadEDF(filename)](#module_bcijs.loadEDF) ⇒ <code>Object</code>
@@ -171,6 +172,10 @@ Learn common spatial pattern for two datasets
 | class1 | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | Data samples for class 1. Rows should be samples, columns should be signals. |
 | class2 | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | Data samples for class 2. Rows should be samples, columns should be signals. |
 
+**Example**  
+```js
+let cspParams = bci.cspLearn(class_a, class_b);
+```
 <a name="module_bcijs.cspProject"></a>
 
 ### bcijs.cspProject(cspParams, data, [dimensions]) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
@@ -185,6 +190,10 @@ Projects data and reduces to given number of dimensions
 | data | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | Data points to be projected. Rows should be samples, columns should be signals. |
 | [dimensions] | <code>number</code> | Number of dimensions to be returned. Can range from 1 to number of signals. Defaults to number of signals. |
 
+**Example**  
+```js
+// Learn the CSP paramslet cspParams = bci.cspLearn(class_a, class_b);// Project the signalslet class_a_csp = bci.cspProject(cspParams, class_a);let class_b_csp = bci.cspProject(cspParams, class_b);
+```
 <a name="module_bcijs.fastICA"></a>
 
 ### bcijs.fastICA(signals, options) ⇒ <code>Object</code>
@@ -216,6 +225,27 @@ Generate a signal with the given frequencies and their amplitudes.
 | sampleRate | <code>number</code> | Sample rate of the signal in Hz. |
 | duration | <code>number</code> | Duration of the signal in seconds. |
 
+**Example**  
+```js
+let amplitudes = [4, 8];let frequencies = [10, 20]; // 10 Hz (alpha), 20 Hz (beta)let sampleRate = 512; // Hzlet duration = 1; // Secondslet signal = bci.generateSignal(amplitudes, frequencies, sampleRate, duration);
+```
+<a name="module_bcijs.ldaClassify"></a>
+
+### bcijs.ldaClassify(ldaParams, point) ⇒ <code>number</code>
+Classify an unknown data point.
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>number</code> - 0 if the first class, 1 if the second class  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| ldaParams | <code>object</code> | The parameters for the LDA, computed with the function ldaLearn |
+| point | <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | The data point or array of points to be classified. |
+
+**Example**  
+```js
+let features = [[1,3], [5,2]]; // Example feature vectorslet classification = bci.ldaClassify(ldaParams, features[0]); // Outputs a number (0 or 1 depending on class)let classifications = bci.ldaClassify(ldaParams, features); // Outputs an array of classifications
+```
 <a name="module_bcijs.ldaLearn"></a>
 
 ### bcijs.ldaLearn(class1, class2) ⇒ <code>Object</code>
@@ -229,6 +259,10 @@ Perform linear discriminant analysis between two datasets
 | class1 | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | Data set for class 1, rows are samples, columns are variables |
 | class2 | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | Data set for class 2, rows are samples, columns are variables |
 
+**Example**  
+```js
+// Training setlet class1 = [[0, 0], [1, 2], [2, 2], [1.5, 0.5]];let class2 = [[8, 8], [9, 10], [7, 8], [9, 9]];// Learn an LDA classifierlet ldaParams = bci.ldaLearn(class1, class2);
+```
 <a name="module_bcijs.ldaProject"></a>
 
 ### bcijs.ldaProject(ldaParams, point) ⇒ <code>number</code>
@@ -240,7 +274,7 @@ Predict the class of an unknown data point.
 | Param | Type | Description |
 | --- | --- | --- |
 | ldaParams | <code>object</code> | The parameters for the LDA, computed with the function ldaLearn |
-| point | <code>Array.&lt;number&gt;</code> | The data point to be classified. |
+| point | <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | The data point or array of points to be projected. |
 
 <a name="module_bcijs.nextpow2"></a>
 
@@ -290,7 +324,7 @@ Compute the average power across a given frequency band given the PSD.
 
 <a name="module_bcijs.signalBandPower"></a>
 
-### bcijs.signalBandPower(signal, sampleRate, band, [fftSize]) ⇒ <code>number</code>
+### bcijs.signalBandPower(samples, sampleRate, bands, [fftSize]) ⇒ <code>number</code>
 Compute the average power across a given frequency band in a signal.
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
@@ -298,11 +332,15 @@ Compute the average power across a given frequency band in a signal.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| signal | <code>Array.&lt;number&gt;</code> |  | The signal. |
+| samples | <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;Array.&lt;number&gt;&gt;</code> |  | The signal (array of numbers) or a matrix of signals, where rows are samples and columns are signals. |
 | sampleRate | <code>number</code> |  | The sample rate of the signal. |
-| band | <code>Array.&lt;number&gt;</code> \| <code>string</code> |  | The frequency band provided as an array [frequencyStart, frequencyStop] or a string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz). While string representations allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in future updates. |
+| bands | <code>Array</code> \| <code>string</code> |  | The frequency band or array of bands, where a single band is provided as an array [frequencyStart, frequencyStop] or a string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz).<br> While string representations allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in future updates. |
 | [fftSize] | <code>number</code> | <code>Math.pow(2, bci.nextpow2(signal.length))</code> | Size of the fourier transform used to compute the PSD. |
 
+**Example**  
+```js
+// Example outputs are rounded// Single signal exampleslet sampleRate = 512;let signal = bci.generateSignal([2,16], [10,20], sampleRate, 1);// Get a single power in one bandconsole.log(bci.signalBandPower(signal, sampleRate, 'alpha')); // returns 102.4// Specify a custom band as an array (Ex: 8 Hz - 12 Hz)console.log(bci.signalBandPower(signal, sampleRate, [8, 12])); // returns 102.4// Obtain multiple band powersconsole.log(bci.signalBandPower(signal, sampleRate, ['alpha', 'beta'])); // returns [ 102.4, 227.6 ]// Multiple band powers works with custom bands tooconsole.log(bci.signalBandPower(signal, sampleRate, [[8, 12], [13, 30]])); // returns [ 102.4, 227.6 ]// Works with multiple signals too (example with 2 signals)let signal2 = bci.generateSignal([16, 2], [10, 20], 512, 1);let samples = bci.transpose([signal, signal2]);console.log(bci.signalBandPower(samples, sampleRate, 'alpha'));// Returns an array containing the alpha value for each signalconsole.log(bci.signalBandPower(samples, sampleRate, ['alpha', 'beta', 'gamma']));// Returns a 2d array with number_of_bands rows and number_of_signals columns
+```
 <a name="module_bcijs.transpose"></a>
 
 ### bcijs.transpose(array) ⇒ <code>Array</code>
