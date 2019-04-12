@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      lib/math/psd.js - Documentation
+      lib/math/ldaClassify.js - Documentation
   </title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -88,7 +88,7 @@
   <div id="main">
     
       <h1 class="page-title">
-        lib/math/psd.js
+        lib/math/ldaClassify.js
       </h1>
     
 
@@ -97,59 +97,35 @@
 
 <section>
   <article>
-    <pre class="prettyprint source linenums"><code>var fft = require('fft.js');
-var nextpow2 = require('./nextpow2.js');
-
-var fftCache = {};
+    <pre class="prettyprint source linenums"><code>const ldaProject = require('./ldaProject');
 
 /**
- * Compute the power spectral density of a given signal.
+ * Classify an unknown data point.
  * @memberof module:bcijs
- * @param {number[]} signal - The signal.
- * @param {Object} [options]
- * @param {number} [options.fftSize=Math.pow(2, bci.nextpow2(signal.length))] - Size of the fft to be used. Should be a power of 2.
- * @param {boolean} [options.truncate=false] - If true, only the first half of the PSD array is returned
- * @returns {number[]} The PSD.
+ * @param {object} ldaParams - The parameters for the LDA, computed with the function ldaLearn
+ * @param {number[]|number[][]} point - The data point or array of points to be classified.
+ * @returns {number} 0 if the first class, 1 if the second class
+ * @example
+ * let features = [[1,3], [5,2]]; // Example feature vectors
+ * let classification = bci.ldaClassify(ldaParams, features[0]); // Outputs a number (0 or 1 depending on class)
+ * let classifications = bci.ldaClassify(ldaParams, features); // Outputs an array of classifications
  */
-function psd(signal, options) {
-	var {fftSize, truncate} = Object.assign({
-		fftSize: Math.pow(2, nextpow2(signal.length)),
-		truncate: false
-	}, options);
+function ldaClassify(ldaParams, point) {
+    let result = ldaProject(ldaParams, point);
+    
+    if(Array.isArray(result)){
+        for(let i = 0; i &lt; result.length; i++){
+            result[i] = result[i] &lt; 0 ? 0 : 1;
+        }
+    } else {
+        result = result &lt; 0 ? 0 : 1;
+    }
 
-	var f;
-	if (fftCache.hasOwnProperty(fftSize)) {
-		f = fftCache[fftSize];
-	} else {
-		f = new fft(fftSize);
-		fftCache[fftSize] = f;
-	}
-
-	// Zero pad signal to length if needed
-	if (signal.length &lt; fftSize) {
-		signal = signal.concat(Array(fftSize - signal.length).fill(0));
-	}
-
-	var freqs = f.createComplexArray();
-	f.realTransform(freqs, signal);
-	if(truncate){
-		var powers = getPowers(freqs, freqs.length / 2);
-	}else{
-		var powers = getPowers(freqs, freqs.length);
-	}
-
-	return powers;
+    return result;
 }
 
-function getPowers(complexArray, length) {
-	var magnitudes = [];
-	for (var i = 0; i &lt; length - 1; i += 2) {
-		magnitudes.push(Math.sqrt(complexArray[i] * complexArray[i] + complexArray[i + 1] * complexArray[i + 1]));
-	}
-	return magnitudes;
-}
-
-module.exports = psd;</code></pre>
+module.exports = ldaClassify;
+</code></pre>
   </article>
 </section>
 

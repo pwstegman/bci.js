@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Sat Feb 23 2019 16:47:38 GMT-0600 (Central Standard Time)
+// Created on Thu Mar 14 2019 22:10:35 GMT-0400 (Eastern Daylight Time)
 // This module excludes Node.js specific methods so it can be used in the browser
 /** @module bcijs */
 module.exports.csp = require('./lib/compat/csp.js');
@@ -18,6 +18,7 @@ module.exports.cspProject = require('./lib/math/cspProject.js');
 module.exports.fastICA = require('./lib/math/fastICA.js');
 module.exports.features = require('./lib/math/features.js');
 module.exports.generateSignal = require('./lib/math/generateSignal.js');
+module.exports.ldaClassify = require('./lib/math/ldaClassify.js');
 module.exports.ldaLearn = require('./lib/math/ldaLearn.js');
 module.exports.ldaProject = require('./lib/math/ldaProject.js');
 module.exports.nextpow2 = require('./lib/math/nextpow2.js');
