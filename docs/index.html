@@ -15,10 +15,9 @@ let signal = bci.generateSignal(
 );
 
 // Compute average power in alpha and beta frequency bands
-// 205
-console.log(bci.signalBandPower(signal, sampleRate, 'alpha'));
-// 114
-console.log(bci.signalBandPower(signal, sampleRate, 'beta'));
+let powers = bci.signalBandPower(signal, sampleRate, ['alpha', 'beta']);
+
+console.log(powers); // [ 204.80000000000027, 113.77777777777834 ]
 </code></pre></div><div class="tab-pane" id="nav-csp" role="tabpanel" aria-labelledby="nav-csp-tab"><pre class="prettyprint lang-js" style="min-height:27em;"><code>const bci = require('bcijs');
 
 (async () =&gt; {
@@ -55,11 +54,9 @@ let unknownPoints = [
 let ldaParams = bci.ldaLearn(class1, class2);
 
 // Test classifier
-let predictions = unknownPoints.map(point =&gt; {
-	return Math.sign(bci.ldaProject(ldaParams, point))
-});
+let predictions = bci.ldaClassify(ldaParams, unknownPoints);
 
-console.log(predictions); // [ -1, -1, -1, 1, 1, 1 ]
+console.log(predictions); // [ 0, 0, 0, 1, 1, 1 ]
 </code></pre></div><div class="tab-pane" id="nav-features" role="tabpanel" aria-labelledby="nav-features-tab"><pre class="prettyprint lang-js" style="min-height:30em;"><code>const bci = require('bcijs');
 
 // Some random numbers
