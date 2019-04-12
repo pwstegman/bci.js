@@ -1,16 +1,16 @@
 /**
- * bci.js v1.5.2
+ * bci.js v1.6.0
  * https://github.com/pwstegman/bcijs
  *
  * License: MIT
- * Generated 2019-03-15T02:10:35Z
+ * Generated 2019-04-12T00:52:31Z
  */
 
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.bci = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
 
 // This file was auto generated, changes will be overwritten
-// Created on Thu Mar 14 2019 22:10:35 GMT-0400 (Eastern Daylight Time)
+// Created on Thu Apr 11 2019 19:52:31 GMT-0500 (Central Daylight Time)
 // This module excludes Node.js specific methods so it can be used in the browser
 
 /** @module bcijs */
@@ -603,6 +603,7 @@ var signalBandPower = require('./signalBandPower.js');
  * @param {number} sampleRate - Sample rate of the data
  * @param {Array} bands - An array of frequency bands. See signalBandPower for more info on frequency bands.
  * @param {number} [fftSize] - The size of the fft to use. See signalBandPower for more info on fft sizes.
+ * @returns {number[]} Array containing the average power across all channels in each band
  * @example
  * let feature = bci.averageBandPowers(samples, 256, ['alpha', 'beta']);
  * // returns [alpha_power_averaged_across_channels, beta_power_averaged_across_channels]
@@ -653,6 +654,8 @@ var stat = require('pw-stat');
  * @param {number[][]} class1 - Data samples for class 1. Rows should be samples, columns should be signals.
  * @param {number[][]} class2 - Data samples for class 2. Rows should be samples, columns should be signals.
  * @returns {Object} Learned CSP parameters
+ * @example
+ * let cspParams = bci.cspLearn(class_a, class_b);
  */
 
 
@@ -681,6 +684,13 @@ math.import(require('mathjs/lib/function/arithmetic'));
  * @param {number[][]} data - Data points to be projected. Rows should be samples, columns should be signals.
  * @param {number} [dimensions] - Number of dimensions to be returned. Can range from 1 to number of signals. Defaults to number of signals.
  * @returns {number[][]} Projected data. Rows are samples, columns are dimensions sorted by descending importance.
+ * @example
+ * // Learn the CSP params
+ * let cspParams = bci.cspLearn(class_a, class_b);
+ * 
+ * // Project the signals
+ * let class_a_csp = bci.cspProject(cspParams, class_a);
+ * let class_b_csp = bci.cspProject(cspParams, class_b);
  */
 
 function cspProject(cspParams, data, dimensions) {
@@ -1016,6 +1026,13 @@ math.import(require('mathjs/lib/function/trigonometry'));
  * @param {number} sampleRate - Sample rate of the signal in Hz.
  * @param {number} duration - Duration of the signal in seconds.
  * @returns {number[]} The generated signal.
+ * @example
+ * let amplitudes = [4, 8];
+ * let frequencies = [10, 20]; // 10 Hz (alpha), 20 Hz (beta)
+ * let sampleRate = 512; // Hz
+ * let duration = 1; // Seconds
+ * 
+ * let signal = bci.generateSignal(amplitudes, frequencies, sampleRate, duration);
  */
 
 function generateSignal(amplitudes, frequencies, sampleRate, duration) {
@@ -1041,6 +1058,10 @@ var ldaProject = require('./ldaProject');
  * @param {object} ldaParams - The parameters for the LDA, computed with the function ldaLearn
  * @param {number[]|number[][]} point - The data point or array of points to be classified.
  * @returns {number} 0 if the first class, 1 if the second class
+ * @example
+ * let features = [[1,3], [5,2]]; // Example feature vectors
+ * let classification = bci.ldaClassify(ldaParams, features[0]); // Outputs a number (0 or 1 depending on class)
+ * let classifications = bci.ldaClassify(ldaParams, features); // Outputs an array of classifications
  */
 
 
@@ -1076,6 +1097,13 @@ var stat = require('pw-stat');
  * @param {number[][]} class1 - Data set for class 1, rows are samples, columns are variables
  * @param {number[][]} class2 - Data set for class 2, rows are samples, columns are variables
  * @returns {Object} Computed LDA parameters
+ * @example
+ * // Training set
+ * let class1 = [[0, 0], [1, 2], [2, 2], [1.5, 0.5]];
+ * let class2 = [[8, 8], [9, 10], [7, 8], [9, 9]];
+ * 
+ * // Learn an LDA classifier
+ * let ldaParams = bci.ldaLearn(class1, class2);
  */
 
 
@@ -1269,7 +1297,8 @@ var transpose = require('./transpose.js');
  * @param {(Array|string)} bands - The frequency band or array of bands, where a single band is provided as an array [frequencyStart, frequencyStop] or a string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz).<br>
  * While string representations allow for easier prototyping, the use of a specific band passed as an array is
  * recommended, as band string representations may change in future updates.
- * @param {number} [fftSize=Math.pow(2, bci.nextpow2(signal.length))] - Size of the fourier transform used to compute the PSD.
+ * @param {Object} [options]
+ * @param {number} [options.fftSize=Math.pow(2, bci.nextpow2(signal.length))] - Size of the fft to be used. Should be a power of 2.
  * @returns {number} The average power in the frequency band.
  * @example
  * // Example outputs are rounded
@@ -1296,12 +1325,22 @@ var transpose = require('./transpose.js');
  */
 
 
-function signalBandPower(samples, sampleRate, bands) {
-  var fftSize = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+function signalBandPower(samples, sampleRate, bands, options) {
+  // Backwards compat for previous option to directly pass fftSize
+  if (typeof options === 'number') {
+    options = {
+      fftSize: options
+    };
+  } // Defaults
+  // TODO: Average channels option
 
-  if (fftSize === null) {
-    fftSize = Math.pow(2, nextpow2(samples.length));
-  }
+
+  var _Object$assign = Object.assign({
+    fftSize: Math.pow(2, nextpow2(samples.length)),
+    averageChannels: false
+  }, options),
+      fftSize = _Object$assign.fftSize,
+      averageChannels = _Object$assign.averageChannels;
 
   function getSignalPower(signal, band) {
     var p = psd(signal, {

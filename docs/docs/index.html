@@ -111,7 +111,7 @@
 <p>BCI.js is being developed out of the Human Technology Interaction Lab at the University of Alabama Department of Computer Science.</p>
 <h2>Getting Started</h2><p>Node.js</p>
 <pre class="prettyprint source lang-bash"><code>npm install bcijs</code></pre><p>Browser</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.5.2/dist/bci.min.js&quot;>&lt;/script></code></pre><h2>Tutorials</h2><ul>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.6.0/dist/bci.min.js&quot;>&lt;/script></code></pre><h2>Tutorials</h2><ul>
 <li><a href="https://medium.com/@pwstegman/eeg-motor-imagery-classification-in-node-js-with-bci-js-d21f29cf165">EEG Motor Imagery Classification in Node.js with BCI.js</a></li>
 </ul>
 <h2>Examples</h2><p>More examples can be found in the <a href="https://github.com/pwstegman/bci.js/tree/master/examples">examples</a> directory</p>
@@ -204,7 +204,7 @@ console.log(subarr);
 [[2, 3],
  [8, 9]]
 */</code></pre><h2>Usage in the web</h2><p>BCI.js can be loaded from the jsDelivr CDN with</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.5.2/dist/bci.min.js&quot;>&lt;/script></code></pre><p>You can also find <code>bci.js</code> and <code>bci.min.js</code> in the <a href="https://github.com/pwstegman/bci.js/tree/master/dist">/dist</a> directory.</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.6.0/dist/bci.min.js&quot;>&lt;/script></code></pre><p>You can also find <code>bci.js</code> and <code>bci.min.js</code> in the <a href="https://github.com/pwstegman/bci.js/tree/master/dist">/dist</a> directory.</p>
 <p>BCI.js methods are accessible via the global object <code>bci</code>.</p>
 <p>If building a web distributable using a tool such as browserify or webpack, require <code>bcijs/browser.js</code> to load only methods that are browser compatible. Node.js specific methods such as networking and file system methods will not be included.</p>
 <pre class="prettyprint source lang-javascript"><code>const bci = require('bcijs/browser.js');</code></pre><h2>Requiring specific methods</h2><p>You can require specific methods as well. For example, if you only need fastICA, you can use</p>

@@ -1,6 +1,6 @@
 {
   "name": "bcijs",
-  "version": "1.6.0-alpha",
+  "version": "1.6.0",
   "description": "EEG signal processing and machine learning",
   "main": "index.js",
   "scripts": {
@@ -26,7 +26,7 @@
     "node-osc": "^2.1.0",
     "numeric": "^1.2.6",
     "pw-csp": "^1.0.1",
-    "pw-lda": "^1.0.2",
+    "pw-lda": "^1.1.0",
     "pw-stat": "^1.0.1"
   },
   "files": [
@@ -57,9 +57,9 @@
   "homepage": "https://github.com/pwstegman/bcijs#readme",
   "browserslist": "> 0.25%, not dead",
   "devDependencies": {
-    "@babel/core": "^7.3.3",
-    "@babel/preset-env": "^7.3.1",
-    "app-root-path": "^2.1.0",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "app-root-path": "^2.2.1",
     "babelify": "^10.0.0",
     "browserify": "^16.2.3",
     "fs-then-native": "^2.0.0",
@@ -81,9 +81,9 @@
     "moment": "^2.24.0",
     "nyc": "^13.3.0",
     "pug": "^2.0.3",
-    "readable-stream": "^3.2.0",
+    "readable-stream": "^3.3.0",
     "tmp": "0.0.33",
-    "upath": "^1.1.0",
+    "upath": "^1.1.2",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }
