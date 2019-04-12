@@ -1,16 +1,16 @@
 /**
  * bci.js v1.6.0
- * https://github.com/pwstegman/bcijs
+ * https://github.com/pwstegman/bci.js
  *
  * License: MIT
- * Generated 2019-04-12T00:52:31Z
+ * Generated 2019-04-12T01:37:53Z
  */
 
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.bci = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
 
 // This file was auto generated, changes will be overwritten
-// Created on Thu Apr 11 2019 19:52:31 GMT-0500 (Central Daylight Time)
+// Created on Thu Apr 11 2019 20:37:53 GMT-0500 (Central Daylight Time)
 // This module excludes Node.js specific methods so it can be used in the browser
 
 /** @module bcijs */
@@ -40437,29 +40437,113 @@ var stat = require('pw-stat');
 /**
  * An LDA object.
  * @constructor
- * @param {number[][]} class1 - Data set for class 1, rows are samples, columns are variables
- * @param {number[][]} class2 - Data set for class 2, rows are samples, columns are variables
+ * @param {...number[][]} classes - Each parameter is a 2d class array. In each class array, rows are samples, columns are variables.
+ * @example
+ * let classifier = new LDA(class1, class2, class3);
  */
 
 
-function LDA(class1, class2) {
+function LDA() {
+  // Compute pairwise LDA classes (needed for multiclass LDA)
+  if (arguments.length < 2) {
+    throw new Error('Please pass at least 2 classes');
+  }
+
+  var numberOfPairs = arguments.length * (arguments.length - 1) / 2;
+  var pair1 = 0;
+  var pair2 = 1;
+  var pairs = new Array(numberOfPairs);
+
+  for (var i = 0; i < numberOfPairs; i++) {
+    pairs[i] = computeLdaParams(pair1 < 0 || arguments.length <= pair1 ? undefined : arguments[pair1], pair2 < 0 || arguments.length <= pair2 ? undefined : arguments[pair2], pair1, pair2);
+    pair2++;
+
+    if (pair2 == arguments.length) {
+      pair1++;
+      pair2 = pair1 + 1;
+    }
+  }
+
+  this.pairs = pairs;
+  this.numberOfClasses = arguments.length;
+}
+
+function computeLdaParams(class1, class2, class1id, class2id) {
   var mu1 = math.transpose(stat.mean(class1));
   var mu2 = math.transpose(stat.mean(class2));
   var pooledCov = math.add(stat.cov(class1), stat.cov(class2));
   var theta = math.multiply(math.inv(pooledCov), math.subtract(mu2, mu1));
   var b = math.multiply(-1, math.transpose(theta), math.add(mu1, mu2), 1 / 2);
-  this.theta = theta;
-  this.b = b;
+  return {
+    theta: theta,
+    b: b,
+    class1id: class1id,
+    class2id: class2id
+  };
 }
 /**
- * Predict the class of an unknown data point.
- * @param {number[]} point - The data point to be classified.
- * @returns {number} value less than 0 if predicted to be in class 1, 0 if exactly inbetween, greater than 0 if class 2
+ * Project the unknown data point to one dimension.
+ * Currently only supports binary LDA.
+ * @param {number[]} point - The data point to be projected.
+ * @returns {number} value less than 0 if predicted to be in class 1, 0 if exactly in between, greater than 0 if class 2
  */
 
 
 LDA.prototype.project = function (point) {
-  return math.add(math.multiply(point, this.theta), this.b);
+  if (this.pairs.length != 1) {
+    throw new Error('LDA project currently only supports 2 classes. LDA classify can be used to perform multiclass classification.');
+  }
+
+  return projectPoint(point, this.pairs[0].theta, this.pairs[0].b);
+};
+
+function projectPoint(point, theta, b) {
+  return math.add(math.multiply(point, theta), b);
+}
+/**
+ * Classify an unknown point. Uses a pairwise voting system in the event of multiclass classification.
+ * @param {number[]} point - The data point to be classified.
+ * @returns {number} Returns the predicted class. Class numbers range from 0 to (number_of_classes - 1).
+ */
+
+
+LDA.prototype.classify = function (point) {
+  // In the event of a binary classifier, skip the voting process
+  if (this.numberOfClasses == 2) {
+    return projectPoint(point, this.pairs[0].theta, this.pairs[0].b) <= 0 ? 0 : 1;
+  } // Start each class with 0 votes
+
+
+  var votes = new Array(this.numberOfClasses);
+
+  for (var i = 0; i < this.numberOfClasses; i++) {
+    votes[i] = 0;
+  } // Allow each pair to cast a vote
+
+
+  for (var _i = 0; _i < this.pairs.length; _i++) {
+    var params = this.pairs[_i];
+    var projection = projectPoint(point, params.theta, params.b);
+
+    if (projection <= 0) {
+      votes[params.class1id]++;
+    } else {
+      votes[params.class2id]++;
+    }
+  } // Find the winning class
+
+
+  var classificaion = 0;
+  var maxVotes = votes[0];
+
+  for (var _i2 = 1; _i2 < votes.length; _i2++) {
+    if (votes[_i2] > maxVotes) {
+      classificaion = _i2;
+      maxVotes = votes[_i2];
+    }
+  }
+
+  return classificaion;
 };
 
 module.exports = LDA;
