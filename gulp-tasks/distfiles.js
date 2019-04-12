@@ -12,7 +12,7 @@ const pkg = require('../package.json');
 function distfiles() {
 	let header = ['/**',
 		' * bci.js v<%= pkg.version %>',
-		' * https://github.com/pwstegman/bcijs',
+		' * https://github.com/pwstegman/bci.js',
 		' *',
 		' * License: <%= pkg.license %>',
 		` * Generated ${moment().utc().format()}`,

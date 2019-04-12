@@ -15,7 +15,17 @@ let signal = bci.generateSignal(amplitudes, frequencies, sampleRate, duration);
 
 // Compute average power in each frequency band
 let fftSize = sampleRate * duration;
-console.log(bci.signalBandPower(signal, sampleRate, 'delta', fftSize)); // 85
-console.log(bci.signalBandPower(signal, sampleRate, 'theta', fftSize)); // 128
-console.log(bci.signalBandPower(signal, sampleRate, 'alpha', fftSize)); // 205
-console.log(bci.signalBandPower(signal, sampleRate, 'beta', fftSize));  // 114
+let bandpowers = bci.signalBandPower(
+	signal,
+	sampleRate,
+	['delta', 'theta', 'alpha', 'beta'],
+	{fftSize: fftSize} // optional, defaults to next power of 2 larger than or equal to signal length
+);
+
+console.log(bandpowers);
+/*
+[ 85.33333333333366,
+  128.00000000000122,
+  204.80000000000047,
+  113.77777777777825 ]
+*/

@@ -24,13 +24,13 @@ console.log(features); // [-1.099, 1.466, 1.674, 1.946]
 
 // Colon notation for array subscripting
 let arr = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12]
 ];
-let subarr = bci.subscript(arr, '1 3', '2:3'); // rows 1 and 3, columns 2 through 3
+let subarr = bci.subscript(arr, '1 3', '2:4'); // rows 1 and 3, columns 2 through 4
 console.log(subarr);
 /*
-[[2, 3],
- [8, 9]]
+[[2, 3, 4],
+ [10, 11, 12]]
 */

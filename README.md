@@ -49,10 +49,20 @@ let signal = bci.generateSignal(amplitudes, frequencies, sampleRate, duration);
 
 // Compute average power in each frequency band
 let fftSize = sampleRate * duration;
-console.log(bci.signalBandPower(signal, sampleRate, 'delta', fftSize)); // 85
-console.log(bci.signalBandPower(signal, sampleRate, 'theta', fftSize)); // 128
-console.log(bci.signalBandPower(signal, sampleRate, 'alpha', fftSize)); // 205
-console.log(bci.signalBandPower(signal, sampleRate, 'beta', fftSize));  // 114
+let bandpowers = bci.signalBandPower(
+	signal,
+	sampleRate,
+	['delta', 'theta', 'alpha', 'beta'],
+	{fftSize: fftSize} // optional, defaults to next power of 2 larger than or equal to signal length
+);
+
+console.log(bandpowers);
+/*
+[ 85.33333333333366,
+  128.00000000000122,
+  204.80000000000047,
+  113.77777777777825 ]
+*/
 ```
 
 ### Machine Learning
@@ -124,11 +134,11 @@ console.log(features); // [-1.099, 1.466, 1.674, 1.946]
 
 // Colon notation for array subscripting
 let arr = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12]
 ];
-let subarr = bci.subscript(arr, '1 3', '2:3'); // rows 1 and 3, columns 2 through 3
+let subarr = bci.subscript(arr, '1 3', '2:4'); // rows 1 and 3, columns 2 through 4
 console.log(subarr);
 /*
 [[2, 3],
