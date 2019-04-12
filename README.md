@@ -141,8 +141,8 @@ let arr = [
 let subarr = bci.subscript(arr, '1 3', '2:4'); // rows 1 and 3, columns 2 through 4
 console.log(subarr);
 /*
-[[2, 3],
- [8, 9]]
+[[2, 3, 4],
+ [10, 11, 12]]
 */
 ```
 
