@@ -65,7 +65,7 @@ console.log(bandpowers);
 
 ### Machine Learning
 
-Check out [https://bci.js.org/docs/examples/lda](https://bci.js.org/docs/examples/lda) for a visual demo of how LDA works
+Check out [https://bci.js.org/examples/lda](https://bci.js.org/examples/lda) for a visual demo of how LDA works
 
 ```javascript
 const bci = require('bcijs');

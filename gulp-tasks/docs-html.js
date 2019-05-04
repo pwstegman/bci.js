@@ -26,7 +26,7 @@ function copyStatic(){
 }
 
 function copyExamples(){
-	return gulp.src(['examples/browser/**/*']).pipe(gulp.dest('docs/docs/examples'));
+	return gulp.src(['examples/browser/**/*']).pipe(gulp.dest('docs/examples'));
 }
 
 function homepage(){
