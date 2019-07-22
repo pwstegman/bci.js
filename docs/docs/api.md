@@ -3,95 +3,51 @@
 ## bcijs
 
 * [bcijs](#module_bcijs)
-    * [.oscStream](#module_bcijs.oscStream)
-        * [new oscStream(address, port)](#new_module_bcijs.oscStream_new)
-        * [.start()](#module_bcijs.oscStream+start)
-        * [.stop()](#module_bcijs.oscStream+stop)
-        * [.on(header, callback)](#module_bcijs.oscStream+on)
-    * [.features](#module_bcijs.features) : <code>object</code>
-        * [.logvar(window, [dimension])](#module_bcijs.features.logvar)
-        * [.variance(window, [dimension])](#module_bcijs.features.variance)
-        * [.rootMeanSquare(window, [dimension])](#module_bcijs.features.rootMeanSquare)
-    * [.averageBandPowers(samples, sampleRate, bands, [fftSize])](#module_bcijs.averageBandPowers) ⇒ <code>Array.&lt;number&gt;</code>
-    * [.cspLearn(class1, class2)](#module_bcijs.cspLearn) ⇒ <code>Object</code>
-    * [.cspProject(cspParams, data, [dimensions])](#module_bcijs.cspProject) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
-    * [.fastICA(signals, options)](#module_bcijs.fastICA) ⇒ <code>Object</code>
-    * [.generateSignal(amplitudes, frequencies, sampleRate, duration)](#module_bcijs.generateSignal) ⇒ <code>Array.&lt;number&gt;</code>
-    * [.ldaClassify(ldaParams, point)](#module_bcijs.ldaClassify) ⇒ <code>number</code>
-    * [.ldaLearn(class1, class2)](#module_bcijs.ldaLearn) ⇒ <code>Object</code>
-    * [.ldaProject(ldaParams, point)](#module_bcijs.ldaProject) ⇒ <code>number</code>
-    * [.nextpow2(num)](#module_bcijs.nextpow2) ⇒ <code>number</code>
-    * [.psd(signal, [options])](#module_bcijs.psd) ⇒ <code>Array.&lt;number&gt;</code>
-    * [.psdBandPower(psd, sampleRate, band, [fftSize])](#module_bcijs.psdBandPower) ⇒ <code>number</code>
-    * [.signalBandPower(samples, sampleRate, bands, [options])](#module_bcijs.signalBandPower) ⇒ <code>number</code>
-    * [.transpose(array)](#module_bcijs.transpose) ⇒ <code>Array</code>
-    * [.loadCSV(filePath)](#module_bcijs.loadCSV) ⇒ <code>Promise</code>
-    * [.loadEDF(filename)](#module_bcijs.loadEDF) ⇒ <code>Object</code>
-    * [.partition(array, ...divisions)](#module_bcijs.partition) ⇒ <code>Array.&lt;Array&gt;</code>
-    * [.round(array, places)](#module_bcijs.round) ⇒ <code>Array.&lt;number&gt;</code>
-    * [.saveCSV(array, filename)](#module_bcijs.saveCSV) ⇒ <code>Promise</code>
-    * [.subscript(array, ...params)](#module_bcijs.subscript) ⇒ <code>Array</code>
-    * [.toFixed(array, places)](#module_bcijs.toFixed) ⇒ <code>Array.&lt;string&gt;</code>
-    * [.toTable(array)](#module_bcijs.toTable) ⇒ <code>string</code>
-    * [.windowApply(array, func, length, step, tail)](#module_bcijs.windowApply) ⇒ <code>Array</code>
-    * [.oscCollect(address, port, header, samples)](#module_bcijs.oscCollect) ⇒ <code>Promise</code>
-    * [.oscHeaderScan(address, port, duration)](#module_bcijs.oscHeaderScan) ⇒ <code>Promise</code>
-    * [.prompt(question)](#module_bcijs.prompt) ⇒ <code>Promise</code>
-    * [.wait(ms)](#module_bcijs.wait) ⇒ <code>Promise</code>
-    * [.accuracy(confusionMatrix)](#module_bcijs.accuracy) ⇒ <code>number</code>
-    * [.balancedAccuracy(confusionMatrix)](#module_bcijs.balancedAccuracy) ⇒ <code>number</code>
-    * [.confusionMatrix(predictedClasses, actualClasses)](#module_bcijs.confusionMatrix) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
-    * [.f1(confusionMatrix)](#module_bcijs.f1) ⇒ <code>number</code>
-    * [.mcc(confusionMatrix)](#module_bcijs.mcc) ⇒ <code>number</code>
-    * [.precision(confusionMatrix)](#module_bcijs.precision) ⇒ <code>number</code>
-    * [.recall(confusionMatrix)](#module_bcijs.recall) ⇒ <code>number</code>
-    * [.specificity(confusionMatrix)](#module_bcijs.specificity) ⇒ <code>number</code>
-
-<a name="module_bcijs.oscStream"></a>
-
-### bcijs.oscStream
-Listen for messages over OSC<p>This method is exclusive to Node.js</p>
-
-**Kind**: static class of [<code>bcijs</code>](#module_bcijs)  
-
-* [.oscStream](#module_bcijs.oscStream)
-    * [new oscStream(address, port)](#new_module_bcijs.oscStream_new)
-    * [.start()](#module_bcijs.oscStream+start)
-    * [.stop()](#module_bcijs.oscStream+stop)
-    * [.on(header, callback)](#module_bcijs.oscStream+on)
-
-<a name="new_module_bcijs.oscStream_new"></a>
-
-#### new oscStream(address, port)
-
-| Param | Type | Description |
-| --- | --- | --- |
-| address | <code>string</code> | Address to listen on |
-| port | <code>number</code> | Port to listen on |
-
-<a name="module_bcijs.oscStream+start"></a>
-
-#### oscStream.start()
-Start listening for OSC messages
-
-**Kind**: instance method of [<code>oscStream</code>](#module_bcijs.oscStream)  
-<a name="module_bcijs.oscStream+stop"></a>
-
-#### oscStream.stop()
-Stop listening for OSC messages
-
-**Kind**: instance method of [<code>oscStream</code>](#module_bcijs.oscStream)  
-<a name="module_bcijs.oscStream+on"></a>
-
-#### oscStream.on(header, callback)
-Call a callback function when data containing a specified OSC header is seen
-
-**Kind**: instance method of [<code>oscStream</code>](#module_bcijs.oscStream)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| header | <code>string</code> | The OSC header |
-| callback | <code>requestCallback</code> | Called with the OSC data passed as the parameter |
+    * _static_
+        * [.features](#module_bcijs.features) : <code>object</code>
+            * [.logvar(window, [dimension])](#module_bcijs.features.logvar)
+            * [.variance(window, [dimension])](#module_bcijs.features.variance)
+            * [.rootMeanSquare(window, [dimension])](#module_bcijs.features.rootMeanSquare)
+        * [.averageBandPowers(samples, sampleRate, bands, [fftSize])](#module_bcijs.averageBandPowers) ⇒ <code>Array.&lt;number&gt;</code>
+        * [.cspLearn(class1, class2)](#module_bcijs.cspLearn) ⇒ <code>Object</code>
+        * [.cspProject(cspParams, data, [dimensions])](#module_bcijs.cspProject) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+        * [.fastICA(signals, options)](#module_bcijs.fastICA) ⇒ <code>Object</code>
+        * [.generateSignal(amplitudes, frequencies, sampleRate, duration)](#module_bcijs.generateSignal) ⇒ <code>Array.&lt;number&gt;</code>
+        * [.ldaClassify(ldaParams, point)](#module_bcijs.ldaClassify) ⇒ <code>number</code>
+        * [.ldaLearn(class1, class2)](#module_bcijs.ldaLearn) ⇒ <code>Object</code>
+        * [.ldaProject(ldaParams, point)](#module_bcijs.ldaProject) ⇒ <code>number</code>
+        * [.nextpow2(num)](#module_bcijs.nextpow2) ⇒ <code>number</code>
+        * [.psd(signal, [options])](#module_bcijs.psd) ⇒ <code>Array.&lt;number&gt;</code>
+        * [.psdBandPower(psd, sampleRate, band, [fftSize])](#module_bcijs.psdBandPower) ⇒ <code>number</code>
+        * [.signalBandPower(samples, sampleRate, bands, [options])](#module_bcijs.signalBandPower) ⇒ <code>number</code>
+        * [.transpose(array)](#module_bcijs.transpose) ⇒ <code>Array</code>
+        * [.loadCSV(filePath)](#module_bcijs.loadCSV) ⇒ <code>Promise</code>
+        * [.loadEDF(filename)](#module_bcijs.loadEDF) ⇒ <code>Object</code>
+        * [.partition(array, ...divisions)](#module_bcijs.partition) ⇒ <code>Array.&lt;Array&gt;</code>
+        * [.round(array, places)](#module_bcijs.round) ⇒ <code>Array.&lt;number&gt;</code>
+        * [.saveCSV(array, filename)](#module_bcijs.saveCSV) ⇒ <code>Promise</code>
+        * [.subscript(array, ...params)](#module_bcijs.subscript) ⇒ <code>Array</code>
+        * [.toFixed(array, places)](#module_bcijs.toFixed) ⇒ <code>Array.&lt;string&gt;</code>
+        * [.toTable(array)](#module_bcijs.toTable) ⇒ <code>string</code>
+        * [.windowApply(array, func, length, step, tail)](#module_bcijs.windowApply) ⇒ <code>Array</code>
+        * [.oscCollect(address, port, header, samples)](#module_bcijs.oscCollect) ⇒ <code>Promise</code>
+        * [.oscHeaderScan(address, port, duration)](#module_bcijs.oscHeaderScan) ⇒ <code>Promise</code>
+        * [.prompt(question)](#module_bcijs.prompt) ⇒ <code>Promise</code>
+        * [.wait(ms)](#module_bcijs.wait) ⇒ <code>Promise</code>
+        * [.accuracy(confusionMatrix)](#module_bcijs.accuracy) ⇒ <code>number</code>
+        * [.balancedAccuracy(confusionMatrix)](#module_bcijs.balancedAccuracy) ⇒ <code>number</code>
+        * [.confusionMatrix(predictedClasses, actualClasses)](#module_bcijs.confusionMatrix) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
+        * [.f1(confusionMatrix)](#module_bcijs.f1) ⇒ <code>number</code>
+        * [.mcc(confusionMatrix)](#module_bcijs.mcc) ⇒ <code>number</code>
+        * [.precision(confusionMatrix)](#module_bcijs.precision) ⇒ <code>number</code>
+        * [.recall(confusionMatrix)](#module_bcijs.recall) ⇒ <code>number</code>
+        * [.specificity(confusionMatrix)](#module_bcijs.specificity) ⇒ <code>number</code>
+    * _inner_
+        * [~oscStream](#module_bcijs.oscStream)
+            * [new oscStream(address, port)](#new_module_bcijs.oscStream_new)
+            * [.start()](#module_bcijs.oscStream+start)
+            * [.stop()](#module_bcijs.oscStream+stop)
+            * [.on(header, callback)](#module_bcijs.oscStream+on)
 
 <a name="module_bcijs.features"></a>
 
@@ -163,7 +119,7 @@ let feature = bci.averageBandPowers(samples, 256, ['alpha', 'beta']);// returns
 <a name="module_bcijs.cspLearn"></a>
 
 ### bcijs.cspLearn(class1, class2) ⇒ <code>Object</code>
-Learn common spatial pattern for two datasets
+Learn common spatial pattern (CSP) for two datasets.Check out [https://bci.js.org/examples/csp/](https://bci.js.org/examples/csp/) for an interactive example of how CSP works.
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Object</code> - Learned CSP parameters  
@@ -180,7 +136,7 @@ let cspParams = bci.cspLearn(class_a, class_b);
 <a name="module_bcijs.cspProject"></a>
 
 ### bcijs.cspProject(cspParams, data, [dimensions]) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
-Projects data and reduces to given number of dimensions
+Projects data using common spatial pattern (CSP) and reduces to given number of dimensions.Check out [https://bci.js.org/examples/csp/](https://bci.js.org/examples/csp/) for an interactive example of how CSP works.
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Array.&lt;Array.&lt;number&gt;&gt;</code> - Projected data. Rows are samples, columns are dimensions sorted by descending importance.  
@@ -639,4 +595,50 @@ Calculate the specificity of a binary classifier given its confusion matrix as d
 | Param | Type | Description |
 | --- | --- | --- |
 | confusionMatrix | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | a 2x2 confusion matrix |
+
+<a name="module_bcijs.oscStream"></a>
+
+### bcijs~oscStream
+Listen for messages over OSC<p>This method is exclusive to Node.js</p>
+
+**Kind**: inner class of [<code>bcijs</code>](#module_bcijs)  
+
+* [~oscStream](#module_bcijs.oscStream)
+    * [new oscStream(address, port)](#new_module_bcijs.oscStream_new)
+    * [.start()](#module_bcijs.oscStream+start)
+    * [.stop()](#module_bcijs.oscStream+stop)
+    * [.on(header, callback)](#module_bcijs.oscStream+on)
+
+<a name="new_module_bcijs.oscStream_new"></a>
+
+#### new oscStream(address, port)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| address | <code>string</code> | Address to listen on |
+| port | <code>number</code> | Port to listen on |
+
+<a name="module_bcijs.oscStream+start"></a>
+
+#### oscStream.start()
+Start listening for OSC messages
+
+**Kind**: instance method of [<code>oscStream</code>](#module_bcijs.oscStream)  
+<a name="module_bcijs.oscStream+stop"></a>
+
+#### oscStream.stop()
+Stop listening for OSC messages
+
+**Kind**: instance method of [<code>oscStream</code>](#module_bcijs.oscStream)  
+<a name="module_bcijs.oscStream+on"></a>
+
+#### oscStream.on(header, callback)
+Call a callback function when data containing a specified OSC header is seen
+
+**Kind**: instance method of [<code>oscStream</code>](#module_bcijs.oscStream)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| header | <code>string</code> | The OSC header |
+| callback | <code>requestCallback</code> | Called with the OSC data passed as the parameter |
 

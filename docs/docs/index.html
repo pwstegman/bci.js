@@ -103,28 +103,35 @@
   <section class="readme">
     <article>
       <p><img src="static/bcijs-logo.png" height="68px"></p>
-
 <p><a href="https://www.npmjs.com/package/bcijs"><img src="https://img.shields.io/npm/v/bcijs.svg" alt="npm"></a>
 <a href="https://www.npmjs.com/package/bcijs"><img src="https://img.shields.io/npm/dm/bcijs.svg" alt="npm"></a>
 <a href="https://github.com/pwstegman/bci.js/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/bcijs.svg" alt="NpmLicense"></a></p>
 <p>BCI.js is a library for EEG-based brain computer interface (BCI) design with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, containing methods for signal processing and machine learning, such as LDA, CSP, ICA, and PSD, methods for data manipulation, such as MATLAB style array subscripting, data windowing, and CSV file support, and methods for networking, including data collection and streaming via OSC.</p>
-<h2>Getting Started</h2><p>Node.js</p>
-<pre class="prettyprint source lang-bash"><code>npm install bcijs</code></pre><p>Browser</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.6.2/dist/bci.min.js&quot;>&lt;/script></code></pre><h2>Tutorials</h2><ul>
+<h2>Getting Started</h2>
+<p>Node.js</p>
+<pre class="prettyprint source lang-bash"><code>npm install bcijs
+</code></pre>
+<p>Browser</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.6.3/dist/bci.min.js&quot;>&lt;/script>
+</code></pre>
+<h2>Tutorials</h2>
+<ul>
 <li><a href="https://medium.com/@pwstegman/eeg-motor-imagery-classification-in-node-js-with-bci-js-d21f29cf165">EEG Motor Imagery Classification in Node.js with BCI.js</a></li>
 </ul>
-<h2>Examples</h2><p>More examples can be found in the <a href="https://github.com/pwstegman/bci.js/tree/master/examples">examples</a> directory</p>
-<h3>Signal Processing</h3><pre class="prettyprint source lang-javascript"><code>const bci = require('bcijs');
+<h2>Examples</h2>
+<p>More examples can be found in the <a href="https://github.com/pwstegman/bci.js/tree/master/examples">examples</a> directory</p>
+<h3>Signal Processing</h3>
+<pre class="prettyprint source lang-javascript"><code>const bci = require('bcijs');
 
 // Generate 1 second of sample data
 let sampleRate = 512;
 let duration = 1;
 let amplitudes = [1, 2, 4, 8];
 let frequencies = [
-    1, // 1 Hz, delta range
-    5, // 5 Hz, theta range
-    8, // 8 Hz, alpha range
-    17 // 17 Hz, beta range
+	1, // 1 Hz, delta range
+	5, // 5 Hz, theta range
+	8, // 8 Hz, alpha range
+	17 // 17 Hz, beta range
 ];
 
 let signal = bci.generateSignal(amplitudes, frequencies, sampleRate, duration);
@@ -132,10 +139,10 @@ let signal = bci.generateSignal(amplitudes, frequencies, sampleRate, duration);
 // Compute average power in each frequency band
 let fftSize = sampleRate * duration;
 let bandpowers = bci.signalBandPower(
-    signal,
-    sampleRate,
-    ['delta', 'theta', 'alpha', 'beta'],
-    {fftSize: fftSize} // optional, defaults to next power of 2 larger than or equal to signal length
+	signal,
+	sampleRate,
+	['delta', 'theta', 'alpha', 'beta'],
+	{fftSize: fftSize} // optional, defaults to next power of 2 larger than or equal to signal length
 );
 
 console.log(bandpowers);
@@ -144,31 +151,34 @@ console.log(bandpowers);
   128.00000000000122,
   204.80000000000047,
   113.77777777777825 ]
-*/</code></pre><h3>Machine Learning</h3><p>Check out <a href="https://bci.js.org/examples/lda">https://bci.js.org/examples/lda</a> for a visual demo of how LDA works</p>
+*/
+</code></pre>
+<h3>Machine Learning</h3>
+<p>Check out <a href="https://bci.js.org/examples/lda">https://bci.js.org/examples/lda</a> for a visual demo of how LDA works</p>
 <pre class="prettyprint source lang-javascript"><code>const bci = require('bcijs');
 
 // Training set
 let class1 = [
-    [0, 0],
-    [1, 2],
-    [2, 2],
-    [1.5, 0.5]
+	[0, 0],
+	[1, 2],
+	[2, 2],
+	[1.5, 0.5]
 ];
 let class2 = [
-    [8, 8],
-    [9, 10],
-    [7, 8],
-    [9, 9]
+	[8, 8],
+	[9, 10],
+	[7, 8],
+	[9, 9]
 ];
 
 // Testing set
 let unknownPoints = [
-    [-1, 0],
-    [1.5, 2],
-    [3, 3],
-    [5, 5],
-    [7, 9],
-    [10, 12]
+	[-1, 0],
+	[1.5, 2],
+	[3, 3],
+	[5, 5],
+	[7, 9],
+	[10, 12]
 ];
 
 // Learn an LDA classifier
@@ -177,7 +187,10 @@ let ldaParams = bci.ldaLearn(class1, class2);
 // Test classifier
 let predictions = bci.ldaClassify(ldaParams, unknownPoints);
 
-console.log(predictions); // [ 0, 0, 0, 1, 1, 1 ]</code></pre><h3>Data Manipulation and Feature Extraction</h3><pre class="prettyprint source lang-javascript"><code>const bci = require('bcijs');
+console.log(predictions); // [ 0, 0, 0, 1, 1, 1 ]
+</code></pre>
+<h3>Data Manipulation and Feature Extraction</h3>
+<pre class="prettyprint source lang-javascript"><code>const bci = require('bcijs');
 
 // Some random numbers
 let data = [3, 2, 3, 0, 4, 0, 0, 5, 4, 0];
@@ -212,18 +225,32 @@ console.log(subarr);
 /*
 [[2, 3, 4],
  [10, 11, 12]]
-*/</code></pre><h2>Usage in the web</h2><p>BCI.js can be loaded from the jsDelivr CDN with</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.6.2/dist/bci.min.js&quot;>&lt;/script></code></pre><p>You can also find <code>bci.js</code> and <code>bci.min.js</code> in the <a href="https://github.com/pwstegman/bci.js/tree/master/dist">/dist</a> directory.</p>
+*/
+</code></pre>
+<h2>Usage in the web</h2>
+<p>BCI.js can be loaded from the jsDelivr CDN with</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.6.3/dist/bci.min.js&quot;>&lt;/script>
+</code></pre>
+<p>You can also find <code>bci.js</code> and <code>bci.min.js</code> in the <a href="https://github.com/pwstegman/bci.js/tree/master/dist">/dist</a> directory.</p>
 <p>BCI.js methods are accessible via the global object <code>bci</code>.</p>
 <p>If building a web distributable using a tool such as browserify or webpack, require <code>bcijs/browser.js</code> to load only methods that are browser compatible. Node.js specific methods such as networking and file system methods will not be included.</p>
-<pre class="prettyprint source lang-javascript"><code>const bci = require('bcijs/browser.js');</code></pre><h2>Requiring specific methods</h2><p>You can require specific methods as well. For example, if you only need fastICA, you can use</p>
-<pre class="prettyprint source lang-javascript"><code>const fastICA = require('bcijs/lib/math/fastICA.js');</code></pre><p>BCI.js methods can be found in the <a href="https://github.com/pwstegman/bci.js/tree/master/lib">lib/</a> directory.</p>
-<h2>Documentation</h2><p>Documentation can be found at <a href="https://bci.js.org/docs">https://bci.js.org/docs</a> or by viewing <a href="https://github.com/pwstegman/bci.js/blob/master/docs/docs/api.md">api.md</a></p>
-<h2>Building</h2><p>See <a href="dev.md">dev.md</a> for info on how to modify and build BCI.js</p>
-<h2>Reference</h2><p>BCI.js began as WebBCI, a library developed to aid in my research at the Human Technology Interaction Lab at the University of Alabama Department of Computer Science. If you use BCI.js in a published work, please reference this paper</p>
+<pre class="prettyprint source lang-javascript"><code>const bci = require('bcijs/browser.js');
+</code></pre>
+<h2>Requiring specific methods</h2>
+<p>You can require specific methods as well. For example, if you only need fastICA, you can use</p>
+<pre class="prettyprint source lang-javascript"><code>const fastICA = require('bcijs/lib/math/fastICA.js');
+</code></pre>
+<p>BCI.js methods can be found in the <a href="https://github.com/pwstegman/bci.js/tree/master/lib">lib/</a> directory.</p>
+<h2>Documentation</h2>
+<p>Documentation can be found at <a href="https://bci.js.org/docs">https://bci.js.org/docs</a> or by viewing <a href="https://github.com/pwstegman/bci.js/blob/master/docs/docs/api.md">api.md</a></p>
+<h2>Building</h2>
+<p>See <a href="dev.md">dev.md</a> for info on how to modify and build BCI.js</p>
+<h2>Reference</h2>
+<p>BCI.js began as WebBCI, a library developed to aid in my research at the Human Technology Interaction Lab at the University of Alabama Department of Computer Science. If you use BCI.js in a published work, please reference this paper</p>
 <p>P. Stegman, C. Crawford, and J. Gray, &quot;WebBCI: An Electroencephalography Toolkit Built on Modern Web Technologies,&quot; in Augmented Cognition: Intelligent Technologies, 2018, pp. 212–221.</p>
 <p>Logo uses icon from <a href="https://fontawesome.com/license/free">Font Awesome</a>.</p>
-<h2>Contact</h2><p>If you have a commercial use case for BCI.js and would like to discuss working together, contact me at <a href="mailto:pwstegman@gmail.com">pwstegman@gmail.com</a></p>
+<h2>Contact</h2>
+<p>If you have a commercial use case for BCI.js and would like to discuss working together, contact me at <a href="mailto:pwstegman@gmail.com">pwstegman@gmail.com</a></p>
     </article>
   </section>
 
@@ -240,7 +267,7 @@ console.log(subarr);
   <br class="clear">
 
   <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
   </footer>
 
   <script src="scripts/linenumber.js"></script>

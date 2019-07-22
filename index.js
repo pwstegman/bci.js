@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Thu May 02 2019 16:36:43 GMT-0500 (Central Daylight Time)
+// Created on Mon Jul 22 2019 13:32:47 GMT-0400 (Eastern Daylight Time)
 /** @module bcijs */
 module.exports.csp = require('./lib/compat/csp.js');
 module.exports.f1score = require('./lib/compat/f1score.js');

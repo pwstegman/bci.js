@@ -35,6 +35,8 @@ function browserifyTest(){
 }
 
 function copyDistFiles(){
+    console.log('Start a web server in test/browser for dist test results');
+
     return gulp.src(['dist/bci.js', 'dist/bci.min.js']).pipe(gulp.dest('test/browser'));
 }
 

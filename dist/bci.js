@@ -1,16 +1,16 @@
 /**
- * bci.js v1.6.2
+ * bci.js v1.6.3
  * https://github.com/pwstegman/bci.js
  *
  * License: MIT
- * Generated 2019-05-02T21:36:43Z
+ * Generated 2019-07-22T17:32:47Z
  */
 
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.bci = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
 
 // This file was auto generated, changes will be overwritten
-// Created on Thu May 02 2019 16:36:43 GMT-0500 (Central Daylight Time)
+// Created on Mon Jul 22 2019 13:32:47 GMT-0400 (Eastern Daylight Time)
 // This module excludes Node.js specific methods so it can be used in the browser
 
 /** @module bcijs */
@@ -649,7 +649,8 @@ var numeric = require('numeric');
 
 var stat = require('pw-stat');
 /**
- * Learn common spatial pattern for two datasets
+ * Learn common spatial pattern (CSP) for two datasets.
+ * Check out {@link https://bci.js.org/examples/csp/} for an interactive example of how CSP works.
  * @memberof module:bcijs
  * @param {number[][]} class1 - Data samples for class 1. Rows should be samples, columns should be signals.
  * @param {number[][]} class2 - Data samples for class 2. Rows should be samples, columns should be signals.
@@ -678,7 +679,8 @@ var math = require('mathjs/core').create();
 math.import(require('mathjs/lib/type/matrix'));
 math.import(require('mathjs/lib/function/arithmetic'));
 /**
- * Projects data and reduces to given number of dimensions
+ * Projects data using common spatial pattern (CSP) and reduces to given number of dimensions.
+ * Check out {@link https://bci.js.org/examples/csp/} for an interactive example of how CSP works.
  * @memberof module:bcijs
  * @param {object} cspParams - CSP parameters computed using the cspLearn function
  * @param {number[][]} data - Data points to be projected. Rows should be samples, columns should be signals.
@@ -1772,6 +1774,7 @@ function fromByteArray(uint8) {
 }
 
 },{}],37:[function(require,module,exports){
+(function (Buffer){
 /*!
  * The buffer module from node.js, for the browser.
  *
@@ -3574,7 +3577,8 @@ function numberIsNaN(obj) {
   return obj !== obj; // eslint-disable-line no-self-compare
 }
 
-},{"base64-js":36,"ieee754":45}],38:[function(require,module,exports){
+}).call(this,require("buffer").Buffer)
+},{"base64-js":36,"buffer":37,"ieee754":45}],38:[function(require,module,exports){
 (function (Buffer){
 "use strict";
 
