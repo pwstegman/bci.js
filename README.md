@@ -1,10 +1,20 @@
-<p><img src="static/bcijs-logo.png" height="68px"></p>
+<p align="center"><img src="static/bcijs-logo.png" height="68px"></p>
 
-[![npm](https://img.shields.io/npm/v/bcijs.svg)](https://www.npmjs.com/package/bcijs)
-[![npm](https://img.shields.io/npm/dm/bcijs.svg)](https://www.npmjs.com/package/bcijs)
-[![NpmLicense](https://img.shields.io/npm/l/bcijs.svg)](https://github.com/pwstegman/bci.js/blob/master/LICENSE)
+<p align="center">
+	<a href="https://www.npmjs.com/package/bcijs"><img src="https://img.shields.io/npm/v/bcijs.svg" alt="Version"></a>
+	<a href="https://www.npmjs.com/package/bcijs"><img src="https://img.shields.io/npm/dm/bcijs.svg" alt="Downloads"></a>
+	<a href="https://www.jsdelivr.com/package/npm/bcijs"><img src="https://data.jsdelivr.com/v1/package/npm/bcijs/badge?style=rounded" alt="CDN"></a>
+	<a href="https://github.com/pwstegman/bci.js/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/bcijs.svg" alt="License"></a>
+</p>
 
-BCI.js is a library for EEG-based brain computer interface (BCI) design with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, containing methods for signal processing and machine learning, such as LDA, CSP, ICA, and PSD, methods for data manipulation, such as MATLAB style array subscripting, data windowing, and CSV file support, and methods for networking, including data collection and streaming via OSC.
+<br>
+
+BCI.js is a library for EEG-based brain computer interface (BCI) design with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, with features such as:
+ - Signal processing and machine learning (LDA, CSP, ICA, PSD, etc.)
+ - Data manipulation (MATLAB style array subscripting, data windowing, CSV file support, etc.)
+ - Networking (data collection, streaming via OSC, etc.)
+ 
+You can view all available methods in the [docs](https://bci.js.org/docs/)
 
 ## Getting Started
 
