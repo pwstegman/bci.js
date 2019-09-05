@@ -1,6 +1,6 @@
 {
   "name": "bcijs",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "EEG signal processing and machine learning",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
   "author": "Pierce Stegman <pwstegman@gmail.com> (https://github.com/pwstegman)",
   "license": "MIT",
   "dependencies": {
-    "csv": "^5.1.1",
+    "csv": "^5.1.2",
     "csvtojson": "^1.1.12",
     "easy-table": "^1.1.1",
     "edfjs": "^0.2.0",
@@ -61,7 +61,7 @@
     "@babel/preset-env": "^7.5.5",
     "app-root-path": "^2.2.1",
     "babelify": "^10.0.0",
-    "browserify": "^16.3.0",
+    "browserify": "^16.5.0",
     "fs-then-native": "^2.0.0",
     "glob": "^7.1.4",
     "gulp": "^4.0.2",
@@ -75,7 +75,7 @@
     "gulp-uglify": "^3.0.2",
     "gulp-uglify-es": "^1.0.1",
     "jsdoc": "^3.6.3",
-    "jsdoc-to-markdown": "^5.0.0",
+    "jsdoc-to-markdown": "^5.0.1",
     "mocaccino": "^4.1.1",
     "mocha": "^6.2.0",
     "moment": "^2.24.0",
@@ -83,7 +83,7 @@
     "pug": "^2.0.4",
     "readable-stream": "^3.4.0",
     "tmp": "0.0.33",
-    "upath": "^1.1.2",
+    "upath": "^1.2.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }

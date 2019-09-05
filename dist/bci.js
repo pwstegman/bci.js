@@ -1,16 +1,16 @@
 /**
- * bci.js v1.6.3
+ * bci.js v1.6.4
  * https://github.com/pwstegman/bci.js
  *
  * License: MIT
- * Generated 2019-07-22T17:32:47Z
+ * Generated 2019-09-05T01:19:42Z
  */
 
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.bci = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
 
 // This file was auto generated, changes will be overwritten
-// Created on Mon Jul 22 2019 13:32:47 GMT-0400 (Eastern Daylight Time)
+// Created on Wed Sep 04 2019 20:19:42 GMT-0500 (Central Daylight Time)
 // This module excludes Node.js specific methods so it can be used in the browser
 
 /** @module bcijs */

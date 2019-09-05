@@ -102,17 +102,27 @@
 
   <section class="readme">
     <article>
-      <p><img src="static/bcijs-logo.png" height="68px"></p>
-<p><a href="https://www.npmjs.com/package/bcijs"><img src="https://img.shields.io/npm/v/bcijs.svg" alt="npm"></a>
-<a href="https://www.npmjs.com/package/bcijs"><img src="https://img.shields.io/npm/dm/bcijs.svg" alt="npm"></a>
-<a href="https://github.com/pwstegman/bci.js/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/bcijs.svg" alt="NpmLicense"></a></p>
-<p>BCI.js is a library for EEG-based brain computer interface (BCI) design with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, containing methods for signal processing and machine learning, such as LDA, CSP, ICA, and PSD, methods for data manipulation, such as MATLAB style array subscripting, data windowing, and CSV file support, and methods for networking, including data collection and streaming via OSC.</p>
+      <p align="center"><img src="static/bcijs-logo.png" height="68px"></p>
+<p align="center">
+	<a href="https://www.npmjs.com/package/bcijs"><img src="https://img.shields.io/npm/v/bcijs.svg" alt="Version"></a>
+	<a href="https://www.npmjs.com/package/bcijs"><img src="https://img.shields.io/npm/dm/bcijs.svg" alt="Downloads"></a>
+	<a href="https://www.jsdelivr.com/package/npm/bcijs"><img src="https://data.jsdelivr.com/v1/package/npm/bcijs/badge?style=rounded" alt="CDN"></a>
+	<a href="https://github.com/pwstegman/bci.js/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/bcijs.svg" alt="License"></a>
+</p>
+<br>
+<p>BCI.js is a library for EEG-based brain computer interface (BCI) design with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, with features such as:</p>
+<ul>
+<li>Signal processing and machine learning (LDA, CSP, ICA, PSD, etc.)</li>
+<li>Data manipulation (MATLAB style array subscripting, data windowing, CSV file support, etc.)</li>
+<li>Networking (data collection, streaming via OSC, etc.)</li>
+</ul>
+<p>You can view all available methods in the <a href="https://bci.js.org/docs/">docs</a></p>
 <h2>Getting Started</h2>
 <p>Node.js</p>
 <pre class="prettyprint source lang-bash"><code>npm install bcijs
 </code></pre>
 <p>Browser</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.6.3/dist/bci.min.js&quot;>&lt;/script>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.6.4/dist/bci.min.js&quot;>&lt;/script>
 </code></pre>
 <h2>Tutorials</h2>
 <ul>
@@ -229,7 +239,7 @@ console.log(subarr);
 </code></pre>
 <h2>Usage in the web</h2>
 <p>BCI.js can be loaded from the jsDelivr CDN with</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.6.3/dist/bci.min.js&quot;>&lt;/script>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.6.4/dist/bci.min.js&quot;>&lt;/script>
 </code></pre>
 <p>You can also find <code>bci.js</code> and <code>bci.min.js</code> in the <a href="https://github.com/pwstegman/bci.js/tree/master/dist">/dist</a> directory.</p>
 <p>BCI.js methods are accessible via the global object <code>bci</code>.</p>

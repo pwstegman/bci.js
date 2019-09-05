@@ -329,7 +329,7 @@ Loads a CSV file into an array<p>This method is exclusive to Node.js</p>
 Load data from an EDF file<p>This method is exclusive to Node.js</p>
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
-**Returns**: <code>Object</code> - Data from the EDF file, contains the following parameters:<br> {string} subject - The name of the subject<br> {string} recording - The name of the recording<br> {number} num_channels - The number of channels<br> {string} starttime - The starttime as a date time string<br> {string[]} channel_labels - The label for each channel<br> {number[]} samplerates - The sample rate for each channel<br> {string[]} physical_dimensions - The units for each channel (ex: uV)<br> {number[][]} samples - The data samples where columns are channels and rows are samples  
+**Returns**: <code>Object</code> - An object with the following parameters:<br><br> subject [string] - The name of the subject<br> recording [string] - The name of the recording<br> start_time [string] - The start time as a date time string<br> channels [Array] - An array of channel objects<br><br> A channel object has the following parameters:<br><br> label [string] - The label for the channel<br> sample_rate [number] - The sample rate for the channel<br> physical_dimension [string] - The units for each channel (ex: uV)<br> samples [number[]] - An array of samples from the channel  
 
 | Param | Type | Description |
 | --- | --- | --- |
