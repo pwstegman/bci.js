@@ -1,16 +1,16 @@
 /**
- * bci.js v1.6.4
+ * bci.js v1.6.5
  * https://github.com/pwstegman/bci.js
  *
  * License: MIT
- * Generated 2019-09-05T01:28:21Z
+ * Generated 2019-11-09T19:41:27Z
  */
 
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.bci = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
 
 // This file was auto generated, changes will be overwritten
-// Created on Wed Sep 04 2019 20:28:21 GMT-0500 (Central Daylight Time)
+// Created on Sat Nov 09 2019 13:41:27 GMT-0600 (Central Standard Time)
 // This module excludes Node.js specific methods so it can be used in the browser
 
 /** @module bcijs */
@@ -728,7 +728,7 @@ function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArra
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -2884,7 +2884,7 @@ function hexSlice(buf, start, end) {
   var out = '';
 
   for (var i = start; i < end; ++i) {
-    out += toHex(buf[i]);
+    out += hexSliceLookupTable[buf[i]];
   }
 
   return out;
@@ -3464,11 +3464,6 @@ function base64clean(str) {
   return str;
 }
 
-function toHex(n) {
-  if (n < 16) return '0' + n.toString(16);
-  return n.toString(16);
-}
-
 function utf8ToBytes(string, units) {
   units = units || Infinity;
   var codePoint;
@@ -3584,7 +3579,24 @@ function isInstance(obj, type) {
 function numberIsNaN(obj) {
   // For IE11 support
   return obj !== obj; // eslint-disable-line no-self-compare
-}
+} // Create lookup table for `toString('hex')`
+// See: https://github.com/feross/buffer/issues/219
+
+
+var hexSliceLookupTable = function () {
+  var alphabet = '0123456789abcdef';
+  var table = new Array(256);
+
+  for (var i = 0; i < 16; ++i) {
+    var i16 = i * 16;
+
+    for (var j = 0; j < 16; ++j) {
+      table[i16 + j] = alphabet[i] + alphabet[j];
+    }
+  }
+
+  return table;
+}();
 
 }).call(this,require("buffer").Buffer)
 },{"base64-js":36,"buffer":37,"ieee754":45}],38:[function(require,module,exports){
@@ -10005,12 +10017,12 @@ var defaultEscapes = {
   "~": "\\textasciitilde{}"
 };
 var formatEscapes = {
-  "–": "\\--",
-  "—": "\\---",
+  "\u2013": "\\--",
+  "\u2014": "\\---",
   " ": "~",
   "\t": "\\qquad{}",
-  "\r\n": "\\\\newline{}",
-  "\n": "\\\\newline{}"
+  "\r\n": "\\newline{}",
+  "\n": "\\newline{}"
 };
 
 var defaultEscapeMapFn = function defaultEscapeMapFn(defaultEscapes, formatEscapes) {
@@ -40457,28 +40469,32 @@ var stat = require('pw-stat');
 
 
 function LDA() {
+  for (var _len = arguments.length, classes = new Array(_len), _key = 0; _key < _len; _key++) {
+    classes[_key] = arguments[_key];
+  }
+
   // Compute pairwise LDA classes (needed for multiclass LDA)
-  if (arguments.length < 2) {
+  if (classes.length < 2) {
     throw new Error('Please pass at least 2 classes');
   }
 
-  var numberOfPairs = arguments.length * (arguments.length - 1) / 2;
+  var numberOfPairs = classes.length * (classes.length - 1) / 2;
   var pair1 = 0;
   var pair2 = 1;
   var pairs = new Array(numberOfPairs);
 
   for (var i = 0; i < numberOfPairs; i++) {
-    pairs[i] = computeLdaParams(pair1 < 0 || arguments.length <= pair1 ? undefined : arguments[pair1], pair2 < 0 || arguments.length <= pair2 ? undefined : arguments[pair2], pair1, pair2);
+    pairs[i] = computeLdaParams(classes[pair1], classes[pair2], pair1, pair2);
     pair2++;
 
-    if (pair2 == arguments.length) {
+    if (pair2 == classes.length) {
       pair1++;
       pair2 = pair1 + 1;
     }
   }
 
   this.pairs = pairs;
-  this.numberOfClasses = arguments.length;
+  this.numberOfClasses = classes.length;
 }
 
 function computeLdaParams(class1, class2, class1id, class2id) {
