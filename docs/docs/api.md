@@ -8,7 +8,7 @@
             * [.logvar(window, [dimension])](#module_bcijs.features.logvar)
             * [.variance(window, [dimension])](#module_bcijs.features.variance)
             * [.rootMeanSquare(window, [dimension])](#module_bcijs.features.rootMeanSquare)
-        * [.averageBandPowers(samples, sampleRate, bands, [fftSize])](#module_bcijs.averageBandPowers) ⇒ <code>Array.&lt;number&gt;</code>
+        * ~~[.averageBandPowers(samples, sampleRate, bands, [fftSize])](#module_bcijs.averageBandPowers) ⇒ <code>Array.&lt;number&gt;</code>~~
         * [.cspLearn(class1, class2)](#module_bcijs.cspLearn) ⇒ <code>Object</code>
         * [.cspProject(cspParams, data, [dimensions])](#module_bcijs.cspProject) ⇒ <code>Array.&lt;Array.&lt;number&gt;&gt;</code>
         * [.fastICA(signals, options)](#module_bcijs.fastICA) ⇒ <code>Object</code>
@@ -17,9 +17,9 @@
         * [.ldaLearn(class1, class2)](#module_bcijs.ldaLearn) ⇒ <code>Object</code>
         * [.ldaProject(ldaParams, point)](#module_bcijs.ldaProject) ⇒ <code>number</code>
         * [.nextpow2(num)](#module_bcijs.nextpow2) ⇒ <code>number</code>
-        * [.psd(signal, [options])](#module_bcijs.psd) ⇒ <code>Array.&lt;number&gt;</code>
-        * [.psdBandPower(psd, sampleRate, band, [fftSize])](#module_bcijs.psdBandPower) ⇒ <code>number</code>
-        * [.signalBandPower(samples, sampleRate, bands, [options])](#module_bcijs.signalBandPower) ⇒ <code>number</code>
+        * ~~[.psd(signal, [options])](#module_bcijs.psd) ⇒ <code>Array.&lt;number&gt;</code>~~
+        * ~~[.psdBandPower(psd, sampleRate, band, [fftSize])](#module_bcijs.psdBandPower) ⇒ <code>number</code>~~
+        * ~~[.signalBandPower(samples, sampleRate, bands, [options])](#module_bcijs.signalBandPower) ⇒ <code>number</code>~~
         * [.transpose(array)](#module_bcijs.transpose) ⇒ <code>Array</code>
         * [.loadCSV(filePath)](#module_bcijs.loadCSV) ⇒ <code>Promise</code>
         * [.loadEDF(filename)](#module_bcijs.loadEDF) ⇒ <code>Object</code>
@@ -99,8 +99,10 @@ Computes the root mean square along the specified dimension
 
 <a name="module_bcijs.averageBandPowers"></a>
 
-### bcijs.averageBandPowers(samples, sampleRate, bands, [fftSize]) ⇒ <code>Array.&lt;number&gt;</code>
-Computes the power in each frequency band averaged across all channels
+### ~~bcijs.averageBandPowers(samples, sampleRate, bands, [fftSize]) ⇒ <code>Array.&lt;number&gt;</code>~~
+***Deprecated***
+
+The functionality of this method has been replaced with the 'bandpower' method.See the docs for 'bandpower' for more information.Computes the average magnitude across each frequency band averaged across all channelsUnits are that of the input signal. For example, if the input signal is measuredin μV, then this method returns values in μV.
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Array.&lt;number&gt;</code> - Array containing the average power across all channels in each band  
@@ -251,8 +253,10 @@ nextpow2(8); // 3nextpow2(9); // 4nextpow2(16); // 4nextpow2(30); // 5nextpo
 ```
 <a name="module_bcijs.psd"></a>
 
-### bcijs.psd(signal, [options]) ⇒ <code>Array.&lt;number&gt;</code>
-Compute the power spectral density of a given signal.
+### ~~bcijs.psd(signal, [options]) ⇒ <code>Array.&lt;number&gt;</code>~~
+***Deprecated***
+
+The functionality of this method has been replaced with the 'periodogram' method.See the docs for 'periodogram' for more information.Computes the magnitude of each frequency bin of the FFT. Units are that of the input signal.For example, if the input signal is measured in μV, then this method returns values in μV.As a PSD (particularly for EEG data) would be expected to return units of of μV^2/Hz, this method hasbeen deprecated to avoid confusion. It has been replaced with the periodogram method, which returns unitsof μV^2/Hz.
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Array.&lt;number&gt;</code> - The PSD.  
@@ -266,8 +270,10 @@ Compute the power spectral density of a given signal.
 
 <a name="module_bcijs.psdBandPower"></a>
 
-### bcijs.psdBandPower(psd, sampleRate, band, [fftSize]) ⇒ <code>number</code>
-Compute the average power across a given frequency band given the PSD.
+### ~~bcijs.psdBandPower(psd, sampleRate, band, [fftSize]) ⇒ <code>number</code>~~
+***Deprecated***
+
+The functionality of this method has been replaced with the 'bandpower' method.See the docs for 'bandpower' for more information.Computes the average magnitude across each frequency band given the output of the PSD method.Units are that of the input signal. For example, if the input signal is measuredin μV, then this method returns values in μV.Compute the average power across a given frequency band given the PSD.
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>number</code> - The average power in the frequency band.  
@@ -281,8 +287,10 @@ Compute the average power across a given frequency band given the PSD.
 
 <a name="module_bcijs.signalBandPower"></a>
 
-### bcijs.signalBandPower(samples, sampleRate, bands, [options]) ⇒ <code>number</code>
-Compute the average power across a given frequency band in a signal.
+### ~~bcijs.signalBandPower(samples, sampleRate, bands, [options]) ⇒ <code>number</code>~~
+***Deprecated***
+
+The functionality of this method has been replaced with the 'bandpower' method.See the docs for 'bandpower' for more information.Computes the average magnitude across each frequency band.Units are that of the input signal. For example, if the input signal is measuredin μV, then this method returns values in μV.
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>number</code> - The average power in the frequency band.  

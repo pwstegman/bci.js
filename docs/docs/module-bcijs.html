@@ -343,7 +343,11 @@
 
 
   <div class="description">
-    <p>Computes the power in each frequency band averaged across all channels</p>
+    <p>The functionality of this method has been replaced with the 'bandpower' method.
+See the docs for 'bandpower' for more information.</p>
+<p>Computes the average magnitude across each frequency band averaged across all channels
+Units are that of the input signal. For example, if the input signal is measured
+in μV, then this method returns values in μV.</p>
   </div>
 
 
@@ -570,6 +574,18 @@
   
 
   
+    <dt class="important tag-deprecated">Deprecated:</dt>
+    
+        <dd>
+          <ul class="dummy">
+            <li>
+              Deprecated since version 1.7.0, will be removed in version 2.0.0
+            </li>
+          </ul>
+        </dd>
+      
+    <br>
+  
 
   
 
@@ -584,7 +600,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="lib_math_averageBandPowers.js.html">lib/math/averageBandPowers.js</a>, <a href="lib_math_averageBandPowers.js.html#line16">line 16</a>
+          <a href="lib_math_averageBandPowers.js.html">lib/math/averageBandPowers.js</a>, <a href="lib_math_averageBandPowers.js.html#line24">line 24</a>
         </li>
       </ul>
     </dd>
@@ -4802,7 +4818,13 @@ Can be used to split data into training and testing sets</p>
 
 
   <div class="description">
-    <p>Compute the power spectral density of a given signal.</p>
+    <p>The functionality of this method has been replaced with the 'periodogram' method.
+See the docs for 'periodogram' for more information.</p>
+<p>Computes the magnitude of each frequency bin of the FFT. Units are that of the input signal.
+For example, if the input signal is measured in μV, then this method returns values in μV.</p>
+<p>As a PSD (particularly for EEG data) would be expected to return units of of μV^2/Hz, this method has
+been deprecated to avoid confusion. It has been replaced with the periodogram method, which returns units
+of μV^2/Hz.</p>
   </div>
 
 
@@ -5055,6 +5077,18 @@ Can be used to split data into training and testing sets</p>
   
 
   
+    <dt class="important tag-deprecated">Deprecated:</dt>
+    
+        <dd>
+          <ul class="dummy">
+            <li>
+              Deprecated since version 1.7.0, will be removed in version 2.0.0
+            </li>
+          </ul>
+        </dd>
+      
+    <br>
+  
 
   
 
@@ -5069,7 +5103,7 @@ Can be used to split data into training and testing sets</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="lib_math_psd.js.html">lib/math/psd.js</a>, <a href="lib_math_psd.js.html#line15">line 15</a>
+          <a href="lib_math_psd.js.html">lib/math/psd.js</a>, <a href="lib_math_psd.js.html#line26">line 26</a>
         </li>
       </ul>
     </dd>
@@ -5144,7 +5178,12 @@ Can be used to split data into training and testing sets</p>
 
 
   <div class="description">
-    <p>Compute the average power across a given frequency band given the PSD.</p>
+    <p>The functionality of this method has been replaced with the 'bandpower' method.
+See the docs for 'bandpower' for more information.</p>
+<p>Computes the average magnitude across each frequency band given the output of the PSD method.
+Units are that of the input signal. For example, if the input signal is measured
+in μV, then this method returns values in μV.</p>
+<p>Compute the average power across a given frequency band given the PSD.</p>
   </div>
 
 
@@ -5381,6 +5420,18 @@ future updates.</p>
   
 
   
+    <dt class="important tag-deprecated">Deprecated:</dt>
+    
+        <dd>
+          <ul class="dummy">
+            <li>
+              Deprecated since version 1.7.0, will be removed in version 2.0.0
+            </li>
+          </ul>
+        </dd>
+      
+    <br>
+  
 
   
 
@@ -5395,7 +5446,7 @@ future updates.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="lib_math_psdBandPower.js.html">lib/math/psdBandPower.js</a>, <a href="lib_math_psdBandPower.js.html#line16">line 16</a>
+          <a href="lib_math_psdBandPower.js.html">lib/math/psdBandPower.js</a>, <a href="lib_math_psdBandPower.js.html#line26">line 26</a>
         </li>
       </ul>
     </dd>
@@ -6048,7 +6099,11 @@ future updates.</p>
 
 
   <div class="description">
-    <p>Compute the average power across a given frequency band in a signal.</p>
+    <p>The functionality of this method has been replaced with the 'bandpower' method.
+See the docs for 'bandpower' for more information.</p>
+<p>Computes the average magnitude across each frequency band.
+Units are that of the input signal. For example, if the input signal is measured
+in μV, then this method returns values in μV.</p>
   </div>
 
 
@@ -6344,6 +6399,18 @@ recommended, as band string representations may change in future updates.</p>
   
 
   
+    <dt class="important tag-deprecated">Deprecated:</dt>
+    
+        <dd>
+          <ul class="dummy">
+            <li>
+              Deprecated since version 1.7.0, will be removed in version 2.0.0
+            </li>
+          </ul>
+        </dd>
+      
+    <br>
+  
 
   
 
@@ -6358,7 +6425,7 @@ recommended, as band string representations may change in future updates.</p>
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="lib_math_signalBandPower.js.html">lib/math/signalBandPower.js</a>, <a href="lib_math_signalBandPower.js.html#line40">line 40</a>
+          <a href="lib_math_signalBandPower.js.html">lib/math/signalBandPower.js</a>, <a href="lib_math_signalBandPower.js.html#line48">line 48</a>
         </li>
       </ul>
     </dd>
