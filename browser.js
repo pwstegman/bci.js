@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Sat Feb 01 2020 17:30:47 GMT-0600 (Central Standard Time)
+// Created on Sun Mar 22 2020 13:45:02 GMT-0400 (Eastern Daylight Time)
 // This module excludes Node.js specific methods so it can be used in the browser
 /** @module bcijs */
 module.exports.csp = require('./lib/compat/csp.js');
@@ -22,6 +22,7 @@ module.exports.ldaClassify = require('./lib/math/ldaClassify.js');
 module.exports.ldaLearn = require('./lib/math/ldaLearn.js');
 module.exports.ldaProject = require('./lib/math/ldaProject.js');
 module.exports.nextpow2 = require('./lib/math/nextpow2.js');
+module.exports.periodogram = require('./lib/math/periodogram.js');
 module.exports.psd = require('./lib/math/psd.js');
 module.exports.psdBandPower = require('./lib/math/psdBandPower.js');
 module.exports.signalBandPower = require('./lib/math/signalBandPower.js');
