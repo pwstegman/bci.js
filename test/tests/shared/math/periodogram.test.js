@@ -8,7 +8,7 @@ describe('periodogram', function(){
         let expected_freqs = [0, 16, 32, 48, 64, 80, 96, 112, 128];
 
         let psd = bci.periodogram(x, sample_rate);
-        assert(arrayAlmostEqual(psd.estimate, expected_pxx));
+        assert(arrayAlmostEqual(psd.estimates, expected_pxx));
         assert(arrayAlmostEqual(psd.frequencies, expected_freqs));
 
         // Test zero-padded periodogram
@@ -16,7 +16,7 @@ describe('periodogram', function(){
         expected_freqs = [0, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128];
 
         psd = bci.periodogram(x, sample_rate, {fftSize: 32});
-        assert(arrayAlmostEqual(psd.estimate, expected_pxx));
+        assert(arrayAlmostEqual(psd.estimates, expected_pxx));
         assert(arrayAlmostEqual(psd.frequencies, expected_freqs));
     });
 });

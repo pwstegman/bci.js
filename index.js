@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Sun Mar 22 2020 22:42:26 GMT-0400 (Eastern Daylight Time)
+// Created on Mon Mar 23 2020 15:49:31 GMT-0400 (Eastern Daylight Time)
 /** @module bcijs */
 module.exports.csp = require('./lib/compat/csp.js');
 module.exports.f1score = require('./lib/compat/f1score.js');
@@ -16,6 +16,7 @@ module.exports.toFixed = require('./lib/data/toFixed.js');
 module.exports.toTable = require('./lib/data/toTable.js');
 module.exports.windowApply = require('./lib/data/windowApply.js');
 module.exports.averageBandPowers = require('./lib/math/averageBandPowers.js');
+module.exports.bandpower = require('./lib/math/bandpower.js');
 module.exports.cspLearn = require('./lib/math/cspLearn.js');
 module.exports.cspProject = require('./lib/math/cspProject.js');
 module.exports.fastICA = require('./lib/math/fastICA.js');
