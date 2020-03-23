@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Sun Mar 22 2020 13:45:02 GMT-0400 (Eastern Daylight Time)
+// Created on Sun Mar 22 2020 22:42:26 GMT-0400 (Eastern Daylight Time)
 /** @module bcijs */
 module.exports.csp = require('./lib/compat/csp.js');
 module.exports.f1score = require('./lib/compat/f1score.js');
@@ -21,6 +21,7 @@ module.exports.cspProject = require('./lib/math/cspProject.js');
 module.exports.fastICA = require('./lib/math/fastICA.js');
 module.exports.features = require('./lib/math/features.js');
 module.exports.generateSignal = require('./lib/math/generateSignal.js');
+module.exports.integrate = require('./lib/math/integrate.js');
 module.exports.ldaClassify = require('./lib/math/ldaClassify.js');
 module.exports.ldaLearn = require('./lib/math/ldaLearn.js');
 module.exports.ldaProject = require('./lib/math/ldaProject.js');
