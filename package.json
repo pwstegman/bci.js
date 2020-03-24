@@ -4,8 +4,8 @@
   "description": "EEG signal processing and machine learning",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha --require \"./test/tests/node-config.js\" --reporter min \"test/tests/**/*.test.js\"",
-    "test-dist": "gulp test-dist",
+    "test": "npm run build && nyc mocha --require \"./test/tests/node-config.js\" --reporter min \"test/tests/**/*.test.js\"",
+    "test-dist": "npm run build && gulp test-dist",
     "build": "gulp build",
     "dist": "gulp dist",
     "docs-md": "gulp docs-md",

@@ -1,18 +1,20 @@
 // This file was auto generated, changes will be overwritten
-// Created on Mon Mar 23 2020 15:49:31 GMT-0400 (Eastern Daylight Time)
+// Created on Tue Mar 24 2020 14:35:53 GMT-0400 (Eastern Daylight Time)
 // This module excludes Node.js specific methods so it can be used in the browser
 /** @module bcijs */
+module.exports.averageBandPowers = require('./lib/compat/averageBandPowers.js');
 module.exports.csp = require('./lib/compat/csp.js');
 module.exports.f1score = require('./lib/compat/f1score.js');
 module.exports.lda = require('./lib/compat/lda.js');
+module.exports.psdBandPower = require('./lib/compat/psdBandPower.js');
 module.exports.signal = require('./lib/compat/signal.js');
+module.exports.signalBandPower = require('./lib/compat/signalBandPower.js');
 module.exports.partition = require('./lib/data/partition.js');
 module.exports.round = require('./lib/data/round.js');
 module.exports.subscript = require('./lib/data/subscript.js');
 module.exports.toFixed = require('./lib/data/toFixed.js');
 module.exports.toTable = require('./lib/data/toTable.js');
 module.exports.windowApply = require('./lib/data/windowApply.js');
-module.exports.averageBandPowers = require('./lib/math/averageBandPowers.js');
 module.exports.bandpower = require('./lib/math/bandpower.js');
 module.exports.cspLearn = require('./lib/math/cspLearn.js');
 module.exports.cspProject = require('./lib/math/cspProject.js');
@@ -26,8 +28,6 @@ module.exports.ldaProject = require('./lib/math/ldaProject.js');
 module.exports.nextpow2 = require('./lib/math/nextpow2.js');
 module.exports.periodogram = require('./lib/math/periodogram.js');
 module.exports.psd = require('./lib/math/psd.js');
-module.exports.psdBandPower = require('./lib/math/psdBandPower.js');
-module.exports.signalBandPower = require('./lib/math/signalBandPower.js');
 module.exports.transpose = require('./lib/math/transpose.js');
 module.exports.accuracy = require('./lib/metrics/accuracy.js');
 module.exports.balancedAccuracy = require('./lib/metrics/balancedAccuracy.js');
