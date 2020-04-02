@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Wed Apr 01 2020 19:44:44 GMT-0400 (Eastern Daylight Time)
+// Created on Thu Apr 02 2020 16:10:13 GMT-0400 (Eastern Daylight Time)
 // This module excludes Node.js specific methods so it can be used in the browser
 /** @module bcijs */
 module.exports.averageBandPowers = require('./lib/compat/averageBandPowers.js');
@@ -22,7 +22,6 @@ module.exports.cspProject = require('./lib/math/cspProject.js');
 module.exports.fastICA = require('./lib/math/fastICA.js');
 module.exports.features = require('./lib/math/features.js');
 module.exports.generateSignal = require('./lib/math/generateSignal.js');
-module.exports.integrate = require('./lib/math/integrate.js');
 module.exports.ldaClassify = require('./lib/math/ldaClassify.js');
 module.exports.ldaLearn = require('./lib/math/ldaLearn.js');
 module.exports.ldaProject = require('./lib/math/ldaProject.js');

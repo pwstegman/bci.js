@@ -61,7 +61,7 @@
     "@babel/preset-env": "^7.9.0",
     "app-root-path": "^2.2.1",
     "babelify": "^10.0.0",
-    "browserify": "^16.5.0",
+    "browserify": "^16.5.1",
     "fs-then-native": "^2.0.0",
     "glob": "^7.1.6",
     "gulp": "^4.0.2",
