@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+      lib/math/bandpower.js - Documentation
+  </title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400" rel="stylesheet">
+
+  <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+  <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+  
+
+  
+</head>
+
+<body>
+
+  <svg style="display: none;">
+    <defs>
+      <symbol id="linkIcon" fill="#706d77" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <label for="nav-trigger" class="navicon-button x">
+    <div class="navicon"></div>
+  </label>
+
+  <label for="nav-trigger" class="overlay"></label>
+
+  <!--<div class="top-nav-wrapper">
+    <ul>
+      <li >
+        <a href="index.html">
+          
+            <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          
+          
+        </a>
+      </li>
+
+      
+
+    </ul>
+  </div>-->
+
+  <nav id="docs-nav">
+    <div class="pt-5">
+      <a href="/"><img src="static/bcijs-logo.png" height="34px"></a>
+    </div>
+    
+    <h3 class="reference-title">
+      BCI.js
+    </h3>
+    <ul>
+      <li><a href="index.html" class="indented-link" id="readme-link">Readme</a></li>
+      <li><a href="https://github.com/pwstegman/bci.js#tutorials" class="indented-link">Tutorials</a></li>
+      <li><a href="/#examples" class="indented-link">Examples</a></li>
+    </ul>
+
+    
+
+    <h3>Classes</h3><ul><li id="oscStream-nav"><a href="module-bcijs.oscStream.html">oscStream</a><ul class='methods'><li data-type="method" id="oscStream-on-nav"><a href="module-bcijs.oscStream.html#on">on</a></li><li data-type="method" id="oscStream-start-nav"><a href="module-bcijs.oscStream.html#start">start</a></li><li data-type="method" id="oscStream-stop-nav"><a href="module-bcijs.oscStream.html#stop">stop</a></li></ul></li></ul><h3>Modules</h3><ul><li id="bcijs-nav"><a href="module-bcijs.html">bcijs</a><ul class='methods'><li data-type="method" id="bcijs-accuracy-nav"><a href="module-bcijs.html#.accuracy">accuracy</a></li><li data-type="method" id="bcijs-balancedAccuracy-nav"><a href="module-bcijs.html#.balancedAccuracy">balancedAccuracy</a></li><li data-type="method" id="bcijs-bandpower-nav"><a href="module-bcijs.html#.bandpower">bandpower</a></li><li data-type="method" id="bcijs-confusionMatrix-nav"><a href="module-bcijs.html#.confusionMatrix">confusionMatrix</a></li><li data-type="method" id="bcijs-cspLearn-nav"><a href="module-bcijs.html#.cspLearn">cspLearn</a></li><li data-type="method" id="bcijs-cspProject-nav"><a href="module-bcijs.html#.cspProject">cspProject</a></li><li data-type="method" id="bcijs-f1-nav"><a href="module-bcijs.html#.f1">f1</a></li><li data-type="method" id="bcijs-fastICA-nav"><a href="module-bcijs.html#.fastICA">fastICA</a></li><li data-type="method" id="bcijs-generateSignal-nav"><a href="module-bcijs.html#.generateSignal">generateSignal</a></li><li data-type="method" id="bcijs-ldaClassify-nav"><a href="module-bcijs.html#.ldaClassify">ldaClassify</a></li><li data-type="method" id="bcijs-ldaLearn-nav"><a href="module-bcijs.html#.ldaLearn">ldaLearn</a></li><li data-type="method" id="bcijs-ldaProject-nav"><a href="module-bcijs.html#.ldaProject">ldaProject</a></li><li data-type="method" id="bcijs-loadCSV-nav"><a href="module-bcijs.html#.loadCSV">loadCSV</a></li><li data-type="method" id="bcijs-loadEDF-nav"><a href="module-bcijs.html#.loadEDF">loadEDF</a></li><li data-type="method" id="bcijs-mcc-nav"><a href="module-bcijs.html#.mcc">mcc</a></li><li data-type="method" id="bcijs-nextpow2-nav"><a href="module-bcijs.html#.nextpow2">nextpow2</a></li><li data-type="method" id="bcijs-oscCollect-nav"><a href="module-bcijs.html#.oscCollect">oscCollect</a></li><li data-type="method" id="bcijs-oscHeaderScan-nav"><a href="module-bcijs.html#.oscHeaderScan">oscHeaderScan</a></li><li data-type="method" id="bcijs-partition-nav"><a href="module-bcijs.html#.partition">partition</a></li><li data-type="method" id="bcijs-periodogram-nav"><a href="module-bcijs.html#.periodogram">periodogram</a></li><li data-type="method" id="bcijs-precision-nav"><a href="module-bcijs.html#.precision">precision</a></li><li data-type="method" id="bcijs-prompt-nav"><a href="module-bcijs.html#.prompt">prompt</a></li><li data-type="method" id="bcijs-recall-nav"><a href="module-bcijs.html#.recall">recall</a></li><li data-type="method" id="bcijs-round-nav"><a href="module-bcijs.html#.round">round</a></li><li data-type="method" id="bcijs-saveCSV-nav"><a href="module-bcijs.html#.saveCSV">saveCSV</a></li><li data-type="method" id="bcijs-specificity-nav"><a href="module-bcijs.html#.specificity">specificity</a></li><li data-type="method" id="bcijs-subscript-nav"><a href="module-bcijs.html#.subscript">subscript</a></li><li data-type="method" id="bcijs-toFixed-nav"><a href="module-bcijs.html#.toFixed">toFixed</a></li><li data-type="method" id="bcijs-toTable-nav"><a href="module-bcijs.html#.toTable">toTable</a></li><li data-type="method" id="bcijs-transpose-nav"><a href="module-bcijs.html#.transpose">transpose</a></li><li data-type="method" id="bcijs-wait-nav"><a href="module-bcijs.html#.wait">wait</a></li><li data-type="method" id="bcijs-windowApply-nav"><a href="module-bcijs.html#.windowApply">windowApply</a></li></ul></li></ul>
+  </nav>
+
+  <div id="main">
+    
+      <h1 class="page-title">
+        lib/math/bandpower.js
+      </h1>
+    
+
+    
+      
+
+<section>
+  <article>
+    <pre class="prettyprint source linenums"><code>const periodogram = require('./periodogram.js');
+const transpose = require('./transpose.js');
+const nextpow2 = require('./nextpow2.js');
+
+/**
+ * Integrate area under the curve using the rectangle method
+ * @private
+ * @param {number[]} x - Array of samples
+ * @param {number} [dx=1] - Spacing between points. Default is 1.
+ * @returns area under the curve 
+ */
+function integrate(x, dx = 1) {
+    let sum = 0;
+    for(let i = 0; i &lt; x.length; i++) {
+        sum += x[i];
+    }
+    return sum * dx;
+}
+
+/**
+ * Given a mixed array of strings and bands, ex: ['alpha', [4,10], 'beta']
+ * Or simply a string, ex: 'alpha'
+ * Or simple a band, ex: [4,10]
+ * Reduce it to a common format of number[][].
+ * Examples:
+ * input => output
+ * ['alpha', [4, 10], 'beta'] => [[8, 12], [4, 10], [13, 30]]
+ * 'alpha' => [[8, 12]]
+ * [4, 10] => [[4, 10]] 
+ * @private
+ * @param {string|Array} bands 
+ */
+function reduceBands(bands) { 
+    let band_names = {
+		// From Dan Szafir's "Pay Attention!", 2012
+		'delta': [1, 3],
+		'theta': [4, 7],
+		'alpha': [8, 12],
+		'beta': [13, 30],
+		'gamma': [31, 50]
+    };
+    
+    // If they pass only a string or only a single band
+    // Example: 'alpha' or [4, 10]
+    if(typeof bands === 'string' || typeof bands[0] === 'number') {
+        bands = [bands];
+    }
+
+    // For each item in the array, replace a string with its matching band
+    return bands.map(band => {
+        if(typeof band === 'string') {
+            let band_as_numbers = band_names[band];
+            if(band_as_numbers) return band_as_numbers;
+            throw new Error('Invalid band type passed');
+        }
+
+        return band;
+    });
+}
+
+/**
+ * Calculate the bandpower of a signal or multiple signals in the specified frequency bands.
+ * 
+ * Uses a modified periodogram with a Hann window by default. (see: bci.periodogram())
+ * Bandpower is calculated as the area under the PSD curve estimated using the rectangular method.
+ * 
+ * Units of bandpower are the square of the input signal's units. If the input signal has units of μV,
+ * then the bandpower estimate has units μV^2.
+ * 
+ * Returns absolute power by default. Relative band power (absolute power divided by total power in the signal)
+ * can be calculated by passing the option {relative: true}. 
+ * 
+ * You can also pass custom PSD estimates instead of directly passing the signal. This may be useful if you wish
+ * to use your own PSD estimation method of choice, such as Welch's method. In this case, pass a single PSD array
+ * or pass multiple PSDs in the same form as multiple signals (columns are channels). Then be sure to pass the option {input: 'psd'}.
+ * 
+ * Example usages are provided below.
+ * 
+ * @memberof module:bcijs
+ * @param {number[]|number[][]} samples - An array of samples, ex: [1,2,3,4, ...], or, in the case of multiple channels, ex (2 channels): [[1,2], [3,4], [5,6], ...]
+ * @param {number} sample_rate - Sample rate
+ * @param {string|Array} bands - The frequency band provided as an array [frequencyStart, frequencyStop] or a string 'delta' (1-3 Hz), 'theta' (4-7 Hz), 'alpha' (8-12 Hz), 'beta' (13-30 Hz), or 'gamma' (31-50 Hz).
+ * @param {object} options
+ * @param {number} [options.fftSize=Math.pow(2, bci.nextpow2(signal.length))] - Size of the fft to be used. Should be a power of 2.
+ * @param {boolean} [options.average=false] - Average powers across channels. Default is false.
+ * @param {boolean} [options.input='samples'] - Input type. Can be either 'samples' (default) or 'psd'. If you already have a PSD calculated, you can pass the estimates as an array with the input type 'psd'. You can also pass the entire PSD object if it was calculated using the bci.periodogram method, and the input type of 'psd' will be inferred.
+ * @param {boolean} [options.relative=false] - Calculate relative bandpower instead of absolute bandpower. Default is false.
+ * @param {number} [options.window='hann'] - Window function to apply, either 'hann' or 'rectangular'. Default is 'hann'.
+ * @returns {number|number[]|number[][]} Bandpower | array of bandpowers if an array of bands is passed as input for a single signal or multiple signals are passed with a single band | array of array of powers for each band if multiple signals are passed
+ * 
+ * @example
+ * // Single signal example
+ * let samples = [0.23, 0.14, 0.78, ...];
+ * let sample_rate = 256; // Hz
+ * 
+ * bandpower(samples, sample_rate, 'alpha'); // returns power, ex: 1.652
+ * bandpower(samples, sample_rate, ['alpha', 'beta']); // returns an array with the powers in the alpha and beta bands. Ex: [1.473, 0.383]
+ * 
+ * // 2 channel example
+ * samples = [[0.1, 0.3], [0.4, 0.2], [0.6, 0.5], ...]
+ * 
+ * bandpower(samples, sample_rate, 'alpha'); // returns an array of alpha powers for each channel, ex: [1.342, 0.342]
+ * 
+ * bandpower(samples, sample_rate, ['alpha', 'beta']);
+ * // returns an array of arrays of powers in each band, ex: [[1.342, 0.342], [0.245, 1.343]].
+ * // The first array is an array of alpha powers for channels 1 and 2
+ * // The second array is an array of beta powers for channels 1 and 2
+ * 
+ * bandpower(samples, sample_rate, ['alpha', 'beta'], {average: true});
+ * // Calculate average alpha across all channels and average beta across all channels
+ * // Returns a value such as [0.842, 0.794]
+ * // Note these are the average of [1.342, 0.342] and the average of [0.245, 1.343] from the previous example
+ */
+function bandpower(samples, sample_rate, bands, options) {
+    // Determine signal length
+    let signal_length = samples.length;
+    if(samples.estimates) {
+        signal_length = samples.estimates.length;
+    }
+
+    // Handle default options
+    let {fftSize, average, input, relative, window} = Object.assign({
+        fftSize: Math.pow(2, nextpow2(signal_length)),
+        average: false,
+        input: 'samples',
+        relative: false,
+        window: 'hann'
+    }, options);
+
+    // If they passed a PSD object, enforce the input type 'psd'
+    if(options &amp;&amp; options['input'] == 'samples' &amp;&amp; !Array.isArray(samples)) {
+        throw new Error('Expecting array of samples when input type of \'samples\' is passed');
+    }
+
+    if(samples.estimates) {
+        samples = samples.estimates;
+        input = 'psd';
+    }
+
+    // Check FFT size
+    if(fftSize &lt; samples.length) {
+        throw new Error('fftSize must be greater than or equal to the length of samples');
+    }
+    
+    // If matrix with muliple signals, process each signal
+    if(Array.isArray(samples[0])) {
+        let channels = transpose(samples);
+        
+        let powers = channels.map(channel => bandpower(channel, sample_rate, bands, options));
+
+        // Handle the 2D case (multiple channels and multiple bands)
+        if(Array.isArray(powers[0])) {
+            // Return to same row/col format as input (channels are columns)
+            powers = transpose(powers);
+
+            // Instead of calculating, for example, alpha power at each channel, calculate the average alpha
+            // across all channels.
+            if(average) {
+                for(let i = 0; i &lt; powers.length; i++) {
+                    let sum = 0;
+                    for(let j = 0; j &lt; powers[i].length; j++) {
+                        sum += powers[i][j];
+                    }
+                    powers[i] = sum / powers[i].length;
+                }
+            }
+        }
+
+        return powers;
+    }
+
+    // Start by calculating the PSD
+    let psd;
+    if(input == 'samples') {
+        psd = periodogram(samples, sample_rate, {fftSize: fftSize, window: window});
+    } else if(input == 'psd') {
+        if(Array.isArray(samples)) {
+            psd = {estimates: samples};
+        } else {
+            throw new Error('Invalid PSD');
+        }
+    } else {
+        throw new Error('Invalid input type');
+    }
+
+    // Clean up 'bands' so it is a number[][] (array of bands where a band is [low, high])
+    let original_bands = bands;
+    bands = reduceBands(bands);
+
+    // Calculate the total power for relative power calculation if selected in options
+    let total_power = 1;
+    let dx = sample_rate / fftSize;
+    if(relative) {
+        total_power = integrate(psd.estimates, dx);
+    }
+
+    // Calculate area in each band
+    let areas = new Array(bands.lenth);
+    
+    for(let i = 0; i &lt; bands.length; i++) {
+        // Get the proper section of the periodogram
+        let band = bands[i];
+
+        let low_index = Math.floor(band[0] / sample_rate * fftSize);
+        let high_index = Math.min(Math.ceil(band[1] / sample_rate * fftSize), psd.estimates.length - 1);
+        
+        let psd_band = psd.estimates.slice(low_index, high_index + 1);
+
+        if(psd_band.length &lt; 2) {
+            throw new Error('Unable to calculate power in specified bands. Please increase fftSize or sample length');
+        }
+
+        areas[i] = integrate(psd_band, dx) / total_power;
+    }
+
+    // If they only passed a single band (not an array of bands), then the array of areas will
+    // have a length of 1. Return the single power value, not an array.
+    if(typeof original_bands === 'string' || typeof original_bands[0] === 'number') {
+        return areas[0];
+    }
+
+    return areas;
+}
+
+module.exports = bandpower;
+</code></pre>
+  </article>
+</section>
+
+    
+
+
+  </div>
+
+  <br class="clear">
+
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a>
+  </footer>
+
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/pagelocation.js"></script>
+
+  
+
+</body>
+</html>

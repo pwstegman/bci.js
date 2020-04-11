@@ -103,7 +103,18 @@ var nextpow2 = require('./nextpow2.js');
 var fftCache = {};
 
 /**
- * Compute the power spectral density of a given signal.
+ * The functionality of this method has been replaced with the 'periodogram' method.
+ * See the docs for 'periodogram' for more information.
+ * 
+ * Computes the magnitude of each frequency bin of the FFT. Units are that of the input signal.
+ * For example, if the input signal is measured in μV, then this method returns values in μV.
+ * 
+ * As a PSD (particularly for EEG data) would be expected to return units of of μV^2/Hz, this method has
+ * been deprecated to avoid confusion. It has been replaced with the periodogram method, which returns units
+ * of μV^2/Hz.
+ * 
+ * @deprecated Deprecated since version 1.7.0, will be removed in version 2.0.0
+ * 
  * @memberof module:bcijs
  * @param {number[]} signal - The signal.
  * @param {Object} [options]
@@ -132,6 +143,7 @@ function psd(signal, options) {
 
 	var freqs = f.createComplexArray();
 	f.realTransform(freqs, signal);
+	f.completeSpectrum(freqs);
 	if(truncate){
 		var powers = getPowers(freqs, freqs.length / 2);
 	}else{

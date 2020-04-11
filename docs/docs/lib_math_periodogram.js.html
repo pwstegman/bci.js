@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      lib/math/cspLearn.js - Documentation
+      lib/math/periodogram.js - Documentation
   </title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -88,7 +88,7 @@
   <div id="main">
     
       <h1 class="page-title">
-        lib/math/cspLearn.js
+        lib/math/periodogram.js
       </h1>
     
 
@@ -97,36 +97,114 @@
 
 <section>
   <article>
-    <pre class="prettyprint source linenums"><code>const math = require('mathjs/core').create();
-math.import(require('mathjs/lib/type/matrix'));
-math.import(require('mathjs/lib/function/arithmetic'));
-math.import(require('mathjs/lib/function/matrix'));
+    <pre class="prettyprint source linenums"><code>const fft = require('fft.js');
+const nextpow2 = require('./nextpow2.js');
 
-const numeric = require('numeric');
-const stat = require('pw-stat');
+let fftCache = {};
 
 /**
- * Learn common spatial pattern (CSP) for two datasets.
- * Check out {@link https://bci.js.org/examples/csp/} for an interactive example of how CSP works.
- * @memberof module:bcijs
- * @param {number[][]} class1 - Data samples for class 1. Rows should be samples, columns should be signals.
- * @param {number[][]} class2 - Data samples for class 2. Rows should be samples, columns should be signals.
- * @returns {Object} Learned CSP parameters
- * @example
- * let cspParams = bci.cspLearn(class_a, class_b);
+ * Apply a Hann window to a signal
+ * @private
  */
-function cspLearn(class1, class2) {
-	var cov1 = stat.cov(class1);
-	var cov2 = stat.cov(class2);
-	var V = numeric.eig(math.multiply(math.inv(math.add(cov1, cov2)), cov1)).E.x;
+function hann(signal) {
+    let windowed = [];
+    let L = signal.length - 1;
+    let C = Math.PI / L;
 
-	return {
-		V: V
-	}
+    let scale = 0;
+
+    for(let i = 0; i &lt; signal.length; i++) {
+        let w = Math.sin(C * i) ** 2;
+        windowed.push(signal[i] * w);
+        scale += w ** 2;
+    }
+
+    return {signal: windowed, scale: scale};
 }
 
-module.exports = cspLearn;
-</code></pre>
+/** 
+ * Estimates the power spectral density of a real-valued input signal using the periodogram method and a rectangular window.
+ * Output units are based on that of the input signal, of the form X^2/Hz, where X is the units of the input signal.
+ * For example, if the input is an EEG signal measured in μV, then this method returns values of μV^2/Hz.
+ * 
+ * @memberof module:bcijs
+ * @param {number[]} signal - The signal.
+ * @param {number} sample_rate - sample rate in Hz
+ * @param {Object} [options]
+ * @param {number} [options.fftSize=Math.pow(2, bci.nextpow2(signal.length))] - Size of the fft to be used. Should be a power of 2.
+ * @param {number} [options.window='rectangular'] - Window function to apply, either 'hann' or 'rectangular'. Default is 'rectangular'.
+ * @returns {Object} Object with keys 'estimates' (the psd estimates) and 'frequencies' (the corresponding frequencies)
+ */
+function periodogram(signal, sample_rate, options) {
+	let {fftSize, window} = Object.assign({
+        fftSize: Math.pow(2, nextpow2(signal.length)),
+        window: 'rectangular'
+	}, options);
+
+	let f;
+	if (fftCache.hasOwnProperty(fftSize)) {
+		f = fftCache[fftSize];
+	} else {
+		f = new fft(fftSize);
+		fftCache[fftSize] = f;
+    }
+    
+    // Apply window
+    let num_samples = signal.length;
+    let S = num_samples;
+    if(window == 'hann') {
+        let h = hann(signal);
+        signal = h.signal;
+        S = h.scale;
+    } else if(window != 'rectangular') {
+        throw new Error('Unknown window type');
+    }
+
+    // Zero pad signal to fftSize if needed
+	if (num_samples &lt; fftSize) {
+		signal = signal.concat(Array(fftSize - signal.length).fill(0));
+	}
+
+    // Complex array [real, imag, real, imag, etc.]
+    let freqs = f.createComplexArray();
+    
+    // Fill in complex array with the FFT values
+	f.realTransform(freqs, signal);
+    f.completeSpectrum(freqs);
+    
+    // Get the power of each FFT bin value
+    let powers = [];
+    let scaling_factor = 2 / (sample_rate * S);
+	for (var i = 0; i &lt; freqs.length - 1; i += 2) {
+        // magnitude is sqrt(real^2 + imag^2)
+        let magnitude = Math.sqrt(freqs[i] ** 2 + freqs[i + 1] ** 2);
+
+        // apply scaling
+        let power = scaling_factor * magnitude ** 2;
+
+		powers.push(power);
+    }
+
+    // Toss values past Nyquist
+    powers = powers.slice(0, powers.length / 2 + 1);
+
+    // Don't scale DC or Nyquist by 2
+    powers[0] /= 2;
+    powers[powers.length - 1] /= 2;
+    
+    // Compute frequencies
+    let frequencies = new Array(powers.length);
+    for(let i = 0; i &lt; frequencies.length; i++) {
+        frequencies[i] = i * (sample_rate / fftSize);
+    }
+
+	return {
+        estimates: powers,
+        frequencies: frequencies
+    };
+}
+
+module.exports = periodogram;</code></pre>
   </article>
 </section>
 

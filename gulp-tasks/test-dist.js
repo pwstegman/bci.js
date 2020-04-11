@@ -7,7 +7,7 @@ const moment = require('moment');
 const pkg = require('../package.json');
 
 function buildTest(){
-    return gulp.src(['./test/tests/shared/requires.js', './test/tests/shared/**/*.test.js'])
+    return gulp.src(['./test/browser/requires.js', './test/tests/shared/**/*.test.js'])
         .pipe(concat('bci.test.js'))
         .pipe(gulp.dest('test/browser'));
 }

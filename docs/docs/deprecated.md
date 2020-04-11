@@ -20,7 +20,11 @@
                 * [.clear()](#module_bcijs.signal.EEGWindow+clear)
             * [.getPSD(size, signal)](#module_bcijs.signal.getPSD) ⇒ <code>Array.&lt;number&gt;</code>
             * [.getBandPower(size, psd, sampleRate, band)](#module_bcijs.signal.getBandPower) ⇒ <code>number</code>
+    * ~~[.averageBandPowers(samples, sampleRate, bands, [fftSize])](#module_bcijs.averageBandPowers) ⇒ <code>Array.&lt;number&gt;</code>~~
     * ~~[.f1score(confusionMatrix)](#module_bcijs.f1score) ⇒ <code>number</code>~~
+    * ~~[.psd(signal, [options])](#module_bcijs.psd) ⇒ <code>Array.&lt;number&gt;</code>~~
+    * ~~[.psdBandPower(psd, sampleRate, band, [fftSize])](#module_bcijs.psdBandPower) ⇒ <code>number</code>~~
+    * ~~[.signalBandPower(samples, sampleRate, bands, [options])](#module_bcijs.signalBandPower) ⇒ <code>number</code>~~
 
 <a name="module_bcijs.LDA"></a>
 
@@ -214,6 +218,27 @@ Compute the average power across a given frequency band given the PSD.
 | sampleRate | <code>number</code> | The sample rate of the signal. |
 | band | <code>Array.&lt;number&gt;</code> \| <code>string</code> | The frequency band provided as an array [frequencyStart, frequencyStop] or a string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz). While string representations allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in future updates. |
 
+<a name="module_bcijs.averageBandPowers"></a>
+
+### ~~bcijs.averageBandPowers(samples, sampleRate, bands, [fftSize]) ⇒ <code>Array.&lt;number&gt;</code>~~
+***Deprecated***
+
+Deprecated, please use bci.bandpower() for output in proper units.The functionality of this method has been replaced with the 'bandpower' method.See the docs for 'bandpower' for more information.Computes the average magnitude across each frequency band averaged across all channelsUse bci.bandpower() for band power in proper units (signal units squared).
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>Array.&lt;number&gt;</code> - Array containing the average power across all channels in each band  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| samples | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> |  | The signals where rows are samples and columns are electrodes |
+| sampleRate | <code>number</code> |  | Sample rate of the data |
+| bands | <code>Array</code> |  | An array of frequency bands. See signalBandPower for more info on frequency bands. |
+| [fftSize] | <code>number</code> | <code></code> | The size of the fft to use. See signalBandPower for more info on fft sizes. |
+
+**Example**  
+```js
+let feature = bci.averageBandPowers(samples, 256, ['alpha', 'beta']);// returns [alpha_power_averaged_across_channels, beta_power_averaged_across_channels]
+```
 <a name="module_bcijs.f1score"></a>
 
 ### ~~bcijs.f1score(confusionMatrix) ⇒ <code>number</code>~~
@@ -228,3 +253,59 @@ Calculate the f1 score of a binary classifier given its confusion matrixThis m
 | --- | --- | --- |
 | confusionMatrix | <code>Array.&lt;Array.&lt;number&gt;&gt;</code> | a 2x2 confusion matrix |
 
+<a name="module_bcijs.psd"></a>
+
+### ~~bcijs.psd(signal, [options]) ⇒ <code>Array.&lt;number&gt;</code>~~
+***Deprecated***
+
+The functionality of this method has been replaced with the 'periodogram' method.See the docs for 'periodogram' for more information.Computes the magnitude of each frequency bin of the FFT. Units are that of the input signal.For example, if the input signal is measured in μV, then this method returns values in μV.As a PSD (particularly for EEG data) would be expected to return units of μV^2/Hz, this method hasbeen deprecated to avoid confusion. It has been replaced with the periodogram method, which returns unitsof μV^2/Hz.
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>Array.&lt;number&gt;</code> - magnitude of each frequency bin of the FFT  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| signal | <code>Array.&lt;number&gt;</code> |  | The signal. |
+| [options] | <code>Object</code> |  |  |
+| [options.fftSize] | <code>number</code> | <code>Math.pow(2, bci.nextpow2(signal.length))</code> | Size of the fft to be used. Should be a power of 2. |
+| [options.truncate] | <code>boolean</code> | <code>false</code> | If true, only the first half of the PSD array is returned |
+
+<a name="module_bcijs.psdBandPower"></a>
+
+### ~~bcijs.psdBandPower(psd, sampleRate, band, [fftSize]) ⇒ <code>number</code>~~
+***Deprecated***
+
+Deprecated, please use bci.bandpower() for output in proper units.The functionality of this method has been replaced with the 'bandpower' method.See the docs for 'bandpower' for more information.Computes the average magnitude across each frequency band given the output of the PSD method.
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>number</code> - The average power in the frequency band.  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| psd | <code>Array.&lt;number&gt;</code> |  | Power spectral density of the signal. |
+| sampleRate | <code>number</code> |  | The sample rate of the signal. |
+| band | <code>Array.&lt;number&gt;</code> \| <code>string</code> |  | The frequency band provided as an array [frequencyStart, frequencyStop] or a string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz). While string representations allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in future updates. |
+| [fftSize] | <code>number</code> | <code>Math.pow(2, bci.nextpow2(psd.length))</code> | Size of the fourier transform used to compute the PSD. |
+
+<a name="module_bcijs.signalBandPower"></a>
+
+### ~~bcijs.signalBandPower(samples, sampleRate, bands, [options]) ⇒ <code>number</code>~~
+***Deprecated***
+
+Deprecated, please use bci.bandpower() for output in proper units.The functionality of this method has been replaced with the 'bandpower' method.See the docs for 'bandpower' for more information.Computes the average magnitude across each frequency band.
+
+**Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
+**Returns**: <code>number</code> - The average power in the frequency band.  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| samples | <code>Array.&lt;number&gt;</code> \| <code>Array.&lt;Array.&lt;number&gt;&gt;</code> |  | The signal (array of numbers) or a matrix of signals, where rows are samples and columns are signals. |
+| sampleRate | <code>number</code> |  | The sample rate of the signal. |
+| bands | <code>Array</code> \| <code>string</code> |  | The frequency band or array of bands, where a single band is provided as an array [frequencyStart, frequencyStop] or a string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz).<br> While string representations allow for easier prototyping, the use of a specific band passed as an array is recommended, as band string representations may change in future updates. |
+| [options] | <code>Object</code> |  |  |
+| [options.fftSize] | <code>number</code> | <code>Math.pow(2, bci.nextpow2(signal.length))</code> | Size of the fft to be used. Should be a power of 2. |
+
+**Example**  
+```js
+// Example outputs are rounded// Single signal exampleslet sampleRate = 512;let signal = bci.generateSignal([2,16], [10,20], sampleRate, 1);// Get a single power in one bandconsole.log(bci.signalBandPower(signal, sampleRate, 'alpha')); // returns 102.4// Specify a custom band as an array (Ex: 8 Hz - 12 Hz)console.log(bci.signalBandPower(signal, sampleRate, [8, 12])); // returns 102.4// Obtain multiple band powersconsole.log(bci.signalBandPower(signal, sampleRate, ['alpha', 'beta'])); // returns [ 102.4, 227.6 ]// Multiple band powers works with custom bands tooconsole.log(bci.signalBandPower(signal, sampleRate, [[8, 12], [13, 30]])); // returns [ 102.4, 227.6 ]// Works with multiple signals too (example with 2 signals)let signal2 = bci.generateSignal([16, 2], [10, 20], 512, 1);let samples = bci.transpose([signal, signal2]);console.log(bci.signalBandPower(samples, sampleRate, 'alpha'));// Returns an array containing the alpha value for each signalconsole.log(bci.signalBandPower(samples, sampleRate, ['alpha', 'beta', 'gamma']));// Returns a 2d array with number_of_bands rows and number_of_signals columns
+```

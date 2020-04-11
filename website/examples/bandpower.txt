@@ -3,7 +3,7 @@ const bci = require('bcijs');
 // Generate 1 second of sample data
 let sampleRate = 512;
 let duration = 1;
-let amplitudes = [4, 8];
+let amplitudes = [8, 4];
 // 10 Hz (alpha), 20 Hz (beta) 
 let frequencies = [10, 20];
 
@@ -14,7 +14,12 @@ let signal = bci.generateSignal(
     duration
 );
 
-// Compute average power in alpha and beta frequency bands
-let powers = bci.signalBandPower(signal, sampleRate, ['alpha', 'beta']);
+// Compute relative band power in alpha and beta frequency bands
+let powers = bci.bandpower(
+    signal,
+    sampleRate,
+    ['alpha', 'beta'],
+    {relative: true}
+);
 
-console.log(powers); // [ 204.80000000000027, 113.77777777777834 ]
+console.log(powers); // [ 0.8000001014839981, 0.19999985303285062 ]
