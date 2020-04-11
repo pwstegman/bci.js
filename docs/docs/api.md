@@ -258,7 +258,7 @@ nextpow2(8); // 3nextpow2(9); // 4nextpow2(16); // 4nextpow2(30); // 5nextpo
 Estimates the power spectral density of a real-valued input signal using the periodogram method and a rectangular window.Output units are based on that of the input signal, of the form X^2/Hz, where X is the units of the input signal.For example, if the input is an EEG signal measured in μV, then this method returns values of μV^2/Hz.
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
-**Returns**: <code>Object</code> - Object with keys 'estimates' (the psd estimates) and 'frequencies' (the corresponding frequencies)  
+**Returns**: <code>Object</code> - Object with keys 'estimates' (the psd estimates) and 'frequencies' (the corresponding frequencies in Hz)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
