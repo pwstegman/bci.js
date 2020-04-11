@@ -10,7 +10,7 @@
 <br>
 
 BCI.js is a library for EEG-based brain computer interface (BCI) design with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, with features such as:
- - Signal processing and machine learning (LDA, CSP, ICA, PSD, etc.)
+ - Signal processing and machine learning (Bandpower, PSD, LDA, CSP, ICA, etc.)
  - Data manipulation (MATLAB style array subscripting, data windowing, CSV file support, etc.)
  - Networking (data collection, streaming via OSC, etc.)
  
@@ -27,7 +27,7 @@ npm install bcijs
 Browser
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bcijs@1.6.5/dist/bci.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bcijs@1.7.0/dist/bci.min.js"></script>
 ```
 
 ## Tutorials
@@ -45,7 +45,7 @@ const bci = require('bcijs');
 // Generate 1 second of sample data
 let sampleRate = 512;
 let duration = 1;
-let amplitudes = [1, 2, 4, 8];
+let amplitudes = [8, 4, 2, 1];
 let frequencies = [
 	1, // 1 Hz, delta range
 	5, // 5 Hz, theta range
@@ -55,21 +55,22 @@ let frequencies = [
 
 let signal = bci.generateSignal(amplitudes, frequencies, sampleRate, duration);
 
-// Compute average power in each frequency band
-let fftSize = sampleRate * duration;
-let bandpowers = bci.signalBandPower(
+// Compute relative power in each frequency band
+let bandpowers = bci.bandpower(
 	signal,
 	sampleRate,
 	['delta', 'theta', 'alpha', 'beta'],
-	{fftSize: fftSize} // optional, defaults to next power of 2 larger than or equal to signal length
+	{relative: true}
 );
 
 console.log(bandpowers);
 /*
-[ 85.33333333333366,
-  128.00000000000122,
-  204.80000000000047,
-  113.77777777777825 ]
+[
+  0.7171876695851037, 
+  0.22444067394892755,
+  0.04489131763080717,
+  0.013469490282877555
+]
 */
 ```
 
@@ -159,7 +160,7 @@ console.log(subarr);
 BCI.js can be loaded from the jsDelivr CDN with
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bcijs@1.6.5/dist/bci.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bcijs@1.7.0/dist/bci.min.js"></script>
 ```
 
 You can also find `bci.js` and `bci.min.js` in the [/dist](https://github.com/pwstegman/bci.js/tree/master/dist) directory.

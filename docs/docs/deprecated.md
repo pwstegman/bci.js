@@ -223,7 +223,7 @@ Compute the average power across a given frequency band given the PSD.
 ### ~~bcijs.averageBandPowers(samples, sampleRate, bands, [fftSize]) ⇒ <code>Array.&lt;number&gt;</code>~~
 ***Deprecated***
 
-The functionality of this method has been replaced with the 'bandpower' method.See the docs for 'bandpower' for more information.Computes the average magnitude across each frequency band averaged across all channelsUnits are that of the input signal. For example, if the input signal is measuredin μV, then this method returns values in μV.
+Deprecated, please use bci.bandpower() for output in proper units.The functionality of this method has been replaced with the 'bandpower' method.See the docs for 'bandpower' for more information.Computes the average magnitude across each frequency band averaged across all channelsUse bci.bandpower() for band power in proper units (signal units squared).
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>Array.&lt;number&gt;</code> - Array containing the average power across all channels in each band  
@@ -275,7 +275,7 @@ The functionality of this method has been replaced with the 'periodogram' method
 ### ~~bcijs.psdBandPower(psd, sampleRate, band, [fftSize]) ⇒ <code>number</code>~~
 ***Deprecated***
 
-The functionality of this method has been replaced with the 'bandpower' method.See the docs for 'bandpower' for more information.Computes the average magnitude across each frequency band given the output of the PSD method.Units are that of the input signal. For example, if the input signal is measuredin μV, then this method returns values in μV.Compute the average power across a given frequency band given the PSD.
+Deprecated, please use bci.bandpower() for output in proper units.The functionality of this method has been replaced with the 'bandpower' method.See the docs for 'bandpower' for more information.Computes the average magnitude across each frequency band given the output of the PSD method.
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>number</code> - The average power in the frequency band.  
@@ -292,7 +292,7 @@ The functionality of this method has been replaced with the 'bandpower' method.
 ### ~~bcijs.signalBandPower(samples, sampleRate, bands, [options]) ⇒ <code>number</code>~~
 ***Deprecated***
 
-The functionality of this method has been replaced with the 'bandpower' method.See the docs for 'bandpower' for more information.Computes the average magnitude across each frequency band.Units are that of the input signal. For example, if the input signal is measuredin μV, then this method returns values in μV.
+Deprecated, please use bci.bandpower() for output in proper units.The functionality of this method has been replaced with the 'bandpower' method.See the docs for 'bandpower' for more information.Computes the average magnitude across each frequency band.
 
 **Kind**: static method of [<code>bcijs</code>](#module_bcijs)  
 **Returns**: <code>number</code> - The average power in the frequency band.  
