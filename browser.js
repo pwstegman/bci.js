@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Sat Apr 11 2020 09:57:09 GMT-0400 (Eastern Daylight Time)
+// Created on Sat Apr 11 2020 14:02:31 GMT-0400 (Eastern Daylight Time)
 // This module excludes Node.js specific methods so it can be used in the browser
 /** @module bcijs */
 module.exports.averageBandPowers = require('./lib/compat/averageBandPowers.js');
@@ -28,6 +28,7 @@ module.exports.ldaProject = require('./lib/math/ldaProject.js');
 module.exports.nextpow2 = require('./lib/math/nextpow2.js');
 module.exports.periodogram = require('./lib/math/periodogram.js');
 module.exports.transpose = require('./lib/math/transpose.js');
+module.exports.welch = require('./lib/math/welch.js');
 module.exports.accuracy = require('./lib/metrics/accuracy.js');
 module.exports.balancedAccuracy = require('./lib/metrics/balancedAccuracy.js');
 module.exports.confusionMatrix = require('./lib/metrics/confusionMatrix.js');
