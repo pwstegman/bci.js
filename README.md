@@ -186,6 +186,8 @@ BCI.js methods can be found in the [lib/](https://github.com/pwstegman/bci.js/tr
 
 Documentation can be found at [https://bci.js.org/docs](https://bci.js.org/docs) or by viewing [api.md](https://github.com/pwstegman/bci.js/blob/master/docs/docs/api.md)
 
+Deprecated methods can be found at [deprecated.md](https://github.com/pwstegman/bci.js/blob/master/docs/docs/deprecated.md)
+
 ## Building
 
 See [dev.md](dev.md) for info on how to modify and build BCI.js

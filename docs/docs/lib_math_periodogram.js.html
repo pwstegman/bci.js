@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-      index.js - Documentation
+      lib/math/periodogram.js - Documentation
   </title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -88,7 +88,7 @@
   <div id="main">
     
       <h1 class="page-title">
-        index.js
+        lib/math/periodogram.js
       </h1>
     
 
@@ -97,56 +97,114 @@
 
 <section>
   <article>
-    <pre class="prettyprint source linenums"><code>// This file was auto generated, changes will be overwritten
-// Created on Sat Apr 11 2020 08:33:08 GMT-0400 (Eastern Daylight Time)
-/** @module bcijs */
-module.exports.averageBandPowers = require('./lib/compat/averageBandPowers.js');
-module.exports.csp = require('./lib/compat/csp.js');
-module.exports.f1score = require('./lib/compat/f1score.js');
-module.exports.lda = require('./lib/compat/lda.js');
-module.exports.network = require('./lib/compat/network.js');
-module.exports.psd = require('./lib/compat/psd.js');
-module.exports.psdBandPower = require('./lib/compat/psdBandPower.js');
-module.exports.signal = require('./lib/compat/signal.js');
-module.exports.signalBandPower = require('./lib/compat/signalBandPower.js');
-module.exports.loadCSV = require('./lib/data/loadCSV.js');
-module.exports.loadEDF = require('./lib/data/loadEDF.js');
-module.exports.partition = require('./lib/data/partition.js');
-module.exports.round = require('./lib/data/round.js');
-module.exports.saveCSV = require('./lib/data/saveCSV.js');
-module.exports.subscript = require('./lib/data/subscript.js');
-module.exports.toFixed = require('./lib/data/toFixed.js');
-module.exports.toTable = require('./lib/data/toTable.js');
-module.exports.windowApply = require('./lib/data/windowApply.js');
-module.exports.bandpower = require('./lib/math/bandpower.js');
-module.exports.cspLearn = require('./lib/math/cspLearn.js');
-module.exports.cspProject = require('./lib/math/cspProject.js');
-module.exports.fastICA = require('./lib/math/fastICA.js');
-module.exports.features = require('./lib/math/features.js');
-module.exports.generateSignal = require('./lib/math/generateSignal.js');
-module.exports.ldaClassify = require('./lib/math/ldaClassify.js');
-module.exports.ldaLearn = require('./lib/math/ldaLearn.js');
-module.exports.ldaProject = require('./lib/math/ldaProject.js');
-module.exports.nextpow2 = require('./lib/math/nextpow2.js');
-module.exports.periodogram = require('./lib/math/periodogram.js');
-module.exports.transpose = require('./lib/math/transpose.js');
-module.exports.accuracy = require('./lib/metrics/accuracy.js');
-module.exports.balancedAccuracy = require('./lib/metrics/balancedAccuracy.js');
-module.exports.confusionMatrix = require('./lib/metrics/confusionMatrix.js');
-module.exports.f1 = require('./lib/metrics/f1.js');
-module.exports.mcc = require('./lib/metrics/mcc.js');
-module.exports.precision = require('./lib/metrics/precision.js');
-module.exports.recall = require('./lib/metrics/recall.js');
-module.exports.specificity = require('./lib/metrics/specificity.js');
-module.exports.oscCollect = require('./lib/network/oscCollect.js');
-module.exports.oscHeaderScan = require('./lib/network/oscHeaderScan.js');
-module.exports.oscStream = require('./lib/network/oscStream.js');
-module.exports.prompt = require('./lib/network/prompt.js');
-module.exports.wait = require('./lib/network/wait.js');
-// Additional backwards compatibility
-exports.LDA = exports.lda;
-exports.csp = exports.signal.CSP;
-</code></pre>
+    <pre class="prettyprint source linenums"><code>const fft = require('fft.js');
+const nextpow2 = require('./nextpow2.js');
+
+let fftCache = {};
+
+/**
+ * Apply a Hann window to a signal
+ * @private
+ */
+function hann(signal) {
+    let windowed = [];
+    let L = signal.length - 1;
+    let C = Math.PI / L;
+
+    let scale = 0;
+
+    for(let i = 0; i &lt; signal.length; i++) {
+        let w = Math.sin(C * i) ** 2;
+        windowed.push(signal[i] * w);
+        scale += w ** 2;
+    }
+
+    return {signal: windowed, scale: scale};
+}
+
+/** 
+ * Estimates the power spectral density of a real-valued input signal using the periodogram method and a rectangular window.
+ * Output units are based on that of the input signal, of the form X^2/Hz, where X is the units of the input signal.
+ * For example, if the input is an EEG signal measured in μV, then this method returns values of μV^2/Hz.
+ * 
+ * @memberof module:bcijs
+ * @param {number[]} signal - The signal.
+ * @param {number} sample_rate - sample rate in Hz
+ * @param {Object} [options]
+ * @param {number} [options.fftSize=Math.pow(2, bci.nextpow2(signal.length))] - Size of the fft to be used. Should be a power of 2.
+ * @param {number} [options.window='rectangular'] - Window function to apply, either 'hann' or 'rectangular'. Default is 'rectangular'.
+ * @returns {Object} Object with keys 'estimates' (the psd estimates) and 'frequencies' (the corresponding frequencies)
+ */
+function periodogram(signal, sample_rate, options) {
+	let {fftSize, window} = Object.assign({
+        fftSize: Math.pow(2, nextpow2(signal.length)),
+        window: 'rectangular'
+	}, options);
+
+	let f;
+	if (fftCache.hasOwnProperty(fftSize)) {
+		f = fftCache[fftSize];
+	} else {
+		f = new fft(fftSize);
+		fftCache[fftSize] = f;
+    }
+    
+    // Apply window
+    let num_samples = signal.length;
+    let S = num_samples;
+    if(window == 'hann') {
+        let h = hann(signal);
+        signal = h.signal;
+        S = h.scale;
+    } else if(window != 'rectangular') {
+        throw new Error('Unknown window type');
+    }
+
+    // Zero pad signal to fftSize if needed
+	if (num_samples &lt; fftSize) {
+		signal = signal.concat(Array(fftSize - signal.length).fill(0));
+	}
+
+    // Complex array [real, imag, real, imag, etc.]
+    let freqs = f.createComplexArray();
+    
+    // Fill in complex array with the FFT values
+	f.realTransform(freqs, signal);
+    f.completeSpectrum(freqs);
+    
+    // Get the power of each FFT bin value
+    let powers = [];
+    let scaling_factor = 2 / (sample_rate * S);
+	for (var i = 0; i &lt; freqs.length - 1; i += 2) {
+        // magnitude is sqrt(real^2 + imag^2)
+        let magnitude = Math.sqrt(freqs[i] ** 2 + freqs[i + 1] ** 2);
+
+        // apply scaling
+        let power = scaling_factor * magnitude ** 2;
+
+		powers.push(power);
+    }
+
+    // Toss values past Nyquist
+    powers = powers.slice(0, powers.length / 2 + 1);
+
+    // Don't scale DC or Nyquist by 2
+    powers[0] /= 2;
+    powers[powers.length - 1] /= 2;
+    
+    // Compute frequencies
+    let frequencies = new Array(powers.length);
+    for(let i = 0; i &lt; frequencies.length; i++) {
+        frequencies[i] = i * (sample_rate / fftSize);
+    }
+
+	return {
+        estimates: powers,
+        frequencies: frequencies
+    };
+}
+
+module.exports = periodogram;</code></pre>
   </article>
 </section>
 
