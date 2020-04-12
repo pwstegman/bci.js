@@ -18,13 +18,11 @@ module.exports = function(src, outFile, options) {
 			filePath = upath.normalize(filePath);
 			if(includeFunction(filePath)){
 				filePath = upath.normalize(path.join(projectRoot, filePath));
-				let functionName = path.basename(filePath, '.js');
-				fs.appendFileSync(out, 'module.exports.' + functionName + " = require('./" + filePath + "');\n");
+				// remove .js and src/
+				filePath = filePath.substring(4, filePath.length - 3);
+				fs.appendFileSync(out, `export * from './${filePath}';\n`);
 			}
 		});
-
-		let moreCompat = fs.readFileSync('./compat.js', {encoding: 'utf8'});
-		fs.appendFileSync(out, moreCompat);
 
 		fs.closeSync(out);
 	});

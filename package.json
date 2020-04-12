@@ -2,7 +2,8 @@
   "name": "bcijs",
   "version": "1.7.0",
   "description": "EEG signal processing and machine learning",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "module": "src/index.js",
   "scripts": {
     "test": "npm run build && nyc mocha --require \"./test/tests/node-config.js\" --reporter min \"test/tests/**/*.test.js\"",
     "test-dist": "npm run build && gulp test-dist",
@@ -22,7 +23,7 @@
     "edfjs": "^0.2.0",
     "fast-csv": "^2.5.0",
     "fft.js": "^4.0.3",
-    "mathjs": "^3.20.2",
+    "mathjs": "^6.6.3",
     "node-osc": "^2.1.0",
     "numeric": "^1.2.6",
     "pw-csp": "^1.0.1",
@@ -65,6 +66,7 @@
     "fs-then-native": "^2.0.0",
     "glob": "^7.1.6",
     "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-header": "^2.0.9",
@@ -82,9 +84,13 @@
     "nyc": "^15.0.1",
     "pug": "^2.0.4",
     "readable-stream": "^3.6.0",
+    "terser-webpack-plugin": "^2.3.5",
     "tmp": "0.0.33",
     "upath": "^1.2.0",
     "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0"
-  }
+    "vinyl-source-stream": "^2.0.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "sideEffects": false
 }
