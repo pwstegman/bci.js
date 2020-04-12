@@ -16,6 +16,8 @@ BCI.js is a library for EEG-based brain computer interface (BCI) design with Jav
  
 You can view all available methods in the [docs](https://bci.js.org/docs/)
 
+Latest release is v1.7.0. You can view the release notes at [releases](https://github.com/pwstegman/bci.js/releases)
+
 ## Getting Started
 
 Node.js
