@@ -3,7 +3,7 @@ const path = require('path');
 
 // Compile dist file for browser
 module.exports = {
-    entry: './index.js',
+    entry: './src/browser.js',
     mode: 'production',
     output: {
         path: path.resolve(__dirname, 'dist'),

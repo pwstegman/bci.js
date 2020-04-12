@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Sat Apr 11 2020 21:33:40 GMT-0400 (Eastern Daylight Time)
+// Created on Sun Apr 12 2020 02:13:11 GMT-0400 (Eastern Daylight Time)
 // This module excludes Node.js specific methods so it can be used in the browser
 /** @module bcijs */
 export * from './compat/averageBandPowers';
@@ -19,12 +19,14 @@ export * from './data/windowApply';
 export * from './math/bandpower';
 export * from './math/cspLearn';
 export * from './math/cspProject';
+export * from './math/dpss';
 export * from './math/fastICA';
 export * from './math/features';
 export * from './math/generateSignal';
 export * from './math/ldaClassify';
 export * from './math/ldaLearn';
 export * from './math/ldaProject';
+export * from './math/multitaper';
 export * from './math/nextpow2';
 export * from './math/periodogram';
 export * from './math/transpose';
