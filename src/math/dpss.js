@@ -73,10 +73,14 @@ function interpolate(arr, N) {
 /**
  * Compute the discrete prolate spheroidal (Slepian) sequences
  * 
- * This method is quite slow for N > 128. If you need DPSSs of length > 128,
- * it may be best to calculate DPSSs of length 128 and then interpolate.
+ * For lengths greater than 128, DPSSs of length 128 are calculated and then
+ * linearly interpolated up to the desired length.
+ * 
+ * Once the underlying eigenvector method is optimized further, we may be able to increase the
+ * length prior to interpolation.
  * 
  * Reference: D. B. Percival and A. T. Walden, "Calculation of Discrete Prolate Spheroidal Sequences," in Spectral Analysis for Physical Applications, pp. 378–390, 1993.
+ * 
  * @param {number} length - Length of sequences 
  * @param {number} [NW=4] - Time-half-handwidth (Default 4)
  * @param {number} [K=floor(2*NW-1)] - Number of sequences to return (Default 7)

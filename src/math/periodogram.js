@@ -23,6 +23,27 @@ function hann(signal) {
     return {signal: windowed, scale: scale};
 }
 
+/**
+ * Apply a taper to a signal
+ * @param {number[]} signal - The signal
+ * @param {number[]} taper - The taper
+ * @returns {number[]} The tapered signal
+ */
+function taper(signal, taper) {
+    if(signal.length != taper.length)
+        throw new Error('Signal length must match taper length');
+
+    let windowed = [];
+    let scale = 0;
+
+    for(let i = 0; i < signal.length; i++) {
+        windowed.push(signal[i] * taper[i]);
+        scale += taper[i] ** 2;
+    }
+
+    return {signal: windowed, scale: scale};
+}
+
 /** 
  * Estimates the power spectral density of a real-valued input signal using the periodogram method and a rectangular window.
  * Output units are based on that of the input signal, of the form X^2/Hz, where X is the units of the input signal.
@@ -33,7 +54,7 @@ function hann(signal) {
  * @param {number} sample_rate - sample rate in Hz
  * @param {Object} [options]
  * @param {number} [options.fftSize=Math.pow(2, bci.nextpow2(signal.length))] - Size of the fft to be used. Should be a power of 2.
- * @param {number} [options.window='rectangular'] - Window function to apply, either 'hann' or 'rectangular'. Default is 'rectangular'.
+ * @param {string|number[]} [options.window='rectangular'] - Window function to apply, either 'hann', 'rectangular', or an array for a custom window. Default is 'rectangular'.
  * @returns {Object} Object with keys 'estimates' (the psd estimates) and 'frequencies' (the corresponding frequencies in Hz)
  */
 export function periodogram(signal, sample_rate, options) {
@@ -53,7 +74,12 @@ export function periodogram(signal, sample_rate, options) {
     // Apply window
     let num_samples = signal.length;
     let S = num_samples;
-    if(window == 'hann') {
+    if (Array.isArray(window)) {
+        let t = taper(signal, window);
+        signal = t.signal;
+        S = t.scale;
+    }
+    else if(window == 'hann') {
         let h = hann(signal);
         signal = h.signal;
         S = h.scale;

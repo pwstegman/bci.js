@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Sun Apr 12 2020 02:13:11 GMT-0400 (Eastern Daylight Time)
+// Created on Sun Apr 12 2020 23:01:37 GMT-0400 (Eastern Daylight Time)
 /** @module bcijs */
 export * from './compat/averageBandPowers';
 export * from './compat/csp';

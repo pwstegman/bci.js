@@ -2,30 +2,22 @@ import { dpss } from './dpss';
 import { periodogram } from './periodogram';
 
 /**
- * Apply a taper to a signal
- * @private
+ * Estimate the power spectral density using the multitaper method
  * @param {number[]} signal - The signal
- * @param {number[]} taper - The taper
- * @returns {numbr[]} - The tapered signal
+ * @param {number} sample_rate - The sample rate
+ * @param {object} options
+ * @param {number} [options.nw=4] - The time-halfbandwidth. Default is 4.
  */
-function applyTaper(signal, taper) {
-    if(signal.length != taper.length) throw new Error('Signal and taper must have same length');
-    let tapered = [];
-    for(let i = 0; i < taper.length; i++) {
-        tapered.push(taper[i] * signal[i]);
-    }
-    return tapered;
-}
-
-export function multitaper(signal, sample_rate) {
+export function multitaper(signal, sample_rate, options) {
+    let { nw } = Object.assign({
+        nw: 4
+    }, options);
+    
     // Compute the DPSSs
-    let tapers = dpss(signal.length);
-
-    // Apply tapers to signal
-    let tapered_signals = tapers.map(taper => applyTaper(signal, taper));
+    let tapers = dpss(signal.length, nw);
 
     // Compute periodograms
-    let psds = tapered_signals.map(tapered => periodogram(tapered, sample_rate));
+    let psds = tapers.map(taper => periodogram(signal, sample_rate, {window: taper}));
 
     // Average estimates
     let avg = new Array(psds[0].estimates.length).fill(0);
