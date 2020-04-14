@@ -1,4 +1,6 @@
-import { eigs, transpose } from 'mathjs';
+import { eigs, transpose, multiply } from 'mathjs';
+import FFT from 'fft.js';
+import { nextpow2 } from './nextpow2';
 
 /**
  * Compute a symmetric tridiagonal matrix given diagonal and off-diagonal elements
@@ -71,6 +73,77 @@ function interpolate(arr, N) {
 }
 
 /**
+ * Compute q, which is used in computing the eigenvalues
+ * @param {number[]} E - Eigenvector
+ * @returns {number[]} q for the given eigenvector
+ */
+function computeQ(E) {
+    // Copy E into A and store its reverse into B
+    let A = new Array(E.length);
+    let B = new Array(E.length);
+
+    for(let i = 0; i < E.length; i++) {
+        A[i] = E[E.length - i - 1];
+        B[i] = E[i];
+    }
+
+    // Length of eigenvector
+    let N = E.length;
+
+    // We'll use an FFT to compute the convolution
+    let fft_len = 2**nextpow2(E.length + N - 1);
+
+    // Pad with zeros to allow for linear convolution via FFT
+    for(let i = 0; i < fft_len - N; i++) {
+        A.push(0);
+        B.push(0);
+    }
+
+    // FFT object
+    let f = new FFT(fft_len);
+
+    // FFT A
+    let out1 = f.createComplexArray();
+    f.realTransform(out1, A);
+    f.completeSpectrum(out1);
+
+    // FFT B
+    let out2 = f.createComplexArray();
+    f.realTransform(out2, B);
+    f.completeSpectrum(out2);
+
+    // Multiply the complex arrays FFT A and FFT B
+    let mult = [];
+    for(let i = 0; i < out1.length; i += 2) {
+        let a = out1[i];
+        let b = out1[i+1];
+        let c = out2[i];
+        let d = out2[i+1];
+
+        let c1 = a*c - b*d;
+        let c2 = a*d + b*c;
+
+        mult.push(c1);
+        mult.push(c2);
+    }
+
+    // Compute the inverse FFT of the product
+    const conv_complex = f.createComplexArray();
+    f.inverseTransform(conv_complex, mult);
+
+    // Grab the real components up to the length of the eigenvector
+    // (imaginary components are zero)
+    let conv = [];
+    for(let i = 0; i < N*2; i += 2) {
+        conv.push(conv_complex[i]);
+    }
+
+    // Return the result
+    return conv;
+}
+
+
+/**
  * Compute the discrete prolate spheroidal (Slepian) sequences
  * 
  * For lengths greater than 128, DPSSs of length 128 are calculated and then
@@ -111,43 +184,66 @@ export function dpss(length, NW = 4, K) {
     let { vectors } = eigs(tridiag(diag, offdiag));
     vectors = transpose(vectors);
 
+    // Compute eigenvalues of the definition equation
+    let s = new Array(N);
+    s[N-1] = [2 * W];
+    const sinc = (x) => Math.sin(Math.PI * x) / (Math.PI * x);
+    for(let i = 1; i < N; i++) {
+        s[N - i - 1] = [4 * W * sinc(2*W*i)];
+    }
+    let q = vectors.map(vector => computeQ(vector));
+    let all_values = multiply(q, s);
+
+    // Select only top K eigenvalues of definition equation
+    // Ensure values are between 0 and 1. (It's possible to get values
+    // slightly below 0 or above 1 due to finite precision errors.
+    let values = [];
+    let num_values = K;
+    if(arguments[3]) num_values = all_values.length;
+    for(let i = 0; i < num_values; i++) {
+        let val = all_values[N - i - 1][0];
+        if(val < 0) val = 0;
+        else if(val > 1) val = 1;
+        values.push(val);
+    }
+
     // Select eigenvectors with K largest eigenvalues
-    let result = vectors.slice(vectors.length - K);
+    vectors = vectors.slice(vectors.length - K);
 
     // Flip vectors so they always start greater than 0
     /*
     Formally the expected behavior is they should be positive when symmetric (K is even) or
     begin with a "positive first lobe" when not (K is odd) (Percival and Walden, 1993, p. 379)
     */
-    for(let r = 0; r < result.length; r++) {
-        if(result[r][0] < 0) {
-            for(let c = 0; c < result[r].length; c++) {
-                result[r][c] *= -1;
+    for(let r = 0; r < vectors.length; r++) {
+        if(vectors[r][0] < 0) {
+            for(let c = 0; c < vectors[r].length; c++) {
+                vectors[r][c] *= -1;
             }
         }
     }
 
     // Reverse array of vectors
-    result = result.reverse();
+    vectors = vectors.reverse();
 
     // Interpolate up as needed
     if(length > N) {
         // Interpolate linearly
-        result = result.map(taper => interpolate(taper, length));
+        vectors = vectors.map(taper => interpolate(taper, length));
         
         // Rescale to have proper area under curve
-        for(let t = 0; t < result.length; t++) {
+        for(let t = 0; t < vectors.length; t++) {
             let scale = 0;
-            for(let i = 0; i < result[t].length; i++) {
-                scale += result[t][i] ** 2;
+            for(let i = 0; i < vectors[t].length; i++) {
+                scale += vectors[t][i] ** 2;
             }
             scale = Math.sqrt(scale);
 
-            for(let i = 0; i < result[t].length; i++) {
-                result[t][i] /= scale;
+            for(let i = 0; i < vectors[t].length; i++) {
+                vectors[t][i] /= scale;
             }
         }
     }
 
-    return result;
+    return {vectors: vectors, values: values};
 }
