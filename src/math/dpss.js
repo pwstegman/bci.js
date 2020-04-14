@@ -143,6 +143,9 @@ function computeQ(E) {
 }
 
 
+// For caching the DPSSs
+let dpss_cache = {};
+
 /**
  * Compute the discrete prolate spheroidal (Slepian) sequences
  * 
@@ -161,38 +164,51 @@ function computeQ(E) {
 export function dpss(length, NW = 4, K) {
     if(typeof K === "undefined") K = Math.floor(2 * NW - 1);
     if(K < 1 || K > N) throw new Error('Invalid value for K');
-    
+
     // As eig method is very slow, cap at 128 and interpolate up
     let N = Math.min(length, 128);
 
     // Calculate half bandwidth
     let W = NW / N;
 
-    // Form tridiag matrix
-    let diag = []
-    for(let t = 0; t < N; t++) {
-        let value = ((N - 1 - 2*t) / 2) ** 2 * Math.cos(2 * Math.PI * W);
-        diag.push(value);
-    }
+    // Eigenvectors and eigenvalues
+    let vectors;
+    let all_values;
 
-    let offdiag = [];
-    for(let t = 1; t < N; t++) {
-        offdiag.push(t * (N - t) / 2);
-    }
+    if(!dpss_cache[[N, NW]]) {
+        // Form tridiag matrix
+        let diag = []
+        for(let t = 0; t < N; t++) {
+            let value = ((N - 1 - 2*t) / 2) ** 2 * Math.cos(2 * Math.PI * W);
+            diag.push(value);
+        }
 
-    // Compute eigenvectors (sorted by increasing eigenvalue)
-    let { vectors } = eigs(tridiag(diag, offdiag));
-    vectors = transpose(vectors);
+        let offdiag = [];
+        for(let t = 1; t < N; t++) {
+            offdiag.push(t * (N - t) / 2);
+        }
 
-    // Compute eigenvalues of the definition equation
-    let s = new Array(N);
-    s[N-1] = [2 * W];
-    const sinc = (x) => Math.sin(Math.PI * x) / (Math.PI * x);
-    for(let i = 1; i < N; i++) {
-        s[N - i - 1] = [4 * W * sinc(2*W*i)];
+        // Compute eigenvectors (sorted by increasing eigenvalue)
+        let eigen = eigs(tridiag(diag, offdiag));
+        vectors = transpose(eigen.vectors);
+
+        // Compute eigenvalues of the definition equation
+        let s = new Array(N);
+        s[N-1] = [2 * W];
+        const sinc = (x) => Math.sin(Math.PI * x) / (Math.PI * x);
+        for(let i = 1; i < N; i++) {
+            s[N - i - 1] = [4 * W * sinc(2*W*i)];
+        }
+        let q = vectors.map(vector => computeQ(vector));
+        all_values = multiply(q, s);
+
+        // Save cache
+        dpss_cache[[N, NW]] = {vectors: vectors, values: all_values};
+    } else {
+        let cached = dpss_cache[[N, NW]];
+        vectors = cached.vectors;
+        all_values = cached.values;
     }
-    let q = vectors.map(vector => computeQ(vector));
-    let all_values = multiply(q, s);
 
     // Select only top K eigenvalues of definition equation
     // Ensure values are between 0 and 1. (It's possible to get values

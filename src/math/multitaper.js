@@ -53,7 +53,7 @@ export function multitaper(signal, sample_rate, options) {
         let S = mt.estimates;
         let values = mt.values;
 
-        // For now, doing 2 iterations
+        // Iterative max_iterations times or until converged
         for(let i = 0; i < max_iterations; i++) {
             let variance = 0;
             for(let i = 0; i < S.length; i++) variance += S[i];
@@ -74,8 +74,17 @@ export function multitaper(signal, sample_rate, options) {
             // Re-estimate spectrum with weights b(k, f)
             mt = multitaper(signal, sample_rate, {nw: nw, k: k, _bk: bk, _values: true});
 
+            // Check if converged
+            let converged = true;
+            for(let i = 0; i < S.length; i++) {
+                let delta = Math.abs(S[i] - mt.estimates[i]);
+                if(delta > 1e-16) converged = false;
+            }
+
             S = mt.estimates;
             values = mt.values;
+
+            if(converged) break;
         }
 
         return {
