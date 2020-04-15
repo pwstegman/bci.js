@@ -33,6 +33,7 @@
   "files": [
     "dist/",
     "lib/",
+    "src/",
     "browser.js",
     "index.js",
     "docs/docs/api.md",

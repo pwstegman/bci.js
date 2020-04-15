@@ -82,6 +82,10 @@ function calculateAdaptiveWeights(spectrum, eigenvalues, variance) {
     return weights;
 }
 
+function log(verbose, message) {
+    if(verbose) console.log(message);
+}
+
 /**
  * Estimate the power spectral density using the multitaper method
  * @param {number[]} signal - The signal
@@ -90,15 +94,19 @@ function calculateAdaptiveWeights(spectrum, eigenvalues, variance) {
  * @param {number} [options.nw=4] - The time-halfbandwidth. Default is 4.
  */
 export function multitaper(signal, sample_rate, options) {
-    let { nw, k, method, max_iterations } = Object.assign({
+    let { nw, k, method, max_iterations, tolerance, verbose } = Object.assign({
         nw: 4,
         k: null,
-        method: 'adapt',
+        method: 'adaptive',
         max_iterations: 100,
+        tolerance: 1e-10,
+        verbose: false
     }, options);
 
     // Default k (number of tapers)
     if(k === null) k = Math.floor(nw * 2 - 1);
+
+    log(verbose, `Using ${k} tapers with ${method} weights`);
     
     // Compute the DPSSs
     let sequences = dpss(signal.length, nw, k);
@@ -118,7 +126,7 @@ export function multitaper(signal, sample_rate, options) {
     } else if(method == 'eigen') {
         let weights = eigenvalues;
         estimates = weightedTapers(psds, weights);
-    } else if(method == 'adapt') {
+    } else if(method == 'adaptive') {
         // Calculate the initial estimate with first two tapers
         estimates = weightedTapers(psds.slice(0, 2), eigenvalues.slice(0, 2));
 
@@ -128,6 +136,8 @@ export function multitaper(signal, sample_rate, options) {
         variance /= signal.length;
 
         // Iterate until convergence
+        let iteration = -1;
+        let max_delta = -1;
         for(let i = 0; i < max_iterations; i++) {
             // Calculate weights
             let weights = calculateAdaptiveWeights(estimates, eigenvalues, variance);
@@ -136,18 +146,28 @@ export function multitaper(signal, sample_rate, options) {
             let new_estimates = weightedTapersFrequencies(psds, weights);
 
             // Check if converged
-            let converged = true;
+            max_delta = 0;
             for(let i = 0; i < estimates.length; i++) {
                 let delta = Math.abs(estimates[i] - new_estimates[i]);
-                if(delta > 1e-16) converged = false;
+                if(delta > max_delta) max_delta = delta;
             }
 
             // Update spectrum
             estimates = new_estimates;
 
             // Complete if converged
-            if(converged) break;
+            if(max_delta < tolerance) {
+                iteration = i;
+                log(verbose, `Converged after completing iteration ${i + 1}`);
+                break;
+            };
         }
+
+        if(iteration == -1) {
+            log(verbose, `Reached max iterations of ${max_iterations} with a maximum delta of ${max_delta}`);
+        }
+    } else {
+        throw new Error('Unknown method');
     }
 
     return {
