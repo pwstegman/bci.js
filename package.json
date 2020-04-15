@@ -48,9 +48,11 @@
   "keywords": [
     "eeg",
     "bci",
+    "bci.js",
     "signal processing",
     "machine learning",
-    "math"
+    "math",
+    "DSP"
   ],
   "bugs": {
     "url": "https://github.com/pwstegman/bcijs/issues"

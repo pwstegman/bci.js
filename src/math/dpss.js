@@ -215,7 +215,6 @@ export function dpss(length, NW = 4, K) {
     // slightly below 0 or above 1 due to finite precision errors.
     let values = [];
     let num_values = K;
-    if(arguments[3]) num_values = all_values.length;
     for(let i = 0; i < num_values; i++) {
         let val = all_values[N - i - 1][0];
         if(val < 0) val = 0;
