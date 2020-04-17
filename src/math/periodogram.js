@@ -58,9 +58,10 @@ function taper(signal, taper) {
  * @returns {Object} Object with keys 'estimates' (the psd estimates) and 'frequencies' (the corresponding frequencies in Hz)
  */
 export function periodogram(signal, sample_rate, options) {
-	let {fftSize, window} = Object.assign({
+	let {fftSize, window, _scaling} = Object.assign({
         fftSize: Math.pow(2, nextpow2(signal.length)),
-        window: 'rectangular'
+        window: 'rectangular',
+        _scaling: 'psd'
 	}, options);
 
 	let f;
@@ -69,6 +70,10 @@ export function periodogram(signal, sample_rate, options) {
 	} else {
 		f = new fft(fftSize);
 		fftCache[fftSize] = f;
+    }
+    // Validate _scaling
+    if(_scaling != 'psd' && _scaling != 'none') {
+        throw new Error('Unknown scaling');
     }
     
     // Apply window
@@ -101,7 +106,10 @@ export function periodogram(signal, sample_rate, options) {
     
     // Get the power of each FFT bin value
     let powers = [];
+    
     let scaling_factor = 2 / (sample_rate * S);
+    if(_scaling == 'none') scaling_factor = 1;
+
 	for (var i = 0; i < freqs.length - 1; i += 2) {
         // magnitude is sqrt(real^2 + imag^2)
         let magnitude = Math.sqrt(freqs[i] ** 2 + freqs[i + 1] ** 2);
@@ -116,8 +124,10 @@ export function periodogram(signal, sample_rate, options) {
     powers = powers.slice(0, powers.length / 2 + 1);
 
     // Don't scale DC or Nyquist by 2
-    powers[0] /= 2;
-    powers[powers.length - 1] /= 2;
+    if(_scaling == 'psd') {
+        powers[0] /= 2;
+        powers[powers.length - 1] /= 2;
+    }
     
     // Compute frequencies
     let frequencies = new Array(powers.length);

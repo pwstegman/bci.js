@@ -1,6 +1,6 @@
-import periodogram from './periodogram';
-import windowApply from '../data/windowApply';
-import nextpow2 from './nextpow2';
+import { periodogram } from './periodogram';
+import { windowApply } from '../data/windowApply';
+import { nextpow2 } from './nextpow2';
 
 /**
  * Welch's method

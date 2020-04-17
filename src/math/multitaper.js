@@ -94,11 +94,12 @@ function log(verbose, message) {
  * @param {number} [options.nw=4] - The time-halfbandwidth. Default is 4.
  */
 export function multitaper(signal, sample_rate, options) {
-    let { nw, k, method, max_iterations, tolerance, verbose } = Object.assign({
+    let { nw, k, method, max_iterations, min_iterations, tolerance, verbose } = Object.assign({
         nw: 4,
         k: null,
-        method: 'adaptive',
+        method: 'adapt',
         max_iterations: 100,
+        min_iterations: 3,
         tolerance: 1e-10,
         verbose: false
     }, options);
@@ -106,29 +107,30 @@ export function multitaper(signal, sample_rate, options) {
     // Default k (number of tapers)
     if(k === null) k = Math.floor(nw * 2 - 1);
 
-    log(verbose, `Using ${k} tapers with ${method} weights`);
+    log(verbose, `Using ${k} tapers; ${method} weights`);
     
     // Compute the DPSSs
     let sequences = dpss(signal.length, nw, k);
     let tapers = sequences.vectors;
     let eigenvalues = sequences.values;
 
-    // Compute periodograms
-    let psds = tapers.map(taper => periodogram(signal, sample_rate, {window: taper}));
+    // Compute spectral density functions
+    // Use periodogram method with _scaling of 'none' to calculate abs(fft(x)).^2
+    let sdf = tapers.map(taper => periodogram(signal, sample_rate, {window: taper, _scaling: 'none'}));
 
     // Weighted average estimates
-    let frequencies = psds[0].frequencies;
+    let frequencies = sdf[0].frequencies;
     let estimates;
 
     if(method == 'unity') {
-        let weights = new Array(psds.length).fill(1);
-        estimates = weightedTapers(psds, weights);
+        let weights = new Array(sdf.length).fill(1);
+        estimates = weightedTapers(sdf, weights);
     } else if(method == 'eigen') {
         let weights = eigenvalues;
-        estimates = weightedTapers(psds, weights);
-    } else if(method == 'adaptive') {
+        estimates = weightedTapers(sdf, weights);
+    } else if(method == 'adapt') {
         // Calculate the initial estimate with first two tapers
-        estimates = weightedTapers(psds.slice(0, 2), eigenvalues.slice(0, 2));
+        estimates = weightedTapers(sdf.slice(0, 2), eigenvalues.slice(0, 2));
 
         // Calculate variance
         let variance = 0;
@@ -143,7 +145,7 @@ export function multitaper(signal, sample_rate, options) {
             let weights = calculateAdaptiveWeights(estimates, eigenvalues, variance);
 
             // Re-estimate the spectrum
-            let new_estimates = weightedTapersFrequencies(psds, weights);
+            let new_estimates = weightedTapersFrequencies(sdf, weights);
 
             // Check if converged
             max_delta = 0;
@@ -156,7 +158,7 @@ export function multitaper(signal, sample_rate, options) {
             estimates = new_estimates;
 
             // Complete if converged
-            if(max_delta < tolerance) {
+            if(max_delta < tolerance && i >= min_iterations - 1) {
                 iteration = i;
                 log(verbose, `Converged after completing iteration ${i + 1}`);
                 break;
@@ -169,6 +171,14 @@ export function multitaper(signal, sample_rate, options) {
     } else {
         throw new Error('Unknown method');
     }
+
+    // Scale to units of power spectral density
+    // The tapers all have sum(x.^2) of 1, so no need to account for them
+    for(let i = 0; i < estimates.length; i++) {
+        estimates[i] = 2 * estimates[i] / sample_rate;
+    }
+    estimates[0] /= 2; // Don't scale DC by 2
+    estimates[estimates.length - 1] /= 2; // Don't scale Nyquist by 2
 
     return {
         estimates: estimates,
