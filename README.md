@@ -1,5 +1,7 @@
 <p align="center"><img src="static/bcijs-logo.png" height="68px"></p>
 
+<p align="center">Brain Computer Interfaces (BCIs) with JavaScript</p>
+
 <p align="center">
 	<a href="https://www.npmjs.com/package/bcijs"><img src="https://img.shields.io/npm/v/bcijs.svg" alt="Version"></a>
 	<a href="https://www.npmjs.com/package/bcijs"><img src="https://img.shields.io/npm/dm/bcijs.svg" alt="Downloads"></a>
@@ -9,16 +11,11 @@
 
 <br>
 
-BCI.js is a library for EEG-based brain computer interface (BCI) design with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, with features such as:
- - Signal processing and machine learning (Bandpower, PSD, LDA, CSP, ICA, etc.)
- - Data manipulation (MATLAB style array subscripting, data windowing, CSV file support, etc.)
- - Networking (data collection, streaming via OSC, etc.)
- 
+## Getting Started
+
 You can view all available methods in the [docs](https://bci.js.org/docs/)
 
 Latest release is v1.7.0. You can view the release notes at [releases](https://github.com/pwstegman/bci.js/releases)
-
-## Getting Started
 
 Node.js
 
@@ -31,6 +28,20 @@ Browser
 ```html
 <script src="https://cdn.jsdelivr.net/npm/bcijs@1.7.0/dist/bci.min.js"></script>
 ```
+
+## Feature Overview
+
+For a complete list of methods, see the [docs](https://bci.js.org/docs/).
+
+| Signal Processing | Machine Learning | Data Management |
+| --- | --- | --- |
+| Bandpower | Feature extraction | Load and save CSVs (Node.js only) |
+| Multitaper | Linear discriminant analysis | Load from EDF (Node.js only) |
+| Welch's method | Confusion matrices | Epoch / window data |
+| Periodogram | Metrics (precision, recall, F1, MCC, etc.) | Partition datasets |
+| Independent component analysis | | Array subscripting (colon notation) |
+| Common spatial pattern | | |
+| Signal generation | | |
 
 ## Tutorials
 - [EEG Motor Imagery Classification in Node.js with BCI.js](https://medium.com/@pwstegman/eeg-motor-imagery-classification-in-node-js-with-bci-js-d21f29cf165)
