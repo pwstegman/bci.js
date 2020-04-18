@@ -12,7 +12,8 @@
     "docs-md": "gulp docs-md",
     "docs-html": "gulp docs-html",
     "docs": "npm run docs-html && npm run docs-md",
-    "prepublishOnly": "npm run build && npm run dist && npm run test && npm run docs"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run dist && npm run test && npm run docs"
   },
   "author": "Pierce Stegman <pwstegman@gmail.com> (https://github.com/pwstegman)",
   "license": "MIT",

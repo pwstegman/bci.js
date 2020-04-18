@@ -68,3 +68,6 @@ test/browser/bci.test.js
 
 # data files
 examples/node/data/
+
+# Babel transpiled lib
+lib/

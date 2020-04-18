@@ -6,15 +6,13 @@ const createIndex = require('./utils/createIndex.js');
 // Generate es6 module-style index.js in ./src/
 function buildESM(done) {
 	let header = "// This file was auto generated, changes will be overwritten\n// Created on " + (new Date()) + "\n";
-	header += "/** @module bcijs */\n";
-	createIndex('src/*/*.js', './src/index.js', {
+	createIndex('src/*/*.js', './src/modules.js', {
 		header: header
 	});
 	
 	let browserHeader = "// This file was auto generated, changes will be overwritten\n// Created on " + (new Date()) + "\n";
 	browserHeader += "// This module excludes Node.js specific methods so it can be used in the browser\n";
-	browserHeader += "/** @module bcijs */\n";
-	createIndex('src/*/*.js', './src/browser.js', {
+	createIndex('src/*/*.js', './src/modules_browser.js', {
 		header: browserHeader,
 		includeFunction: (filePath) => {
 			let moduleCode = fs.readFileSync(filePath);
