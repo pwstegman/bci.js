@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Fri Apr 17 2020 22:48:08 GMT-0400 (Eastern Daylight Time)
+// Created on Sat Apr 18 2020 18:30:47 GMT-0400 (Eastern Daylight Time)
 export * from './compat/averageBandPowers';
 export * from './compat/csp';
 export * from './compat/f1score';
@@ -25,7 +25,6 @@ export * from './math/dpss';
 export * from './math/fastICA';
 export * from './math/features';
 export * from './math/generateSignal';
-export * from './math/interpolate';
 export * from './math/ldaClassify';
 export * from './math/ldaLearn';
 export * from './math/ldaProject';
