@@ -13,17 +13,17 @@
 
 ## Getting Started
 
-You can view all available methods in the [docs](https://bci.js.org/docs/)
+Documentation is available at [https://bci.js.org/docs/](https://bci.js.org/docs/)
 
 Latest release is v1.7.0. You can view the release notes at [releases](https://github.com/pwstegman/bci.js/releases)
 
-Node.js
+**Node.js**
 
 ```bash
 npm install bcijs
 ```
 
-Browser
+**Browser**
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/bcijs@1.7.0/dist/bci.min.js"></script>
