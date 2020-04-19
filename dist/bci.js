@@ -1,16 +1,16 @@
 /**
- * bci.js v1.7.0
+ * bci.js v1.7.1
  * https://github.com/pwstegman/bci.js
  *
  * License: MIT
- * Generated 2020-04-11T13:56:44Z
+ * Generated 2020-04-19T02:37:48Z
  */
 
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.bci = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
 
 // This file was auto generated, changes will be overwritten
-// Created on Sat Apr 11 2020 09:56:44 GMT-0400 (Eastern Daylight Time)
+// Created on Sat Apr 18 2020 22:37:48 GMT-0400 (Eastern Daylight Time)
 // This module excludes Node.js specific methods so it can be used in the browser
 
 /** @module bcijs */
@@ -1060,31 +1060,37 @@ function bandpower(samples, sample_rate, bands, options) {
 
   if (fftSize < samples.length) {
     throw new Error('fftSize must be greater than or equal to the length of samples');
-  } // If matrix with muliple signals, process each signal
+  } // Clean up 'bands' so it is a number[][] (array of bands where a band is [low, high])
 
+
+  var original_bands = bands;
+  bands = reduceBands(bands); // If matrix with muliple signals, process each signal
 
   if (Array.isArray(samples[0])) {
     var channels = transpose(samples);
     var powers = channels.map(function (channel) {
       return bandpower(channel, sample_rate, bands, options);
-    }); // Handle the 2D case (multiple channels and multiple bands)
+    }); // Return to same row/col format as input (channels are columns)
 
-    if (Array.isArray(powers[0])) {
-      // Return to same row/col format as input (channels are columns)
-      powers = transpose(powers); // Instead of calculating, for example, alpha power at each channel, calculate the average alpha
-      // across all channels.
+    powers = transpose(powers); // Instead of calculating, for example, alpha power at each channel, calculate the average alpha
+    // across all channels.
 
-      if (average) {
-        for (var i = 0; i < powers.length; i++) {
-          var sum = 0;
+    if (average) {
+      for (var i = 0; i < powers.length; i++) {
+        var sum = 0;
 
-          for (var j = 0; j < powers[i].length; j++) {
-            sum += powers[i][j];
-          }
-
-          powers[i] = sum / powers[i].length;
+        for (var j = 0; j < powers[i].length; j++) {
+          sum += powers[i][j];
         }
+
+        powers[i] = sum / powers[i].length;
       }
+    } // If they only passed a single band (not an array of bands), then the array of areas will
+    // have a length of 1. Return the single power value, not an array.
+
+
+    if (typeof original_bands === 'string' || typeof original_bands[0] === 'number') {
+      return powers[0];
     }
 
     return powers;
@@ -1108,11 +1114,8 @@ function bandpower(samples, sample_rate, bands, options) {
     }
   } else {
     throw new Error('Invalid input type');
-  } // Clean up 'bands' so it is a number[][] (array of bands where a band is [low, high])
+  } // Calculate the total power for relative power calculation if selected in options
 
-
-  var original_bands = bands;
-  bands = reduceBands(bands); // Calculate the total power for relative power calculation if selected in options
 
   var total_power = 1;
   var dx = sample_rate / fftSize;
@@ -1721,7 +1724,7 @@ function hann(signal) {
  * @param {Object} [options]
  * @param {number} [options.fftSize=Math.pow(2, bci.nextpow2(signal.length))] - Size of the fft to be used. Should be a power of 2.
  * @param {number} [options.window='rectangular'] - Window function to apply, either 'hann' or 'rectangular'. Default is 'rectangular'.
- * @returns {Object} Object with keys 'estimates' (the psd estimates) and 'frequencies' (the corresponding frequencies)
+ * @returns {Object} Object with keys 'estimates' (the psd estimates) and 'frequencies' (the corresponding frequencies in Hz)
  */
 
 

@@ -16,7 +16,7 @@ BCI.js is a library for EEG-based brain computer interface (BCI) design with Jav
  
 You can view all available methods in the [docs](https://bci.js.org/docs/)
 
-Latest release is v1.7.0. You can view the release notes at [releases](https://github.com/pwstegman/bci.js/releases)
+Latest release is v1.7.1. You can view the release notes at [releases](https://github.com/pwstegman/bci.js/releases)
 
 ## Getting Started
 
@@ -29,7 +29,7 @@ npm install bcijs
 Browser
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bcijs@1.7.0/dist/bci.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bcijs@1.7.1/dist/bci.min.js"></script>
 ```
 
 ## Tutorials
@@ -162,7 +162,7 @@ console.log(subarr);
 BCI.js can be loaded from the jsDelivr CDN with
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bcijs@1.7.0/dist/bci.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bcijs@1.7.1/dist/bci.min.js"></script>
 ```
 
 You can also find `bci.js` and `bci.min.js` in the [/dist](https://github.com/pwstegman/bci.js/tree/master/dist) directory.

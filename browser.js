@@ -1,5 +1,5 @@
 // This file was auto generated, changes will be overwritten
-// Created on Sat Apr 18 2020 22:23:30 GMT-0400 (Eastern Daylight Time)
+// Created on Sat Apr 18 2020 22:38:20 GMT-0400 (Eastern Daylight Time)
 // This module excludes Node.js specific methods so it can be used in the browser
 /** @module bcijs */
 module.exports.averageBandPowers = require('./lib/compat/averageBandPowers.js');
