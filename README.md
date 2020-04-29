@@ -13,6 +13,10 @@
 
 ## Getting Started
 
+This branch is for v1.8.0-alpha. Links to docs, NPM, and CDNs below apply to the latest stable release and will be updated when
+this branch is merged into master. To test this version, you can install directly from git via `npm install pwstegman/bci.js#v1.8`.
+You can generate updated docs with `npm run docs`, then spin up a [web server](https://www.npmjs.com/package/http-server) in `docs/` to view the docs for this branch. Note that methods may not be fully documented yet.
+
 Documentation is available at [https://bci.js.org/docs/](https://bci.js.org/docs/)
 
 Latest release is v1.7.0. You can view the release notes at [releases](https://github.com/pwstegman/bci.js/releases)
