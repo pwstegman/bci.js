@@ -1,7 +1,7 @@
 {
   "name": "bcijs",
-  "version": "1.7.0",
-  "description": "EEG signal processing and machine learning",
+  "version": "1.8.0-alpha",
+  "description": "BCI.js - Brain Computer Interfaces (BCIs) with JavaScript",
   "main": "lib/index.js",
   "module": "src/index.js",
   "scripts": {
@@ -47,13 +47,22 @@
     "url": "git+https://github.com/pwstegman/bcijs.git"
   },
   "keywords": [
-    "eeg",
     "bci",
     "bci.js",
+    "eeg",
     "signal processing",
-    "machine learning",
+    "DSP",
+    "spectral estimation",
+    "signal separation",
+    "bandpower",
+    "multitaper",
+    "welch",
+    "periodogram",
+    "ICA",
+    "CSP",
+    "LDA",
     "math",
-    "DSP"
+    "machine learning"
   ],
   "bugs": {
     "url": "https://github.com/pwstegman/bcijs/issues"
