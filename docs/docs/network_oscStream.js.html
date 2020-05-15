@@ -1,0 +1,200 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+      network/oscStream.js - Documentation
+  </title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400" rel="stylesheet">
+
+  <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+  <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+  
+
+  
+</head>
+
+<body>
+
+  <svg style="display: none;">
+    <defs>
+      <symbol id="linkIcon" fill="#706d77" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <label for="nav-trigger" class="navicon-button x">
+    <div class="navicon"></div>
+  </label>
+
+  <label for="nav-trigger" class="overlay"></label>
+
+  <!--<div class="top-nav-wrapper">
+    <ul>
+      <li >
+        <a href="index.html">
+          
+            <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          
+          
+        </a>
+      </li>
+
+      
+
+    </ul>
+  </div>-->
+
+  <nav id="docs-nav">
+    <div class="pt-5">
+      <a href="/"><img src="static/bcijs-logo.png" height="34px"></a>
+    </div>
+    
+    <h3 class="reference-title">
+      BCI.js
+    </h3>
+    <ul>
+      <li><a href="index.html" class="indented-link" id="readme-link">Readme</a></li>
+      <li><a href="https://github.com/pwstegman/bci.js#tutorials" class="indented-link">Tutorials</a></li>
+      <li><a href="/#examples" class="indented-link">Examples</a></li>
+    </ul>
+
+    
+
+    <h3 id="global-nav">Global</h3><ul><li><a href="global.html#calculateAdaptiveWeights">calculateAdaptiveWeights</a></li><li><a href="global.html#computeQ">computeQ</a></li><li><a href="global.html#dpss">dpss</a></li><li><a href="global.html#multitaper">multitaper</a></li><li><a href="global.html#taper">taper</a></li><li><a href="global.html#welch">welch</a></li></ul>
+  </nav>
+
+  <div id="main">
+    
+      <h1 class="page-title">
+        network/oscStream.js
+      </h1>
+    
+
+    
+      
+
+<section>
+  <article>
+    <pre class="prettyprint source linenums"><code>"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.oscStream = void 0;
+
+var _nodeOsc = _interopRequireDefault(require("node-osc"));
+
+function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i &lt; props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/**
+ * Listen for messages over OSC
+ * &lt;p>This method is exclusive to Node.js&lt;/p>
+ * @memberof module:bcijs
+ */
+var oscStream = /*#__PURE__*/function () {
+  /**
+   * @constructor
+   * @param {string} address - Address to listen on
+   * @param {number} port - Port to listen on
+   */
+  function oscStream(address, port) {
+    _classCallCheck(this, oscStream);
+
+    this.address = address;
+    this.port = port;
+    this.onFuncs = {};
+  }
+  /**
+   * Start listening for OSC messages
+   */
+
+
+  _createClass(oscStream, [{
+    key: "start",
+    value: function start() {
+      this.server = new _nodeOsc.default.Server(this.port, this.address);
+      var parent = this;
+      this.server.on("message", function (msg, rinfo) {
+        var header = msg[0];
+        var data = msg.slice(1);
+
+        if (header in parent.onFuncs) {
+          parent.onFuncs[header](data);
+        }
+      });
+    }
+    /**
+     * Stop listening for OSC messages
+     */
+
+  }, {
+    key: "stop",
+    value: function stop() {
+      this.server.kill();
+    }
+    /**
+     * Call a callback function when data containing a specified OSC header is seen
+     * @param {string} header - The OSC header
+     * @param {requestCallback} callback - Called with the OSC data passed as the parameter
+     */
+
+  }, {
+    key: "on",
+    value: function on(header, callback) {
+      this.onFuncs[header] = callback;
+    }
+  }]);
+
+  return oscStream;
+}();
+
+exports.oscStream = oscStream;</code></pre>
+  </article>
+</section>
+
+    
+
+
+  </div>
+
+  <br class="clear">
+
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a>
+  </footer>
+
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/pagelocation.js"></script>
+
+  
+
+</body>
+</html>

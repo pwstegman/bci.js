@@ -1,0 +1,182 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+      data/loadEDF.js - Documentation
+  </title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400" rel="stylesheet">
+
+  <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+  <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+  
+
+  
+</head>
+
+<body>
+
+  <svg style="display: none;">
+    <defs>
+      <symbol id="linkIcon" fill="#706d77" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <label for="nav-trigger" class="navicon-button x">
+    <div class="navicon"></div>
+  </label>
+
+  <label for="nav-trigger" class="overlay"></label>
+
+  <!--<div class="top-nav-wrapper">
+    <ul>
+      <li >
+        <a href="index.html">
+          
+            <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          
+          
+        </a>
+      </li>
+
+      
+
+    </ul>
+  </div>-->
+
+  <nav id="docs-nav">
+    <div class="pt-5">
+      <a href="/"><img src="static/bcijs-logo.png" height="34px"></a>
+    </div>
+    
+    <h3 class="reference-title">
+      BCI.js
+    </h3>
+    <ul>
+      <li><a href="index.html" class="indented-link" id="readme-link">Readme</a></li>
+      <li><a href="https://github.com/pwstegman/bci.js#tutorials" class="indented-link">Tutorials</a></li>
+      <li><a href="/#examples" class="indented-link">Examples</a></li>
+    </ul>
+
+    
+
+    <h3 id="global-nav">Global</h3><ul><li><a href="global.html#calculateAdaptiveWeights">calculateAdaptiveWeights</a></li><li><a href="global.html#computeQ">computeQ</a></li><li><a href="global.html#dpss">dpss</a></li><li><a href="global.html#multitaper">multitaper</a></li><li><a href="global.html#taper">taper</a></li><li><a href="global.html#welch">welch</a></li></ul>
+  </nav>
+
+  <div id="main">
+    
+      <h1 class="page-title">
+        data/loadEDF.js
+      </h1>
+    
+
+    
+      
+
+<section>
+  <article>
+    <pre class="prettyprint source linenums"><code>"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.loadEDF = loadEDF;
+
+var _fs = _interopRequireDefault(require("fs"));
+
+var _edfjs = _interopRequireDefault(require("edfjs"));
+
+function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Load data from an EDF file
+ * &lt;p>This method is exclusive to Node.js&lt;/p>
+ * @memberof module:bcijs
+ * @param {string} filename - Path to the EDF file
+ * @returns {Object} An object with the following parameters:
+ * &lt;br>
+ * &lt;br> subject [string] - The name of the subject
+ * &lt;br> recording [string] - The name of the recording
+ * &lt;br> start_time [string] - The start time as a date time string
+ * &lt;br> channels [Array] - An array of channel objects
+ * &lt;br>
+ * &lt;br> A channel object has the following parameters:
+ * &lt;br>
+ * &lt;br> label [string] - The label for the channel
+ * &lt;br> sample_rate [number] - The sample rate for the channel
+ * &lt;br> physical_dimension [string] - The units for each channel (ex: uV)
+ * &lt;br> samples [number[]] - An array of samples from the channel 
+ */
+function loadEDF(filename) {
+  var file = _fs.default.readFileSync(filename);
+
+  var edf = _edfjs.default.EDF();
+
+  edf.read_buffer(file.buffer, false);
+  var subject = edf.pid;
+  var recording = edf.rid;
+  var starttime = edf.startdatetime;
+  var channels = edf.channels.map(function (channel) {
+    var samples = new Array(channel.blob.length);
+
+    for (var i = 0; i &lt; channel.blob.length; i++) {
+      samples[i] = channel.blob[i];
+    }
+
+    return {
+      'label': channel.label,
+      'sample_rate': channel.sampling_rate,
+      'physical_dimension': channel.physical_dimension,
+      'samples': samples
+    };
+  });
+  return {
+    subject: subject,
+    recording: recording,
+    start_time: starttime,
+    channels: channels
+  };
+}</code></pre>
+  </article>
+</section>
+
+    
+
+
+  </div>
+
+  <br class="clear">
+
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a>
+  </footer>
+
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/pagelocation.js"></script>
+
+  
+
+</body>
+</html>

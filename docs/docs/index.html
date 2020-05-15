@@ -80,7 +80,7 @@
 
     
 
-    <h3>Classes</h3><ul><li id="oscStream-nav"><a href="module-bcijs.oscStream.html">oscStream</a><ul class='methods'><li data-type="method" id="oscStream-on-nav"><a href="module-bcijs.oscStream.html#on">on</a></li><li data-type="method" id="oscStream-start-nav"><a href="module-bcijs.oscStream.html#start">start</a></li><li data-type="method" id="oscStream-stop-nav"><a href="module-bcijs.oscStream.html#stop">stop</a></li></ul></li></ul><h3>Modules</h3><ul><li id="bcijs-nav"><a href="module-bcijs.html">bcijs</a><ul class='methods'><li data-type="method" id="bcijs-accuracy-nav"><a href="module-bcijs.html#.accuracy">accuracy</a></li><li data-type="method" id="bcijs-balancedAccuracy-nav"><a href="module-bcijs.html#.balancedAccuracy">balancedAccuracy</a></li><li data-type="method" id="bcijs-bandpower-nav"><a href="module-bcijs.html#.bandpower">bandpower</a></li><li data-type="method" id="bcijs-confusionMatrix-nav"><a href="module-bcijs.html#.confusionMatrix">confusionMatrix</a></li><li data-type="method" id="bcijs-cspLearn-nav"><a href="module-bcijs.html#.cspLearn">cspLearn</a></li><li data-type="method" id="bcijs-cspProject-nav"><a href="module-bcijs.html#.cspProject">cspProject</a></li><li data-type="method" id="bcijs-f1-nav"><a href="module-bcijs.html#.f1">f1</a></li><li data-type="method" id="bcijs-fastICA-nav"><a href="module-bcijs.html#.fastICA">fastICA</a></li><li data-type="method" id="bcijs-generateSignal-nav"><a href="module-bcijs.html#.generateSignal">generateSignal</a></li><li data-type="method" id="bcijs-ldaClassify-nav"><a href="module-bcijs.html#.ldaClassify">ldaClassify</a></li><li data-type="method" id="bcijs-ldaLearn-nav"><a href="module-bcijs.html#.ldaLearn">ldaLearn</a></li><li data-type="method" id="bcijs-ldaProject-nav"><a href="module-bcijs.html#.ldaProject">ldaProject</a></li><li data-type="method" id="bcijs-loadCSV-nav"><a href="module-bcijs.html#.loadCSV">loadCSV</a></li><li data-type="method" id="bcijs-loadEDF-nav"><a href="module-bcijs.html#.loadEDF">loadEDF</a></li><li data-type="method" id="bcijs-mcc-nav"><a href="module-bcijs.html#.mcc">mcc</a></li><li data-type="method" id="bcijs-nextpow2-nav"><a href="module-bcijs.html#.nextpow2">nextpow2</a></li><li data-type="method" id="bcijs-oscCollect-nav"><a href="module-bcijs.html#.oscCollect">oscCollect</a></li><li data-type="method" id="bcijs-oscHeaderScan-nav"><a href="module-bcijs.html#.oscHeaderScan">oscHeaderScan</a></li><li data-type="method" id="bcijs-partition-nav"><a href="module-bcijs.html#.partition">partition</a></li><li data-type="method" id="bcijs-periodogram-nav"><a href="module-bcijs.html#.periodogram">periodogram</a></li><li data-type="method" id="bcijs-precision-nav"><a href="module-bcijs.html#.precision">precision</a></li><li data-type="method" id="bcijs-prompt-nav"><a href="module-bcijs.html#.prompt">prompt</a></li><li data-type="method" id="bcijs-recall-nav"><a href="module-bcijs.html#.recall">recall</a></li><li data-type="method" id="bcijs-round-nav"><a href="module-bcijs.html#.round">round</a></li><li data-type="method" id="bcijs-saveCSV-nav"><a href="module-bcijs.html#.saveCSV">saveCSV</a></li><li data-type="method" id="bcijs-specificity-nav"><a href="module-bcijs.html#.specificity">specificity</a></li><li data-type="method" id="bcijs-subscript-nav"><a href="module-bcijs.html#.subscript">subscript</a></li><li data-type="method" id="bcijs-toFixed-nav"><a href="module-bcijs.html#.toFixed">toFixed</a></li><li data-type="method" id="bcijs-toTable-nav"><a href="module-bcijs.html#.toTable">toTable</a></li><li data-type="method" id="bcijs-transpose-nav"><a href="module-bcijs.html#.transpose">transpose</a></li><li data-type="method" id="bcijs-wait-nav"><a href="module-bcijs.html#.wait">wait</a></li><li data-type="method" id="bcijs-windowApply-nav"><a href="module-bcijs.html#.windowApply">windowApply</a></li></ul></li></ul>
+    <h3 id="global-nav">Global</h3><ul><li><a href="global.html#calculateAdaptiveWeights">calculateAdaptiveWeights</a></li><li><a href="global.html#computeQ">computeQ</a></li><li><a href="global.html#dpss">dpss</a></li><li><a href="global.html#multitaper">multitaper</a></li><li><a href="global.html#taper">taper</a></li><li><a href="global.html#welch">welch</a></li></ul>
   </nav>
 
   <div id="main">
@@ -103,6 +103,7 @@
   <section class="readme">
     <article>
       <p align="center"><img src="static/bcijs-logo.png" height="68px"></p>
+<p align="center">Brain Computer Interfaces (BCIs) with JavaScript</p>
 <p align="center">
 	<a href="https://www.npmjs.com/package/bcijs"><img src="https://img.shields.io/npm/v/bcijs.svg" alt="Version"></a>
 	<a href="https://www.npmjs.com/package/bcijs"><img src="https://img.shields.io/npm/dm/bcijs.svg" alt="Downloads"></a>
@@ -110,88 +111,113 @@
 	<a href="https://github.com/pwstegman/bci.js/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/bcijs.svg" alt="License"></a>
 </p>
 <br>
-<p>BCI.js is a library for EEG-based brain computer interface (BCI) design with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, with features such as:</p>
-<ul>
-<li>Signal processing and machine learning (Bandpower, PSD, LDA, CSP, ICA, etc.)</li>
-<li>Data manipulation (MATLAB style array subscripting, data windowing, CSV file support, etc.)</li>
-<li>Networking (data collection, streaming via OSC, etc.)</li>
-</ul>
-<p>You can view all available methods in the <a href="https://bci.js.org/docs/">docs</a></p>
-<p>Latest release is v1.7.1. You can view the release notes at <a href="https://github.com/pwstegman/bci.js/releases">releases</a></p>
 <h2>Getting Started</h2>
-<p>Node.js</p>
+<p>Latest release is v1.8.0. You can view the release notes at <a href="https://github.com/pwstegman/bci.js/releases">releases</a></p>
+<p>Documentation is available at <a href="https://bci.js.org/docs/">https://bci.js.org/docs/</a></p>
+<p><strong>Node.js</strong></p>
 <pre class="prettyprint source lang-bash"><code>npm install bcijs
 </code></pre>
-<p>Browser</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.7.1/dist/bci.min.js&quot;>&lt;/script>
+<p><strong>Browser</strong></p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.8.0/dist/bci.min.js&quot;>&lt;/script>
 </code></pre>
+<h2>Feature Overview</h2>
+<p>For a complete list of methods, see the <a href="https://bci.js.org/docs/">docs</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Signal Processing</th>
+<th>Machine Learning</th>
+<th>Data Management</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bandpower</td>
+<td>Feature extraction</td>
+<td>Load and save CSVs (Node.js only)</td>
+</tr>
+<tr>
+<td>Multitaper</td>
+<td>Linear discriminant analysis</td>
+<td>Load from EDF (Node.js only)</td>
+</tr>
+<tr>
+<td>Welch's method</td>
+<td>Confusion matrices</td>
+<td>Epoch / window data</td>
+</tr>
+<tr>
+<td>Periodogram</td>
+<td>Metrics (precision, recall, F1, MCC, etc.)</td>
+<td>Partition datasets</td>
+</tr>
+<tr>
+<td>Independent component analysis</td>
+<td></td>
+<td>Array subscripting (colon notation)</td>
+</tr>
+<tr>
+<td>Common spatial pattern</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Signal generation</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2>Tutorials</h2>
 <ul>
 <li><a href="https://medium.com/@pwstegman/eeg-motor-imagery-classification-in-node-js-with-bci-js-d21f29cf165">EEG Motor Imagery Classification in Node.js with BCI.js</a></li>
 </ul>
 <h2>Examples</h2>
 <p>More examples can be found in the <a href="https://github.com/pwstegman/bci.js/tree/master/examples">examples</a> directory</p>
-<h3>Signal Processing</h3>
+<h3>Bandpower</h3>
 <pre class="prettyprint source lang-javascript"><code>const bci = require('bcijs');
 
-// Generate 1 second of sample data
-let sampleRate = 512;
-let duration = 1;
-let amplitudes = [8, 4, 2, 1];
-let frequencies = [
-	1, // 1 Hz, delta range
-	5, // 5 Hz, theta range
-	8, // 8 Hz, alpha range
-	17 // 17 Hz, beta range
-];
-
-let signal = bci.generateSignal(amplitudes, frequencies, sampleRate, duration);
+// Generate 1 second of sample data at 512 Hz
+// Contains 8 μV / 8 Hz and 4 μV / 17 Hz
+let samplerate = 512;
+let signal = bci.generateSignal([8, 4], [8, 17], samplerate, 1);
 
 // Compute relative power in each frequency band
-let bandpowers = bci.bandpower(
-	signal,
-	sampleRate,
-	['delta', 'theta', 'alpha', 'beta'],
-	{relative: true}
-);
+let bandpowers = bci.bandpower(signal, samplerate, ['alpha', 'beta'], {relative: true});
 
-console.log(bandpowers);
-/*
-[
-  0.7171876695851037, 
-  0.22444067394892755,
-  0.04489131763080717,
-  0.013469490282877555
-]
-*/
+console.log(bandpowers); // [ 0.6661457715567836, 0.199999684787573 ]
 </code></pre>
-<h3>Machine Learning</h3>
-<p>Check out <a href="https://bci.js.org/examples/lda">https://bci.js.org/examples/lda</a> for a visual demo of how LDA works</p>
+<h3>Epoch data</h3>
+<pre class="prettyprint source lang-javascript"><code>let samples = [[1,2], [3,4], ...] // 2D array where rows are samples and columns are channels
+let samplerate = 256; // 256 Hz
+
+// Epoch data into epochs of 256 samples with a step of 64 (75% overlap)
+// Then find the average alpha and beta powers in each epoch.
+let powers = bci.windowApply(
+	samples,
+	epoch => bci.bandpower(epoch, samplerate, ['alpha', 'beta'], {average: true}),
+	256,
+	64
+);
+</code></pre>
+<h3>Subscript</h3>
+<pre class="prettyprint source lang-javascript"><code>const bci = require('bcijs');
+
+// 5 samples of data from 3 channels 
+let signal = [[1,2,3], [5,3,4], [4,5,6], [7,5,8], [4,4,2]];
+
+// Select the first 3 samples from channels 1 and 3
+let subset = bci.subscript(signal, '1:3', '1 3'); // [ [ 1, 3 ], [ 5, 4 ], [ 4, 6 ] ]
+</code></pre>
+<h3>Linear discriminant analysis</h3>
 <pre class="prettyprint source lang-javascript"><code>const bci = require('bcijs');
 
 // Training set
-let class1 = [
-	[0, 0],
-	[1, 2],
-	[2, 2],
-	[1.5, 0.5]
-];
-let class2 = [
-	[8, 8],
-	[9, 10],
-	[7, 8],
-	[9, 9]
-];
+let class1 = [[0, 0], [1, 2], [2, 2], [1.5, 0.5]];
+let class2 = [[8, 8], [9, 10], [7, 8], [9, 9]];
 
 // Testing set
-let unknownPoints = [
-	[-1, 0],
-	[1.5, 2],
-	[3, 3],
-	[5, 5],
-	[7, 9],
-	[10, 12]
-];
+let unknownPoints = [[-1, 0], [1.5, 2],	[7, 9], [10, 12]];
 
 // Learn an LDA classifier
 let ldaParams = bci.ldaLearn(class1, class2);
@@ -199,49 +225,12 @@ let ldaParams = bci.ldaLearn(class1, class2);
 // Test classifier
 let predictions = bci.ldaClassify(ldaParams, unknownPoints);
 
-console.log(predictions); // [ 0, 0, 0, 1, 1, 1 ]
+console.log(predictions); // [ 0, 0, 1, 1 ]
 </code></pre>
-<h3>Data Manipulation and Feature Extraction</h3>
-<pre class="prettyprint source lang-javascript"><code>const bci = require('bcijs');
-
-// Some random numbers
-let data = [3, 2, 3, 0, 4, 0, 0, 5, 4, 0];
-
-// Partition into training and testing sets
-let [training, testing] = bci.partition(data, 0.6, 0.4);
-
-console.log(training); // [3, 2, 3, 0, 4, 0]
-console.log(testing); // [0, 5, 4, 0]
-
-// Traverse the data array with windows of size 3 and a step of 2 (overlap of 1 item per window)
-bci.windowApply(data, window => console.log(window), 3, 2);
-/*
-[ 3, 2, 3 ]
-[ 3, 0, 4 ]
-[ 4, 0, 0 ]
-[ 0, 5, 4 ]
-*/
-
-// Find the log of the variance of these windows (feature extraction)
-let features = bci.windowApply(data, bci.features.logvar, 3, 2);
-console.log(features); // [-1.099, 1.466, 1.674, 1.946]
-
-// Colon notation for array subscripting
-let arr = [
-  [1, 2, 3, 4],
-  [5, 6, 7, 8],
-  [9, 10, 11, 12]
-];
-let subarr = bci.subscript(arr, '1 3', '2:4'); // rows 1 and 3, columns 2 through 4
-console.log(subarr);
-/*
-[[2, 3, 4],
- [10, 11, 12]]
-*/
-</code></pre>
+<p>Check out <a href="https://bci.js.org/examples/lda">https://bci.js.org/examples/lda</a> for a visual demo of how LDA works</p>
 <h2>Usage in the web</h2>
 <p>BCI.js can be loaded from the jsDelivr CDN with</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.7.1/dist/bci.min.js&quot;>&lt;/script>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.8.0/dist/bci.min.js&quot;>&lt;/script>
 </code></pre>
 <p>You can also find <code>bci.js</code> and <code>bci.min.js</code> in the <a href="https://github.com/pwstegman/bci.js/tree/master/dist">/dist</a> directory.</p>
 <p>BCI.js methods are accessible via the global object <code>bci</code>.</p>

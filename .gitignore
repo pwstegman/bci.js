@@ -60,11 +60,19 @@ typings/
 # visual studio
 .vs/
 
-# build files
+# build and auto generated files
 build/
 test/browser/bci.js
 test/browser/bci.min.js
 test/browser/bci.test.js
+src/modules.js
+src/modules_browser.js
 
 # data files
 examples/node/data/
+
+# Babel transpiled lib
+lib/
+
+# Browser dist
+dist/

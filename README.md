@@ -1,5 +1,7 @@
 <p align="center"><img src="static/bcijs-logo.png" height="68px"></p>
 
+<p align="center">Brain Computer Interfaces (BCIs) with JavaScript</p>
+
 <p align="center">
 	<a href="https://www.npmjs.com/package/bcijs"><img src="https://img.shields.io/npm/v/bcijs.svg" alt="Version"></a>
 	<a href="https://www.npmjs.com/package/bcijs"><img src="https://img.shields.io/npm/dm/bcijs.svg" alt="Downloads"></a>
@@ -9,28 +11,36 @@
 
 <br>
 
-BCI.js is a library for EEG-based brain computer interface (BCI) design with JavaScript and Node.js. It allows for the creation of BCI enabled web apps or Node.js applications, with features such as:
- - Signal processing and machine learning (Bandpower, PSD, LDA, CSP, ICA, etc.)
- - Data manipulation (MATLAB style array subscripting, data windowing, CSV file support, etc.)
- - Networking (data collection, streaming via OSC, etc.)
- 
-You can view all available methods in the [docs](https://bci.js.org/docs/)
-
-Latest release is v1.7.1. You can view the release notes at [releases](https://github.com/pwstegman/bci.js/releases)
-
 ## Getting Started
 
-Node.js
+Latest release is v1.8.0. You can view the release notes at [releases](https://github.com/pwstegman/bci.js/releases)
+
+Documentation is available at [https://bci.js.org/docs/](https://bci.js.org/docs/)
+
+**Node.js**
 
 ```bash
 npm install bcijs
 ```
 
-Browser
+**Browser**
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bcijs@1.7.1/dist/bci.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bcijs@1.8.0/dist/bci.min.js"></script>
 ```
+
+## Feature Overview
+
+For a complete list of methods, see the [docs](https://bci.js.org/docs/).
+
+| Signal Processing | Machine Learning | Data Management |
+| --- | --- | --- |
+| Bandpower | Feature extraction | Load and save CSVs (Node.js only) |
+| Welch's method | Linear discriminant analysis | Load from EDF (Node.js only) |
+| Periodogram | Confusion matrices | Epoch / window data |
+| Independent component analysis | Metrics (precision, recall, F1, MCC, etc.) | Partition datasets |
+| Common spatial pattern | | Array subscripting (colon notation) |
+| Signal generation | | |
 
 ## Tutorials
 - [EEG Motor Imagery Classification in Node.js with BCI.js](https://medium.com/@pwstegman/eeg-motor-imagery-classification-in-node-js-with-bci-js-d21f29cf165)
@@ -39,73 +49,61 @@ Browser
 
 More examples can be found in the [examples](https://github.com/pwstegman/bci.js/tree/master/examples) directory
 
-### Signal Processing
+### Bandpower
 
 ```javascript
 const bci = require('bcijs');
 
-// Generate 1 second of sample data
-let sampleRate = 512;
-let duration = 1;
-let amplitudes = [8, 4, 2, 1];
-let frequencies = [
-	1, // 1 Hz, delta range
-	5, // 5 Hz, theta range
-	8, // 8 Hz, alpha range
-	17 // 17 Hz, beta range
-];
-
-let signal = bci.generateSignal(amplitudes, frequencies, sampleRate, duration);
+// Generate 1 second of sample data at 512 Hz
+// Contains 8 μV / 8 Hz and 4 μV / 17 Hz
+let samplerate = 512;
+let signal = bci.generateSignal([8, 4], [8, 17], samplerate, 1);
 
 // Compute relative power in each frequency band
-let bandpowers = bci.bandpower(
-	signal,
-	sampleRate,
-	['delta', 'theta', 'alpha', 'beta'],
-	{relative: true}
-);
+let bandpowers = bci.bandpower(signal, samplerate, ['alpha', 'beta'], {relative: true});
 
-console.log(bandpowers);
-/*
-[
-  0.7171876695851037, 
-  0.22444067394892755,
-  0.04489131763080717,
-  0.013469490282877555
-]
-*/
+console.log(bandpowers); // [ 0.6661457715567836, 0.199999684787573 ]
 ```
 
-### Machine Learning
+### Epoch data
 
-Check out [https://bci.js.org/examples/lda](https://bci.js.org/examples/lda) for a visual demo of how LDA works
+```javascript
+let samples = [[1,2], [3,4], ...] // 2D array where rows are samples and columns are channels
+let samplerate = 256; // 256 Hz
+
+// Epoch data into epochs of 256 samples with a step of 64 (75% overlap)
+// Then find the average alpha and beta powers in each epoch.
+let powers = bci.windowApply(
+	samples,
+	epoch => bci.bandpower(epoch, samplerate, ['alpha', 'beta'], {average: true}),
+	256,
+	64
+);
+```
+
+### Subscript
+
+```javascript
+const bci = require('bcijs');
+
+// 5 samples of data from 3 channels 
+let signal = [[1,2,3], [5,3,4], [4,5,6], [7,5,8], [4,4,2]];
+
+// Select the first 3 samples from channels 1 and 3
+let subset = bci.subscript(signal, '1:3', '1 3'); // [ [ 1, 3 ], [ 5, 4 ], [ 4, 6 ] ]
+```
+
+### Linear discriminant analysis
 
 ```javascript
 const bci = require('bcijs');
 
 // Training set
-let class1 = [
-	[0, 0],
-	[1, 2],
-	[2, 2],
-	[1.5, 0.5]
-];
-let class2 = [
-	[8, 8],
-	[9, 10],
-	[7, 8],
-	[9, 9]
-];
+let class1 = [[0, 0], [1, 2], [2, 2], [1.5, 0.5]];
+let class2 = [[8, 8], [9, 10], [7, 8], [9, 9]];
 
 // Testing set
-let unknownPoints = [
-	[-1, 0],
-	[1.5, 2],
-	[3, 3],
-	[5, 5],
-	[7, 9],
-	[10, 12]
-];
+let unknownPoints = [[-1, 0], [1.5, 2],	[7, 9], [10, 12]];
 
 // Learn an LDA classifier
 let ldaParams = bci.ldaLearn(class1, class2);
@@ -113,59 +111,20 @@ let ldaParams = bci.ldaLearn(class1, class2);
 // Test classifier
 let predictions = bci.ldaClassify(ldaParams, unknownPoints);
 
-console.log(predictions); // [ 0, 0, 0, 1, 1, 1 ]
+console.log(predictions); // [ 0, 0, 1, 1 ]
 ```
 
-### Data Manipulation and Feature Extraction
-
-```javascript
-const bci = require('bcijs');
-
-// Some random numbers
-let data = [3, 2, 3, 0, 4, 0, 0, 5, 4, 0];
-
-// Partition into training and testing sets
-let [training, testing] = bci.partition(data, 0.6, 0.4);
-
-console.log(training); // [3, 2, 3, 0, 4, 0]
-console.log(testing); // [0, 5, 4, 0]
-
-// Traverse the data array with windows of size 3 and a step of 2 (overlap of 1 item per window)
-bci.windowApply(data, window => console.log(window), 3, 2);
-/*
-[ 3, 2, 3 ]
-[ 3, 0, 4 ]
-[ 4, 0, 0 ]
-[ 0, 5, 4 ]
-*/
-
-// Find the log of the variance of these windows (feature extraction)
-let features = bci.windowApply(data, bci.features.logvar, 3, 2);
-console.log(features); // [-1.099, 1.466, 1.674, 1.946]
-
-// Colon notation for array subscripting
-let arr = [
-  [1, 2, 3, 4],
-  [5, 6, 7, 8],
-  [9, 10, 11, 12]
-];
-let subarr = bci.subscript(arr, '1 3', '2:4'); // rows 1 and 3, columns 2 through 4
-console.log(subarr);
-/*
-[[2, 3, 4],
- [10, 11, 12]]
-*/
-```
+Check out [https://bci.js.org/examples/lda](https://bci.js.org/examples/lda) for a visual demo of how LDA works
 
 ## Usage in the web
 
 BCI.js can be loaded from the jsDelivr CDN with
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bcijs@1.7.1/dist/bci.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bcijs@1.8.0/dist/bci.min.js"></script>
 ```
 
-You can also find `bci.js` and `bci.min.js` in the [/dist](https://github.com/pwstegman/bci.js/tree/master/dist) directory.
+You can also find `bci.js` and `bci.min.js` at [releases](https://github.com/pwstegman/bci.js/releases).
 
 BCI.js methods are accessible via the global object `bci`.
 
@@ -183,7 +142,9 @@ You can require specific methods as well. For example, if you only need fastICA,
 const fastICA = require('bcijs/lib/math/fastICA.js');
 ```
 
-BCI.js methods can be found in the [lib/](https://github.com/pwstegman/bci.js/tree/master/lib) directory.
+BCI.js methods can be found in the [src/](https://github.com/pwstegman/bci.js/tree/master/src) directory.
+
+Files are transpiled from ES6 import/export (in `src/`) to CommonJS (generated `lib/`) on `npm install`.
 
 ## Documentation
 

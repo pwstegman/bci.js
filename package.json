@@ -1,28 +1,29 @@
 {
   "name": "bcijs",
-  "version": "1.7.1",
-  "description": "EEG signal processing and machine learning",
-  "main": "index.js",
+  "version": "1.8.0",
+  "description": "BCI.js - Brain Computer Interfaces (BCIs) with JavaScript",
+  "main": "lib/index.js",
+  "module": "src/index.js",
   "scripts": {
     "test": "npm run build && nyc mocha --require \"./test/tests/node-config.js\" --reporter min \"test/tests/**/*.test.js\"",
     "test-dist": "npm run build && gulp test-dist",
     "build": "gulp build",
-    "dist": "gulp dist",
+    "dist": "webpack",
     "docs-md": "gulp docs-md",
     "docs-html": "gulp docs-html",
     "docs": "npm run docs-html && npm run docs-md",
-    "prepublishOnly": "npm run build && npm run dist && npm run test && npm run docs"
+    "prepare": "npm run build && npm run dist",
+    "prepublishOnly": "npm run test && npm run docs"
   },
   "author": "Pierce Stegman <pwstegman@gmail.com> (https://github.com/pwstegman)",
   "license": "MIT",
   "dependencies": {
-    "csv": "^5.3.2",
     "csvtojson": "^1.1.12",
     "easy-table": "^1.1.1",
     "edfjs": "^0.2.0",
     "fast-csv": "^2.5.0",
     "fft.js": "^4.0.3",
-    "mathjs": "^3.20.2",
+    "mathjs": "^6.6.5",
     "node-osc": "^2.1.0",
     "numeric": "^1.2.6",
     "pw-csp": "^1.0.1",
@@ -32,6 +33,7 @@
   "files": [
     "dist/",
     "lib/",
+    "src/",
     "browser.js",
     "index.js",
     "docs/docs/api.md",
@@ -45,11 +47,21 @@
     "url": "git+https://github.com/pwstegman/bcijs.git"
   },
   "keywords": [
-    "eeg",
     "bci",
+    "bci.js",
+    "eeg",
     "signal processing",
-    "machine learning",
-    "math"
+    "DSP",
+    "spectral estimation",
+    "signal separation",
+    "bandpower",
+    "welch",
+    "periodogram",
+    "ICA",
+    "CSP",
+    "LDA",
+    "math",
+    "machine learning"
   ],
   "bugs": {
     "url": "https://github.com/pwstegman/bcijs/issues"
@@ -57,14 +69,15 @@
   "homepage": "https://bci.js.org/",
   "browserslist": "> 0.25%, not dead",
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
-    "app-root-path": "^2.2.1",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-loader": "^8.1.0",
     "babelify": "^10.0.0",
     "browserify": "^16.5.1",
     "fs-then-native": "^2.0.0",
     "glob": "^7.1.6",
     "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-header": "^2.0.9",
@@ -77,14 +90,18 @@
     "jsdoc": "^3.6.4",
     "jsdoc-to-markdown": "^5.0.3",
     "mocaccino": "^4.1.2",
-    "mocha": "^7.1.1",
-    "moment": "^2.24.0",
+    "mocha": "^7.1.2",
+    "moment": "^2.25.3",
     "nyc": "^15.0.1",
     "pug": "^2.0.4",
     "readable-stream": "^3.6.0",
+    "terser-webpack-plugin": "^2.3.6",
     "tmp": "0.0.33",
     "upath": "^1.2.0",
     "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0"
-  }
+    "vinyl-source-stream": "^2.0.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "sideEffects": false
 }

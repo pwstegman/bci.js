@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+      math/multitaper.js - Documentation
+  </title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400" rel="stylesheet">
+
+  <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+  <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+  
+
+  
+</head>
+
+<body>
+
+  <svg style="display: none;">
+    <defs>
+      <symbol id="linkIcon" fill="#706d77" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <label for="nav-trigger" class="navicon-button x">
+    <div class="navicon"></div>
+  </label>
+
+  <label for="nav-trigger" class="overlay"></label>
+
+  <!--<div class="top-nav-wrapper">
+    <ul>
+      <li >
+        <a href="index.html">
+          
+            <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          
+          
+        </a>
+      </li>
+
+      
+
+    </ul>
+  </div>-->
+
+  <nav id="docs-nav">
+    <div class="pt-5">
+      <a href="/"><img src="static/bcijs-logo.png" height="34px"></a>
+    </div>
+    
+    <h3 class="reference-title">
+      BCI.js
+    </h3>
+    <ul>
+      <li><a href="index.html" class="indented-link" id="readme-link">Readme</a></li>
+      <li><a href="https://github.com/pwstegman/bci.js#tutorials" class="indented-link">Tutorials</a></li>
+      <li><a href="/#examples" class="indented-link">Examples</a></li>
+    </ul>
+
+    
+
+    <h3 id="global-nav">Global</h3><ul><li><a href="global.html#calculateAdaptiveWeights">calculateAdaptiveWeights</a></li><li><a href="global.html#computeQ">computeQ</a></li><li><a href="global.html#dpss">dpss</a></li><li><a href="global.html#multitaper">multitaper</a></li><li><a href="global.html#taper">taper</a></li><li><a href="global.html#welch">welch</a></li></ul>
+  </nav>
+
+  <div id="main">
+    
+      <h1 class="page-title">
+        math/multitaper.js
+      </h1>
+    
+
+    
+      
+
+<section>
+  <article>
+    <pre class="prettyprint source linenums"><code>"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.multitaper = multitaper;
+
+var _dpss = require("./dpss");
+
+var _periodogram = require("./periodogram");
+
+/**
+ * Combined PSDs with weights applied to each tapered PSD
+ * @private
+ * @param {object[]} psds 
+ * @param {number[]} weights 
+ * @returns {number[]} Average PSD
+ */
+function weightedTapers(psds, weights) {
+  // Store the average
+  var avg = new Array(psds[0].estimates.length).fill(0); // Weighted sum
+
+  var sum_weights = 0;
+
+  for (var p = 0; p &lt; psds.length; p++) {
+    sum_weights += weights[p];
+
+    for (var f = 0; f &lt; psds[p].estimates.length; f++) {
+      avg[f] += psds[p].estimates[f] * weights[p];
+    }
+  } // Divide by the sum to get weighted average
+
+
+  for (var _f = 0; _f &lt; avg.length; _f++) {
+    avg[_f] /= sum_weights;
+  }
+
+  return avg;
+}
+/**
+ * Combined PSDs with weights applied to each tapered PSD and each frequency bin
+ * @private
+ * @param {object[]} psds 
+ * @param {number[][]} weights 
+ * @returns {number[]} Average PSD
+ */
+
+
+function weightedTapersFrequencies(psds, weights) {
+  // Store the average
+  var avg = new Array(psds[0].estimates.length).fill(0);
+  var num_frequencies = psds[0].estimates.length; // Weighted sum
+
+  var weight_sums = new Array(num_frequencies).fill(0);
+
+  for (var p = 0; p &lt; psds.length; p++) {
+    for (var f = 0; f &lt; num_frequencies; f++) {
+      avg[f] += psds[p].estimates[f] * weights[p][f];
+      weight_sums[f] += weights[p][f];
+    }
+  } // Divide by the sums to get an average
+
+
+  for (var _f2 = 0; _f2 &lt; num_frequencies; _f2++) {
+    avg[_f2] /= weight_sums[_f2];
+  }
+
+  return avg;
+}
+/**
+ * Calculate weights at the taper and frequency level for adaptive multitaper
+ * @param {number[]} spectrum - Current estimate of the spectrum
+ * @param {number[]} eigenvalues - Eigenvalues of tapers
+ * @param {number} variance - Variance of signal
+ * @return {number[][]} The weights
+ */
+
+
+function calculateAdaptiveWeights(spectrum, eigenvalues, variance) {
+  // Calculate weights b(k, f)^2*eigenvalues(k), See: Percival and Walden, 1993, p.368
+  var weights = [];
+
+  for (var i = 0; i &lt; eigenvalues.length; i++) {
+    var f_weights = [];
+
+    for (var j = 0; j &lt; spectrum.length; j++) {
+      f_weights.push(Math.pow(spectrum[j] / (spectrum[j] * eigenvalues[i] + (1 - eigenvalues[i]) * variance), 2) * eigenvalues[i]);
+    }
+
+    weights.push(f_weights);
+  }
+
+  return weights;
+}
+
+function log(verbose, message) {
+  if (verbose) console.log(message);
+}
+/**
+ * Estimate the power spectral density using the multitaper method
+ * @param {number[]} signal - The signal
+ * @param {number} sample_rate - The sample rate
+ * @param {object} options
+ * @param {number} [options.nw=4] - The time-halfbandwidth. Default is 4.
+ */
+
+
+function multitaper(signal, sample_rate, options) {
+  var _Object$assign = Object.assign({
+    nw: 4,
+    k: null,
+    method: 'adapt',
+    max_iterations: 100,
+    min_iterations: 3,
+    tolerance: 1e-10,
+    verbose: false
+  }, options),
+      nw = _Object$assign.nw,
+      k = _Object$assign.k,
+      method = _Object$assign.method,
+      max_iterations = _Object$assign.max_iterations,
+      min_iterations = _Object$assign.min_iterations,
+      tolerance = _Object$assign.tolerance,
+      verbose = _Object$assign.verbose; // Default k (number of tapers)
+
+
+  if (k === null) k = Math.floor(nw * 2 - 1);
+  log(verbose, "Using ".concat(k, " tapers; ").concat(method, " weights")); // Compute the DPSSs
+
+  var sequences = (0, _dpss.dpss)(signal.length, nw, k);
+  var tapers = sequences.vectors;
+  var eigenvalues = sequences.values; // Compute spectral density functions
+  // Use periodogram method with _scaling of 'none' to calculate abs(fft(x)).^2
+
+  var sdf = tapers.map(function (taper) {
+    return (0, _periodogram.periodogram)(signal, sample_rate, {
+      window: taper,
+      _scaling: 'none'
+    });
+  }); // Weighted average estimates
+
+  var frequencies = sdf[0].frequencies;
+  var estimates;
+
+  if (method == 'unity') {
+    var weights = new Array(sdf.length).fill(1);
+    estimates = weightedTapers(sdf, weights);
+  } else if (method == 'eigen') {
+    var _weights = eigenvalues;
+    estimates = weightedTapers(sdf, _weights);
+  } else if (method == 'adapt') {
+    // Calculate the initial estimate with first two tapers
+    estimates = weightedTapers(sdf.slice(0, 2), eigenvalues.slice(0, 2)); // Calculate variance
+
+    var variance = 0;
+
+    for (var i = 0; i &lt; signal.length; i++) {
+      variance += Math.pow(signal[i], 2);
+    }
+
+    variance /= signal.length; // Iterate until convergence
+
+    var iteration = -1;
+    var max_delta = -1;
+
+    for (var _i = 0; _i &lt; max_iterations; _i++) {
+      // Calculate weights
+      var _weights2 = calculateAdaptiveWeights(estimates, eigenvalues, variance); // Re-estimate the spectrum
+
+
+      var new_estimates = weightedTapersFrequencies(sdf, _weights2); // Check if converged
+
+      max_delta = 0;
+
+      for (var _i2 = 0; _i2 &lt; estimates.length; _i2++) {
+        var delta = Math.abs(estimates[_i2] - new_estimates[_i2]);
+        if (delta > max_delta) max_delta = delta;
+      } // Update spectrum
+
+
+      estimates = new_estimates; // Complete if converged
+
+      if (max_delta &lt; tolerance &amp;&amp; _i >= min_iterations - 1) {
+        iteration = _i;
+        log(verbose, "Converged after completing iteration ".concat(_i + 1));
+        break;
+      }
+
+      ;
+    }
+
+    if (iteration == -1) {
+      log(verbose, "Reached max iterations of ".concat(max_iterations, " with a maximum delta of ").concat(max_delta));
+    }
+  } else {
+    throw new Error('Unknown method');
+  } // Scale to units of power spectral density
+  // The tapers all have sum(x.^2) of 1, so no need to account for them
+
+
+  for (var _i3 = 0; _i3 &lt; estimates.length; _i3++) {
+    estimates[_i3] = 2 * estimates[_i3] / sample_rate;
+  }
+
+  estimates[0] /= 2; // Don't scale DC by 2
+
+  estimates[estimates.length - 1] /= 2; // Don't scale Nyquist by 2
+
+  return {
+    estimates: estimates,
+    frequencies: frequencies
+  };
+}</code></pre>
+  </article>
+</section>
+
+    
+
+
+  </div>
+
+  <br class="clear">
+
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a>
+  </footer>
+
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/pagelocation.js"></script>
+
+  
+
+</body>
+</html>
