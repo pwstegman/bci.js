@@ -13,13 +13,9 @@
 
 ## Getting Started
 
-This branch is for v1.8.0-alpha. Links to docs, NPM, and CDNs below apply to the latest stable release and will be updated when
-this branch is merged into master. To test this version, you can install directly from git via `npm install pwstegman/bci.js#v1.8`.
-You can generate updated docs with `npm run docs`, then spin up a [web server](https://www.npmjs.com/package/http-server) in `docs/` to view the docs for this branch. Note that methods may not be fully documented yet.
+Latest release is v1.8.0. You can view the release notes at [releases](https://github.com/pwstegman/bci.js/releases)
 
 Documentation is available at [https://bci.js.org/docs/](https://bci.js.org/docs/)
-
-Latest release is v1.7.0. You can view the release notes at [releases](https://github.com/pwstegman/bci.js/releases)
 
 **Node.js**
 
@@ -30,7 +26,7 @@ npm install bcijs
 **Browser**
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bcijs@1.7.0/dist/bci.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bcijs@1.8.0/dist/bci.min.js"></script>
 ```
 
 ## Feature Overview
@@ -126,7 +122,7 @@ Check out [https://bci.js.org/examples/lda](https://bci.js.org/examples/lda) for
 BCI.js can be loaded from the jsDelivr CDN with
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bcijs@1.7.0/dist/bci.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bcijs@1.8.0/dist/bci.min.js"></script>
 ```
 
 You can also find `bci.js` and `bci.min.js` in the [/dist](https://github.com/pwstegman/bci.js/tree/master/dist) directory.

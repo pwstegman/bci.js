@@ -1,6 +1,6 @@
 {
   "name": "bcijs",
-  "version": "1.8.0-alpha",
+  "version": "1.8.0",
   "description": "BCI.js - Brain Computer Interfaces (BCIs) with JavaScript",
   "main": "lib/index.js",
   "module": "src/index.js",

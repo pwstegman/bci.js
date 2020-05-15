@@ -55,6 +55,11 @@ describe('bandpower', function(){
 
         assert.deepStrictEqual(powers, expected);
 
+        // Check average powers with single band
+        let powers1 = bci.bandpower(multichannel, sample_rate, ['alpha'], {average: true});
+        let powers2 = bci.bandpower(multichannel, sample_rate, 'alpha', {average: true});
+        assert.equal(powers1[0], powers2);
+
         // Check relative powers
         let total = bci.bandpower(x, sample_rate, [0, sample_rate / 2]);
 

@@ -73,3 +73,6 @@ examples/node/data/
 
 # Babel transpiled lib
 lib/
+
+# Browser dist
+dist/
