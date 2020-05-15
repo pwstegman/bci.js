@@ -36,11 +36,10 @@ For a complete list of methods, see the [docs](https://bci.js.org/docs/).
 | Signal Processing | Machine Learning | Data Management |
 | --- | --- | --- |
 | Bandpower | Feature extraction | Load and save CSVs (Node.js only) |
-| Multitaper | Linear discriminant analysis | Load from EDF (Node.js only) |
-| Welch's method | Confusion matrices | Epoch / window data |
-| Periodogram | Metrics (precision, recall, F1, MCC, etc.) | Partition datasets |
-| Independent component analysis | | Array subscripting (colon notation) |
-| Common spatial pattern | | |
+| Welch's method | Linear discriminant analysis | Load from EDF (Node.js only) |
+| Periodogram | Confusion matrices | Epoch / window data |
+| Independent component analysis | Metrics (precision, recall, F1, MCC, etc.) | Partition datasets |
+| Common spatial pattern | | Array subscripting (colon notation) |
 | Signal generation | | |
 
 ## Tutorials
