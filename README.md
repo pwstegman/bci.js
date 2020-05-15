@@ -144,7 +144,7 @@ const fastICA = require('bcijs/lib/math/fastICA.js');
 
 BCI.js methods can be found in the [src/](https://github.com/pwstegman/bci.js/tree/master/src) directory.
 
-Files are transpiled from ES6 import/export (in `src/`) to CommonJS (generates `lib/`) on `npm install`.
+Files are transpiled from ES6 import/export (in `src/`) to CommonJS (generated `lib/`) on `npm install`.
 
 ## Documentation
 

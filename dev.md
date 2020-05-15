@@ -17,15 +17,15 @@ below the method description in the documentation comment will exclude the metho
 
 To create a new method, create a file in the appropriate folder, and make sure the file name matches the method name. When bci.js builds, it searches for new files within the [src](src) folders and adds them automatically.
 
-Looking at [src/modules.js](src/modules.js), you'll see each method of bci.js points to the appropriate file in [src](src). As such, making a change to an already existing method will not require rebuilding the index.js. However, adding a new method or renaming a method will require a rebuild.
+Looking at `src/modules.js` (must be generated), you'll see each method of bci.js points to the appropriate file in [src](src). As such, making a change to an already existing method will not require rebuilding the index.js. However, adding a new method or renaming a method will require a rebuild.
 
-To rebuild [src/modules.js](src/modules.js), run
+To build/rebuild `src/modules.js`, run
 
 ```bash
 npm run build
 ```
 
-This will also rebuild [src/modules_browser.js](src/modules_browser.js), which is index.js, but with the node-only methods removed. That way it can be used with webpack or browserify.
+This will also rebuild `src/modules_browser.js`, which is index.js, but with the node-only methods removed. That way it can be used with webpack or browserify.
 
 To rebuild the dist files for use in the browser, run
 
