@@ -15,11 +15,12 @@ import { nextpow2 } from './nextpow2';
  * @returns {object} PSD object with keys {estimates: PSD estimates in units of X^2/Hz, frequencies: corresponding frequencies in Hz}
  */
 export function welch(signal, sample_rate, options) {
-    let { segmentLength, overlapLength, fftSize, window } = Object.assign({
+    let { segmentLength, overlapLength, fftSize, window, verbose } = Object.assign({
         segmentLength: 256,
         overlapLength: null,
         window: 'hann',
-        fftSize: null
+        fftSize: null,
+        verbose: true
     }, options);
 
     if(overlapLength === null) overlapLength = Math.floor(segmentLength / 2);
@@ -35,7 +36,9 @@ export function welch(signal, sample_rate, options) {
 
     if(PSDs.length == 0) throw new Error('Unable to calculate any PSD estimates');
     if(PSDs.length == 1) {
-        console.warn('Not enough data to compute more than one segment, returning single modified periodogram.');
+        if(verbose) {
+            console.warn('Not enough data to compute more than one segment, returning single modified periodogram.');
+        }
         return PSDs[0];
     }
 
