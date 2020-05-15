@@ -125,7 +125,7 @@ BCI.js can be loaded from the jsDelivr CDN with
 <script src="https://cdn.jsdelivr.net/npm/bcijs@1.8.0/dist/bci.min.js"></script>
 ```
 
-You can also find `bci.js` and `bci.min.js` in the [/dist](https://github.com/pwstegman/bci.js/tree/master/dist) directory.
+You can also find `bci.js` and `bci.min.js` at [releases](https://github.com/pwstegman/bci.js/releases).
 
 BCI.js methods are accessible via the global object `bci`.
 
@@ -143,7 +143,9 @@ You can require specific methods as well. For example, if you only need fastICA,
 const fastICA = require('bcijs/lib/math/fastICA.js');
 ```
 
-BCI.js methods can be found in the [lib/](https://github.com/pwstegman/bci.js/tree/master/lib) directory.
+BCI.js methods can be found in the [src/](https://github.com/pwstegman/bci.js/tree/master/src) directory.
+
+Files are transpiled from ES6 import/export (in `src/`) to CommonJS (generates `lib/`) on `npm install`.
 
 ## Documentation
 
