@@ -80,7 +80,7 @@
 
     
 
-    <h3 id="global-nav">Global</h3><ul><li><a href="global.html#calculateAdaptiveWeights">calculateAdaptiveWeights</a></li><li><a href="global.html#computeQ">computeQ</a></li><li><a href="global.html#dpss">dpss</a></li><li><a href="global.html#multitaper">multitaper</a></li><li><a href="global.html#taper">taper</a></li><li><a href="global.html#welch">welch</a></li></ul>
+    <h3>Classes</h3><ul><li id="oscStream-nav"><a href="oscStream_oscStream.html">oscStream</a></li></ul><h3>Modules</h3><ul><li id="bcijs-nav"><a href="module-bcijs.html">bcijs</a><ul class='methods'><li data-type="method" id="bcijs-accuracy-nav"><a href="module-bcijs.html#.accuracy">accuracy</a></li><li data-type="method" id="bcijs-balancedAccuracy-nav"><a href="module-bcijs.html#.balancedAccuracy">balancedAccuracy</a></li><li data-type="method" id="bcijs-bandpower-nav"><a href="module-bcijs.html#.bandpower">bandpower</a></li><li data-type="method" id="bcijs-confusionMatrix-nav"><a href="module-bcijs.html#.confusionMatrix">confusionMatrix</a></li><li data-type="method" id="bcijs-cspLearn-nav"><a href="module-bcijs.html#.cspLearn">cspLearn</a></li><li data-type="method" id="bcijs-cspProject-nav"><a href="module-bcijs.html#.cspProject">cspProject</a></li><li data-type="method" id="bcijs-f1-nav"><a href="module-bcijs.html#.f1">f1</a></li><li data-type="method" id="bcijs-fastICA-nav"><a href="module-bcijs.html#.fastICA">fastICA</a></li><li data-type="method" id="bcijs-generateSignal-nav"><a href="module-bcijs.html#.generateSignal">generateSignal</a></li><li data-type="method" id="bcijs-ldaClassify-nav"><a href="module-bcijs.html#.ldaClassify">ldaClassify</a></li><li data-type="method" id="bcijs-ldaLearn-nav"><a href="module-bcijs.html#.ldaLearn">ldaLearn</a></li><li data-type="method" id="bcijs-ldaProject-nav"><a href="module-bcijs.html#.ldaProject">ldaProject</a></li><li data-type="method" id="bcijs-loadCSV-nav"><a href="module-bcijs.html#.loadCSV">loadCSV</a></li><li data-type="method" id="bcijs-loadEDF-nav"><a href="module-bcijs.html#.loadEDF">loadEDF</a></li><li data-type="method" id="bcijs-mcc-nav"><a href="module-bcijs.html#.mcc">mcc</a></li><li data-type="method" id="bcijs-nextpow2-nav"><a href="module-bcijs.html#.nextpow2">nextpow2</a></li><li data-type="method" id="bcijs-oscCollect-nav"><a href="module-bcijs.html#.oscCollect">oscCollect</a></li><li data-type="method" id="bcijs-oscHeaderScan-nav"><a href="module-bcijs.html#.oscHeaderScan">oscHeaderScan</a></li><li data-type="method" id="bcijs-partition-nav"><a href="module-bcijs.html#.partition">partition</a></li><li data-type="method" id="bcijs-periodogram-nav"><a href="module-bcijs.html#.periodogram">periodogram</a></li><li data-type="method" id="bcijs-precision-nav"><a href="module-bcijs.html#.precision">precision</a></li><li data-type="method" id="bcijs-prompt-nav"><a href="module-bcijs.html#.prompt">prompt</a></li><li data-type="method" id="bcijs-recall-nav"><a href="module-bcijs.html#.recall">recall</a></li><li data-type="method" id="bcijs-round-nav"><a href="module-bcijs.html#.round">round</a></li><li data-type="method" id="bcijs-saveCSV-nav"><a href="module-bcijs.html#.saveCSV">saveCSV</a></li><li data-type="method" id="bcijs-specificity-nav"><a href="module-bcijs.html#.specificity">specificity</a></li><li data-type="method" id="bcijs-subscript-nav"><a href="module-bcijs.html#.subscript">subscript</a></li><li data-type="method" id="bcijs-toFixed-nav"><a href="module-bcijs.html#.toFixed">toFixed</a></li><li data-type="method" id="bcijs-toTable-nav"><a href="module-bcijs.html#.toTable">toTable</a></li><li data-type="method" id="bcijs-transpose-nav"><a href="module-bcijs.html#.transpose">transpose</a></li><li data-type="method" id="bcijs-wait-nav"><a href="module-bcijs.html#.wait">wait</a></li><li data-type="method" id="bcijs-welch-nav"><a href="module-bcijs.html#.welch">welch</a></li><li data-type="method" id="bcijs-windowApply-nav"><a href="module-bcijs.html#.windowApply">windowApply</a></li></ul></li></ul>
   </nav>
 
   <div id="main">
@@ -137,29 +137,24 @@
 <td>Load and save CSVs (Node.js only)</td>
 </tr>
 <tr>
-<td>Multitaper</td>
+<td>Welch's method</td>
 <td>Linear discriminant analysis</td>
 <td>Load from EDF (Node.js only)</td>
 </tr>
 <tr>
-<td>Welch's method</td>
+<td>Periodogram</td>
 <td>Confusion matrices</td>
 <td>Epoch / window data</td>
 </tr>
 <tr>
-<td>Periodogram</td>
+<td>Independent component analysis</td>
 <td>Metrics (precision, recall, F1, MCC, etc.)</td>
 <td>Partition datasets</td>
 </tr>
 <tr>
-<td>Independent component analysis</td>
-<td></td>
-<td>Array subscripting (colon notation)</td>
-</tr>
-<tr>
 <td>Common spatial pattern</td>
 <td></td>
-<td></td>
+<td>Array subscripting (colon notation)</td>
 </tr>
 <tr>
 <td>Signal generation</td>
@@ -232,7 +227,7 @@ console.log(predictions); // [ 0, 0, 1, 1 ]
 <p>BCI.js can be loaded from the jsDelivr CDN with</p>
 <pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bcijs@1.8.0/dist/bci.min.js&quot;>&lt;/script>
 </code></pre>
-<p>You can also find <code>bci.js</code> and <code>bci.min.js</code> in the <a href="https://github.com/pwstegman/bci.js/tree/master/dist">/dist</a> directory.</p>
+<p>You can also find <code>bci.js</code> and <code>bci.min.js</code> at <a href="https://github.com/pwstegman/bci.js/releases">releases</a>.</p>
 <p>BCI.js methods are accessible via the global object <code>bci</code>.</p>
 <p>If building a web distributable using a tool such as browserify or webpack, require <code>bcijs/browser.js</code> to load only methods that are browser compatible. Node.js specific methods such as networking and file system methods will not be included.</p>
 <pre class="prettyprint source lang-javascript"><code>const bci = require('bcijs/browser.js');
@@ -241,7 +236,8 @@ console.log(predictions); // [ 0, 0, 1, 1 ]
 <p>You can require specific methods as well. For example, if you only need fastICA, you can use</p>
 <pre class="prettyprint source lang-javascript"><code>const fastICA = require('bcijs/lib/math/fastICA.js');
 </code></pre>
-<p>BCI.js methods can be found in the <a href="https://github.com/pwstegman/bci.js/tree/master/lib">lib/</a> directory.</p>
+<p>BCI.js methods can be found in the <a href="https://github.com/pwstegman/bci.js/tree/master/src">src/</a> directory.</p>
+<p>Files are transpiled from ES6 import/export (in <code>src/</code>) to CommonJS (generated <code>lib/</code>) on <code>npm install</code>.</p>
 <h2>Documentation</h2>
 <p>Documentation can be found at <a href="https://bci.js.org/docs">https://bci.js.org/docs</a> or by viewing <a href="https://github.com/pwstegman/bci.js/blob/master/docs/docs/api.md">api.md</a></p>
 <p>Deprecated methods can be found at <a href="https://github.com/pwstegman/bci.js/blob/master/docs/docs/deprecated.md">deprecated.md</a></p>

@@ -12,11 +12,11 @@ function docshtml(done){
 	let config = require('../jsdoc.json');
 	let files = [
 		'README.md',
-		'index.js',
-		'lib/data',
-		'lib/math',
-		'lib/network',
-		'lib/metrics'
+		'src/index.js',
+		'src/data',
+		'src/math',
+		'src/network',
+		'src/metrics'
 	];
 	return gulp.src(files, {read: false}).pipe(jsdoc(config, done));
 };

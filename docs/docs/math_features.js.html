@@ -82,7 +82,7 @@
 
     
 
-    <h3 id="global-nav">Global</h3><ul><li><a href="global.html#calculateAdaptiveWeights">calculateAdaptiveWeights</a></li><li><a href="global.html#computeQ">computeQ</a></li><li><a href="global.html#dpss">dpss</a></li><li><a href="global.html#multitaper">multitaper</a></li><li><a href="global.html#taper">taper</a></li><li><a href="global.html#welch">welch</a></li></ul>
+    <h3>Classes</h3><ul><li id="oscStream-nav"><a href="oscStream_oscStream.html">oscStream</a></li></ul><h3>Modules</h3><ul><li id="bcijs-nav"><a href="module-bcijs.html">bcijs</a><ul class='methods'><li data-type="method" id="bcijs-accuracy-nav"><a href="module-bcijs.html#.accuracy">accuracy</a></li><li data-type="method" id="bcijs-balancedAccuracy-nav"><a href="module-bcijs.html#.balancedAccuracy">balancedAccuracy</a></li><li data-type="method" id="bcijs-bandpower-nav"><a href="module-bcijs.html#.bandpower">bandpower</a></li><li data-type="method" id="bcijs-confusionMatrix-nav"><a href="module-bcijs.html#.confusionMatrix">confusionMatrix</a></li><li data-type="method" id="bcijs-cspLearn-nav"><a href="module-bcijs.html#.cspLearn">cspLearn</a></li><li data-type="method" id="bcijs-cspProject-nav"><a href="module-bcijs.html#.cspProject">cspProject</a></li><li data-type="method" id="bcijs-f1-nav"><a href="module-bcijs.html#.f1">f1</a></li><li data-type="method" id="bcijs-fastICA-nav"><a href="module-bcijs.html#.fastICA">fastICA</a></li><li data-type="method" id="bcijs-generateSignal-nav"><a href="module-bcijs.html#.generateSignal">generateSignal</a></li><li data-type="method" id="bcijs-ldaClassify-nav"><a href="module-bcijs.html#.ldaClassify">ldaClassify</a></li><li data-type="method" id="bcijs-ldaLearn-nav"><a href="module-bcijs.html#.ldaLearn">ldaLearn</a></li><li data-type="method" id="bcijs-ldaProject-nav"><a href="module-bcijs.html#.ldaProject">ldaProject</a></li><li data-type="method" id="bcijs-loadCSV-nav"><a href="module-bcijs.html#.loadCSV">loadCSV</a></li><li data-type="method" id="bcijs-loadEDF-nav"><a href="module-bcijs.html#.loadEDF">loadEDF</a></li><li data-type="method" id="bcijs-mcc-nav"><a href="module-bcijs.html#.mcc">mcc</a></li><li data-type="method" id="bcijs-nextpow2-nav"><a href="module-bcijs.html#.nextpow2">nextpow2</a></li><li data-type="method" id="bcijs-oscCollect-nav"><a href="module-bcijs.html#.oscCollect">oscCollect</a></li><li data-type="method" id="bcijs-oscHeaderScan-nav"><a href="module-bcijs.html#.oscHeaderScan">oscHeaderScan</a></li><li data-type="method" id="bcijs-partition-nav"><a href="module-bcijs.html#.partition">partition</a></li><li data-type="method" id="bcijs-periodogram-nav"><a href="module-bcijs.html#.periodogram">periodogram</a></li><li data-type="method" id="bcijs-precision-nav"><a href="module-bcijs.html#.precision">precision</a></li><li data-type="method" id="bcijs-prompt-nav"><a href="module-bcijs.html#.prompt">prompt</a></li><li data-type="method" id="bcijs-recall-nav"><a href="module-bcijs.html#.recall">recall</a></li><li data-type="method" id="bcijs-round-nav"><a href="module-bcijs.html#.round">round</a></li><li data-type="method" id="bcijs-saveCSV-nav"><a href="module-bcijs.html#.saveCSV">saveCSV</a></li><li data-type="method" id="bcijs-specificity-nav"><a href="module-bcijs.html#.specificity">specificity</a></li><li data-type="method" id="bcijs-subscript-nav"><a href="module-bcijs.html#.subscript">subscript</a></li><li data-type="method" id="bcijs-toFixed-nav"><a href="module-bcijs.html#.toFixed">toFixed</a></li><li data-type="method" id="bcijs-toTable-nav"><a href="module-bcijs.html#.toTable">toTable</a></li><li data-type="method" id="bcijs-transpose-nav"><a href="module-bcijs.html#.transpose">transpose</a></li><li data-type="method" id="bcijs-wait-nav"><a href="module-bcijs.html#.wait">wait</a></li><li data-type="method" id="bcijs-welch-nav"><a href="module-bcijs.html#.welch">welch</a></li><li data-type="method" id="bcijs-windowApply-nav"><a href="module-bcijs.html#.windowApply">windowApply</a></li></ul></li></ul>
   </nav>
 
   <div id="main">
@@ -97,111 +97,92 @@
 
 <section>
   <article>
-    <pre class="prettyprint source linenums"><code>"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.features = void 0;
-
-var _mathjs = require("mathjs");
-
-var _transpose = require("./transpose");
+    <pre class="prettyprint source linenums"><code>import { log, variance, sqrt, mean, square } from 'mathjs';
+import { transpose } from './transpose';
 
 /** 
  * Feature extraction methods
  * @namespace features
  * @memberof module:bcijs
  */
-var features = {};
+
+export let features = {};
+
 /**
  * Computes the log of the variance along the specified dimension
  * @memberof module:bcijs.features
+ * @function
+ * @name logvar
  * @param {number[] | number[][]} window - The data
  * @param {string} [dimension] - If 'rows' or 'columns' passed, the features are calculated along that dimension
  */
+features.logvar = function(window, dimension = null) {
+	if(dimension == null){
+		return log(variance(window));
+	}
 
-exports.features = features;
+	var possibleDimensions = ['rows', 'cols', 'columns'];
+	if(possibleDimensions.indexOf(dimension) == -1){
+		throw "Invalid dimension";
+	}
 
-features.logvar = function (window) {
-  var dimension = arguments.length > 1 &amp;&amp; arguments[1] !== undefined ? arguments[1] : null;
+	if(dimension == 'cols' || dimension == 'columns'){
+		window = transpose(window);
+	}
 
-  if (dimension == null) {
-    return (0, _mathjs.log)((0, _mathjs.variance)(window));
-  }
+	return window.map(channel => log(variance(channel)));
+}
 
-  var possibleDimensions = ['rows', 'cols', 'columns'];
-
-  if (possibleDimensions.indexOf(dimension) == -1) {
-    throw "Invalid dimension";
-  }
-
-  if (dimension == 'cols' || dimension == 'columns') {
-    window = (0, _transpose.transpose)(window);
-  }
-
-  return window.map(function (channel) {
-    return (0, _mathjs.log)((0, _mathjs.variance)(channel));
-  });
-};
 /**
  * Computes the variance along the specified dimension
  * @memberof module:bcijs.features
+ * @function
+ * @name variance
  * @param {number[] | number[][]} window - The data
  * @param {string} [dimension] - If 'rows' or 'columns' passed, the features are calculated along that dimension
  */
+features.variance = function(window, dimension = null) {
+	if(dimension == null){
+		return log(variance(window));
+	}
 
+	var possibleDimensions = ['rows', 'cols', 'columns'];
+	if(possibleDimensions.indexOf(dimension) == -1){
+		throw "Invalid dimension";
+	}
 
-features.variance = function (window) {
-  var dimension = arguments.length > 1 &amp;&amp; arguments[1] !== undefined ? arguments[1] : null;
+	if(dimension == 'cols' || dimension == 'columns'){
+		window = transpose(window);
+	}
 
-  if (dimension == null) {
-    return (0, _mathjs.log)((0, _mathjs.variance)(window));
-  }
+	return window.map(channel => variance(channel));
+}
 
-  var possibleDimensions = ['rows', 'cols', 'columns'];
-
-  if (possibleDimensions.indexOf(dimension) == -1) {
-    throw "Invalid dimension";
-  }
-
-  if (dimension == 'cols' || dimension == 'columns') {
-    window = (0, _transpose.transpose)(window);
-  }
-
-  return window.map(function (channel) {
-    return (0, _mathjs.variance)(channel);
-  });
-};
 /**
  * Computes the root mean square along the specified dimension
  * @memberof module:bcijs.features
+ * @function
+ * @name rootMeanSquare
  * @param {number[] | number[][]} window - The data
  * @param {string} [dimension] - If 'rows' or 'columns' passed, the features are calculated along that dimension
  */
+features.rootMeanSquare = function(window, dimension = null) {
+	if(dimension == null){
+		return sqrt(mean(square(window)));
+	}
 
+	var possibleDimensions = ['rows', 'cols', 'columns'];
+	if(possibleDimensions.indexOf(dimension) == -1){
+		throw "Invalid dimension";
+	}
 
-features.rootMeanSquare = function (window) {
-  var dimension = arguments.length > 1 &amp;&amp; arguments[1] !== undefined ? arguments[1] : null;
+	if(dimension == 'cols' || dimension == 'columns'){
+		window = transpose(window);
+	}
 
-  if (dimension == null) {
-    return (0, _mathjs.sqrt)((0, _mathjs.mean)((0, _mathjs.square)(window)));
-  }
-
-  var possibleDimensions = ['rows', 'cols', 'columns'];
-
-  if (possibleDimensions.indexOf(dimension) == -1) {
-    throw "Invalid dimension";
-  }
-
-  if (dimension == 'cols' || dimension == 'columns') {
-    window = (0, _transpose.transpose)(window);
-  }
-
-  return window.map(function (channel) {
-    return (0, _mathjs.sqrt)((0, _mathjs.mean)((0, _mathjs.square)(channel)));
-  });
-};</code></pre>
+	return window.map(channel => sqrt(mean(square(channel))));
+}
+</code></pre>
   </article>
 </section>
 

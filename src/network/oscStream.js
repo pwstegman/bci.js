@@ -4,6 +4,7 @@ import osc from 'node-osc';
  * Listen for messages over OSC
  * <p>This method is exclusive to Node.js</p>
  * @memberof module:bcijs
+ * @name oscStream
  */
 export class oscStream {
 	/**

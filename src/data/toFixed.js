@@ -1,6 +1,8 @@
 /**
  * Returns an array of numbers as strings rounded to the proper number of decimal places and padded with zeros as needed.
  * @memberof module:bcijs
+ * @function
+ * @name toFixed
  * @param {Array} array
  * @param {number} places
  * @returns {string[]} Array of string representations of numbers

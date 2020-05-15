@@ -8,6 +8,8 @@
  * If two classes are passed, class 0 represents the negative case, and class 1 represents the positive case.
  * If more than two classes are passed, an NxN confusion matrix is returned where N is the number of classes.
  * @memberof module:bcijs
+ * @function
+ * @name confusionMatrix
  * @param {number[]} predictedClasses - An array of predicted classes, with class numbers starting at 0
  * @param {number[]} actualClasses - An array of the actual classes, with class numbers starting at 0
  * @returns {number[][]} The confusion matrix

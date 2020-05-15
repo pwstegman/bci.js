@@ -1,6 +1,8 @@
 /**
  * Calculate the accuracy of a classifier given its confusion matrix as defined by the confusionMatrix method
  * @memberof module:bcijs
+ * @function
+ * @name accuracy
  * @param {number[][]} confusionMatrix - a confusion matrix
  * @returns {number} The accuracy
  */

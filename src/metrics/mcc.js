@@ -1,6 +1,8 @@
 /**
  * Calculate the Matthews correlation coefficient (MCC) of a binary classifier given its confusion matrix as defined by the confusionMatrix method
  * @memberof module:bcijs
+ * @function
+ * @name mcc
  * @param {number[][]} confusionMatrix - a 2x2 confusion matrix
  * @returns {number} The Matthews correlation coefficient
  */

@@ -4,6 +4,8 @@ import { specificity } from './specificity';
 /**
  * Calculate the balanced accuracy of a classifier given its confusion matrix as defined by the confusionMatrix method
  * @memberof module:bcijs
+ * @function
+ * @name balancedAccuracy
  * @param {number[][]} confusionMatrix - a confusion matrix
  * @returns {number} The balanced accuracy
  */

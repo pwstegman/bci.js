@@ -1,6 +1,8 @@
 /**
  * Subscript an array with MATLAB-like syntax
  * @memberof module:bcijs
+ * @function
+ * @name subscript
  * @param {Array} array - The array to be subscripted
  * @param {...string} params - Colon notation for which elements to include in each dimension
  * @returns {Array} The subscripted array

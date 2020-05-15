@@ -11,6 +11,8 @@ import { nextpow2 } from '../math/nextpow2';
  * @deprecated Deprecated since version 1.7.0, will be removed in version 2.0.0
  * 
  * @memberof module:bcijs
+ * @function
+ * @name psdBandPower
  * @param {number[]} psd - Power spectral density of the signal.
  * @param {number} sampleRate - The sample rate of the signal.
  * @param {(number[]|string)} - The frequency band provided as an array [frequencyStart, frequencyStop] or a

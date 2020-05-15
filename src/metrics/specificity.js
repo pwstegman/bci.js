@@ -1,6 +1,8 @@
 /**
  * Calculate the specificity of a binary classifier given its confusion matrix as defined by the confusionMatrix method
  * @memberof module:bcijs
+ * @function
+ * @name specificity
  * @param {number[][]} confusionMatrix - a 2x2 confusion matrix
  * @returns {number} The specificity (true negative rate)
  */

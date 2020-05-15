@@ -4,6 +4,8 @@ import stat from 'pw-stat';
 /**
  * Perform linear discriminant analysis between two datasets
  * @memberof module:bcijs
+ * @function
+ * @name ldaLearn
  * @param {number[][]} class1 - Data set for class 1, rows are samples, columns are variables
  * @param {number[][]} class2 - Data set for class 2, rows are samples, columns are variables
  * @returns {Object} Computed LDA parameters

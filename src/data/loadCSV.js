@@ -4,6 +4,8 @@ import csv from 'csvtojson';
  * Loads a CSV file into an array
  * <p>This method is exclusive to Node.js</p>
  * @memberof module:bcijs
+ * @function
+ * @name loadCSV
  * @param {string} filePath - The path to the CSV file
  * @returns {Promise} A promise object which resolves to the CSV data array
  */

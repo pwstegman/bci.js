@@ -8,6 +8,8 @@ import osc from 'node-osc';
  * Scan for OSC headers on a port and address
  * <p>This method is exclusive to Node.js</p>
  * @memberof module:bcijs
+ * @function
+ * @name oscHeaderScan
  * @param {any} address - OSC address
  * @param {any} port - OSC port
  * @param {any} duration - Duration of scan in milliseconds

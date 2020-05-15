@@ -8,6 +8,8 @@ import osc from 'node-osc';
  * Collect a set number of samples over OSC
  * <p>This method is exclusive to Node.js</p>
  * @memberof module:bcijs
+ * @function
+ * @name oscCollect
  * @param {string} address - OSC address
  * @param {number} port - OSC port
  * @param {string} header - OSC header, can be found by scanning with oscHeaderScan if unknown

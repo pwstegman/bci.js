@@ -3,6 +3,8 @@ import { range, zeros, add, multiply, sin } from 'mathjs';
 /**
  * Generate a signal with the given frequencies and their amplitudes.
  * @memberof module:bcijs
+ * @function
+ * @name generateSignal
  * @param {number[]} amplitudes - The amplitudes of each frequency.
  * @param {number[]} frequencies - The frequencies.
  * @param {number} sampleRate - Sample rate of the signal in Hz.

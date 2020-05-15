@@ -82,7 +82,7 @@
 
     
 
-    <h3 id="global-nav">Global</h3><ul><li><a href="global.html#calculateAdaptiveWeights">calculateAdaptiveWeights</a></li><li><a href="global.html#computeQ">computeQ</a></li><li><a href="global.html#dpss">dpss</a></li><li><a href="global.html#multitaper">multitaper</a></li><li><a href="global.html#taper">taper</a></li><li><a href="global.html#welch">welch</a></li></ul>
+    <h3>Classes</h3><ul><li id="oscStream-nav"><a href="oscStream_oscStream.html">oscStream</a></li></ul><h3>Modules</h3><ul><li id="bcijs-nav"><a href="module-bcijs.html">bcijs</a><ul class='methods'><li data-type="method" id="bcijs-accuracy-nav"><a href="module-bcijs.html#.accuracy">accuracy</a></li><li data-type="method" id="bcijs-balancedAccuracy-nav"><a href="module-bcijs.html#.balancedAccuracy">balancedAccuracy</a></li><li data-type="method" id="bcijs-bandpower-nav"><a href="module-bcijs.html#.bandpower">bandpower</a></li><li data-type="method" id="bcijs-confusionMatrix-nav"><a href="module-bcijs.html#.confusionMatrix">confusionMatrix</a></li><li data-type="method" id="bcijs-cspLearn-nav"><a href="module-bcijs.html#.cspLearn">cspLearn</a></li><li data-type="method" id="bcijs-cspProject-nav"><a href="module-bcijs.html#.cspProject">cspProject</a></li><li data-type="method" id="bcijs-f1-nav"><a href="module-bcijs.html#.f1">f1</a></li><li data-type="method" id="bcijs-fastICA-nav"><a href="module-bcijs.html#.fastICA">fastICA</a></li><li data-type="method" id="bcijs-generateSignal-nav"><a href="module-bcijs.html#.generateSignal">generateSignal</a></li><li data-type="method" id="bcijs-ldaClassify-nav"><a href="module-bcijs.html#.ldaClassify">ldaClassify</a></li><li data-type="method" id="bcijs-ldaLearn-nav"><a href="module-bcijs.html#.ldaLearn">ldaLearn</a></li><li data-type="method" id="bcijs-ldaProject-nav"><a href="module-bcijs.html#.ldaProject">ldaProject</a></li><li data-type="method" id="bcijs-loadCSV-nav"><a href="module-bcijs.html#.loadCSV">loadCSV</a></li><li data-type="method" id="bcijs-loadEDF-nav"><a href="module-bcijs.html#.loadEDF">loadEDF</a></li><li data-type="method" id="bcijs-mcc-nav"><a href="module-bcijs.html#.mcc">mcc</a></li><li data-type="method" id="bcijs-nextpow2-nav"><a href="module-bcijs.html#.nextpow2">nextpow2</a></li><li data-type="method" id="bcijs-oscCollect-nav"><a href="module-bcijs.html#.oscCollect">oscCollect</a></li><li data-type="method" id="bcijs-oscHeaderScan-nav"><a href="module-bcijs.html#.oscHeaderScan">oscHeaderScan</a></li><li data-type="method" id="bcijs-partition-nav"><a href="module-bcijs.html#.partition">partition</a></li><li data-type="method" id="bcijs-periodogram-nav"><a href="module-bcijs.html#.periodogram">periodogram</a></li><li data-type="method" id="bcijs-precision-nav"><a href="module-bcijs.html#.precision">precision</a></li><li data-type="method" id="bcijs-prompt-nav"><a href="module-bcijs.html#.prompt">prompt</a></li><li data-type="method" id="bcijs-recall-nav"><a href="module-bcijs.html#.recall">recall</a></li><li data-type="method" id="bcijs-round-nav"><a href="module-bcijs.html#.round">round</a></li><li data-type="method" id="bcijs-saveCSV-nav"><a href="module-bcijs.html#.saveCSV">saveCSV</a></li><li data-type="method" id="bcijs-specificity-nav"><a href="module-bcijs.html#.specificity">specificity</a></li><li data-type="method" id="bcijs-subscript-nav"><a href="module-bcijs.html#.subscript">subscript</a></li><li data-type="method" id="bcijs-toFixed-nav"><a href="module-bcijs.html#.toFixed">toFixed</a></li><li data-type="method" id="bcijs-toTable-nav"><a href="module-bcijs.html#.toTable">toTable</a></li><li data-type="method" id="bcijs-transpose-nav"><a href="module-bcijs.html#.transpose">transpose</a></li><li data-type="method" id="bcijs-wait-nav"><a href="module-bcijs.html#.wait">wait</a></li><li data-type="method" id="bcijs-welch-nav"><a href="module-bcijs.html#.welch">welch</a></li><li data-type="method" id="bcijs-windowApply-nav"><a href="module-bcijs.html#.windowApply">windowApply</a></li></ul></li></ul>
   </nav>
 
   <div id="main">
@@ -97,23 +97,15 @@
 
 <section>
   <article>
-    <pre class="prettyprint source linenums"><code>"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.loadEDF = loadEDF;
-
-var _fs = _interopRequireDefault(require("fs"));
-
-var _edfjs = _interopRequireDefault(require("edfjs"));
-
-function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { default: obj }; }
+    <pre class="prettyprint source linenums"><code>import fs from 'fs';
+import edfjs from 'edfjs';
 
 /**
  * Load data from an EDF file
  * &lt;p>This method is exclusive to Node.js&lt;/p>
  * @memberof module:bcijs
+ * @function
+ * @name loadEDF
  * @param {string} filename - Path to the EDF file
  * @returns {Object} An object with the following parameters:
  * &lt;br>
@@ -129,36 +121,38 @@ function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? ob
  * &lt;br> physical_dimension [string] - The units for each channel (ex: uV)
  * &lt;br> samples [number[]] - An array of samples from the channel 
  */
-function loadEDF(filename) {
-  var file = _fs.default.readFileSync(filename);
+export function loadEDF(filename){
+    let file = fs.readFileSync(filename);
+    let edf = edfjs.EDF();
+    edf.read_buffer(file.buffer, false);
 
-  var edf = _edfjs.default.EDF();
+    let subject = edf.pid;
+    let recording = edf.rid;
+    let starttime = edf.startdatetime;
 
-  edf.read_buffer(file.buffer, false);
-  var subject = edf.pid;
-  var recording = edf.rid;
-  var starttime = edf.startdatetime;
-  var channels = edf.channels.map(function (channel) {
-    var samples = new Array(channel.blob.length);
+    let channels = edf.channels.map(channel => {
 
-    for (var i = 0; i &lt; channel.blob.length; i++) {
-      samples[i] = channel.blob[i];
-    }
+        let samples = new Array(channel.blob.length);
+        for(let i = 0; i &lt; channel.blob.length; i++){
+            samples[i] = channel.blob[i];
+        }
+
+        return {
+            'label': channel.label,
+            'sample_rate': channel.sampling_rate,
+            'physical_dimension': channel.physical_dimension,
+            'samples': samples
+        }
+    });
 
     return {
-      'label': channel.label,
-      'sample_rate': channel.sampling_rate,
-      'physical_dimension': channel.physical_dimension,
-      'samples': samples
+        subject: subject,
+        recording: recording,
+        start_time: starttime,
+        channels: channels,
     };
-  });
-  return {
-    subject: subject,
-    recording: recording,
-    start_time: starttime,
-    channels: channels
-  };
-}</code></pre>
+}
+</code></pre>
   </article>
 </section>
 

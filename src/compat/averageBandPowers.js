@@ -13,6 +13,8 @@ import { signalBandPower }  from './signalBandPower';
  * @deprecated Deprecated since version 1.7.0, will be removed in version 2.0.0
  * 
  * @memberof module:bcijs
+ * @function
+ * @name averageBandPowers
  * @param {number[][]} samples - The signals where rows are samples and columns are electrodes
  * @param {number} sampleRate - Sample rate of the data
  * @param {Array} bands - An array of frequency bands. See signalBandPower for more info on frequency bands.

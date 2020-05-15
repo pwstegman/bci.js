@@ -3,8 +3,11 @@ import { windowApply } from '../data/windowApply';
 import { nextpow2 } from './nextpow2';
 
 /**
- * Welch's method
+ * Welch's method<br>
  * Computes overlapping modified periodograms and averages them together
+ * @memberof module:bcijs
+ * @function
+ * @name welch
  * @param {number[]} signal - The input signal
  * @param {number} sample_rate - The sample rate
  * @param {object} options 

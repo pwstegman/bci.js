@@ -3,6 +3,8 @@ import { ldaProject } from './ldaProject';
 /**
  * Classify an unknown data point.
  * @memberof module:bcijs
+ * @function
+ * @name ldaClassify
  * @param {object} ldaParams - The parameters for the LDA, computed with the function ldaLearn
  * @param {number[]|number[][]} point - The data point or array of points to be classified.
  * @returns {number} 0 if the first class, 1 if the second class

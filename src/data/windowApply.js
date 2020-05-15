@@ -3,6 +3,8 @@
  * Each sub array, or window, starts at index 0 and has length 'length'
  * Each next window will be shifted 'step' elements from the first. The result of each function is stored in a returned array.
  * @memberof module:bcijs
+ * @function
+ * @name windowApply
  * @param {Array} array - The array of elements which will be windowed
  * @param {Function} func - The function to call on each window, the returned result is stored in a returned array
  * @param {number} length - The number of elements to include in each window

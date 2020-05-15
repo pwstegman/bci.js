@@ -4,6 +4,8 @@ import { recall } from './recall';
 /**
  * Calculate the f1 score of a binary classifier given its confusion matrix as defined by the confusionMatrix method
  * @memberof module:bcijs
+ * @function
+ * @name f1
  * @param {number[][]} confusionMatrix - a 2x2 confusion matrix
  * @returns {number} The f1 score
  */

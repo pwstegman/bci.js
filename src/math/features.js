@@ -12,6 +12,8 @@ export let features = {};
 /**
  * Computes the log of the variance along the specified dimension
  * @memberof module:bcijs.features
+ * @function
+ * @name logvar
  * @param {number[] | number[][]} window - The data
  * @param {string} [dimension] - If 'rows' or 'columns' passed, the features are calculated along that dimension
  */
@@ -35,6 +37,8 @@ features.logvar = function(window, dimension = null) {
 /**
  * Computes the variance along the specified dimension
  * @memberof module:bcijs.features
+ * @function
+ * @name variance
  * @param {number[] | number[][]} window - The data
  * @param {string} [dimension] - If 'rows' or 'columns' passed, the features are calculated along that dimension
  */
@@ -58,6 +62,8 @@ features.variance = function(window, dimension = null) {
 /**
  * Computes the root mean square along the specified dimension
  * @memberof module:bcijs.features
+ * @function
+ * @name rootMeanSquare
  * @param {number[] | number[][]} window - The data
  * @param {string} [dimension] - If 'rows' or 'columns' passed, the features are calculated along that dimension
  */

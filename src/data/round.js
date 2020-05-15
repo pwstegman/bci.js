@@ -1,6 +1,8 @@
 /**
  * Rounds every value in an array to a set number of decimal places
  * @memberof module:bcijs
+ * @function
+ * @name round
  * @param {number[]} array
  * @param {number} places
  * @returns {number[]} The rounded array

@@ -82,7 +82,7 @@
 
     
 
-    <h3 id="global-nav">Global</h3><ul><li><a href="global.html#calculateAdaptiveWeights">calculateAdaptiveWeights</a></li><li><a href="global.html#computeQ">computeQ</a></li><li><a href="global.html#dpss">dpss</a></li><li><a href="global.html#multitaper">multitaper</a></li><li><a href="global.html#taper">taper</a></li><li><a href="global.html#welch">welch</a></li></ul>
+    <h3>Classes</h3><ul><li id="oscStream-nav"><a href="oscStream_oscStream.html">oscStream</a></li></ul><h3>Modules</h3><ul><li id="bcijs-nav"><a href="module-bcijs.html">bcijs</a><ul class='methods'><li data-type="method" id="bcijs-accuracy-nav"><a href="module-bcijs.html#.accuracy">accuracy</a></li><li data-type="method" id="bcijs-balancedAccuracy-nav"><a href="module-bcijs.html#.balancedAccuracy">balancedAccuracy</a></li><li data-type="method" id="bcijs-bandpower-nav"><a href="module-bcijs.html#.bandpower">bandpower</a></li><li data-type="method" id="bcijs-confusionMatrix-nav"><a href="module-bcijs.html#.confusionMatrix">confusionMatrix</a></li><li data-type="method" id="bcijs-cspLearn-nav"><a href="module-bcijs.html#.cspLearn">cspLearn</a></li><li data-type="method" id="bcijs-cspProject-nav"><a href="module-bcijs.html#.cspProject">cspProject</a></li><li data-type="method" id="bcijs-f1-nav"><a href="module-bcijs.html#.f1">f1</a></li><li data-type="method" id="bcijs-fastICA-nav"><a href="module-bcijs.html#.fastICA">fastICA</a></li><li data-type="method" id="bcijs-generateSignal-nav"><a href="module-bcijs.html#.generateSignal">generateSignal</a></li><li data-type="method" id="bcijs-ldaClassify-nav"><a href="module-bcijs.html#.ldaClassify">ldaClassify</a></li><li data-type="method" id="bcijs-ldaLearn-nav"><a href="module-bcijs.html#.ldaLearn">ldaLearn</a></li><li data-type="method" id="bcijs-ldaProject-nav"><a href="module-bcijs.html#.ldaProject">ldaProject</a></li><li data-type="method" id="bcijs-loadCSV-nav"><a href="module-bcijs.html#.loadCSV">loadCSV</a></li><li data-type="method" id="bcijs-loadEDF-nav"><a href="module-bcijs.html#.loadEDF">loadEDF</a></li><li data-type="method" id="bcijs-mcc-nav"><a href="module-bcijs.html#.mcc">mcc</a></li><li data-type="method" id="bcijs-nextpow2-nav"><a href="module-bcijs.html#.nextpow2">nextpow2</a></li><li data-type="method" id="bcijs-oscCollect-nav"><a href="module-bcijs.html#.oscCollect">oscCollect</a></li><li data-type="method" id="bcijs-oscHeaderScan-nav"><a href="module-bcijs.html#.oscHeaderScan">oscHeaderScan</a></li><li data-type="method" id="bcijs-partition-nav"><a href="module-bcijs.html#.partition">partition</a></li><li data-type="method" id="bcijs-periodogram-nav"><a href="module-bcijs.html#.periodogram">periodogram</a></li><li data-type="method" id="bcijs-precision-nav"><a href="module-bcijs.html#.precision">precision</a></li><li data-type="method" id="bcijs-prompt-nav"><a href="module-bcijs.html#.prompt">prompt</a></li><li data-type="method" id="bcijs-recall-nav"><a href="module-bcijs.html#.recall">recall</a></li><li data-type="method" id="bcijs-round-nav"><a href="module-bcijs.html#.round">round</a></li><li data-type="method" id="bcijs-saveCSV-nav"><a href="module-bcijs.html#.saveCSV">saveCSV</a></li><li data-type="method" id="bcijs-specificity-nav"><a href="module-bcijs.html#.specificity">specificity</a></li><li data-type="method" id="bcijs-subscript-nav"><a href="module-bcijs.html#.subscript">subscript</a></li><li data-type="method" id="bcijs-toFixed-nav"><a href="module-bcijs.html#.toFixed">toFixed</a></li><li data-type="method" id="bcijs-toTable-nav"><a href="module-bcijs.html#.toTable">toTable</a></li><li data-type="method" id="bcijs-transpose-nav"><a href="module-bcijs.html#.transpose">transpose</a></li><li data-type="method" id="bcijs-wait-nav"><a href="module-bcijs.html#.wait">wait</a></li><li data-type="method" id="bcijs-welch-nav"><a href="module-bcijs.html#.welch">welch</a></li><li data-type="method" id="bcijs-windowApply-nav"><a href="module-bcijs.html#.windowApply">windowApply</a></li></ul></li></ul>
   </nav>
 
   <div id="main">
@@ -97,18 +97,13 @@
 
 <section>
   <article>
-    <pre class="prettyprint source linenums"><code>"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.windowApply = windowApply;
-
-/**
+    <pre class="prettyprint source linenums"><code>/**
  * Similar to JavaScript's map, but it applies a function to sub arrays instead of each element.
  * Each sub array, or window, starts at index 0 and has length 'length'
  * Each next window will be shifted 'step' elements from the first. The result of each function is stored in a returned array.
  * @memberof module:bcijs
+ * @function
+ * @name windowApply
  * @param {Array} array - The array of elements which will be windowed
  * @param {Function} func - The function to call on each window, the returned result is stored in a returned array
  * @param {number} length - The number of elements to include in each window
@@ -131,22 +126,21 @@ exports.windowApply = windowApply;
  * console.log(sums);
  * // [6, 9, 12]
  */
-function windowApply(array, func, length) {
-  var step = arguments.length > 3 &amp;&amp; arguments[3] !== undefined ? arguments[3] : -1;
-  var tail = arguments.length > 4 &amp;&amp; arguments[4] !== undefined ? arguments[4] : false;
-  if (step == -1) step = length;
-  var result = [];
+export function windowApply(array, func, length, step = -1, tail = false) {
+	if (step == -1) step = length;
 
-  for (var i = 0; i &lt; array.length; i += step) {
-    var window = array.slice(i, i + length);
+	var result = [];
 
-    if (tail || window.length == length) {
-      result.push(func(window));
-    }
-  }
+	for (var i = 0; i &lt; array.length; i += step) {
+		var window = array.slice(i, i + length);
+		if (tail || window.length == length) {
+			result.push(func(window));
+		}
+	}
 
-  return result;
-}</code></pre>
+	return result;
+}
+</code></pre>
   </article>
 </section>
 

@@ -25,6 +25,8 @@ import stat from 'pw-stat';
 /**
  * FastICA algorithm for independent component analysis
  * @memberof module:bcijs
+ * @function
+ * @name fastICA
  * @param {number[][]} signals - The mixed signals. Each row should be a signal and each column a sample.
  * @param {Object} options
  * @param {number} [options.maxIterations=1000] - Maximum number of iterations

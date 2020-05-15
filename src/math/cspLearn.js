@@ -6,6 +6,8 @@ import stat from 'pw-stat';
  * Learn common spatial pattern (CSP) for two datasets.
  * Check out {@link https://bci.js.org/examples/csp/} for an interactive example of how CSP works.
  * @memberof module:bcijs
+ * @function
+ * @name cspLearn
  * @param {number[][]} class1 - Data samples for class 1. Rows should be samples, columns should be signals.
  * @param {number[][]} class2 - Data samples for class 2. Rows should be samples, columns should be signals.
  * @returns {Object} Learned CSP parameters

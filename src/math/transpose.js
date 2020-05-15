@@ -1,6 +1,8 @@
 /**
  * Transpose an array
  * @memberof module:bcijs
+ * @function
+ * @name transpose
  * @param {Array} array - The array to transpose
  * @returns {Array} The transposed array
  */

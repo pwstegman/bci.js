@@ -1,6 +1,8 @@
 /**
  * Calculate the precision of a binary classifier given its confusion matrix as defined by the confusionMatrix method
  * @memberof module:bcijs
+ * @function
+ * @name precision
  * @param {number[][]} confusionMatrix - a 2x2 confusion matrix
  * @returns {number} The precision (positive predictive value)
  */

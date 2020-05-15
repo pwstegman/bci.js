@@ -77,6 +77,8 @@ function reduceBands(bands) {
  * Example usages are provided below.
  * 
  * @memberof module:bcijs
+ * @function
+ * @name bandpower
  * @param {number[]|number[][]} samples - An array of samples, ex: [1,2,3,4, ...], or, in the case of multiple channels, ex (2 channels): [[1,2], [3,4], [5,6], ...]
  * @param {number} sample_rate - Sample rate
  * @param {string|Array} bands - The frequency band provided as an array [frequencyStart, frequencyStop] or a string 'delta' (1-3 Hz), 'theta' (4-7 Hz), 'alpha' (8-12 Hz), 'beta' (13-30 Hz), or 'gamma' (31-50 Hz).

@@ -4,6 +4,8 @@ import { multiply } from 'mathjs';
  * Projects data using common spatial pattern (CSP) and reduces to given number of dimensions.
  * Check out {@link https://bci.js.org/examples/csp/} for an interactive example of how CSP works.
  * @memberof module:bcijs
+ * @function
+ * @name cspProject
  * @param {object} cspParams - CSP parameters computed using the cspLearn function
  * @param {number[][]} data - Data points to be projected. Rows should be samples, columns should be signals.
  * @param {number} [dimensions] - Number of dimensions to be returned. Can range from 1 to number of signals. Defaults to number of signals.

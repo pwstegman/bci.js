@@ -1,6 +1,8 @@
 /**
  * Calculate the recall of a binary classifier given its confusion matrix as defined by the confusionMatrix method
  * @memberof module:bcijs
+ * @function
+ * @name recall
  * @param {number[][]} confusionMatrix - a 2x2 confusion matrix
  * @returns {number} The recall (true positive rate)
  */

@@ -5,6 +5,8 @@ import edfjs from 'edfjs';
  * Load data from an EDF file
  * <p>This method is exclusive to Node.js</p>
  * @memberof module:bcijs
+ * @function
+ * @name loadEDF
  * @param {string} filename - Path to the EDF file
  * @returns {Object} An object with the following parameters:
  * <br>

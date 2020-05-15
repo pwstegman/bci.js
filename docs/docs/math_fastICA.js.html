@@ -82,7 +82,7 @@
 
     
 
-    <h3 id="global-nav">Global</h3><ul><li><a href="global.html#calculateAdaptiveWeights">calculateAdaptiveWeights</a></li><li><a href="global.html#computeQ">computeQ</a></li><li><a href="global.html#dpss">dpss</a></li><li><a href="global.html#multitaper">multitaper</a></li><li><a href="global.html#taper">taper</a></li><li><a href="global.html#welch">welch</a></li></ul>
+    <h3>Classes</h3><ul><li id="oscStream-nav"><a href="oscStream_oscStream.html">oscStream</a></li></ul><h3>Modules</h3><ul><li id="bcijs-nav"><a href="module-bcijs.html">bcijs</a><ul class='methods'><li data-type="method" id="bcijs-accuracy-nav"><a href="module-bcijs.html#.accuracy">accuracy</a></li><li data-type="method" id="bcijs-balancedAccuracy-nav"><a href="module-bcijs.html#.balancedAccuracy">balancedAccuracy</a></li><li data-type="method" id="bcijs-bandpower-nav"><a href="module-bcijs.html#.bandpower">bandpower</a></li><li data-type="method" id="bcijs-confusionMatrix-nav"><a href="module-bcijs.html#.confusionMatrix">confusionMatrix</a></li><li data-type="method" id="bcijs-cspLearn-nav"><a href="module-bcijs.html#.cspLearn">cspLearn</a></li><li data-type="method" id="bcijs-cspProject-nav"><a href="module-bcijs.html#.cspProject">cspProject</a></li><li data-type="method" id="bcijs-f1-nav"><a href="module-bcijs.html#.f1">f1</a></li><li data-type="method" id="bcijs-fastICA-nav"><a href="module-bcijs.html#.fastICA">fastICA</a></li><li data-type="method" id="bcijs-generateSignal-nav"><a href="module-bcijs.html#.generateSignal">generateSignal</a></li><li data-type="method" id="bcijs-ldaClassify-nav"><a href="module-bcijs.html#.ldaClassify">ldaClassify</a></li><li data-type="method" id="bcijs-ldaLearn-nav"><a href="module-bcijs.html#.ldaLearn">ldaLearn</a></li><li data-type="method" id="bcijs-ldaProject-nav"><a href="module-bcijs.html#.ldaProject">ldaProject</a></li><li data-type="method" id="bcijs-loadCSV-nav"><a href="module-bcijs.html#.loadCSV">loadCSV</a></li><li data-type="method" id="bcijs-loadEDF-nav"><a href="module-bcijs.html#.loadEDF">loadEDF</a></li><li data-type="method" id="bcijs-mcc-nav"><a href="module-bcijs.html#.mcc">mcc</a></li><li data-type="method" id="bcijs-nextpow2-nav"><a href="module-bcijs.html#.nextpow2">nextpow2</a></li><li data-type="method" id="bcijs-oscCollect-nav"><a href="module-bcijs.html#.oscCollect">oscCollect</a></li><li data-type="method" id="bcijs-oscHeaderScan-nav"><a href="module-bcijs.html#.oscHeaderScan">oscHeaderScan</a></li><li data-type="method" id="bcijs-partition-nav"><a href="module-bcijs.html#.partition">partition</a></li><li data-type="method" id="bcijs-periodogram-nav"><a href="module-bcijs.html#.periodogram">periodogram</a></li><li data-type="method" id="bcijs-precision-nav"><a href="module-bcijs.html#.precision">precision</a></li><li data-type="method" id="bcijs-prompt-nav"><a href="module-bcijs.html#.prompt">prompt</a></li><li data-type="method" id="bcijs-recall-nav"><a href="module-bcijs.html#.recall">recall</a></li><li data-type="method" id="bcijs-round-nav"><a href="module-bcijs.html#.round">round</a></li><li data-type="method" id="bcijs-saveCSV-nav"><a href="module-bcijs.html#.saveCSV">saveCSV</a></li><li data-type="method" id="bcijs-specificity-nav"><a href="module-bcijs.html#.specificity">specificity</a></li><li data-type="method" id="bcijs-subscript-nav"><a href="module-bcijs.html#.subscript">subscript</a></li><li data-type="method" id="bcijs-toFixed-nav"><a href="module-bcijs.html#.toFixed">toFixed</a></li><li data-type="method" id="bcijs-toTable-nav"><a href="module-bcijs.html#.toTable">toTable</a></li><li data-type="method" id="bcijs-transpose-nav"><a href="module-bcijs.html#.transpose">transpose</a></li><li data-type="method" id="bcijs-wait-nav"><a href="module-bcijs.html#.wait">wait</a></li><li data-type="method" id="bcijs-welch-nav"><a href="module-bcijs.html#.welch">welch</a></li><li data-type="method" id="bcijs-windowApply-nav"><a href="module-bcijs.html#.windowApply">windowApply</a></li></ul></li></ul>
   </nav>
 
   <div id="main">
@@ -97,36 +97,35 @@
 
 <section>
   <article>
-    <pre class="prettyprint source linenums"><code>"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.fastICA = fastICA;
-
-var _mathjs = require("mathjs");
-
-var _numeric = _interopRequireDefault(require("numeric"));
-
-var _pwStat = _interopRequireDefault(require("pw-stat"));
-
-function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { default: obj }; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" &amp;&amp; o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i &lt; len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i &amp;&amp; _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n &amp;&amp; _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+    <pre class="prettyprint source linenums"><code>import { 
+    tanh,
+    subtract,
+    dotPow,
+    dotMultiply,
+    exp,
+    dotDivide,
+    transpose,
+    abs,
+    mean,
+    multiply,
+    diag,
+    pow,
+    size,
+    random,
+    dot,
+    norm,
+    sum,
+    divide,
+    clone
+} from 'mathjs';
+import numeric from 'numeric';
+import stat from 'pw-stat';
 
 /**
  * FastICA algorithm for independent component analysis
  * @memberof module:bcijs
+ * @function
+ * @name fastICA
  * @param {number[][]} signals - The mixed signals. Each row should be a signal and each column a sample.
  * @param {Object} options
  * @param {number} [options.maxIterations=1000] - Maximum number of iterations
@@ -134,146 +133,150 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
  * @param {string} [options.fun=logcosh] - The functional form of the G function used in the approximation of negentropy. Can be either 'exp' or 'logcosh.
  * @returns {Object} An object with the following values: {source: the estimated source matrix, weights: the estimated unmixing matrix, whitening: the computed whitening matrix, iterations: number of iterations taken to converge on each weight}
  */
-function fastICA(signals, options) {
-  var _Object$assign = Object.assign({
-    maxIterations: 1000,
-    debug: false,
-    fun: 'logcosh'
-  }, options),
-      maxIterations = _Object$assign.maxIterations,
-      debug = _Object$assign.debug,
-      fun = _Object$assign.fun;
+export function fastICA(signals, options){
+    var {maxIterations, debug, fun} = Object.assign({
+        maxIterations: 1000,
+        debug: false,
+        fun: 'logcosh'
+    }, options);
+    
+    let negentropyFunctions = {
+        'logcosh': {
+            g: (u) => tanh(u),
+            gp: (u) => subtract(1, dotPow(tanh(u), 2))
+        },
+        'exp': {
+            g: (u) => dotMultiply(u, exp(dotDivide(dotPow(u, 2), -2))),
+            gp: (u) => dotMultiply(subtract(1, dotPow(u, 2)), exp(dotDivide(dotPow(u, 2), -2)))
+        }
+    };
 
-  var negentropyFunctions = {
-    'logcosh': {
-      g: function g(u) {
-        return (0, _mathjs.tanh)(u);
-      },
-      gp: function gp(u) {
-        return (0, _mathjs.subtract)(1, (0, _mathjs.dotPow)((0, _mathjs.tanh)(u), 2));
-      }
-    },
-    'exp': {
-      g: function g(u) {
-        return (0, _mathjs.dotMultiply)(u, (0, _mathjs.exp)((0, _mathjs.dotDivide)((0, _mathjs.dotPow)(u, 2), -2)));
-      },
-      gp: function gp(u) {
-        return (0, _mathjs.dotMultiply)((0, _mathjs.subtract)(1, (0, _mathjs.dotPow)(u, 2)), (0, _mathjs.exp)((0, _mathjs.dotDivide)((0, _mathjs.dotPow)(u, 2), -2)));
-      }
-    }
-  };
-
-  if (!negentropyFunctions.hasOwnProperty(fun)) {
-    throw new Error("Negentropy approximation function must be either 'exp' or 'logcosh'");
-  }
-
-  var eigs = _numeric.default.eig(_pwStat.default.cov((0, _mathjs.transpose)(signals)));
-
-  var V = eigs.E.x;
-  var D = eigs.lambda.x;
-  /* As covariance matrices are positive semi-definite and symmetric, all eigenvalues are nonnegative.
-     Sometimes very small negatives are returned due to issues with numerical precision. This will cause problems
-     later as we raise each value to the -1/2 power and complex numbers will break the code. To solve, setting
-     D to equal abs(D). Should eventually find a better way to handle eigenvalues that are 0. */
-
-  D = (0, _mathjs.abs)(D);
-  var mu = (0, _mathjs.mean)(signals, 1);
-  var centered = [];
-
-  for (var i = 0; i &lt; signals.length; i++) {
-    centered.push([]);
-
-    for (var j = 0; j &lt; signals[i].length; j++) {
-      centered[i].push(signals[i][j] - mu[i]);
-    }
-  }
-
-  var whitening = (0, _mathjs.multiply)((0, _mathjs.diag)(D.map(function (i) {
-    return (0, _mathjs.pow)(i, -1 / 2);
-  })), (0, _mathjs.transpose)(V));
-  var whitened = (0, _mathjs.multiply)(whitening, centered);
-  var g = negentropyFunctions[fun].g;
-  var gp = negentropyFunctions[fun].gp;
-
-  var _size = (0, _mathjs.size)(whitened),
-      _size2 = _slicedToArray(_size, 2),
-      N = _size2[0],
-      M = _size2[1]; // In this case, getting a component for each dimension, but we could opt to use fewer
-
-
-  var numComponenents = N; // Create a weight vector for each component
-
-  var weights = [];
-
-  for (var _i2 = 0; _i2 &lt; numComponenents; _i2++) {
-    weights.push((0, _mathjs.random)([N]));
-  }
-
-  var totalIterations = [];
-
-  for (var p = 0; p &lt; numComponenents; p++) {
-    var previousWeight = (0, _mathjs.clone)(weights[p]);
-
-    if (debug) {
-      console.log(new Date().toLocaleTimeString(), 'Computing component', p + 1, '/', numComponenents);
+    if(!negentropyFunctions.hasOwnProperty(fun)){
+        throw new Error("Negentropy approximation function must be either 'exp' or 'logcosh'");
     }
 
-    var converged = false;
+    let eigs = numeric.eig(stat.cov(transpose(signals)));
+    let V = eigs.E.x;
+    let D = eigs.lambda.x;
 
-    for (var _i3 = 0; _i3 &lt; maxIterations; _i3++) {
-      // Convergence test
-      var a = previousWeight;
-      var b = weights[p];
-      var cosTheta = (0, _mathjs.dot)(a, b) / ((0, _mathjs.norm)(a) * (0, _mathjs.norm)(b));
-      var delta = 1 - (0, _mathjs.abs)(cosTheta);
-      previousWeight = b;
+    /* As covariance matrices are positive semi-definite and symmetric, all eigenvalues are nonnegative.
+       Sometimes very small negatives are returned due to issues with numerical precision. This will cause problems
+       later as we raise each value to the -1/2 power and complex numbers will break the code. To solve, setting
+       D to equal abs(D). Should eventually find a better way to handle eigenvalues that are 0. */
+    D = abs(D);
 
-      if (debug &amp;&amp; _i3 == 0) {
-        console.log(new Date().toLocaleTimeString(), 'On iteration', _i3 + 1, '/', maxIterations);
-      }
+    let mu = mean(signals, 1);
+    let centered = [];
+    for(let i = 0; i &lt; signals.length; i++){
+        centered.push([]);
+        for(let j = 0; j &lt; signals[i].length; j++){
+            centered[i].push(signals[i][j] - mu[i]);
+        }
+    }
 
-      if (debug &amp;&amp; (_i3 + 1) % 10 == 0) {
-        console.log(new Date().toLocaleTimeString(), 'On iteration', _i3 + 1, '/', maxIterations, 'with a change of', Math.acos(Math.abs(cosTheta)), 'rad');
-      }
+    let whitening = multiply(diag(D.map(i => pow(i, -1/2))), transpose(V));
 
-      if (_i3 != 0 &amp;&amp; delta &lt; 5e-11) {
-        totalIterations.push(_i3);
-        converged = true;
+    let whitened = multiply(
+        whitening,
+        centered
+    );
 
-        if (debug) {
-          console.log(new Date().toLocaleTimeString(), 'Converged on iteration', _i3);
+    let g = negentropyFunctions[fun].g;
+    let gp = negentropyFunctions[fun].gp;
+
+    let [N, M] = size(whitened);
+
+    // In this case, getting a component for each dimension, but we could opt to use fewer
+    let numComponenents = N;
+    // Create a weight vector for each component
+    let weights = [];
+    for(let i = 0; i &lt; numComponenents; i++){
+        weights.push(random([N]));
+    }
+
+    let totalIterations = [];
+
+    for(let p = 0; p &lt; numComponenents; p++){
+        let previousWeight = clone(weights[p]);
+
+        if(debug){
+            console.log((new Date()).toLocaleTimeString(), 'Computing component', p+1, '/', numComponenents);
         }
 
-        break;
-      }
+        let converged = false;
 
-      weights[p] = (0, _mathjs.transpose)((0, _mathjs.subtract)((0, _mathjs.multiply)(1 / M, whitened, (0, _mathjs.transpose)(g((0, _mathjs.multiply)(weights[p], whitened)))), (0, _mathjs.multiply)(1 / M, (0, _mathjs.sum)(gp((0, _mathjs.multiply)(weights[p], whitened))), (0, _mathjs.transpose)(weights[p]))));
+        for(let i = 0; i &lt; maxIterations; i++){
+            // Convergence test
+            let a = previousWeight;
+            let b = weights[p];
+            let cosTheta = dot(a, b) / (norm(a) * norm(b));
+            let delta = 1 - abs(cosTheta);
+            previousWeight = b;
 
-      for (var _j = 0; _j &lt; p; _j++) {
-        weights[p] = (0, _mathjs.subtract)(weights[p], (0, _mathjs.multiply)(weights[p], (0, _mathjs.transpose)(weights[_j]), weights[_j]));
-      }
+            if(debug &amp;&amp; i == 0){
+                console.log((new Date()).toLocaleTimeString(), 'On iteration', i+1, '/', maxIterations);
+            }
 
-      weights[p] = (0, _mathjs.divide)(weights[p], (0, _mathjs.norm)(weights[p]));
+            if(debug &amp;&amp; (i+1)%10 == 0){
+                console.log((new Date()).toLocaleTimeString(), 'On iteration', i+1, '/', maxIterations, 'with a change of', Math.acos(Math.abs(cosTheta)), 'rad');
+            }
+            
+            if(i != 0 &amp;&amp; delta &lt; 5e-11){
+                totalIterations.push(i);
+                converged = true;
+                
+                if(debug){
+                    console.log((new Date()).toLocaleTimeString(), 'Converged on iteration', i);
+                }
+                
+                break;
+            }
+
+            weights[p] = transpose(subtract(
+                multiply(
+                    1/M,
+                    whitened,
+                    transpose(g(multiply(weights[p], whitened)))
+                ),
+                multiply(
+                    1/M,
+                    sum(gp(multiply(weights[p], whitened))),
+                    transpose(weights[p])
+                )
+            ));
+
+            for(let j = 0; j &lt; p; j++){
+                weights[p] = subtract(
+                    weights[p],
+                    multiply(
+                        weights[p],
+                        transpose(weights[j]),
+                        weights[j]
+                    )
+                );
+            }
+
+            weights[p] = divide(weights[p], norm(weights[p]));
+        }
+
+        if(!converged){
+            totalIterations.push(maxIterations);
+            if(debug){
+                console.log('Stopped at maxIterations before converged');
+            }
+        }
+    };
+
+    let source = multiply(weights, whitened);
+
+    return {
+        source: source,
+        weights: weights,
+        whitening: whitening,
+        iterations: totalIterations
     }
-
-    if (!converged) {
-      totalIterations.push(maxIterations);
-
-      if (debug) {
-        console.log('Stopped at maxIterations before converged');
-      }
-    }
-  }
-
-  ;
-  var source = (0, _mathjs.multiply)(weights, whitened);
-  return {
-    source: source,
-    weights: weights,
-    whitening: whitening,
-    iterations: totalIterations
-  };
-}</code></pre>
+}
+</code></pre>
   </article>
 </section>
 

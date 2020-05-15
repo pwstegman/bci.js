@@ -25,6 +25,7 @@ function hann(signal) {
 
 /**
  * Apply a taper to a signal
+ * @private
  * @param {number[]} signal - The signal
  * @param {number[]} taper - The taper
  * @returns {number[]} The tapered signal
@@ -50,6 +51,8 @@ function taper(signal, taper) {
  * For example, if the input is an EEG signal measured in μV, then this method returns values of μV^2/Hz.
  * 
  * @memberof module:bcijs
+ * @function
+ * @name periodogram
  * @param {number[]} signal - The signal.
  * @param {number} sample_rate - sample rate in Hz
  * @param {Object} [options]

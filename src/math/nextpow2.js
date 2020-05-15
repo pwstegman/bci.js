@@ -1,6 +1,8 @@
 /**
  * Returns the ceil of the log2 of the absolute value of the passed number
  * @memberof module:bcijs
+ * @function
+ * @name nextpow2
  * @param {number} num
  * @returns {number} The ceil of the log2 of the absolute value of the passed number 
  * @example

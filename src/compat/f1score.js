@@ -9,6 +9,8 @@
  * which does not match the definition provided by the method bcijs.confusionMatrix.
  * As such, it has been deprecated and replaced with the method bcijs.f1 in order to prevent a version breaking change.
  * @memberof module:bcijs
+ * @function
+ * @name f1score
  * @deprecated since version 1.5.0 (Please use bcijs.f1 instead)
  * @param {number[][]} confusionMatrix - a 2x2 confusion matrix
  * @returns {number} The f1 score

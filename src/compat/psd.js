@@ -18,6 +18,8 @@ var fftCache = {};
  * Deprecated since version 1.7.0, will be removed in version 2.0.0
  * 
  * @memberof module:bcijs
+ * @function
+ * @name psd
  * @param {number[]} signal - The signal.
  * @param {Object} [options]
  * @param {number} [options.fftSize=Math.pow(2, bci.nextpow2(signal.length))] - Size of the fft to be used. Should be a power of 2.

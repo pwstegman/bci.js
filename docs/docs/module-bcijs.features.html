@@ -80,7 +80,7 @@
 
     
 
-    <h3 id="global-nav">Global</h3><ul><li><a href="global.html#calculateAdaptiveWeights">calculateAdaptiveWeights</a></li><li><a href="global.html#computeQ">computeQ</a></li><li><a href="global.html#dpss">dpss</a></li><li><a href="global.html#multitaper">multitaper</a></li><li><a href="global.html#taper">taper</a></li><li><a href="global.html#welch">welch</a></li></ul>
+    <h3>Classes</h3><ul><li id="oscStream-nav"><a href="oscStream_oscStream.html">oscStream</a></li></ul><h3>Modules</h3><ul><li id="bcijs-nav"><a href="module-bcijs.html">bcijs</a><ul class='methods'><li data-type="method" id="bcijs-accuracy-nav"><a href="module-bcijs.html#.accuracy">accuracy</a></li><li data-type="method" id="bcijs-balancedAccuracy-nav"><a href="module-bcijs.html#.balancedAccuracy">balancedAccuracy</a></li><li data-type="method" id="bcijs-bandpower-nav"><a href="module-bcijs.html#.bandpower">bandpower</a></li><li data-type="method" id="bcijs-confusionMatrix-nav"><a href="module-bcijs.html#.confusionMatrix">confusionMatrix</a></li><li data-type="method" id="bcijs-cspLearn-nav"><a href="module-bcijs.html#.cspLearn">cspLearn</a></li><li data-type="method" id="bcijs-cspProject-nav"><a href="module-bcijs.html#.cspProject">cspProject</a></li><li data-type="method" id="bcijs-f1-nav"><a href="module-bcijs.html#.f1">f1</a></li><li data-type="method" id="bcijs-fastICA-nav"><a href="module-bcijs.html#.fastICA">fastICA</a></li><li data-type="method" id="bcijs-generateSignal-nav"><a href="module-bcijs.html#.generateSignal">generateSignal</a></li><li data-type="method" id="bcijs-ldaClassify-nav"><a href="module-bcijs.html#.ldaClassify">ldaClassify</a></li><li data-type="method" id="bcijs-ldaLearn-nav"><a href="module-bcijs.html#.ldaLearn">ldaLearn</a></li><li data-type="method" id="bcijs-ldaProject-nav"><a href="module-bcijs.html#.ldaProject">ldaProject</a></li><li data-type="method" id="bcijs-loadCSV-nav"><a href="module-bcijs.html#.loadCSV">loadCSV</a></li><li data-type="method" id="bcijs-loadEDF-nav"><a href="module-bcijs.html#.loadEDF">loadEDF</a></li><li data-type="method" id="bcijs-mcc-nav"><a href="module-bcijs.html#.mcc">mcc</a></li><li data-type="method" id="bcijs-nextpow2-nav"><a href="module-bcijs.html#.nextpow2">nextpow2</a></li><li data-type="method" id="bcijs-oscCollect-nav"><a href="module-bcijs.html#.oscCollect">oscCollect</a></li><li data-type="method" id="bcijs-oscHeaderScan-nav"><a href="module-bcijs.html#.oscHeaderScan">oscHeaderScan</a></li><li data-type="method" id="bcijs-partition-nav"><a href="module-bcijs.html#.partition">partition</a></li><li data-type="method" id="bcijs-periodogram-nav"><a href="module-bcijs.html#.periodogram">periodogram</a></li><li data-type="method" id="bcijs-precision-nav"><a href="module-bcijs.html#.precision">precision</a></li><li data-type="method" id="bcijs-prompt-nav"><a href="module-bcijs.html#.prompt">prompt</a></li><li data-type="method" id="bcijs-recall-nav"><a href="module-bcijs.html#.recall">recall</a></li><li data-type="method" id="bcijs-round-nav"><a href="module-bcijs.html#.round">round</a></li><li data-type="method" id="bcijs-saveCSV-nav"><a href="module-bcijs.html#.saveCSV">saveCSV</a></li><li data-type="method" id="bcijs-specificity-nav"><a href="module-bcijs.html#.specificity">specificity</a></li><li data-type="method" id="bcijs-subscript-nav"><a href="module-bcijs.html#.subscript">subscript</a></li><li data-type="method" id="bcijs-toFixed-nav"><a href="module-bcijs.html#.toFixed">toFixed</a></li><li data-type="method" id="bcijs-toTable-nav"><a href="module-bcijs.html#.toTable">toTable</a></li><li data-type="method" id="bcijs-transpose-nav"><a href="module-bcijs.html#.transpose">transpose</a></li><li data-type="method" id="bcijs-wait-nav"><a href="module-bcijs.html#.wait">wait</a></li><li data-type="method" id="bcijs-welch-nav"><a href="module-bcijs.html#.welch">welch</a></li><li data-type="method" id="bcijs-windowApply-nav"><a href="module-bcijs.html#.windowApply">windowApply</a></li></ul></li></ul>
   </nav>
 
   <div id="main">
@@ -96,6 +96,8 @@
   <header>
     
       <h2>
+        
+          <span class="ancestors"><a href="module-bcijs.html">bcijs</a>.</span>
         
         features
         
@@ -147,7 +149,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="math_features.js.html">math/features.js</a>, <a href="math_features.js.html#line12">line 12</a>
+          <a href="math_features.js.html">math/features.js</a>, <a href="math_features.js.html#line4">line 4</a>
         </li>
       </ul>
     </dd>
@@ -176,21 +178,150 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
 
+    
+      <h3 class="subsection-title">Methods</h3>
+
+      
         
-            
 
-<h4 class="name" id=".exports.features">
-  <span class="type-signature">(static) </span>exports.features<span class="type-signature"></span>
-</h4>
 
+  
+
+  <span class='name-container'>
+    <a class="link-icon" href="#.logvar">
+      <svg height="20" width="20" style="fill: black;">
+        <use xlink:href="#linkIcon"></use>
+      </svg>
+    </a>
+    <h4 class="name" id=".logvar">
+      <span class="type-signature">(static) </span>logvar<span class="signature">(window, dimension<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+    </h4>
+  </span>
+
+  
 
 
 
   <div class="description">
     <p>Computes the log of the variance along the specified dimension</p>
   </div>
+
+
+
+
+
+
+
+  <h5>Parameters:</h5>
+  
+
+<table class="params">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+      <th>Type</th>
+
+      
+        <th>Attributes</th>
+      
+
+      
+
+      <th class="last">Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        
+          <td class="name"><code>window</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      Array.&lt;number>
+    </span>
+
+    |
+
+    <span class="param-type">
+      Array.&lt;Array.&lt;number>>
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>The data</p>
+          
+        </td>
+      </tr>
+
+    
+      <tr>
+        
+          <td class="name"><code>dimension</code></td>
+        
+
+        <td class="type">
+          
+            
+    <span class="param-type">
+      string
+    </span>
+
+    
+
+
+          
+        </td>
+
+        
+          <td class="attributes">
+            
+              &lt;optional><br>
+            
+
+            
+
+            
+          </td>
+        
+
+        
+
+        <td class="description last">
+          <p>If 'rows' or 'columns' passed, the features are calculated along that dimension</p>
+          
+        </td>
+      </tr>
+
+    
+  </tbody>
+</table>
+
 
 
 
@@ -226,7 +357,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="math_features.js.html">math/features.js</a>, <a href="math_features.js.html#line25">line 25</a>
+          <a href="math_features.js.html">math/features.js</a>, <a href="math_features.js.html#line12">line 12</a>
         </li>
       </ul>
     </dd>
@@ -244,12 +375,15 @@
 
 
 
-          
-        
-    
 
-    
-      <h3 class="subsection-title">Methods</h3>
+
+
+
+
+
+
+
+
 
       
         
@@ -258,13 +392,13 @@
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.features.rootMeanSquare">
+    <a class="link-icon" href="#.rootMeanSquare">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".features.rootMeanSquare">
-      <span class="type-signature">(static) </span>features.rootMeanSquare<span class="signature">(window, dimension<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+    <h4 class="name" id=".rootMeanSquare">
+      <span class="type-signature">(static) </span>rootMeanSquare<span class="signature">(window, dimension<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
     </h4>
   </span>
 
@@ -426,7 +560,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="math_features.js.html">math/features.js</a>, <a href="math_features.js.html#line85">line 85</a>
+          <a href="math_features.js.html">math/features.js</a>, <a href="math_features.js.html#line62">line 62</a>
         </li>
       </ul>
     </dd>
@@ -461,13 +595,13 @@
   
 
   <span class='name-container'>
-    <a class="link-icon" href="#.features.variance">
+    <a class="link-icon" href="#.variance">
       <svg height="20" width="20" style="fill: black;">
         <use xlink:href="#linkIcon"></use>
       </svg>
     </a>
-    <h4 class="name" id=".features.variance">
-      <span class="type-signature">(static) </span>features.variance<span class="signature">(window, dimension<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+    <h4 class="name" id=".variance">
+      <span class="type-signature">(static) </span>variance<span class="signature">(window, dimension<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
     </h4>
   </span>
 
@@ -629,7 +763,7 @@
     <dd class="tag-source">
       <ul class="dummy">
         <li>
-          <a href="math_features.js.html">math/features.js</a>, <a href="math_features.js.html#line56">line 56</a>
+          <a href="math_features.js.html">math/features.js</a>, <a href="math_features.js.html#line37">line 37</a>
         </li>
       </ul>
     </dd>

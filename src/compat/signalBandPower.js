@@ -14,6 +14,8 @@ import { transpose } from '../math/transpose';
  * @deprecated Deprecated since version 1.7.0, will be removed in version 2.0.0
  * 
  * @memberof module:bcijs
+ * @function
+ * @name signalBandPower
  * @param {number[]|number[][]} samples - The signal (array of numbers) or a matrix of signals, where rows are samples and columns are signals.
  * @param {number} sampleRate - The sample rate of the signal.
  * @param {(Array|string)} bands - The frequency band or array of bands, where a single band is provided as an array [frequencyStart, frequencyStop] or a string <code>delta</code> (1-3 Hz), <code>theta</code> (4-7 Hz), <code>alpha</code> (8-12 Hz), <code>beta</code> (13-30 Hz), or <code>gamma</code> (31-50 Hz).<br>
