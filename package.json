@@ -20,7 +20,7 @@
   "dependencies": {
     "csvtojson": "^1.1.12",
     "easy-table": "^1.1.1",
-    "edfjs": "^0.2.0",
+    "edfjs": "^0.4.0",
     "fast-csv": "^2.5.0",
     "fft.js": "^4.0.3",
     "mathjs": "^6.6.5",

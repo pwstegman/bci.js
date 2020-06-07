@@ -24,7 +24,7 @@ import edfjs from 'edfjs';
  */
 export function loadEDF(filename){
     let file = fs.readFileSync(filename);
-    let edf = edfjs.EDF();
+    let edf = new edfjs.EDF();
     edf.read_buffer(file.buffer, false);
 
     let subject = edf.pid;
